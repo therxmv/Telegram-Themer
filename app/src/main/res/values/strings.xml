@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Telegram Themer</string>
+    <string name="startScreen_input_hint">Enter hex value</string>
+    <string name="create_btn_txt">CREATE</string>
+    <string name="preview_btn_txt">PREVIEW</string>
+    <string name="share_btn_txt">SHARE</string>
+</resources>
