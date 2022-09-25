@@ -1,15 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.TelegramThemer" parent="Theme.Material3.Light.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/primary_600</item>
-        <item name="colorPrimaryVariant">@color/primary_800</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/secondary_200</item>
-        <item name="colorSecondaryVariant">@color/secondary_800</item>
-        <item name="colorOnSecondary">@color/black</item>
+    <style name="Theme.TelegramThemer" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary -->
+        <item name="colorPrimary">@color/primary_500</item>
+        <item name="colorOnPrimary">?attr/colorSurface</item>
+        <item name="colorPrimaryContainer">@color/primary_300</item>
+        <item name="colorOnPrimaryContainer">@color/primary_700</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">@color/secondary_500</item>
+        <item name="colorOnSecondary">?attr/colorSurface</item>
+        <item name="colorSecondaryContainer">@color/secondary_300</item>
+        <item name="colorOnSecondaryContainer">@color/secondary_700</item>
+
+        <!-- Tertiary -->
+        <item name="colorTertiary">@color/tertiary_500</item>
+        <item name="colorOnTertiary">?attr/colorSurface</item>
+        <item name="colorTertiaryContainer">@color/tertiary_300</item>
+        <item name="colorOnTertiaryContainer">@color/tertiary_700</item>
+
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">#00000000</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- Radio button style -->
+    <style name="Widget.App.RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="buttonTint">@color/button_tint</item>
+    </style>
+
+    <!-- Switch button style -->
+    <style name="Widget.App.Switch" parent="Widget.Material3.CompoundButton.Switch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Switch" parent="">
+        <item name="colorPrimaryContainer">@color/tertiary_300</item>
+        <item name="colorPrimary">@color/tertiary_500</item>
     </style>
 </resources>

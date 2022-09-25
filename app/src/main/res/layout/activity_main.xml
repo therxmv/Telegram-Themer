@@ -1,63 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="20dp"
+    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tfHexInput"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/startScreen_input_hint"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_marginBottom="20dp"
-        app:prefixText="#">
+        android:fitsSystemWindows="true">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLength="6"
-            android:inputType="textShortMessage"
-            android:focusableInTouchMode="true"/>
+            android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
+            style="?attr/collapsingToolbarLayoutLargeStyle"
+            android:background="?attr/colorSurface"
+            app:expandedTitleTextAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+            app:layout_scrollFlags="noScroll|snap|exitUntilCollapsed">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="@string/app_name"/>
 
-    <LinearLayout
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCreateTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            android:text="@string/create_btn_txt"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
+            android:orientation="vertical"
+            android:overScrollMode="ifContentScrolls"
+            android:padding="20dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPreviewTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            android:text="@string/preview_btn_txt"
-            android:enabled="false"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_weight="5"
+                android:orientation="vertical">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnShareTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="5dp"
-            android:text="@string/share_btn_txt"
-            android:enabled="false"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tfHexInput"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:hint="@string/input_hint"
+                    app:helperText="@string/input_helper"
+                    app:prefixText="#"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_preview_24">
 
-    </LinearLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusableInTouchMode="true"
+                        android:inputType="textShortMessage"
+                        android:maxLength="6" />
 
-</LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <include layout="@layout/settings" android:id="@+id/settings"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCreateTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/btn_create_txt"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

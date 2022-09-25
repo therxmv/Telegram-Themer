@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Telegram Themer</string>
+    <string name="input_hint">Введіть шістнадцяткове число</string>
+    <string name="input_helper">Нажміть на око, щоб побачити прев\'ю теми</string>
+    <string name="btn_create_txt">СТВОРИТИ</string>
+
+    <string name="sett_title">Виберіть стиль теми</string>
+    <string name="sett_style_default">Звичайна</string>
+    <string name="sett_style_soza">Soza</string>
+    <string name="sett_dark_theme">Темна тема</string>
+    <string name="sett_amoled_theme">Amoled тема</string>
+    <string name="sett_gradient">Градієнт</string>
+</resources>

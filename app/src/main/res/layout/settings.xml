@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/sett_title"
+        android:textSize="28sp"/>
+
+    <RadioGroup
+        android:id="@+id/rgStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rbDefault"
+            style="@style/Widget.App.RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/sett_style_default"
+            android:textSize="18sp"
+            android:tag="default"/>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/rbSoza"
+            style="@style/Widget.App.RadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sett_style_soza"
+            android:textSize="18sp"
+            android:tag="soza"/>
+
+    </RadioGroup>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/swDarkTheme"
+        style="@style/Widget.App.Switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="@string/sett_dark_theme"
+        android:textSize="18sp"/>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/swAmoledTheme"
+        style="@style/Widget.App.Switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:enabled="false"
+        android:text="@string/sett_amoled_theme"
+        android:textSize="18sp"/>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/swGradient"
+        style="@style/Widget.App.Switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="@string/sett_gradient"
+        android:textSize="18sp"/>
+
+</LinearLayout>

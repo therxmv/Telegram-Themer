@@ -1,22 +1,33 @@
 package com.therxmv.telegramthemer
 
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.*
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.core.view.forEach
+import androidx.core.view.get
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val thedayTemplateFileName = "theday_template.attheme"
-    private val thedayFileName = "theday.attheme"
+
+    private var themeTemplateFileName = "theday_template.attheme"
+    private var themeFileName = "theday.attheme"
+
+    private var themeProps = mutableMapOf<String, Boolean>(
+        "default" to true,
+        "isDark" to false,
+        "isAmoled" to false,
+        "isGradient" to false,
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +36,32 @@ class MainActivity : AppCompatActivity() {
 
         val input = binding.tfHexInput
         val createButton = binding.btnCreateTheme
-        val previewButton = binding.btnPreviewTheme
-        val shareButton = binding.btnShareTheme
+        val radioGroupStyle = binding.settings.rgStyle
+        val darkCheckBox = binding.settings.swDarkTheme
+        val amoledCheckBox = binding.settings.swAmoledTheme
+        val gradientCheckBox = binding.settings.swGradient
+
+        darkCheckBox.setOnClickListener {
+            amoledCheckBox.isEnabled = darkCheckBox.isChecked
+            amoledCheckBox.isChecked = false
+
+            themeProps["isDark"] = darkCheckBox.isChecked
+        }
+
+        amoledCheckBox.setOnClickListener {
+            themeProps["isAmoled"] = amoledCheckBox.isChecked
+        }
+
+        gradientCheckBox.setOnClickListener {
+            themeProps["isGradient"] = gradientCheckBox.isChecked
+        }
+
+        //set click listener for each button
+        radioGroupStyle.forEach {
+            it.setOnClickListener{
+                changeActiveRadio(it as RadioButton, radioGroupStyle)
+            }
+        }
 
         // unfocus textfield and hide keyboard on pressed done
         input.editText?.setOnEditorActionListener(OnEditorActionListener { v, actionId, _ ->
@@ -34,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 input.error = null
                 input.clearFocus()
 
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
                 imm?.hideSoftInputFromWindow(v.windowToken, 0)
 
                 return@OnEditorActionListener true
@@ -45,60 +80,91 @@ class MainActivity : AppCompatActivity() {
         // create default theme
         createButton.setOnClickListener {
             input.clearFocus()
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(it.windowToken, 0)
 
             if (!checkInput(input)) {
+                setFilesNames()
+
                 val templateFile =
-                    applicationContext.assets.open(thedayTemplateFileName).bufferedReader()
+                    applicationContext.assets.open(themeTemplateFileName).bufferedReader()
                         .readText()
 
                 // creating new theme from template
                 val fileString =
-                    createTheme(templateFile, input.editText!!.text.toString())
+                    createTheme(templateFile, input.editText!!.text.toString(), themeProps)
 
                 File(
                     applicationContext.filesDir,
-                    thedayFileName
+                    themeFileName
                 ).writeText(fileString)
 
-                //previewButton.isEnabled = true
-                shareButton.isEnabled = true
+                shareTheme()
             }
         }
+    }
 
-        // share theme
-        shareButton.setOnClickListener {
-            val themeFile = File(applicationContext.filesDir, thedayFileName)
-
-            val uri = FileProvider.getUriForFile(
-                applicationContext,
-                BuildConfig.APPLICATION_ID + ".provider",
-                themeFile
-            )
-
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            intent.type = "*/*"
-            intent.putExtra(Intent.EXTRA_STREAM, uri)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-
-            val chooser = Intent.createChooser(intent, thedayFileName)
-
-            // fix for "Permission Denial" error
-            val resInfoList = this.packageManager.queryIntentActivities(
-                chooser,
-                PackageManager.MATCH_DEFAULT_ONLY
-            )
-            for (resolveInfo in resInfoList) {
-                val packageName = resolveInfo.activityInfo.packageName
-                grantUriPermission(
-                    packageName,
-                    uri,
-                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
-                )
+    private fun setFilesNames() {
+        if(themeProps["default"]!!) {
+            if(themeProps["isDark"]!!) {
+                themeFileName = if (themeProps["isAmoled"]!!) "TheAmoled.attheme" else "TheNight.attheme"
+                themeTemplateFileName = "theday_dark_template.attheme"
             }
-
-            startActivity(chooser)
+            else {
+                themeFileName = "TheDay.attheme"
+                themeTemplateFileName = "theday_template.attheme"
+            }
         }
+        else {
+            if(themeProps["isDark"]!!) {
+                themeFileName = if (themeProps["isAmoled"]!!) "Soza Amoled.attheme" else "Soza Night.attheme"
+                themeTemplateFileName = "thesoza_dark_template.attheme"
+            }
+            else {
+                themeFileName = "Soza Day.attheme"
+                themeTemplateFileName = "thesoza_template.attheme"
+            }
+        }
+    }
+
+    private fun changeActiveRadio(current: RadioButton, all: RadioGroup) {
+        all.clearCheck()
+        current.isChecked = true
+        themeProps["default"] = current.tag.toString() == "default"
+    }
+
+    private fun shareTheme() {
+        val themeFile = File(applicationContext.filesDir, themeFileName)
+
+        val uri = FileProvider.getUriForFile(
+            applicationContext,
+            BuildConfig.APPLICATION_ID + ".provider",
+            themeFile
+        )
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        intent.type = "*/*"
+        intent.putExtra(Intent.EXTRA_STREAM, uri)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+
+        val chooser = Intent.createChooser(intent, themeFileName)
+
+        // fix for "Permission Denial" error
+        val resInfoList = this.packageManager.queryIntentActivities(
+            chooser,
+            PackageManager.MATCH_DEFAULT_ONLY
+        )
+        for (resolveInfo in resInfoList) {
+            val packageName = resolveInfo.activityInfo.packageName
+            grantUriPermission(
+                packageName,
+                uri,
+                Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
+            )
+        }
+
+        startActivity(chooser)
     }
 
     // validation for input

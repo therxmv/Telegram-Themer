@@ -3,14 +3,28 @@ package com.therxmv.telegramthemer
 import android.util.Log
 import kotlin.math.roundToInt
 
-fun getColorTints(accent: String): Map<String, String> {
+fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, String> {
     val ac_500 = getRgb(accent)
+    val ac_200: List<Int>
+    val ac_300: List<Int>
+    val ac_700: List<Int>
+    val ac_800: List<Int>
 
-    val ac_200 = ac_500.map { getLighter(it, 0.8) }
-    val ac_300 = ac_500.map { getLighter(it, 0.2) }
+    if(props["default"]!!) {
+        ac_200 = ac_500.map { getLighter(it, 0.8) }
+        ac_300 = ac_500.map { getLighter(it, 0.2) }
 
-    val ac_700 = ac_500.map { getDarker(it, 0.2) }
-    val ac_800 = ac_500.map { getDarker(it, 0.4) }
+        ac_700 = ac_500.map { getDarker(it, 0.2) }
+        ac_800 = ac_500.map { getDarker(it, 0.4) }
+    }
+    else {
+        ac_200 = ac_500.map { getLighter(it, 0.8) }
+        ac_300 = ac_500.map { getLighter(it, 0.6) }
+
+        ac_700 = ac_500.map { getDarker(it, 0.15) }
+        ac_800 = ac_500.map { getDarker(it, 0.7) } // 0.8
+
+    }
 
     return mapOf<String, String>(
         "ac_200" to getHex(ac_200),
