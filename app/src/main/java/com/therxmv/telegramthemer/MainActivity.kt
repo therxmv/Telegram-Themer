@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
         } else if (inputText.length != 6) {
             isError = true
             input.error = "You must enter six characters!"
-        } else if (inputText.contains(Regex("[G-Zg-z]"))) {
+        } else if (inputText.contains(Regex("[^0-9a-fA-f]"))) {
             isError = true
             input.error = "Invalid hex number!"
         } else {

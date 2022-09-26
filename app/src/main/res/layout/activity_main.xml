@@ -58,10 +58,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
                     android:hint="@string/input_hint"
-                    app:helperText="@string/input_helper"
-                    app:prefixText="#"
-                    app:endIconMode="custom"
-                    app:endIconDrawable="@drawable/ic_preview_24">
+                    app:helperText=" "
+                    app:prefixText="#">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <background android:drawable="@color/primary_500" />
+    <foreground>
+        <aapt:attr name="android:drawable">
+            <vector xmlns:android="http://schemas.android.com/apk/res/android"
+                android:width="108dp"
+                android:height="108dp"
+                android:viewportWidth="108"
+                android:viewportHeight="108">
+
+                <path
+                    android:fillColor="#ffffff"
+                    android:fillType="evenOdd"
+                    android:pathData="M30.801 61.0303C25.8132 56.9405 29.0493 51.8324 49.2523 41.1196C61.6898 34.5245 70.7615 31.2401 73.854 33.9268C76.9464 36.6134 74.7115 49.2256 72.082 60.0921C70.2985 70.6305 68.0726 76.6604 64.2982 76.667C57.213 76.6793 37.1412 66.2292 30.801 61.0303ZM57.5811 55.4021C56.4865 56.7387 54.4891 56.8694 53.2296 55.6869C51.8984 54.4371 51.9916 52.2956 53.4264 51.1662L64.834 42.1865C66.107 41.3205 67.6324 42.8545 66.7977 44.1484L57.5811 55.4021ZM45.2557 62.8094C46.0798 63.417 46.9808 63.7913 47.9587 63.9324C49.3623 64.1349 50.6126 63.8214 51.7097 62.9919C52.8058 62.1622 53.4551 61.0456 53.6576 59.642C53.808 58.5998 53.5699 57.6537 52.9433 56.8037C52.3177 55.9538 51.4839 55.4536 50.4417 55.3033C49.378 55.1498 48.4335 55.3772 47.608 55.9854C46.7825 56.5936 46.2731 57.4158 46.0798 58.4518C45.9634 59.1071 45.6407 59.6138 45.1118 59.972C44.4101 60.4462 43.7884 61.3938 44.3651 62.0141C44.6381 62.3078 44.935 62.5729 45.2557 62.8094Z" />
+            </vector>
+        </aapt:attr>
+    </foreground>
+</adaptive-icon>
