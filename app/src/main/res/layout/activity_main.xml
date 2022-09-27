@@ -17,10 +17,11 @@
             android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
             style="?attr/collapsingToolbarLayoutLargeStyle"
             android:background="?attr/colorSurface"
-            app:expandedTitleTextAppearance="@style/TextAppearance.Material3.HeadlineLarge"
+            app:expandedTitleTextAppearance="@style/AppBar.Title.Large"
             app:layout_scrollFlags="noScroll|snap|exitUntilCollapsed">
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -39,7 +40,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="top"
             android:orientation="vertical"
             android:overScrollMode="ifContentScrolls"
             android:padding="20dp">

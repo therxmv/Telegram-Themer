@@ -11,6 +11,17 @@
         android:theme="@style/Theme.TelegramThemer"
         tools:targetApi="31">
         <activity
+            android:name=".AboutActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.therxmv.telegramthemer.MainActivity" />
+        </activity>
+
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -31,6 +42,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
     </application>
+
 </manifest>

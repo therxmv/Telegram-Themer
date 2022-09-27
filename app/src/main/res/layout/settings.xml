@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="@string/sett_title"
-        android:textSize="28sp"/>
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
 
     <RadioGroup
         android:id="@+id/rgStyle"
@@ -29,7 +30,7 @@
             android:layout_weight="1"
             android:checked="true"
             android:text="@string/sett_style_default"
-            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             android:tag="default"/>
 
         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/sett_style_soza"
-            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             android:tag="soza"/>
 
     </RadioGroup>
@@ -51,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
         android:text="@string/sett_dark_theme"
-        android:textSize="18sp"/>
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/swAmoledTheme"
@@ -61,7 +62,7 @@
         android:layoutDirection="rtl"
         android:enabled="false"
         android:text="@string/sett_amoled_theme"
-        android:textSize="18sp"/>
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/swGradient"
@@ -70,6 +71,6 @@
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
         android:text="@string/sett_gradient"
-        android:textSize="18sp"/>
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
 
 </LinearLayout>

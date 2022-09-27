@@ -23,6 +23,23 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Font. -->
+        <item name="fontFamily">@font/overpass_regular</item>
+    </style>
+
+    <!-- Body bold title -->
+    <style name="Body.title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/overpass_bold</item>
+    </style>
+
+    <!-- AppBar titles -->
+    <style name="AppBar.Title" parent="TextAppearance.Material3.ActionBar.Title">
+        <item name="fontFamily">@font/overpass_medium</item>
+    </style>
+
+    <style name="AppBar.Title.Large" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/overpass_regular</item>
     </style>
 
     <!-- Radio button style -->

@@ -3,7 +3,9 @@ package com.therxmv.telegramthemer
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
+import android.preference.PreferenceManager
+import android.view.Menu
+import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
@@ -11,10 +13,11 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.core.view.forEach
-import androidx.core.view.get
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import java.io.File
+import kotlin.collections.mutableMapOf
+import kotlin.collections.set
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // add action for custom appbar
+        setSupportActionBar(binding.toolbar)
 
         val input = binding.tfHexInput
         val createButton = binding.btnCreateTheme
@@ -188,4 +194,20 @@ class MainActivity : AppCompatActivity() {
 
         return isError
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_about, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_about -> {
+            startActivity(Intent(this, AboutActivity::class.java))
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
 }
