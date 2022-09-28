@@ -1,14 +1,17 @@
 package com.therxmv.telegramthemer
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.preference.PreferenceManager
+import android.text.Editable
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -16,10 +19,16 @@ import androidx.core.view.forEach
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import java.io.File
-import kotlin.collections.mutableMapOf
 import kotlin.collections.set
 
 class MainActivity : AppCompatActivity() {
+    private val STYLE_PREFERENCES = "styleSettings"
+    private val STYLE_PREFERENCES_INPUT = "input"
+    private val STYLE_PREFERENCES_DEFAULT_RD = "defaultRd"
+    private val STYLE_PREFERENCES_DARK_CB = "darkCb"
+    private val STYLE_PREFERENCES_AMOLED_CB = "amoledCb"
+    private val STYLE_PREFERENCES_GRADIENT_CB = "gradientCb"
+
     private lateinit var binding: ActivityMainBinding
 
     private var themeTemplateFileName = "theday_template.attheme"
@@ -37,15 +46,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        setStyle()
         // add action for custom appbar
         setSupportActionBar(binding.toolbar)
 
         val input = binding.tfHexInput
         val createButton = binding.btnCreateTheme
         val radioGroupStyle = binding.settings.rgStyle
-        val darkCheckBox = binding.settings.swDarkTheme
-        val amoledCheckBox = binding.settings.swAmoledTheme
-        val gradientCheckBox = binding.settings.swGradient
+        val darkCheckBox = binding.settings.cbDarkTheme
+        val amoledCheckBox = binding.settings.cbAmoledTheme
+        val gradientCheckBox = binding.settings.cbGradient
 
         darkCheckBox.setOnClickListener {
             amoledCheckBox.isEnabled = darkCheckBox.isChecked
@@ -110,6 +120,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // set values in themeProps
     private fun setFilesNames() {
         if(themeProps["default"]!!) {
             if(themeProps["isDark"]!!) {
@@ -195,6 +206,64 @@ class MainActivity : AppCompatActivity() {
         return isError
     }
 
+    private fun putData() {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
+        val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
+
+        val inputText = binding.tfHexInput.editText!!.text.toString()
+
+        sharedPreferencesEditor.putString(STYLE_PREFERENCES_INPUT, inputText)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DEFAULT_RD, themeProps["default"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DARK_CB, themeProps["isDark"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_AMOLED_CB, themeProps["isAmoled"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_GRADIENT_CB, themeProps["isGradient"]!!)
+
+        sharedPreferencesEditor.apply()
+    }
+
+    private fun getData() {
+        val sharedPreferences: SharedPreferences = getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
+
+        binding.tfHexInput.editText!!.setText(sharedPreferences.getString(STYLE_PREFERENCES_INPUT, ""))
+
+        themeProps["default"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DEFAULT_RD, false)
+        themeProps["isDark"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DARK_CB, false)
+        themeProps["isAmoled"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_AMOLED_CB, false)
+        themeProps["isGradient"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_GRADIENT_CB, true)
+    }
+
+    private fun setStyle() {
+        getData()
+
+        val radioGroupStyle = binding.settings.rgStyle
+        val darkCheckBox = binding.settings.cbDarkTheme
+        val amoledCheckBox = binding.settings.cbAmoledTheme
+        val gradientCheckBox = binding.settings.cbGradient
+
+        radioGroupStyle.forEach {
+            it as RadioButton;
+            when (it.tag.toString()) {
+                "default" -> it.isChecked = themeProps["default"]!!
+                "soza" -> it.isChecked = !themeProps["default"]!!
+            }
+        }
+
+        darkCheckBox.isChecked = themeProps["isDark"]!!;
+        amoledCheckBox.isChecked = themeProps["isAmoled"]!!;
+        gradientCheckBox.isChecked = themeProps["isGradient"]!!;
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setStyle()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        putData()
+    }
+
+    // create button in appbar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_about, menu)
         return super.onCreateOptionsMenu(menu)
@@ -209,5 +278,4 @@ class MainActivity : AppCompatActivity() {
             super.onOptionsItemSelected(item)
         }
     }
-
 }

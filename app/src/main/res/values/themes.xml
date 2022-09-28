@@ -37,9 +37,8 @@
     <style name="AppBar.Title" parent="TextAppearance.Material3.ActionBar.Title">
         <item name="fontFamily">@font/overpass_medium</item>
     </style>
-
     <style name="AppBar.Title.Large" parent="TextAppearance.Material3.HeadlineLarge">
-        <item name="fontFamily">@font/overpass_regular</item>
+        <item name="fontFamily">@font/overpass_medium</item>
     </style>
 
     <!-- Radio button style -->
@@ -47,13 +46,8 @@
         <item name="buttonTint">@color/button_tint</item>
     </style>
 
-    <!-- Switch button style -->
-    <style name="Widget.App.Switch" parent="Widget.Material3.CompoundButton.Switch">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Switch</item>
-    </style>
-
-    <style name="ThemeOverlay.App.Switch" parent="">
-        <item name="colorPrimaryContainer">@color/tertiary_300</item>
-        <item name="colorPrimary">@color/tertiary_500</item>
+    <!-- Checkbox button style -->
+    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="buttonTint">@color/button_tint</item>
     </style>
 </resources>
