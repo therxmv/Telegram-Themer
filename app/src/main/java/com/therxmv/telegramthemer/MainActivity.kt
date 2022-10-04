@@ -46,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setStyle()
         // add action for custom appbar
         setSupportActionBar(binding.toolbar)
 
@@ -228,7 +227,7 @@ class MainActivity : AppCompatActivity() {
 
         themeProps["default"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DEFAULT_RD, false)
         themeProps["isDark"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DARK_CB, false)
-        themeProps["isAmoled"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_AMOLED_CB, false)
+        themeProps["isAmoled"] = if(themeProps["isDark"]!!) sharedPreferences.getBoolean(STYLE_PREFERENCES_AMOLED_CB, false) else false
         themeProps["isGradient"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_GRADIENT_CB, true)
     }
 
@@ -249,6 +248,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         darkCheckBox.isChecked = themeProps["isDark"]!!;
+        if (darkCheckBox.isChecked) amoledCheckBox.isEnabled = true
+
         amoledCheckBox.isChecked = themeProps["isAmoled"]!!;
         gradientCheckBox.isChecked = themeProps["isGradient"]!!;
     }
