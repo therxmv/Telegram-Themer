@@ -3,8 +3,9 @@ package com.therxmv.telegramthemer
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -16,9 +17,12 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.core.view.forEach
+import com.github.dhaval2404.colorpicker.ColorPickerDialog
+import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import java.io.File
+import java.lang.Exception
 import kotlin.collections.set
 
 class MainActivity : AppCompatActivity() {
@@ -31,15 +35,17 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private var themeTemplateFileName = "theday_template.attheme"
-    private var themeFileName = "theday.attheme"
+    private var mThemeTemplateFileName = "theday_template.attheme"
+    private var mThemeFileName = "theday.attheme"
 
-    private var themeProps = mutableMapOf<String, Boolean>(
+    private var mThemeProps = mutableMapOf<String, Boolean>(
         "default" to true,
         "isDark" to false,
         "isAmoled" to false,
         "isGradient" to false,
     )
+
+    private var mDefaultColor = "#299fe9"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,19 +62,35 @@ class MainActivity : AppCompatActivity() {
         val amoledCheckBox = binding.settings.cbAmoledTheme
         val gradientCheckBox = binding.settings.cbGradient
 
+        // Color picker
+        input.setEndIconOnClickListener {
+            ColorPickerDialog
+                .Builder(this)
+                .setTitle("Pick color")
+                .setColorShape(ColorShape.CIRCLE)
+                .setDefaultColor(mDefaultColor)
+                .setColorListener { color, colorHex ->
+                    mDefaultColor = colorHex
+                    input.editText?.setText(colorHex.drop(1))
+                    input.setEndIconTintList(ColorStateList.valueOf(color))
+                    input.error = null
+                }
+                .show()
+        }
+
         darkCheckBox.setOnClickListener {
             amoledCheckBox.isEnabled = darkCheckBox.isChecked
             amoledCheckBox.isChecked = false
 
-            themeProps["isDark"] = darkCheckBox.isChecked
+            mThemeProps["isDark"] = darkCheckBox.isChecked
         }
 
         amoledCheckBox.setOnClickListener {
-            themeProps["isAmoled"] = amoledCheckBox.isChecked
+            mThemeProps["isAmoled"] = amoledCheckBox.isChecked
         }
 
         gradientCheckBox.setOnClickListener {
-            themeProps["isGradient"] = gradientCheckBox.isChecked
+            mThemeProps["isGradient"] = gradientCheckBox.isChecked
         }
 
         //set click listener for each button
@@ -87,6 +109,13 @@ class MainActivity : AppCompatActivity() {
                 val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
                 imm?.hideSoftInputFromWindow(v.windowToken, 0)
 
+                try {
+                    input.setEndIconTintList(ColorStateList.valueOf(Color.parseColor("#" + input.editText?.text.toString())))
+                    mDefaultColor = "#" + input.editText?.text.toString()
+                } catch (e: Exception) {
+
+                }
+
                 return@OnEditorActionListener true
             }
             false
@@ -102,16 +131,16 @@ class MainActivity : AppCompatActivity() {
                 setFilesNames()
 
                 val templateFile =
-                    applicationContext.assets.open(themeTemplateFileName).bufferedReader()
+                    applicationContext.assets.open(mThemeTemplateFileName).bufferedReader()
                         .readText()
 
                 // creating new theme from template
                 val fileString =
-                    createTheme(templateFile, input.editText!!.text.toString(), themeProps)
+                    createTheme(templateFile, input.editText!!.text.toString(), mThemeProps)
 
                 File(
                     applicationContext.filesDir,
-                    themeFileName
+                    mThemeFileName
                 ).writeText(fileString)
 
                 shareTheme()
@@ -119,26 +148,26 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // set values in themeProps
+    // set values in mThemeProps
     private fun setFilesNames() {
-        if(themeProps["default"]!!) {
-            if(themeProps["isDark"]!!) {
-                themeFileName = if (themeProps["isAmoled"]!!) "TheAmoled.attheme" else "TheNight.attheme"
-                themeTemplateFileName = "theday_dark_template.attheme"
+        if(mThemeProps["default"]!!) {
+            if(mThemeProps["isDark"]!!) {
+                mThemeFileName = if (mThemeProps["isAmoled"]!!) "TheAmoled.attheme" else "TheNight.attheme"
+                mThemeTemplateFileName = "theday_dark_template.attheme"
             }
             else {
-                themeFileName = "TheDay.attheme"
-                themeTemplateFileName = "theday_template.attheme"
+                mThemeFileName = "TheDay.attheme"
+                mThemeTemplateFileName = "theday_template.attheme"
             }
         }
         else {
-            if(themeProps["isDark"]!!) {
-                themeFileName = if (themeProps["isAmoled"]!!) "Soza Amoled.attheme" else "Soza Night.attheme"
-                themeTemplateFileName = "thesoza_dark_template.attheme"
+            if(mThemeProps["isDark"]!!) {
+                mThemeFileName = if (mThemeProps["isAmoled"]!!) "Soza Amoled.attheme" else "Soza Night.attheme"
+                mThemeTemplateFileName = "thesoza_dark_template.attheme"
             }
             else {
-                themeFileName = "Soza Day.attheme"
-                themeTemplateFileName = "thesoza_template.attheme"
+                mThemeFileName = "Soza Day.attheme"
+                mThemeTemplateFileName = "thesoza_template.attheme"
             }
         }
     }
@@ -146,11 +175,11 @@ class MainActivity : AppCompatActivity() {
     private fun changeActiveRadio(current: RadioButton, all: RadioGroup) {
         all.clearCheck()
         current.isChecked = true
-        themeProps["default"] = current.tag.toString() == "default"
+        mThemeProps["default"] = current.tag.toString() == "default"
     }
 
     private fun shareTheme() {
-        val themeFile = File(applicationContext.filesDir, themeFileName)
+        val themeFile = File(applicationContext.filesDir, mThemeFileName)
 
         val uri = FileProvider.getUriForFile(
             applicationContext,
@@ -164,7 +193,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Intent.EXTRA_STREAM, uri)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 
-        val chooser = Intent.createChooser(intent, themeFileName)
+        val chooser = Intent.createChooser(intent, mThemeFileName)
 
         // fix for "Permission Denial" error
         val resInfoList = this.packageManager.queryIntentActivities(
@@ -187,16 +216,17 @@ class MainActivity : AppCompatActivity() {
     private fun checkInput(input: TextInputLayout): Boolean {
         var isError = false;
         val inputText = input.editText?.text.toString()
+        input.errorIconDrawable = null
 
         if (inputText.isEmpty()) {
             isError = true
-            input.error = "Please enter something!"
+            input.error = getString(R.string.empty_error)
         } else if (inputText.length != 6) {
             isError = true
-            input.error = "You must enter six characters!"
+            input.error = getString(R.string.length_error)
         } else if (inputText.contains(Regex("[^0-9a-fA-f]"))) {
             isError = true
-            input.error = "Invalid hex number!"
+            input.error = getString(R.string.invalid_error)
         } else {
             isError = false
             input.error = null
@@ -212,10 +242,10 @@ class MainActivity : AppCompatActivity() {
         val inputText = binding.tfHexInput.editText!!.text.toString()
 
         sharedPreferencesEditor.putString(STYLE_PREFERENCES_INPUT, inputText)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DEFAULT_RD, themeProps["default"]!!)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DARK_CB, themeProps["isDark"]!!)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_AMOLED_CB, themeProps["isAmoled"]!!)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_GRADIENT_CB, themeProps["isGradient"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DEFAULT_RD, mThemeProps["default"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DARK_CB, mThemeProps["isDark"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_AMOLED_CB, mThemeProps["isAmoled"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_GRADIENT_CB, mThemeProps["isGradient"]!!)
 
         sharedPreferencesEditor.apply()
     }
@@ -225,10 +255,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.tfHexInput.editText!!.setText(sharedPreferences.getString(STYLE_PREFERENCES_INPUT, ""))
 
-        themeProps["default"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DEFAULT_RD, false)
-        themeProps["isDark"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DARK_CB, false)
-        themeProps["isAmoled"] = if(themeProps["isDark"]!!) sharedPreferences.getBoolean(STYLE_PREFERENCES_AMOLED_CB, false) else false
-        themeProps["isGradient"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_GRADIENT_CB, true)
+        mThemeProps["default"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DEFAULT_RD, false)
+        mThemeProps["isDark"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DARK_CB, false)
+        mThemeProps["isAmoled"] = if(mThemeProps["isDark"]!!) sharedPreferences.getBoolean(STYLE_PREFERENCES_AMOLED_CB, false) else false
+        mThemeProps["isGradient"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_GRADIENT_CB, true)
     }
 
     private fun setStyle() {
@@ -242,16 +272,16 @@ class MainActivity : AppCompatActivity() {
         radioGroupStyle.forEach {
             it as RadioButton;
             when (it.tag.toString()) {
-                "default" -> it.isChecked = themeProps["default"]!!
-                "soza" -> it.isChecked = !themeProps["default"]!!
+                "default" -> it.isChecked = mThemeProps["default"]!!
+                "soza" -> it.isChecked = !mThemeProps["default"]!!
             }
         }
 
-        darkCheckBox.isChecked = themeProps["isDark"]!!;
+        darkCheckBox.isChecked = mThemeProps["isDark"]!!;
         if (darkCheckBox.isChecked) amoledCheckBox.isEnabled = true
 
-        amoledCheckBox.isChecked = themeProps["isAmoled"]!!;
-        gradientCheckBox.isChecked = themeProps["isGradient"]!!;
+        amoledCheckBox.isChecked = mThemeProps["isAmoled"]!!;
+        gradientCheckBox.isChecked = mThemeProps["isGradient"]!!;
     }
 
     override fun onResume() {

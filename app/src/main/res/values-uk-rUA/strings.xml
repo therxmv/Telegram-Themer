@@ -2,17 +2,19 @@
 <resources>
     <string name="input_hint">Введіть шістнадцяткове число</string>
     <string name="btn_create_txt">СТВОРИТИ</string>
-
-    <!-- Settings -->
+    <!--  Settings  -->
     <string name="sett_title">Виберіть стиль теми</string>
     <string name="sett_style_default">Звичайна</string>
     <string name="sett_style_soza">Soza</string>
     <string name="sett_dark_theme">Темна тема</string>
     <string name="sett_amoled_theme">Amoled тема</string>
     <string name="sett_gradient">Градієнт</string>
-
-    <!-- About -->
+    <!--  About  -->
     <string name="about_appbar_title">Про додаток</string>
     <string name="about_dscr">Додаток, для створення телеграм тем, різних стилів.</string>
     <string name="about_btn_tg">Телеграм канал</string>
+    <!--  Error messages  -->
+    <string name="empty_error">Будь ласка, введіть щось!</string>
+    <string name="length_error">Введіть шість символів!</string>
+    <string name="invalid_error">Некоректне шістнадцяткове число!</string>
 </resources>

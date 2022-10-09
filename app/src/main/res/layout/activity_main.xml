@@ -13,9 +13,9 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?attr/collapsingToolbarLayoutLargeStyle"
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutLargeSize"
-            style="?attr/collapsingToolbarLayoutLargeStyle"
             android:background="?attr/colorSurface"
             app:expandedTitleTextAppearance="@style/AppBar.Title.Large"
             app:layout_scrollFlags="noScroll|snap|exitUntilCollapsed">
@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:title="@string/app_name"/>
+                app:title="@string/app_name" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -58,8 +58,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:hint="@string/input_hint"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_round_colorize_24"
                     app:helperText=" "
-                    app:endIconMode="clear_text"
                     app:prefixText="#">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -70,21 +71,30 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <include layout="@layout/settings" android:id="@+id/settings"/>
+                <include
+                    android:id="@+id/settings"
+                    layout="@layout/settings" />
 
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCreateTheme"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:text="@string/btn_create_txt"
-                android:textStyle="bold"
-                android:textAppearance="@style/Body.title"/>
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCreateTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_weight="1"
+                    android:text="@string/btn_create_txt"
+                    android:textAppearance="@style/Body.title"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-    
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

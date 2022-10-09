@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Telegram Themer</string>
-    <string name="input_hint">Enter hex value</string>
+    <string name="input_hint">Enter hexadecimal number</string>
     <string name="btn_create_txt">CREATE</string>
-
-    <!-- Settings -->
+    <!--  Settings  -->
     <string name="sett_title">Choose theme style</string>
     <string name="sett_style_default">Default</string>
     <string name="sett_style_soza">Soza</string>
     <string name="sett_dark_theme">Dark Theme</string>
     <string name="sett_amoled_theme">Amoled Theme</string>
     <string name="sett_gradient">Gradient</string>
-
-    <!-- About -->
+    <!--  About  -->
     <string name="about_appbar_title">About</string>
     <string name="about_title" translatable="false">Telegram Themer | Ver. 1.2</string>
     <string name="about_dscr">App for creating telegram themes in different styles.</string>
     <string name="about_btn_tg">Telegram Channel</string>
     <string name="about_btn_git" translatable="false">Github</string>
+    <!--  Error messages  -->
+    <string name="empty_error">Please enter something!</string>
+    <string name="length_error">You must enter six characters!</string>
+    <string name="invalid_error">Invalid hexadecimal number!</string>
 </resources>
