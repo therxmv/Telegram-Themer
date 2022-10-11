@@ -65,6 +65,16 @@
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
 
     <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbMonet"
+        style="@style/Widget.App.CheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:enabled="false"
+        android:text="@string/sett_monet"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbGradient"
         style="@style/Widget.App.CheckBox"
         android:layout_width="match_parent"

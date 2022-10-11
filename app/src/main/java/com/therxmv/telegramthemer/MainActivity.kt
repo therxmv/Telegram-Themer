@@ -6,15 +6,16 @@ import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.CheckBox
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.forEach
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
@@ -28,20 +29,18 @@ import kotlin.collections.set
 class MainActivity : AppCompatActivity() {
     private val STYLE_PREFERENCES = "styleSettings"
     private val STYLE_PREFERENCES_INPUT = "input"
-    private val STYLE_PREFERENCES_DEFAULT_RD = "defaultRd"
-    private val STYLE_PREFERENCES_DARK_CB = "darkCb"
-    private val STYLE_PREFERENCES_AMOLED_CB = "amoledCb"
-    private val STYLE_PREFERENCES_GRADIENT_CB = "gradientCb"
+    private val STYLE_PREFERENCES_DEFAULT_RD = "defaultRB"
 
     private lateinit var binding: ActivityMainBinding
 
     private var mThemeTemplateFileName = "theday_template.attheme"
     private var mThemeFileName = "theday.attheme"
 
-    private var mThemeProps = mutableMapOf<String, Boolean>(
+    private var mThemeProps = mutableMapOf(
         "default" to true,
         "isDark" to false,
         "isAmoled" to false,
+        "isMonet" to false,
         "isGradient" to false,
     )
 
@@ -58,9 +57,18 @@ class MainActivity : AppCompatActivity() {
         val input = binding.tfHexInput
         val createButton = binding.btnCreateTheme
         val radioGroupStyle = binding.settings.rgStyle
+
         val darkCheckBox = binding.settings.cbDarkTheme
-        val amoledCheckBox = binding.settings.cbAmoledTheme
-        val gradientCheckBox = binding.settings.cbGradient
+        val checkBoxMap = mapOf<String, CheckBox>(
+            "isAmoled" to binding.settings.cbAmoledTheme,
+            "isMonet" to binding.settings.cbMonet,
+            "isGradient" to binding.settings.cbGradient,
+        )
+
+        // monet
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            checkBoxMap.getValue("isMonet").isEnabled = true
+        }
 
         // Color picker
         input.setEndIconOnClickListener {
@@ -79,23 +87,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         darkCheckBox.setOnClickListener {
-            amoledCheckBox.isEnabled = darkCheckBox.isChecked
-            amoledCheckBox.isChecked = false
+            checkBoxMap.getValue("isAmoled").isEnabled = darkCheckBox.isChecked
+            checkBoxMap.getValue("isAmoled").isChecked = false
 
             mThemeProps["isDark"] = darkCheckBox.isChecked
         }
 
-        amoledCheckBox.setOnClickListener {
-            mThemeProps["isAmoled"] = amoledCheckBox.isChecked
-        }
-
-        gradientCheckBox.setOnClickListener {
-            mThemeProps["isGradient"] = gradientCheckBox.isChecked
+        checkBoxMap.forEach {
+            checkBoxHandler(it.value, it.key)
         }
 
         //set click listener for each button
-        radioGroupStyle.forEach {
-            it.setOnClickListener{
+        radioGroupStyle.forEach { rb ->
+            rb.setOnClickListener{
                 changeActiveRadio(it as RadioButton, radioGroupStyle)
             }
         }
@@ -121,7 +125,7 @@ class MainActivity : AppCompatActivity() {
             false
         })
 
-        // create default theme
+        // create theme
         createButton.setOnClickListener {
             input.clearFocus()
             val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
@@ -135,8 +139,9 @@ class MainActivity : AppCompatActivity() {
                         .readText()
 
                 // creating new theme from template
+                val color = if(mThemeProps["isMonet"]!!) Integer.toHexString(ContextCompat.getColor(this, R.color.theme_accent)).drop(2) else input.editText!!.text.toString()
                 val fileString =
-                    createTheme(templateFile, input.editText!!.text.toString(), mThemeProps)
+                    createTheme(templateFile, color, mThemeProps)
 
                 File(
                     applicationContext.filesDir,
@@ -145,6 +150,12 @@ class MainActivity : AppCompatActivity() {
 
                 shareTheme()
             }
+        }
+    }
+
+    private fun checkBoxHandler(checkBox: CheckBox, value: String) {
+        checkBox.setOnClickListener {
+            mThemeProps[value] = checkBox.isChecked
         }
     }
 
@@ -214,9 +225,11 @@ class MainActivity : AppCompatActivity() {
 
     // validation for input
     private fun checkInput(input: TextInputLayout): Boolean {
-        var isError = false;
+        val isError: Boolean
         val inputText = input.editText?.text.toString()
         input.errorIconDrawable = null
+
+        if(mThemeProps["isMonet"]!!) return false
 
         if (inputText.isEmpty()) {
             isError = true
@@ -243,9 +256,10 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferencesEditor.putString(STYLE_PREFERENCES_INPUT, inputText)
         sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DEFAULT_RD, mThemeProps["default"]!!)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DARK_CB, mThemeProps["isDark"]!!)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_AMOLED_CB, mThemeProps["isAmoled"]!!)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_GRADIENT_CB, mThemeProps["isGradient"]!!)
+
+        mThemeProps.forEach {
+            sharedPreferencesEditor.putBoolean(it.key, it.value)
+        }
 
         sharedPreferencesEditor.apply()
     }
@@ -254,34 +268,41 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences: SharedPreferences = getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
 
         binding.tfHexInput.editText!!.setText(sharedPreferences.getString(STYLE_PREFERENCES_INPUT, ""))
-
         mThemeProps["default"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DEFAULT_RD, false)
-        mThemeProps["isDark"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DARK_CB, false)
-        mThemeProps["isAmoled"] = if(mThemeProps["isDark"]!!) sharedPreferences.getBoolean(STYLE_PREFERENCES_AMOLED_CB, false) else false
-        mThemeProps["isGradient"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_GRADIENT_CB, true)
+
+        mThemeProps.forEach {
+            if(it.key == "isAmoled") {
+                mThemeProps[it.key] = if(mThemeProps["isDark"]!!) sharedPreferences.getBoolean(it.key, false) else false
+            }
+            else {
+                mThemeProps[it.key] = sharedPreferences.getBoolean(it.key, false)
+            }
+        }
     }
 
     private fun setStyle() {
         getData()
 
         val radioGroupStyle = binding.settings.rgStyle
-        val darkCheckBox = binding.settings.cbDarkTheme
-        val amoledCheckBox = binding.settings.cbAmoledTheme
-        val gradientCheckBox = binding.settings.cbGradient
+        val checkBoxMap = mapOf<String, CheckBox>(
+            "isDark" to binding.settings.cbDarkTheme,
+            "isAmoled" to binding.settings.cbAmoledTheme,
+            "isMonet" to binding.settings.cbMonet,
+            "isGradient" to binding.settings.cbGradient,
+        )
 
         radioGroupStyle.forEach {
-            it as RadioButton;
+            it as RadioButton
             when (it.tag.toString()) {
                 "default" -> it.isChecked = mThemeProps["default"]!!
                 "soza" -> it.isChecked = !mThemeProps["default"]!!
             }
         }
 
-        darkCheckBox.isChecked = mThemeProps["isDark"]!!;
-        if (darkCheckBox.isChecked) amoledCheckBox.isEnabled = true
-
-        amoledCheckBox.isChecked = mThemeProps["isAmoled"]!!;
-        gradientCheckBox.isChecked = mThemeProps["isGradient"]!!;
+        if (checkBoxMap["isDark"]!!.isChecked) checkBoxMap["isAmoled"]!!.isEnabled = true
+        checkBoxMap.forEach {
+            it.value.isChecked = mThemeProps[it.key]!!
+        }
     }
 
     override fun onResume() {

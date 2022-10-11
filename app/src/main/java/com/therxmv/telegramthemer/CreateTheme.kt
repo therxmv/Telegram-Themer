@@ -1,6 +1,8 @@
 package com.therxmv.telegramthemer
 
+import android.graphics.Color
 import android.util.Log
+import androidx.core.content.ContextCompat.getColor
 
 fun createTheme(file: String, accent: String, props: Map<String, Boolean>): String {
     val tints: Map<String, String> = getColorTints(accent, props)
@@ -74,7 +76,6 @@ fun createTheme(file: String, accent: String, props: Map<String, Boolean>): Stri
     }
 
     if(!props["isGradient"]!!) {
-        Log.d("gr", props["isGradient"]!!.toString())
         theme = theme.replace("chat_outBubbleGradient", "NoGradient")
     }
 

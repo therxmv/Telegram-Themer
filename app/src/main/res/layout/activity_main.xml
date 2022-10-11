@@ -81,12 +81,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnCreateTheme"
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
                     android:text="@string/btn_create_txt"
                     android:textAppearance="@style/Body.title"
