@@ -29,7 +29,7 @@
     </style>
 
     <!-- Body bold title -->
-    <style name="Body.title" parent="TextAppearance.Material3.TitleLarge">
+    <style name="Body.title" parent="TextAppearance.Material3.BodyLarge">
         <item name="fontFamily">@font/overpass_bold</item>
     </style>
 

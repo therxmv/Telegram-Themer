@@ -4,27 +4,40 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
+import android.os.Environment
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView.OnEditorActionListener
+import android.widget.TextView.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.forEach
+import com.devs.vectorchildfinder.VectorDrawableCompat
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import java.io.File
-import java.lang.Exception
+import java.io.FileOutputStream
+import java.io.OutputStream
 import kotlin.collections.set
+
 
 class MainActivity : AppCompatActivity() {
     private val STYLE_PREFERENCES = "styleSettings"
@@ -56,19 +69,64 @@ class MainActivity : AppCompatActivity() {
 
         val input = binding.tfHexInput
         val createButton = binding.btnCreateTheme
+        val previewButton = binding.btnPreviewTheme
         val radioGroupStyle = binding.settings.rgStyle
-
         val darkCheckBox = binding.settings.cbDarkTheme
+        val monetCheckBox = binding.settings.cbMonet
         val checkBoxMap = mapOf<String, CheckBox>(
             "isAmoled" to binding.settings.cbAmoledTheme,
-            "isMonet" to binding.settings.cbMonet,
             "isGradient" to binding.settings.cbGradient,
         )
 
-        // monet
-        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-            checkBoxMap.getValue("isMonet").isEnabled = true
-        }
+        val previewCard = binding.cvPreview
+        val preview = binding.ivPreview
+//        val hidePreview = binding.btnHidePreview
+//        val downloadPreview = binding.btnDownloadPreview
+
+//        hidePreview.setOnClickListener{
+//            previewCard.visibility = GONE
+//        }
+
+// bm.compress null pointer exception
+//        downloadPreview.setOnClickListener{
+//            val bm = (preview.drawable as VectorDrawableCompat).toBitmap()
+//            val extStorageDirectory = Environment.DIRECTORY_DOWNLOADS.toString()
+//            val file = File(extStorageDirectory, "preview.png")
+//            file.mkdirs()
+//            var outStream: OutputStream? = null
+//            try {
+//                outStream = FileOutputStream(file)
+//            }
+//            catch (e: Exception){
+//                e.printStackTrace()
+//            }
+//            bm?.compress(Bitmap.CompressFormat.PNG, 100, outStream)
+//
+//            try {
+//                outStream?.flush()
+//            }
+//            catch (e: Exception){}
+//            try {
+//                outStream?.close()
+//            }
+//            catch (e: Exception){}
+//        }
+
+        // unfocus textfield and hide keyboard on pressed done
+        input.editText?.setOnEditorActionListener(OnEditorActionListener { v, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                input.error = null
+
+                unfocusInput(input, v)
+
+                setColorPickerIconColor(input)
+
+                if(previewCard.visibility == VISIBLE) createThemeFile(input, preview)
+
+                return@OnEditorActionListener true
+            }
+            false
+        })
 
         // Color picker
         input.setEndIconOnClickListener {
@@ -82,104 +140,85 @@ class MainActivity : AppCompatActivity() {
                     input.editText?.setText(colorHex.drop(1))
                     input.setEndIconTintList(ColorStateList.valueOf(color))
                     input.error = null
+                    createThemeFile(input, preview)
                 }
                 .show()
         }
 
+        // radio buttons
+        radioGroupStyle.forEach { rb ->
+            rb.setOnClickListener {
+                changeActiveRadio(it as RadioButton, radioGroupStyle)
+                if(previewCard.visibility == VISIBLE) createThemeFile(input, preview)
+            }
+        }
+
+        // enable monet checkbox
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            monetCheckBox.isEnabled = true
+        }
+
+        // checkboxes
         darkCheckBox.setOnClickListener {
             checkBoxMap.getValue("isAmoled").isEnabled = darkCheckBox.isChecked
             checkBoxMap.getValue("isAmoled").isChecked = false
 
             mThemeProps["isDark"] = darkCheckBox.isChecked
+            if(previewCard.visibility == VISIBLE) createThemeFile(input, preview)
         }
+        monetCheckBox.setOnClickListener {
+            input.isEnabled = !monetCheckBox.isChecked
+            mThemeProps["isMonet"] = monetCheckBox.isChecked
 
+            input.error = null
+            input.editText?.setText(Integer.toHexString(
+                ContextCompat.getColor(
+                    this,
+                    R.color.theme_accent
+                )
+            ).drop(2))
+
+            setColorPickerIconColor(input)
+            if(previewCard.visibility == VISIBLE) createThemeFile(input, preview)
+        }
         checkBoxMap.forEach {
-            checkBoxHandler(it.value, it.key)
+            checkBoxHandler(it.value, it.key, input, preview)
         }
 
-        //set click listener for each button
-        radioGroupStyle.forEach { rb ->
-            rb.setOnClickListener{
-                changeActiveRadio(it as RadioButton, radioGroupStyle)
+        // create and preview buttons
+        previewButton.setOnClickListener {
+            if(createThemeFile(input, preview)) {
+                if (previewCard.visibility == GONE) previewCard.visibility =
+                    VISIBLE else previewCard.visibility = GONE
             }
         }
 
-        // unfocus textfield and hide keyboard on pressed done
-        input.editText?.setOnEditorActionListener(OnEditorActionListener { v, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                input.error = null
-                input.clearFocus()
-
-                val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
-                imm?.hideSoftInputFromWindow(v.windowToken, 0)
-
-                try {
-                    input.setEndIconTintList(ColorStateList.valueOf(Color.parseColor("#" + input.editText?.text.toString())))
-                    mDefaultColor = "#" + input.editText?.text.toString()
-                } catch (e: Exception) {
-
-                }
-
-                return@OnEditorActionListener true
-            }
-            false
-        })
-
-        // create theme
         createButton.setOnClickListener {
-            input.clearFocus()
-            val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
-            imm?.hideSoftInputFromWindow(it.windowToken, 0)
+            unfocusInput(input, it)
 
-            if (!checkInput(input)) {
-                setFilesNames()
-
-                val templateFile =
-                    applicationContext.assets.open(mThemeTemplateFileName).bufferedReader()
-                        .readText()
-
-                // creating new theme from template
-                val color = if(mThemeProps["isMonet"]!!) Integer.toHexString(ContextCompat.getColor(this, R.color.theme_accent)).drop(2) else input.editText!!.text.toString()
-                val fileString =
-                    createTheme(templateFile, color, mThemeProps)
-
-                File(
-                    applicationContext.filesDir,
-                    mThemeFileName
-                ).writeText(fileString)
-
-                shareTheme()
-            }
+            if (createThemeFile(input, preview)) shareTheme()
         }
     }
 
-    private fun checkBoxHandler(checkBox: CheckBox, value: String) {
+    // some useful functions
+    private fun unfocusInput(input: TextInputLayout, view: View) {
+        input.clearFocus()
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
+        imm?.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun setColorPickerIconColor(input: TextInputLayout) {
+        try {
+            input.setEndIconTintList(ColorStateList.valueOf(Color.parseColor("#" + input.editText?.text.toString())))
+            mDefaultColor = "#" + input.editText?.text.toString()
+        }
+        catch (e: Exception){}
+    }
+
+    private fun checkBoxHandler(checkBox: CheckBox, value: String, input: TextInputLayout, preview: ImageView) {
         checkBox.setOnClickListener {
             mThemeProps[value] = checkBox.isChecked
-        }
-    }
-
-    // set values in mThemeProps
-    private fun setFilesNames() {
-        if(mThemeProps["default"]!!) {
-            if(mThemeProps["isDark"]!!) {
-                mThemeFileName = if (mThemeProps["isAmoled"]!!) "TheAmoled.attheme" else "TheNight.attheme"
-                mThemeTemplateFileName = "theday_dark_template.attheme"
-            }
-            else {
-                mThemeFileName = "TheDay.attheme"
-                mThemeTemplateFileName = "theday_template.attheme"
-            }
-        }
-        else {
-            if(mThemeProps["isDark"]!!) {
-                mThemeFileName = if (mThemeProps["isAmoled"]!!) "Soza Amoled.attheme" else "Soza Night.attheme"
-                mThemeTemplateFileName = "thesoza_dark_template.attheme"
-            }
-            else {
-                mThemeFileName = "Soza Day.attheme"
-                mThemeTemplateFileName = "thesoza_template.attheme"
-            }
+            if(binding.cvPreview.visibility == VISIBLE) createThemeFile(input, preview)
         }
     }
 
@@ -189,6 +228,54 @@ class MainActivity : AppCompatActivity() {
         mThemeProps["default"] = current.tag.toString() == "default"
     }
 
+    // set up theme file and preview
+    private fun createThemeFile(input: TextInputLayout, preview: ImageView): Boolean {
+        if (!checkInput(input)) {
+            setFilesNames()
+
+            val templateFile =
+                applicationContext.assets.open(mThemeTemplateFileName).bufferedReader()
+                    .readText()
+
+            // creating new theme from template
+            val fileString =
+                createTheme(applicationContext, templateFile, mThemeProps, input.editText!!.text.toString(), preview)
+
+            File(
+                applicationContext.filesDir,
+                mThemeFileName
+            ).writeText(fileString)
+
+            return true
+        }
+
+        return false
+    }
+
+    // set values in mThemeProps
+    private fun setFilesNames() {
+        if (mThemeProps["default"]!!) {
+            if (mThemeProps["isDark"]!!) {
+                mThemeFileName =
+                    if (mThemeProps["isAmoled"]!!) "TheAmoled.attheme" else "TheNight.attheme"
+                mThemeTemplateFileName = "theday_dark_template.attheme"
+            } else {
+                mThemeFileName = "TheDay.attheme"
+                mThemeTemplateFileName = "theday_template.attheme"
+            }
+        } else {
+            if (mThemeProps["isDark"]!!) {
+                mThemeFileName =
+                    if (mThemeProps["isAmoled"]!!) "Soza Amoled.attheme" else "Soza Night.attheme"
+                mThemeTemplateFileName = "thesoza_dark_template.attheme"
+            } else {
+                mThemeFileName = "Soza Day.attheme"
+                mThemeTemplateFileName = "thesoza_template.attheme"
+            }
+        }
+    }
+
+    // share theme file
     private fun shareTheme() {
         val themeFile = File(applicationContext.filesDir, mThemeFileName)
 
@@ -229,7 +316,7 @@ class MainActivity : AppCompatActivity() {
         val inputText = input.editText?.text.toString()
         input.errorIconDrawable = null
 
-        if(mThemeProps["isMonet"]!!) return false
+        if (mThemeProps["isMonet"]!!) return false
 
         if (inputText.isEmpty()) {
             isError = true
@@ -248,8 +335,10 @@ class MainActivity : AppCompatActivity() {
         return isError
     }
 
+    // save props
     private fun putData() {
-        val sharedPreferences: SharedPreferences = getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
         val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
 
         val inputText = binding.tfHexInput.editText!!.text.toString()
@@ -265,16 +354,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        val sharedPreferences: SharedPreferences = getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
 
-        binding.tfHexInput.editText!!.setText(sharedPreferences.getString(STYLE_PREFERENCES_INPUT, ""))
+        binding.tfHexInput.editText!!.setText(
+            sharedPreferences.getString(
+                STYLE_PREFERENCES_INPUT,
+                ""
+            )
+        )
         mThemeProps["default"] = sharedPreferences.getBoolean(STYLE_PREFERENCES_DEFAULT_RD, false)
 
         mThemeProps.forEach {
-            if(it.key == "isAmoled") {
-                mThemeProps[it.key] = if(mThemeProps["isDark"]!!) sharedPreferences.getBoolean(it.key, false) else false
-            }
-            else {
+            if (it.key == "isAmoled") {
+                mThemeProps[it.key] = if (mThemeProps["isDark"]!!) sharedPreferences.getBoolean(
+                    it.key,
+                    false
+                ) else false
+            } else {
                 mThemeProps[it.key] = sharedPreferences.getBoolean(it.key, false)
             }
         }
@@ -283,6 +380,7 @@ class MainActivity : AppCompatActivity() {
     private fun setStyle() {
         getData()
 
+        val input = binding.tfHexInput
         val radioGroupStyle = binding.settings.rgStyle
         val checkBoxMap = mapOf<String, CheckBox>(
             "isDark" to binding.settings.cbDarkTheme,
@@ -299,10 +397,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        if (checkBoxMap["isDark"]!!.isChecked) checkBoxMap["isAmoled"]!!.isEnabled = true
         checkBoxMap.forEach {
             it.value.isChecked = mThemeProps[it.key]!!
         }
+        checkBoxMap["isAmoled"]!!.isEnabled = checkBoxMap["isDark"]!!.isChecked
+        input.isEnabled = !checkBoxMap["isMonet"]!!.isChecked
+        setColorPickerIconColor(input)
+        if(input.editText?.text.toString().isNotEmpty()) createThemeFile(input, binding.ivPreview)
     }
 
     override fun onResume() {

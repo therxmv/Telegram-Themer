@@ -26,7 +26,7 @@ fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, Stri
 
     }
 
-    return mapOf<String, String>(
+    return mapOf(
         "ac_200" to getHex(ac_200),
         "ac_300" to getHex(ac_300),
         "ac_500" to getHex(ac_500),
@@ -45,7 +45,7 @@ fun getDarker(n: Int, factor: Double): Int {
     return (n * (1 - factor)).roundToInt()
 }
 
-// hex to rgb
+// hex(example: FFFFFF) to rgb list
 fun getRgb(accent: String): List<Int> {
     val r: Int = accent.substring(0, 2).toInt(16) // 16 for hex
     val g: Int = accent.substring(2, 4).toInt(16) // 16 for hex
@@ -54,7 +54,7 @@ fun getRgb(accent: String): List<Int> {
     return listOf(r, g, b)
 }
 
-// rgb to hex
+// rgb list to hex(#FFFFFF)
 fun getHex(rgb: List<Int>): String {
     return String.format("#%02x%02x%02x", rgb[0], rgb[1], rgb[2])
 }

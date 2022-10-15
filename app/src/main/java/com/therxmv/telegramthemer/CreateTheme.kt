@@ -1,10 +1,9 @@
 package com.therxmv.telegramthemer
 
-import android.graphics.Color
-import android.util.Log
-import androidx.core.content.ContextCompat.getColor
+import android.content.Context
+import android.widget.ImageView
 
-fun createTheme(file: String, accent: String, props: Map<String, Boolean>): String {
+fun createTheme(context: Context, file: String, props: Map<String, Boolean>, accent: String, imageView: ImageView): String {
     val tints: Map<String, String> = getColorTints(accent, props)
     val hexesNames: Map<String, String?>
 
@@ -78,6 +77,8 @@ fun createTheme(file: String, accent: String, props: Map<String, Boolean>): Stri
     if(!props["isGradient"]!!) {
         theme = theme.replace("chat_outBubbleGradient", "NoGradient")
     }
+
+    createPreview(theme, tints["ac_200"]!!, context, imageView)
 
     return theme;
 }
