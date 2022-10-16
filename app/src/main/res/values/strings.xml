@@ -13,7 +13,7 @@
     <string name="sett_gradient">Gradient</string>
     <!--  About  -->
     <string name="about_appbar_title">About</string>
-    <string name="about_title" translatable="false">Telegram Themer | Ver. 1.5</string>
+    <string name="about_title" translatable="false">Telegram Themer | Ver. 1.5.1</string>
     <string name="about_dscr">App for creating telegram themes in different styles.</string>
     <string name="about_btn_tg">Telegram Channel</string>
     <string name="about_btn_git" translatable="false">Github</string>
