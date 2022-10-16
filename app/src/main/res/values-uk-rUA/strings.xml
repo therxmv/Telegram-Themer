@@ -2,6 +2,7 @@
 <resources>
     <string name="input_hint">Введіть шістнадцяткове число</string>
     <string name="btn_create_txt">СТВОРИТИ</string>
+    <string name="preview_title">Прев\'ю теми</string>
     <!--  Settings  -->
     <string name="sett_title">Виберіть стиль теми</string>
     <string name="sett_style_default">Звичайна</string>

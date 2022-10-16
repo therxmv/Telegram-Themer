@@ -81,19 +81,26 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:id="@+id/cvPreview"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="50dp"
-                    android:visibility="gone">
+                    android:visibility="visible"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:text="@string/preview_title"
+                        android:layout_marginBottom="10dp"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                         <ImageView
                             android:id="@+id/ivPreview"
@@ -102,9 +109,9 @@
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_preview" />
 
-                    </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
             </LinearLayout>
 

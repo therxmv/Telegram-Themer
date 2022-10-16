@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     private val STYLE_PREFERENCES = "styleSettings"
     private val STYLE_PREFERENCES_INPUT = "input"
     private val STYLE_PREFERENCES_DEFAULT_RD = "defaultRB"
+    private val STYLE_PREFERENCES_PREVIEW_VISIBILITY = "previewVisibility"
 
     private lateinit var binding: ActivityMainBinding
 
@@ -345,6 +346,7 @@ class MainActivity : AppCompatActivity() {
 
         sharedPreferencesEditor.putString(STYLE_PREFERENCES_INPUT, inputText)
         sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DEFAULT_RD, mThemeProps["default"]!!)
+        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_PREVIEW_VISIBILITY, binding.cvPreview.visibility == VISIBLE)
 
         mThemeProps.forEach {
             sharedPreferencesEditor.putBoolean(it.key, it.value)
@@ -375,6 +377,9 @@ class MainActivity : AppCompatActivity() {
                 mThemeProps[it.key] = sharedPreferences.getBoolean(it.key, false)
             }
         }
+
+        val preview = binding.cvPreview
+        if(sharedPreferences.getBoolean(STYLE_PREFERENCES_PREVIEW_VISIBILITY, true)) preview.visibility = VISIBLE else preview.visibility = GONE
     }
 
     private fun setStyle() {
