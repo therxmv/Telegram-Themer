@@ -152,12 +152,13 @@ fun createPreview(theme: String, themeBg: String, context: Context, imageView: I
             if (it.key == "chats_onlineCircle") {
                 path.strokeColor = Color.parseColor(themeList["actionBarDefault_0"])
             }
-            if (it.key.dropLast(2) == "actionBarDefault") {
+            else if (it.key.dropLast(2) == "actionBarDefault") {
                 path.strokeColor = Color.parseColor(themeList["chats_secretName"])
             }
-            if (it.key.dropLast(2) == "chat_inBubble") {
+            else if (it.key.dropLast(2) == "chat_inBubble") {
                 path.strokeColor = Color.parseColor(themeList["chat_inBubbleShadow"])
             }
+
             path.fillColor = color
         }
     }

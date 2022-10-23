@@ -4,14 +4,8 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.VectorDrawable
 import android.os.Bundle
-import android.os.Environment
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -23,29 +17,23 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.forEach
-import com.devs.vectorchildfinder.VectorDrawableCompat
 import com.github.dhaval2404.colorpicker.ColorPickerDialog
 import com.github.dhaval2404.colorpicker.model.ColorShape
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
 import kotlin.collections.set
 
-
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     private val STYLE_PREFERENCES = "styleSettings"
     private val STYLE_PREFERENCES_INPUT = "input"
     private val STYLE_PREFERENCES_DEFAULT_RD = "defaultRB"
     private val STYLE_PREFERENCES_PREVIEW_VISIBILITY = "previewVisibility"
-
-    private lateinit var binding: ActivityMainBinding
 
     private var mThemeTemplateFileName = "theday_template.attheme"
     private var mThemeFileName = "theday.attheme"
@@ -81,37 +69,6 @@ class MainActivity : AppCompatActivity() {
 
         val previewCard = binding.cvPreview
         val preview = binding.ivPreview
-//        val hidePreview = binding.btnHidePreview
-//        val downloadPreview = binding.btnDownloadPreview
-
-//        hidePreview.setOnClickListener{
-//            previewCard.visibility = GONE
-//        }
-
-// bm.compress null pointer exception
-//        downloadPreview.setOnClickListener{
-//            val bm = (preview.drawable as VectorDrawableCompat).toBitmap()
-//            val extStorageDirectory = Environment.DIRECTORY_DOWNLOADS.toString()
-//            val file = File(extStorageDirectory, "preview.png")
-//            file.mkdirs()
-//            var outStream: OutputStream? = null
-//            try {
-//                outStream = FileOutputStream(file)
-//            }
-//            catch (e: Exception){
-//                e.printStackTrace()
-//            }
-//            bm?.compress(Bitmap.CompressFormat.PNG, 100, outStream)
-//
-//            try {
-//                outStream?.flush()
-//            }
-//            catch (e: Exception){}
-//            try {
-//                outStream?.close()
-//            }
-//            catch (e: Exception){}
-//        }
 
         // unfocus textfield and hide keyboard on pressed done
         input.editText?.setOnEditorActionListener(OnEditorActionListener { v, actionId, _ ->

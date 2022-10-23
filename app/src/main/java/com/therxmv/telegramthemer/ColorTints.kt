@@ -1,6 +1,5 @@
 package com.therxmv.telegramthemer
 
-import android.util.Log
 import kotlin.math.roundToInt
 
 fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, String> {
@@ -11,6 +10,7 @@ fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, Stri
     val ac_800: List<Int>
 
     if(props["default"]!!) {
+        // default theme
         ac_200 = ac_500.map { getLighter(it, 0.8) }
         ac_300 = ac_500.map { getLighter(it, 0.2) }
 
@@ -18,6 +18,7 @@ fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, Stri
         ac_800 = ac_500.map { getDarker(it, 0.4) }
     }
     else {
+        // soza theme
         ac_200 = ac_500.map { getLighter(it, 0.8) }
         ac_300 = ac_500.map { getLighter(it, 0.6) }
 
