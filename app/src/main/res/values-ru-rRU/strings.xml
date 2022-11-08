@@ -12,7 +12,7 @@
     <string name="sett_gradient">Градиент</string>
     <!--  About  -->
     <string name="about_appbar_title">О приложении</string>
-    <string name="about_dscr">Приложение, для создания телеграмм тем, разных стилей.</string>
+    <string name="about_dscr">Это приложение предоставляет вам возможность создавать темы с вашим любимым цветом и стилем.</string>
     <string name="about_btn_tg">Телеграм канал</string>
     <!--  Error messages  -->
     <string name="empty_error">Пожалуйста, введите что-нибудь!</string>

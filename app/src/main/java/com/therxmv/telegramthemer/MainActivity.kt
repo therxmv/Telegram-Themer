@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Html
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -58,7 +59,6 @@ class MainActivity : AppCompatActivity() {
 
         val input = binding.tfHexInput
         val createButton = binding.btnCreateTheme
-        val previewButton = binding.btnPreviewTheme
         val radioGroupStyle = binding.settings.rgStyle
         val darkCheckBox = binding.settings.cbDarkTheme
         val monetCheckBox = binding.settings.cbMonet
@@ -141,14 +141,6 @@ class MainActivity : AppCompatActivity() {
         }
         checkBoxMap.forEach {
             checkBoxHandler(it.value, it.key, input, preview)
-        }
-
-        // create and preview buttons
-        previewButton.setOnClickListener {
-            if(createThemeFile(input, preview)) {
-                if (previewCard.visibility == GONE) previewCard.visibility =
-                    VISIBLE else previewCard.visibility = GONE
-            }
         }
 
         createButton.setOnClickListener {
@@ -247,6 +239,7 @@ class MainActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         intent.type = "*/*"
         intent.putExtra(Intent.EXTRA_STREAM, uri)
+        intent.putExtra(Intent.EXTRA_TEXT, "Theme made via play.google.com/store/apps/details?id=com.therxmv.telegramthemer\n\n@therxmv_channel\n${if(mThemeFileName.contains("Soza")) "@soza_themes" else "@BlandoThemes"}")
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
 
         val chooser = Intent.createChooser(intent, mThemeFileName)

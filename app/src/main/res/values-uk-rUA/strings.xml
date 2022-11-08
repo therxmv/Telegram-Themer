@@ -12,7 +12,7 @@
     <string name="sett_gradient">Градієнт</string>
     <!--  About  -->
     <string name="about_appbar_title">Про додаток</string>
-    <string name="about_dscr">Додаток, для створення телеграм тем, різних стилів.</string>
+    <string name="about_dscr">Ця програма надає вам можливість створювати теми з вашим улюбленим кольором і стилем.</string>
     <string name="about_btn_tg">Телеграм канал</string>
     <!--  Error messages  -->
     <string name="empty_error">Будь ласка, введіть щось!</string>

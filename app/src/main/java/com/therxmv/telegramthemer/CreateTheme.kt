@@ -35,7 +35,8 @@ fun createTheme(context: Context, file: String, props: Map<String, Boolean>, acc
         "tr_500" to "#00000000",
         "tr_ac300" to "#44${tints["ac_300"]?.drop(1)}",
         "tr_ac500" to "#77${tints["ac_500"]?.drop(1)}",
-        "tr_gr500" to "#7B919191",
+        "tr_gr300" to "#77DBDBDB",
+        "tr_gr500" to "#77919191",
         "tr_gr700" to "#AA707070",
         "tr_gr800" to "#AA464646",
     )

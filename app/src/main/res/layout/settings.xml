@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -11,8 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="@string/sett_title"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+        android:textStyle="bold" />
 
     <RadioGroup
         android:id="@+id/rgStyle"
@@ -29,9 +28,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
+            android:tag="default"
             android:text="@string/sett_style_default"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            android:tag="default"/>
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/rbSoza"
@@ -39,9 +38,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:tag="soza"
             android:text="@string/sett_style_soza"
-            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-            android:tag="soza"/>
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
     </RadioGroup>
 
@@ -52,27 +51,27 @@
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
         android:text="@string/sett_dark_theme"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbAmoledTheme"
         style="@style/Widget.App.CheckBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
         android:enabled="false"
+        android:layoutDirection="rtl"
         android:text="@string/sett_amoled_theme"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbMonet"
         style="@style/Widget.App.CheckBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
         android:enabled="false"
+        android:layoutDirection="rtl"
         android:text="@string/sett_monet"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbGradient"
@@ -81,6 +80,6 @@
         android:layout_height="wrap_content"
         android:layoutDirection="rtl"
         android:text="@string/sett_gradient"
-        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"/>
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
 </LinearLayout>
