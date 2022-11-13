@@ -3,10 +3,8 @@ package com.therxmv.telegramthemer
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.therxmv.telegramthemer.databinding.ActivityAboutBinding
-
 
 class AboutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutBinding

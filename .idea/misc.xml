@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ihor3/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_dropdown_item_1line.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable-anydpi-v31/ic_launcher.xml" value="0.216" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable/ic_preview.xml" value="0.22" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable/ic_previewtext.xml" value="0.216" />
@@ -11,8 +12,10 @@
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable/ic_twotone_preview_24.xml" value="0.216" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/layout/activity_about.xml" value="0.33" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/layout/dropdown_item.xml" value="0.25" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/layout/preview_dialog.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/layout/settings.xml" value="0.33" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/menu/menu_about.xml" value="0.3614583333333333" />
       </map>
     </option>
   </component>

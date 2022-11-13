@@ -2,11 +2,8 @@ package com.therxmv.telegramthemer
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.VectorDrawable
 import android.widget.ImageView
 import com.devs.vectorchildfinder.VectorChildFinder
-
-private var vectorDrawable: VectorDrawable? = null
 
 fun createPreview(theme: String, themeBg: String, context: Context, imageView: ImageView) {
     val vector = VectorChildFinder(context, R.drawable.ic_preview, imageView)
@@ -14,7 +11,7 @@ fun createPreview(theme: String, themeBg: String, context: Context, imageView: I
     val themeList: MutableMap<String, String> = mutableMapOf()
 
     // all names from ic_preview
-    val previewKeys = listOf<String>(
+    val previewKeys = listOf(
         "actionBarDefault_0",
         "actionBarDefault_1",
         "actionBarDefaultIcon_0",

@@ -3,7 +3,7 @@ package com.therxmv.telegramthemer
 import kotlin.math.roundToInt
 
 fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, String> {
-    val ac_500 = getRgb(accent)
+    var ac_500 = getRgb(accent)
     val ac_200: List<Int>
     val ac_300: List<Int>
     val ac_700: List<Int>
@@ -13,7 +13,6 @@ fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, Stri
         // default theme
         ac_200 = ac_500.map { getLighter(it, 0.8) }
         ac_300 = ac_500.map { getLighter(it, 0.2) }
-
         ac_700 = ac_500.map { getDarker(it, 0.2) }
         ac_800 = ac_500.map { getDarker(it, 0.4) }
     }
@@ -23,8 +22,7 @@ fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, Stri
         ac_300 = ac_500.map { getLighter(it, 0.6) }
 
         ac_700 = ac_500.map { getDarker(it, 0.15) }
-        ac_800 = ac_500.map { getDarker(it, 0.7) } // 0.8
-
+        ac_800 = ac_500.map { getDarker(it, 0.7) }
     }
 
     return mapOf(

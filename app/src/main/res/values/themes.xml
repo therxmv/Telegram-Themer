@@ -7,17 +7,17 @@
         <item name="colorPrimaryContainer">@color/primary_300</item>
         <item name="colorOnPrimaryContainer">@color/primary_700</item>
 
-        <!-- Secondary -->
-        <item name="colorSecondary">@color/secondary_500</item>
-        <item name="colorOnSecondary">?attr/colorSurface</item>
-        <item name="colorSecondaryContainer">@color/secondary_300</item>
-        <item name="colorOnSecondaryContainer">@color/secondary_700</item>
+<!--        &lt;!&ndash; Secondary &ndash;&gt;-->
+<!--        <item name="colorSecondary">@color/secondary_500</item>-->
+<!--        <item name="colorOnSecondary">?attr/colorSurface</item>-->
+<!--        <item name="colorSecondaryContainer">@color/secondary_300</item>-->
+<!--        <item name="colorOnSecondaryContainer">@color/secondary_700</item>-->
 
-        <!-- Tertiary -->
-        <item name="colorTertiary">@color/tertiary_500</item>
-        <item name="colorOnTertiary">?attr/colorSurface</item>
-        <item name="colorTertiaryContainer">@color/tertiary_300</item>
-        <item name="colorOnTertiaryContainer">@color/tertiary_700</item>
+<!--        &lt;!&ndash; Tertiary &ndash;&gt;-->
+<!--        <item name="colorTertiary">@color/tertiary_500</item>-->
+<!--        <item name="colorOnTertiary">?attr/colorSurface</item>-->
+<!--        <item name="colorTertiaryContainer">@color/tertiary_300</item>-->
+<!--        <item name="colorOnTertiaryContainer">@color/tertiary_700</item>-->
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -39,15 +39,5 @@
     </style>
     <style name="AppBar.Title.Large" parent="TextAppearance.Material3.HeadlineLarge">
         <item name="fontFamily">@font/overpass_medium</item>
-    </style>
-
-    <!-- Radio button style -->
-    <style name="Widget.App.RadioButton" parent="Widget.Material3.CompoundButton.RadioButton">
-        <item name="buttonTint">@color/button_tint</item>
-    </style>
-
-    <!-- Checkbox button style -->
-    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
-        <item name="buttonTint">@color/button_tint</item>
     </style>
 </resources>

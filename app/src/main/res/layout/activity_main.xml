@@ -63,7 +63,6 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
                         android:hint="@string/input_hint"
                         app:endIconDrawable="@drawable/ic_round_colorize_24"
                         app:endIconMode="custom"
@@ -73,7 +72,8 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textShortMessage"
+                            android:inputType="text"
+                            android:imeOptions="actionDone"
                             android:maxLength="6" />
 
                     </com.google.android.material.textfield.TextInputLayout>

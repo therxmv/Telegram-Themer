@@ -41,7 +41,7 @@ fun createTheme(context: Context, file: String, props: Map<String, Boolean>, acc
         "tr_gr800" to "#AA464646",
     )
 
-    var theme = file;
+    var theme = file
 
     hexesNames.forEach{
         it.value?.let { it1 -> theme = theme.replace(it.key, it1) }
@@ -53,5 +53,5 @@ fun createTheme(context: Context, file: String, props: Map<String, Boolean>, acc
 
     createPreview(theme, tints["ac_200"]!!, context, imageView)
 
-    return theme;
+    return theme
 }

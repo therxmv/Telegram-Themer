@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="input_hint">Введіть шістнадцяткове число</string>
-    <string name="btn_create_txt">СТВОРИТИ</string>
+    <string name="btn_create_txt">Створити</string>
     <string name="preview_title">Прев\'ю теми</string>
+    <!--  Input  -->
+    <string name="input_hint">Введіть шістнадцяткове число</string>
     <!--  Settings  -->
-    <string name="sett_title">Виберіть стиль теми</string>
-    <string name="sett_style_default">Звичайна</string>
+    <string name="sett_title">Налаштування</string>
+    <string name="sett_dropdown">Звичайна</string>
     <string name="sett_dark_theme">Темна тема</string>
     <string name="sett_amoled_theme">Amoled тема</string>
     <string name="sett_monet">Monet акцент (Android 12+)</string>
@@ -18,4 +19,9 @@
     <string name="empty_error">Будь ласка, введіть щось!</string>
     <string name="length_error">Введіть шість символів!</string>
     <string name="invalid_error">Некоректне шістнадцяткове число!</string>
+
+    <string-array name="styles">
+        <item>Звичайна</item>
+        <item>Soza</item>
+    </string-array>
 </resources>

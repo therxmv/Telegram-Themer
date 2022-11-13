@@ -2,14 +2,5 @@
 <resources>
     <color name="primary_300">#6EBEF0</color>
     <color name="primary_500">#299fe9</color>
-    <color name="primary_700">#1584CA</color>
-
-    <color name="secondary_200">#A3BECE</color>
-    <color name="secondary_300">#5E93B5</color>
-    <color name="secondary_500">#337198</color>
-    <color name="secondary_700">#104364</color>
-
-    <color name="tertiary_300">#f4a290</color>
-    <color name="tertiary_500">#ED6547</color>
-    <color name="tertiary_700">#BD442A</color>
+    <color name="primary_700">#17608E</color>
 </resources>
