@@ -6,18 +6,6 @@
         <item name="colorPrimaryContainer">@color/primary_500</item>
         <item name="colorOnPrimaryContainer">@color/primary_300</item>
 
-<!--        &lt;!&ndash; Secondary &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/secondary_200</item>-->
-<!--        <item name="colorOnSecondary">?attr/colorSurface</item>-->
-<!--        <item name="colorSecondaryContainer">@color/secondary_500</item>-->
-<!--        <item name="colorOnSecondaryContainer">@color/secondary_200</item>-->
-
-<!--        &lt;!&ndash; Tertiary &ndash;&gt;-->
-<!--        <item name="colorTertiary">@color/tertiary_300</item>-->
-<!--        <item name="colorOnTertiary">?attr/colorSurface</item>-->
-<!--        <item name="colorTertiaryContainer">@color/tertiary_500</item>-->
-<!--        <item name="colorOnTertiaryContainer">@color/tertiary_300</item>-->
-
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>

@@ -4,7 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ihor3/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_dropdown_item_1line.xml" value="0.3614583333333333" />
-        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable-anydpi-v31/ic_launcher.xml" value="0.216" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable-anydpi-v23/ic_launcher.xml" value="0.1955" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable-anydpi-v23/ic_logov23.xml" value="0.1135" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable-anydpi-v23/ic_logov23_compres_.xml" value="0.1135" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable-anydpi-v26/ic_launcher.xml" value="0.1955" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable-anydpi-v31/ic_launcher.xml" value="0.1955" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable/ic_launcher.xml" value="0.1135" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable/ic_preview.xml" value="0.22" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable/ic_previewtext.xml" value="0.216" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/drawable/ic_round_colorize_24.xml" value="0.216" />
@@ -16,6 +21,7 @@
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/layout/preview_dialog.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/layout/settings.xml" value="0.33" />
         <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/menu/menu_about.xml" value="0.3614583333333333" />
+        <entry key="..\:/Users/ihor3/OneDrive/Documents/Roma/Programming/Kotlin/TelegramThemer/app/src/main/res/mipmap-anydpi/ic_launcher.xml" value="0.1135" />
       </map>
     </option>
   </component>

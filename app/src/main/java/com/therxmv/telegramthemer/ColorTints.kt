@@ -21,7 +21,7 @@ fun getColorTints(accent: String, props: Map<String, Boolean>): Map<String, Stri
         ac_200 = ac_500.map { getLighter(it, 0.8) }
         ac_300 = ac_500.map { getLighter(it, 0.6) }
 
-        ac_700 = ac_500.map { getDarker(it, 0.15) }
+        ac_700 = ac_500.map { getDarker(it, 0.30) }
         ac_800 = ac_500.map { getDarker(it, 0.7) }
     }
 
