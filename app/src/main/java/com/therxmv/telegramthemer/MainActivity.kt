@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -26,23 +27,26 @@ import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import java.io.File
 import kotlin.collections.set
 
+const val STYLE_PREFERENCES = "styleSettings"
+const val STYLE_PREFERENCES_INPUT = "input"
+const val STYLE_PREFERENCES_DEFAULT = "default"
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-    private val STYLE_PREFERENCES = "styleSettings"
-    private val STYLE_PREFERENCES_INPUT = "input"
-    private val STYLE_PREFERENCES_DEFAULT = "default"
+    private lateinit var sharedPreferences: SharedPreferences
 
     private var mThemeTemplateFileName = "theday_template.attheme"
     private var mThemeFileName = "theday.attheme"
 
-    private var mThemeProps = mutableMapOf(
-        "default" to true,
-        "isDark" to false,
-        "isAmoled" to false,
-        "isMonet" to false,
-        "isGradient" to false,
-    )
+    companion object {
+        var mThemeProps = mutableMapOf(
+            "default" to true,
+            "isDark" to false,
+            "isAmoled" to false,
+            "isMonet" to false,
+            "isGradient" to false,
+        )
+    }
 
     private var mDefaultColor = "#299fe9"
 
@@ -53,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        sharedPreferences = getSharedPreferences(STYLE_PREFERENCES, Context.MODE_PRIVATE)
 
         // add action for custom appbar
         setSupportActionBar(binding.toolbar)
@@ -86,7 +91,7 @@ class MainActivity : AppCompatActivity() {
 
         autoCompleteStyle.setOnItemClickListener { _, _, _, _ ->
             mThemeProps["default"] = textInputStyle.editText?.text.toString() == styles[0]
-            createThemeFile(preview)
+            createThemeFile()
         }
 
         // enable monet checkbox
@@ -100,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             checkBoxMap.getValue("isAmoled").isChecked = false
 
             mThemeProps["isDark"] = darkCheckBox.isChecked
-            createThemeFile(preview)
+            createThemeFile()
         }
         monetCheckBox.setOnClickListener {
             mThemeProps["isMonet"] = monetCheckBox.isChecked
@@ -117,7 +122,7 @@ class MainActivity : AppCompatActivity() {
 
             setColorPickerIconColor(input)
 
-            createThemeFile(preview)
+            createThemeFile()
         }
         checkBoxMap.forEach {
             checkBoxHandler(it.value, it.key)
@@ -126,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         createButton.setOnClickListener {
             unfocusInput(input, it)
 
-            if (createThemeFile(preview)) shareTheme()
+            if (createThemeFile()) shareTheme()
         }
     }
 
@@ -140,7 +145,7 @@ class MainActivity : AppCompatActivity() {
 
                 setColorPickerIconColor(input)
 
-                createThemeFile(preview)
+                createThemeFile()
 
                 return@OnEditorActionListener true
             }
@@ -159,7 +164,7 @@ class MainActivity : AppCompatActivity() {
                     input.editText?.setText(colorHex.drop(1))
                     input.setEndIconTintList(ColorStateList.valueOf(color))
                     input.error = null
-                    createThemeFile(preview)
+                    createThemeFile()
                 }
                 .show()
         }
@@ -183,12 +188,12 @@ class MainActivity : AppCompatActivity() {
     private fun checkBoxHandler(checkBox: CheckBox, value: String) {
         checkBox.setOnClickListener {
             mThemeProps[value] = checkBox.isChecked
-            createThemeFile(preview)
+            createThemeFile()
         }
     }
 
     // set up theme file and preview
-    private fun createThemeFile(preview: ImageView): Boolean {
+    private fun createThemeFile(): Boolean {
         if (!checkInput(input)) {
             setFilesNames()
 
@@ -198,7 +203,7 @@ class MainActivity : AppCompatActivity() {
 
             // creating new theme from template
             val fileString =
-                createTheme(applicationContext, templateFile, mThemeProps, input.editText!!.text.toString(), preview)
+                createTheme(applicationContext, templateFile, input.editText!!.text.toString(), preview)
 
             File(
                 applicationContext.filesDir,
@@ -244,12 +249,13 @@ class MainActivity : AppCompatActivity() {
             themeFile
         )
 
-        val intent = Intent(Intent.ACTION_SEND)
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        intent.type = "*/*"
-        intent.putExtra(Intent.EXTRA_STREAM, uri)
-        intent.putExtra(Intent.EXTRA_TEXT, "Theme made via play.google.com/store/apps/details?id=com.therxmv.telegramthemer\n\n@therxmv_channel\n${if(mThemeFileName.contains("Soza")) "@soza_themes" else "@BlandoThemes"}")
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            type = "*/*"
+            putExtra(Intent.EXTRA_STREAM, uri)
+            putExtra(Intent.EXTRA_TEXT, "Theme made via play.google.com/store/apps/details?id=com.therxmv.telegramthemer\n\n@therxmv_channel\n${if(mThemeFileName.contains("Soza")) "@soza_themes" else "@BlandoThemes"}")
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
 
         val chooser = Intent.createChooser(intent, mThemeFileName)
 
@@ -297,26 +303,21 @@ class MainActivity : AppCompatActivity() {
 
     // save props
     private fun putData() {
-        val sharedPreferences: SharedPreferences =
-            getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
-        val sharedPreferencesEditor: SharedPreferences.Editor = sharedPreferences.edit()
-
         val inputText = input.editText!!.text.toString()
 
-        sharedPreferencesEditor.putString(STYLE_PREFERENCES_INPUT, inputText)
-        sharedPreferencesEditor.putBoolean(STYLE_PREFERENCES_DEFAULT, mThemeProps["default"]!!)
+        sharedPreferences.edit().apply {
+            putString(STYLE_PREFERENCES_INPUT, inputText)
+            putBoolean(STYLE_PREFERENCES_DEFAULT, mThemeProps["default"]!!)
 
-        mThemeProps.forEach {
-            sharedPreferencesEditor.putBoolean(it.key, it.value)
+            mThemeProps.forEach {
+                putBoolean(it.key, it.value)
+            }
+
+            apply()
         }
-
-        sharedPreferencesEditor.apply()
     }
 
     private fun getData() {
-        val sharedPreferences: SharedPreferences =
-            getSharedPreferences(STYLE_PREFERENCES, MODE_PRIVATE)
-
         input.editText!!.setText(
             sharedPreferences.getString(
                 STYLE_PREFERENCES_INPUT,
@@ -363,7 +364,7 @@ class MainActivity : AppCompatActivity() {
         input.isEnabled = !checkBoxMap["isMonet"]!!.isChecked
         setColorPickerIconColor(input)
 
-        if(input.editText?.text.toString().isNotEmpty()) createThemeFile(preview)
+        if(input.editText?.text.toString().isNotEmpty()) createThemeFile()
     }
 
     override fun onResume() {
@@ -376,7 +377,7 @@ class MainActivity : AppCompatActivity() {
         putData()
     }
 
-    // create button in appbar
+    // create back button in appbar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_about, menu)
         return super.onCreateOptionsMenu(menu)

@@ -3,7 +3,8 @@ package com.therxmv.telegramthemer
 import android.content.Context
 import android.widget.ImageView
 
-fun createTheme(context: Context, file: String, props: Map<String, Boolean>, accent: String, imageView: ImageView): String {
+fun createTheme(context: Context, file: String, accent: String, imageView: ImageView): String {
+    val props = MainActivity.mThemeProps
     val tints: Map<String, String> = getColorTints(accent, props)
     val hexesNames: Map<String, String?>
 

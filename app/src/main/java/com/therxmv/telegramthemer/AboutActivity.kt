@@ -17,8 +17,8 @@ class AboutActivity : AppCompatActivity() {
         setSupportActionBar(binding.aboutToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val tgButton = binding.aboutBtnTg//: Button = findViewById(R.id.about_btnTg)
-        val gitButton = binding.aboutBtnGit//: Button = findViewById(R.id.about_btnGit)
+        val tgButton = binding.aboutBtnTg
+        val gitButton = binding.aboutBtnGit
 
         tgButton.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/therxmv_channel"))

@@ -14,7 +14,7 @@
     <string name="sett_gradient">Gradient</string>
     <!--  About  -->
     <string name="about_appbar_title">About</string>
-    <string name="about_title" translatable="false">Telegram Themer | Ver. 1.6.1</string>
+    <string name="about_title" translatable="false">Telegram Themer | Ver. 1.7.0</string>
     <string name="about_dscr">This app provides for your opportunity to create themes with your favorite color and style.</string>
     <string name="about_btn_tg">Telegram Channel</string>
     <string name="about_btn_git" translatable="false">Github</string>
