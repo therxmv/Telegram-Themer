@@ -24,4 +24,5 @@
         <item>Звичайна</item>
         <item>Soza</item>
     </string-array>
+    <string name="colorPickerTitle">Виберіть колір</string>
 </resources>
