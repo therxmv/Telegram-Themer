@@ -15,7 +15,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:id="@+id/til_style"
+            android:id="@+id/styleDropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="?attr/colorSurfaceVariant"
@@ -24,7 +24,7 @@
             android:layout_marginVertical="10dp">
 
             <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/ac_Style"
+                android:id="@+id/styleDropdownItems"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/sett_dropdown"
