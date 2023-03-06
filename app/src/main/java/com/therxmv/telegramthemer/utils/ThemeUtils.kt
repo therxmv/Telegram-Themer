@@ -3,13 +3,14 @@ package com.therxmv.telegramthemer.utils
 import android.content.Context
 import android.graphics.Color
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.data.models.ThemeModel
 
 class ThemeUtils {
     companion object {
-        fun createTheme(context: Context, file: String, themeProps: ThemeModel, imageView: ImageView): String {
+        fun createTheme(context: Context, templateFile: String, themeProps: ThemeModel, imageView: ImageView): String {
             val tints: Map<String, String> = ColorsUtils.getColorTints(themeProps)
             val hexesNames: Map<String, String?>
 
@@ -47,7 +48,7 @@ class ThemeUtils {
                 "tr_gr800" to "#AA464646",
             )
 
-            var theme = file
+            var theme = templateFile
 
             hexesNames.forEach{
                 it.value?.let { it1 -> theme = theme.replace(it.key, it1) }
