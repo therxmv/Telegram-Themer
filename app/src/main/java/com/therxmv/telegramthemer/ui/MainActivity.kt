@@ -74,11 +74,11 @@ class MainActivity : AppCompatActivity() {
             vm.themeProps.collectLatest {
                 inputLayout.isEnabled = !it.isMonet
                 inputLayout.editText?.setText(it.color)
-                try {
+
+                if(!checkInput(inputLayout)) {
                     inputLayout.setEndIconTintList(ColorStateList.valueOf(Color.parseColor("#" + it.color)))
+                    colorPickerColor = it.color
                 }
-                catch (_: Exception){}
-                colorPickerColor = it.color
 
                 dropdownItems.setText(if (it.isDefault) styles[0] else styles[1])
                 setupDropdown(styles, dropdownItems)
