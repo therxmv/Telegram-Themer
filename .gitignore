@@ -87,3 +87,4 @@ lint/tmp/
 app/src/androidTest
 app/src/test
 app/src/
+/.idea/kotlinc.xml

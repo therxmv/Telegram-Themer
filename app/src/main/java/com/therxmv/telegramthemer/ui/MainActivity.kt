@@ -19,6 +19,7 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.TextView.*
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -210,7 +211,12 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        startActivity(chooser)
+        try {
+            startActivity(chooser)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun createThemeFile(themeProps: ThemeModel) {
