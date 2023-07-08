@@ -19,6 +19,7 @@
     <string name="empty_error">Пожалуйста, введите что-нибудь!</string>
     <string name="length_error">Введите шесть символов!</string>
     <string name="invalid_error">Некорректное шестнадцатеричное число!</string>
+    <string name="something_went_wrong">Уупс… Что-то пошло не так</string>
 
     <string-array name="styles">
         <item>Стандартная</item>

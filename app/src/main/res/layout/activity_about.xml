@@ -30,6 +30,7 @@
         android:overScrollMode="ifContentScrolls">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/about_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/about_title"
