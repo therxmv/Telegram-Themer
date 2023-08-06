@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Theme.TelegramThemer" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary -->
         <item name="colorPrimary">@color/primary_500</item>

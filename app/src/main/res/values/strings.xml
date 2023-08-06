@@ -6,6 +6,8 @@
     <!--  Input  -->
     <string name="input_hint">Enter hexadecimal number</string>
     <string name="colorPickerTitle">Pick color</string>
+    <string name="colorPickerConfirm">Confirm</string>
+    <string name="colorPickerCancel">Cancel</string>
     <!--  Settings  -->
     <string name="sett_title">Settings</string>
     <string name="sett_dropdown">Default</string>
