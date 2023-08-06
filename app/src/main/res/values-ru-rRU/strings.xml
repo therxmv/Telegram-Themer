@@ -26,4 +26,6 @@
         <item>Soza</item>
     </string-array>
     <string name="colorPickerTitle">Виберите цвет</string>
+    <string name="colorPickerConfirm">Подтвердить</string>
+    <string name="colorPickerCancel">Отменить</string>
 </resources>

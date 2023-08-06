@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.therxmv.telegramthemer"
         minSdk 23
-        targetSdk 33
-        versionCode 182
-        versionName "1.8.2"
+        targetSdk 34
+        versionCode 190
+        versionName "1.9.0"
 
         resConfigs 'uk_UA'
         vectorDrawables.useSupportLibrary = true
@@ -23,8 +23,10 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
@@ -37,6 +39,8 @@ android {
 }
 
 dependencies {
+    implementation("com.github.duanhong169:colorpicker:1.1.6")
+
     implementation ("androidx.fragment:fragment-ktx:1.5.5")
 
     implementation("com.google.code.gson:gson:2.10.1")
@@ -46,6 +50,5 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.github.Dhaval2404:ColorPicker:2.3")
     testImplementation("junit:junit:4.13.2")
 }

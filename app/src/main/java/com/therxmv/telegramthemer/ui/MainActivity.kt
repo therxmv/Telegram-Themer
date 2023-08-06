@@ -1,13 +1,10 @@
 package com.therxmv.telegramthemer.ui
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,27 +13,24 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.CheckBox
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.TextView.*
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
-import com.github.dhaval2404.colorpicker.ColorPickerDialog
-import com.github.dhaval2404.colorpicker.model.ColorShape
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.data.models.ThemeModel
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
-import com.therxmv.telegramthemer.utils.*
+import com.therxmv.telegramthemer.utils.DEFAULT_COLOR
+import com.therxmv.telegramthemer.utils.ThemeUtils
 import kotlinx.coroutines.flow.collectLatest
+import top.defaults.colorpicker.ColorPickerView
 import java.io.File
-import kotlin.collections.set
 
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -157,18 +151,35 @@ class MainActivity : AppCompatActivity() {
 
         // Color picker
         inputLayout.setEndIconOnClickListener {
-            val dialog = ColorPickerDialog
-                .Builder(this)
-                .setTitle(getString(R.string.colorPickerTitle))
-                .setColorShape(ColorShape.CIRCLE)
-                .setDefaultColor("#$colorPickerColor") // TODO color changing
-                .setColorListener { color, colorHex ->
-                    inputLayout.setEndIconTintList(ColorStateList.valueOf(color))
-                    inputLayout.error = null
-                    vm.setThemeColor(colorHex.drop(1))
-                }
-                .show()
+            setUpColorPickerDialog(inputLayout, colorPickerColor)
         }
+    }
+
+    private fun setUpColorPickerDialog(inputLayout: TextInputLayout, initColor: String) {
+        val view = layoutInflater.inflate(R.layout.color_picker_layout, null) as ColorPickerView
+        view.setInitialColor(Color.parseColor("#$initColor"))
+
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.colorPickerTitle)
+            .setView(view)
+            .setPositiveButton(
+                R.string.colorPickerConfirm
+            ) { dialog, _ ->
+                val color = view.color
+                val hex = String.format("#%06X", 0xFFFFFF and color)
+
+                inputLayout.setEndIconTintList(ColorStateList.valueOf(color))
+                inputLayout.error = null
+                vm.setThemeColor(hex.drop(1))
+
+                dialog.dismiss()
+            }
+            .setNegativeButton(
+                R.string.colorPickerCancel
+            ) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
     private fun shareTheme() {
