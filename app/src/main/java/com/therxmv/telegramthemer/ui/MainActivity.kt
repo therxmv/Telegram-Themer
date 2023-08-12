@@ -28,6 +28,7 @@ import com.therxmv.telegramthemer.data.models.ThemeModel
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import com.therxmv.telegramthemer.utils.DEFAULT_COLOR
 import com.therxmv.telegramthemer.utils.ThemeUtils
+import com.therxmv.telegramthemer.utils.toVisibility
 import kotlinx.coroutines.flow.collectLatest
 import top.defaults.colorpicker.ColorPickerView
 import java.io.File
@@ -36,6 +37,22 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val vm: MainViewModel by viewModels { MainViewModel.Factory(applicationContext) }
 
+    private var colorPickerColor = DEFAULT_COLOR
+    private val styles by lazy { resources.getStringArray(R.array.styles) }
+
+    private val inputLayout by lazy { binding.inputLayout }
+
+    private val dropdownInput by lazy { binding.settings.styleDropdown }
+    private val dropdownItems by lazy { binding.settings.styleDropdownItems }
+
+    private val darkCheckBox by lazy { binding.settings.cbDarkTheme }
+    private val monetCheckBox by lazy { binding.settings.cbMonet }
+    private val monetBgCheckBox by lazy { binding.settings.cbMonetBg }
+    private val amoledCheckBox by lazy { binding.settings.cbAmoledTheme }
+    private val gradientCheckBox by lazy { binding.settings.cbGradient }
+
+    private val createButton by lazy { binding.btnCreateTheme }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -43,28 +60,19 @@ class MainActivity : AppCompatActivity() {
         // add action for custom appbar
         setSupportActionBar(binding.toolbar)
 
-        val styles = resources.getStringArray(R.array.styles)
+        monetCheckBox.visibility =
+            (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S).toVisibility()
 
-        val inputLayout = binding.inputLayout
+        initListeners()
+        initCheckBoxListeners()
+        initInputListeners()
+    }
 
-        val dropdownInput = binding.settings.styleDropdown
-        val dropdownItems = binding.settings.styleDropdownItems
-
-        val darkCheckBox = binding.settings.cbDarkTheme
-        val monetCheckBox = binding.settings.cbMonet
-        val amoledCheckBox = binding.settings.cbAmoledTheme
-        val gradientCheckBox = binding.settings.cbGradient
-
-        val createButton = binding.btnCreateTheme
-
-        var colorPickerColor = DEFAULT_COLOR
-
-        // SHARE THEME
+    private fun initListeners() {
         createButton.setOnClickListener {
             shareTheme()
         }
 
-        // LISTENERS
         lifecycleScope.launchWhenCreated {
             vm.themeProps.collectLatest {
                 inputLayout.isEnabled = !it.isMonet
@@ -79,11 +87,16 @@ class MainActivity : AppCompatActivity() {
                 setupDropdown(styles, dropdownItems)
 
                 darkCheckBox.isChecked = it.isDark
-                monetCheckBox.isChecked = it.isMonet
                 gradientCheckBox.isChecked = it.isGradient
 
                 amoledCheckBox.isChecked = it.isAmoled
                 amoledCheckBox.isEnabled = it.isDark
+
+                monetCheckBox.isChecked = it.isMonet
+                if(it.isMonet) {
+                    monetBgCheckBox.isChecked = it.isMonetBackground
+                    monetBgCheckBox.visibility = View.VISIBLE
+                }
 
                 if (!checkInput(inputLayout)) {
                     createThemeFile(it)
@@ -91,7 +104,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // DROPDOWN
         dropdownItems.setOnDismissListener {
             dropdownInput.clearFocus()
         }
@@ -99,23 +111,28 @@ class MainActivity : AppCompatActivity() {
         dropdownItems.setOnItemClickListener { _, _, _, _ ->
             vm.setThemeStyle(dropdownInput.editText?.text.toString() == styles[0])
         }
+    }
 
-        // CHECKBOXES
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-            monetCheckBox.isEnabled = true
-        }
-
+    private fun initCheckBoxListeners() {
         monetCheckBox.setOnClickListener {
             it as CheckBox
             vm.setThemeMonet(it.isChecked)
+            vm.setThemeMonetBg(it.isChecked)
             vm.setThemeColor(
                 Integer.toHexString(
                     ContextCompat.getColor(
                         this,
-                        R.color.theme_accent1
+                        R.color.theme_accent1_200
                     )
                 ).drop(2)
             )
+
+            monetBgCheckBox.visibility = it.isChecked.toVisibility()
+        }
+
+        monetBgCheckBox.setOnClickListener {
+            it as CheckBox
+            vm.setThemeMonetBg(it.isChecked)
         }
 
         gradientCheckBox.setOnClickListener {
@@ -132,8 +149,9 @@ class MainActivity : AppCompatActivity() {
             it as CheckBox
             vm.setThemeMode(it.isChecked)
         }
+    }
 
-        // HEX INPUT
+    private fun initInputListeners() {
         // unfocus textfield and hide keyboard on pressed done
         inputLayout.editText?.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -292,7 +310,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_about -> {
-            startActivity(Intent(this, AboutActivity::class.java))
+            startActivity(AboutActivity.createIntent(this))
             true
         }
         else -> {
