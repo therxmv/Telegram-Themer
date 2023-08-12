@@ -3,6 +3,7 @@ package com.therxmv.telegramthemer.utils
 import android.content.Context
 import android.graphics.Color
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.data.models.ThemeModel
@@ -13,17 +14,33 @@ class ThemeUtils {
             val tints: Map<String, String> = ColorsUtils.getColorTints(themeProps)
             val hexesNames: Map<String, String?>
 
-            val black = if(themeProps.isAmoled) "#000000" else "#181818"
+            val black = if(themeProps.isMonetBackground) {
+                getHexColor(context, R.color.theme_neutral1_900)
+            } else {
+                if(themeProps.isAmoled) "#000000" else "#181818"
+            }
+
+            val white = if(themeProps.isMonetBackground) {
+                getHexColor(context, R.color.theme_neutral1_50)
+            } else "#FFFFFF"
+
+            val gr200 = if(themeProps.isMonetBackground && !themeProps.isDark && themeProps.isDefault) {
+                getHexColor(context, R.color.theme_neutral1_100)
+            } else "#F0F0F0"
+
+            val gr900 = if(themeProps.isMonetBackground && themeProps.isDark && themeProps.isDefault) {
+                getHexColor(context, R.color.theme_neutral1_800)
+            } else "#202020"
 
             hexesNames = mapOf(
                 "bl_900" to black,
-                "wh_100" to "#FFFFFF",
-                "gr_200" to "#F0F0F0",
+                "wh_100" to white,
+                "gr_200" to gr200,
                 "gr_300" to "#DBDBDB",
                 "gr_500" to "#919191",
                 "gr_700" to "#707070",
                 "gr_800" to "#464646",
-                "gr_900" to "#202020",
+                "gr_900" to gr900,
                 "ac_200" to tints["ac_200"],
                 "ac_300" to tints["ac_300"],
                 "ac_500" to tints["ac_500"],
@@ -60,6 +77,11 @@ class ThemeUtils {
             createPreview(theme, tints["ac_200"]!!, context, imageView)
 
             return theme
+        }
+
+        private fun getHexColor(context: Context, colorInt: Int): String {
+            val color = ContextCompat.getColor(context, colorInt)
+            return String.format("#%06X", 0xFFFFFF and color)
         }
 
         private fun createPreview(theme: String, themeBg: String, context: Context, imageView: ImageView) {

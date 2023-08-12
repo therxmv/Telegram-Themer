@@ -9,7 +9,8 @@
     <string name="sett_dropdown">Стандартная</string>
     <string name="sett_dark_theme">Темная тема</string>
     <string name="sett_amoled_theme">Amoled тема</string>
-    <string name="sett_monet">Monet акцент (Android 12+)</string>
+    <string name="sett_monet">Monet акцент</string>
+    <string name="sett_monet_bg">Monet фон</string>
     <string name="sett_gradient">Градиент</string>
     <!--  About  -->
     <string name="about_appbar_title">О приложении</string>

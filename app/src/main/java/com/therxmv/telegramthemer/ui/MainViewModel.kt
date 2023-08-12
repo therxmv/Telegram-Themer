@@ -49,6 +49,10 @@ class MainViewModel(
         _themeProps.value = _themeProps.value.copy(isMonet = monet)
     }
 
+    fun setThemeMonetBg(monetBg: Boolean) {
+        _themeProps.value = _themeProps.value.copy(isMonetBackground = monetBg)
+    }
+
     fun setThemeGradient(gradient: Boolean) {
         _themeProps.value = _themeProps.value.copy(isGradient = gradient)
     }

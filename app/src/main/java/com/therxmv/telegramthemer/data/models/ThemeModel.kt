@@ -8,5 +8,6 @@ data class ThemeModel(
     val isDark: Boolean = false,
     val isAmoled: Boolean = false,
     val isMonet: Boolean = false,
+    val isMonetBackground: Boolean = false,
     val isGradient: Boolean = false,
 )

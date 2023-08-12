@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer.ui
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +12,10 @@ import com.therxmv.telegramthemer.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
     private val binding: ActivityAboutBinding by lazy { ActivityAboutBinding.inflate(layoutInflater) }
+
+    companion object {
+        fun createIntent(context: Context) = Intent(context, AboutActivity::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
