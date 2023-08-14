@@ -28,6 +28,7 @@ import com.therxmv.telegramthemer.data.models.ThemeModel
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import com.therxmv.telegramthemer.utils.DEFAULT_COLOR
 import com.therxmv.telegramthemer.utils.ThemeUtils
+import com.therxmv.telegramthemer.utils.checkVersionForMonet
 import com.therxmv.telegramthemer.utils.toVisibility
 import kotlinx.coroutines.flow.collectLatest
 import top.defaults.colorpicker.ColorPickerView
@@ -60,9 +61,6 @@ class MainActivity : AppCompatActivity() {
         // add action for custom appbar
         setSupportActionBar(binding.toolbar)
 
-        monetCheckBox.visibility =
-            (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S).toVisibility()
-
         initListeners()
         initCheckBoxListeners()
         initInputListeners()
@@ -93,10 +91,11 @@ class MainActivity : AppCompatActivity() {
                 amoledCheckBox.isEnabled = it.isDark
 
                 monetCheckBox.isChecked = it.isMonet
-                if(it.isMonet) {
-                    monetBgCheckBox.isChecked = it.isMonetBackground
-                    monetBgCheckBox.visibility = View.VISIBLE
-                }
+                monetCheckBox.visibility =
+                    checkVersionForMonet().toVisibility()
+
+                monetBgCheckBox.isChecked = it.isMonetBackground
+                monetBgCheckBox.visibility = it.isMonet.toVisibility()
 
                 if (!checkInput(inputLayout)) {
                     createThemeFile(it)
