@@ -14,21 +14,29 @@ class ThemeUtils {
             val tints: Map<String, String> = ColorsUtils.getColorTints(themeProps)
             val hexesNames: Map<String, String?>
 
-            val black = if(themeProps.isMonetBackground) {
+            val black = if(themeProps.isMonetBackground && checkVersionForMonet()) {
                 getHexColor(context, R.color.theme_neutral1_900)
             } else {
                 if(themeProps.isAmoled) "#000000" else "#181818"
             }
 
-            val white = if(themeProps.isMonetBackground) {
+            val white = if(themeProps.isMonetBackground && checkVersionForMonet()) {
                 getHexColor(context, R.color.theme_neutral1_50)
             } else "#FFFFFF"
 
-            val gr200 = if(themeProps.isMonetBackground && !themeProps.isDark && themeProps.isDefault) {
+            val gr200 = if(themeProps.isMonetBackground
+                && !themeProps.isDark
+                && themeProps.isDefault
+                && checkVersionForMonet()
+            ) {
                 getHexColor(context, R.color.theme_neutral1_100)
             } else "#F0F0F0"
 
-            val gr900 = if(themeProps.isMonetBackground && themeProps.isDark && themeProps.isDefault) {
+            val gr900 = if(themeProps.isMonetBackground
+                && themeProps.isDark
+                && themeProps.isDefault
+                && checkVersionForMonet()
+            ) {
                 getHexColor(context, R.color.theme_neutral1_800)
             } else "#202020"
 
