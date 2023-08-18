@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Telegram Themer</string>
+    <string name="app_name" translatable="false">Themer for Telegram</string>
     <string name="btn_create_txt">Create</string>
     <string name="preview_title">Theme preview</string>
     <!--  Input  -->
@@ -18,7 +18,7 @@
     <string name="sett_gradient">Gradient</string>
     <!--  About  -->
     <string name="about_appbar_title">About</string>
-    <string name="about_title" translatable="false">Telegram Themer | Ver. %1$s</string>
+    <string name="about_title" translatable="false">Themer for Telegram | Ver. %1$s</string>
     <string name="about_dscr">This app provides for your opportunity to create themes with your favorite color and style.</string>
     <string name="about_btn_tg">Telegram Channel</string>
     <string name="about_btn_git" translatable="false">Github</string>

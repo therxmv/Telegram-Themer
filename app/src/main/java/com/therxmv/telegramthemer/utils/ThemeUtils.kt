@@ -30,7 +30,7 @@ class ThemeUtils {
                 && checkVersionForMonet()
             ) {
                 getHexColor(context, R.color.theme_neutral1_100)
-            } else "#F0F0F0"
+            } else "#F9F9F9"
 
             val gr900 = if(themeProps.isMonetBackground
                 && themeProps.isDark

@@ -91,11 +91,12 @@ class MainActivity : AppCompatActivity() {
                 amoledCheckBox.isEnabled = it.isDark
 
                 monetCheckBox.isChecked = it.isMonet
-                monetCheckBox.visibility =
-                    checkVersionForMonet().toVisibility()
-
                 monetBgCheckBox.isChecked = it.isMonetBackground
-                monetBgCheckBox.visibility = it.isMonet.toVisibility()
+
+                checkVersionForMonet().toVisibility().also { isVisible ->
+                    monetCheckBox.visibility = isVisible
+                    monetBgCheckBox.visibility = isVisible
+                }
 
                 if (!checkInput(inputLayout)) {
                     createThemeFile(it)
@@ -116,7 +117,6 @@ class MainActivity : AppCompatActivity() {
         monetCheckBox.setOnClickListener {
             it as CheckBox
             vm.setThemeMonet(it.isChecked)
-            vm.setThemeMonetBg(it.isChecked)
             vm.setThemeColor(
                 Integer.toHexString(
                     ContextCompat.getColor(
@@ -125,8 +125,6 @@ class MainActivity : AppCompatActivity() {
                     )
                 ).drop(2)
             )
-
-            monetBgCheckBox.visibility = it.isChecked.toVisibility()
         }
 
         monetBgCheckBox.setOnClickListener {
