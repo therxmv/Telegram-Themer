@@ -36,7 +36,7 @@ import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val vm: MainViewModel by viewModels { MainViewModel.Factory(applicationContext) }
+    private val vm: MainViewModel by viewModels { MainViewModel.Factory() }
 
     private var colorPickerColor = DEFAULT_COLOR
     private val styles by lazy { resources.getStringArray(R.array.styles) }
@@ -67,12 +67,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initListeners() {
-        createButton.setOnClickListener {
-            shareTheme()
-        }
-
         lifecycleScope.launchWhenCreated {
-            vm.themeProps.collectLatest {
+            vm.themePropsState.collectLatest {
                 inputLayout.isEnabled = !it.isMonet
                 inputLayout.editText?.setText(it.color)
 
@@ -102,6 +98,10 @@ class MainActivity : AppCompatActivity() {
                     createThemeFile(it)
                 }
             }
+        }
+
+        createButton.setOnClickListener {
+            shareTheme()
         }
 
         dropdownItems.setOnDismissListener {

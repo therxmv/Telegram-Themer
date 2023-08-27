@@ -1,6 +1,5 @@
 package com.therxmv.telegramthemer.ui
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.therxmv.telegramthemer.data.models.ThemeModel
@@ -12,54 +11,54 @@ import kotlinx.coroutines.flow.asStateFlow
 class MainViewModel(
     private val themeSharedPrefsDataSource: ThemeDataSource
 ): ViewModel() {
-    class Factory(private val context: Context): ViewModelProvider.Factory {
+    class Factory: ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>, ): T {
-            return MainViewModel(ThemeSharedPrefsDataSource(context)) as T
+            return MainViewModel(ThemeSharedPrefsDataSource()) as T
         }
     }
 
-    private val _themeProps = MutableStateFlow(ThemeModel())
-    val themeProps = _themeProps.asStateFlow()
+    private val _themePropsState = MutableStateFlow(ThemeModel())
+    val themePropsState = _themePropsState.asStateFlow()
 
     fun loadFromSharedPrefs() {
-        _themeProps.value = themeSharedPrefsDataSource.load()
+        _themePropsState.value = themeSharedPrefsDataSource.load()
     }
 
     fun saveToSharedPrefs() {
-        themeSharedPrefsDataSource.save(_themeProps.value)
+        themeSharedPrefsDataSource.save(_themePropsState.value)
     }
 
     fun setThemeColor(hex: String) {
-        _themeProps.value = _themeProps.value.copy(color = hex)
+        _themePropsState.value = _themePropsState.value.copy(color = hex)
     }
 
     fun setThemeStyle(default: Boolean) {
-        _themeProps.value = _themeProps.value.copy(isDefault = default)
+        _themePropsState.value = _themePropsState.value.copy(isDefault = default)
     }
 
     fun setThemeMode(dark: Boolean) {
-        _themeProps.value = _themeProps.value.copy(isDark = dark)
+        _themePropsState.value = _themePropsState.value.copy(isDark = dark)
     }
 
     fun setThemeAmoled(amoled: Boolean) {
-        _themeProps.value = _themeProps.value.copy(isAmoled = amoled)
+        _themePropsState.value = _themePropsState.value.copy(isAmoled = amoled)
     }
 
     fun setThemeMonet(monet: Boolean) {
-        _themeProps.value = _themeProps.value.copy(isMonet = monet)
+        _themePropsState.value = _themePropsState.value.copy(isMonet = monet)
     }
 
     fun setThemeMonetBg(monetBg: Boolean) {
-        _themeProps.value = _themeProps.value.copy(isMonetBackground = monetBg)
+        _themePropsState.value = _themePropsState.value.copy(isMonetBackground = monetBg)
     }
 
     fun setThemeGradient(gradient: Boolean) {
-        _themeProps.value = _themeProps.value.copy(isGradient = gradient)
+        _themePropsState.value = _themePropsState.value.copy(isGradient = gradient)
     }
 
     fun getFilesNames(): List<String> {
         val filesNames = mutableListOf("theday.attheme", "theday_template.attheme")
-        val theme = _themeProps.value
+        val theme = _themePropsState.value
 
         if(theme.isDefault) {
             if(theme.isDark) {
