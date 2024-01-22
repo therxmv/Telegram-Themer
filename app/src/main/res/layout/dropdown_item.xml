@@ -2,7 +2,8 @@
 <com.google.android.material.textview.MaterialTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="14dp"
-    android:text="Text">
+    tools:text="Text">
 
 </com.google.android.material.textview.MaterialTextView>

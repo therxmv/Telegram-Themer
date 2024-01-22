@@ -35,6 +35,14 @@ import top.defaults.colorpicker.ColorPickerView
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        private const val SHARE_TEXT = "Theme made via play.google.com/store/apps/details?id=com.therxmv.telegramthemer"
+        private const val THERXMV_MENTION = "@therxmv_channel"
+        private const val BLANDO_MENTION = "@BlandoThemes"
+        private const val SOZA_MENTION = "@soza_themes"
+    }
+
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val vm: MainViewModel by viewModels { MainViewModel.Factory() }
 
@@ -66,13 +74,39 @@ class MainActivity : AppCompatActivity() {
         initInputListeners()
     }
 
+    override fun onResume() {
+        super.onResume()
+        vm.loadFromSharedPrefs()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        vm.saveToSharedPrefs()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_about, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_about -> {
+            startActivity(AboutActivity.createIntent(this))
+            true
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
     private fun initListeners() {
         lifecycleScope.launchWhenCreated {
             vm.themePropsState.collectLatest {
                 inputLayout.isEnabled = !it.isMonet
                 inputLayout.editText?.setText(it.color)
 
-                if(!checkInput(inputLayout)) {
+                if (!checkInput(inputLayout)) {
                     inputLayout.setEndIconTintList(ColorStateList.valueOf(Color.parseColor("#" + it.color)))
                     colorPickerColor = it.color
                 }
@@ -109,42 +143,42 @@ class MainActivity : AppCompatActivity() {
         }
 
         dropdownItems.setOnItemClickListener { _, _, _, _ ->
-            vm.setThemeStyle(dropdownInput.editText?.text.toString() == styles[0])
+            vm.setThemeProperties(default = dropdownInput.editText?.text.toString() == styles.first())
         }
     }
 
     private fun initCheckBoxListeners() {
         monetCheckBox.setOnClickListener {
             it as CheckBox
-            vm.setThemeMonet(it.isChecked)
-            vm.setThemeColor(
-                Integer.toHexString(
+            vm.setThemeProperties(
+                hex = Integer.toHexString(
                     ContextCompat.getColor(
                         this,
                         R.color.theme_accent1_200
                     )
-                ).drop(2)
+                ).drop(2),
+                monet = it.isChecked,
             )
         }
 
         monetBgCheckBox.setOnClickListener {
             it as CheckBox
-            vm.setThemeMonetBg(it.isChecked)
+            vm.setThemeProperties(monetBg = it.isChecked)
         }
 
         gradientCheckBox.setOnClickListener {
             it as CheckBox
-            vm.setThemeGradient(it.isChecked)
+            vm.setThemeProperties(gradient = it.isChecked)
         }
 
         amoledCheckBox.setOnClickListener {
             it as CheckBox
-            vm.setThemeAmoled(it.isChecked)
+            vm.setThemeProperties(amoled = it.isChecked)
         }
 
         darkCheckBox.setOnClickListener {
             it as CheckBox
-            vm.setThemeMode(it.isChecked)
+            vm.setThemeProperties(dark = it.isChecked)
         }
     }
 
@@ -157,14 +191,13 @@ class MainActivity : AppCompatActivity() {
                 inputLayout.clearFocus()
                 hideKeyboard(v)
 
-                vm.setThemeColor(inputLayout.editText?.text.toString())
+                vm.setThemeProperties(hex = inputLayout.editText?.text.toString())
 
                 return@OnEditorActionListener true
             }
             false
         })
 
-        // Color picker
         inputLayout.setEndIconOnClickListener {
             setUpColorPickerDialog(inputLayout, colorPickerColor)
         }
@@ -185,7 +218,7 @@ class MainActivity : AppCompatActivity() {
 
                 inputLayout.setEndIconTintList(ColorStateList.valueOf(color))
                 inputLayout.error = null
-                vm.setThemeColor(hex.drop(1))
+                vm.setThemeProperties(hex = hex.drop(1))
 
                 dialog.dismiss()
             }
@@ -198,7 +231,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun shareTheme() {
-        val fileName = vm.getFilesNames()[0]
+        val fileName = vm.getFilesNames().first()
 
         val themeFile = File(applicationContext.filesDir, fileName)
 
@@ -214,9 +247,7 @@ class MainActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_STREAM, uri)
             putExtra(
                 Intent.EXTRA_TEXT,
-                "Theme made via play.google.com/store/apps/details?id=com.therxmv.telegramthemer\n\n@therxmv_channel\n${
-                    if (fileName.contains("Soza")) "@soza_themes" else "@BlandoThemes"
-                }"
+                "$SHARE_TEXT\n\n$THERXMV_MENTION\n${if (fileName.contains("Soza")) SOZA_MENTION else BLANDO_MENTION}"
             )
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
         }
@@ -286,32 +317,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             input.error = null
             false
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        vm.loadFromSharedPrefs()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        vm.saveToSharedPrefs()
-    }
-
-    // create back button in appbar
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_about, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_about -> {
-            startActivity(AboutActivity.createIntent(this))
-            true
-        }
-        else -> {
-            super.onOptionsItemSelected(item)
         }
     }
 }
