@@ -11,8 +11,8 @@ android {
         applicationId "com.therxmv.telegramthemer"
         minSdk 23
         targetSdk 34
-        versionCode 202
-        versionName "2.0.2"
+        versionCode 203
+        versionName "2.0.3"
 
         resConfigs 'uk_UA'
         vectorDrawables.useSupportLibrary = true
