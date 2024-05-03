@@ -1,107 +1,15 @@
-package com.therxmv.telegramthemer.utils
+package com.therxmv.telegramthemer.domain.usecase.theme
 
 import android.content.Context
-import android.graphics.Color
+import android.graphics.Color.parseColor
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import com.devs.vectorchildfinder.VectorChildFinder
 import com.therxmv.telegramthemer.R
-import com.therxmv.telegramthemer.data.models.ThemeModel
 
-object ThemeUtils {
-    fun createTheme(context: Context, templateFile: String, themeProps: ThemeModel, imageView: ImageView): String {
-        val tints: Map<String, String> = ColorsUtils.getColorTints(themeProps)
-        val hexesNames: Map<String, String?>
+class CreatePreviewUseCase {
 
-        val black = if (themeProps.getMonetAvailability()) {
-            getHexColor(context, R.color.theme_neutral1_900)
-        } else {
-            if (themeProps.isAmoled) "#000000" else "#181818"
-        }
-
-        val white = if (themeProps.getMonetAvailability()) {
-            getHexColor(context, R.color.theme_neutral1_50)
-        } else {
-            "#FFFFFF"
-        }
-
-        val gr200 = if (
-            themeProps.getMonetAvailability()
-            && !themeProps.isDark
-            && themeProps.isDefault
-        ) {
-            getHexColor(context, R.color.theme_neutral1_100)
-        } else {
-            "#F9F9F9"
-        }
-
-        val gr900 = if (
-            themeProps.isMonetBackground
-            && themeProps.isDark
-            && themeProps.isDefault
-            && checkVersionForMonet()
-        ) {
-            getHexColor(context, R.color.theme_neutral1_800)
-        } else {
-            "#202020"
-        }
-
-        hexesNames = mapOf(
-            "bl_900" to black,
-            "wh_100" to white,
-            "gr_200" to gr200,
-            "gr_300" to "#DBDBDB",
-            "gr_500" to "#919191",
-            "gr_700" to "#707070",
-            "gr_800" to "#464646",
-            "gr_900" to gr900,
-            "ac_200" to tints["ac_200"],
-            "ac_300" to tints["ac_300"],
-            "ac_500" to tints["ac_500"],
-            "ac_700" to tints["ac_700"],
-            "ac_800" to tints["ac_800"],
-            "yl_500" to "#E3B727",
-            "yl_700" to "#DFA000",
-            "rd_300" to "#FF6666",
-            "rd_500" to "#DE4747",
-            "rd_700" to "#C64949",
-            "gn_300" to "#9ED448",
-            "gn_500" to "#50B232",
-            "gn_700" to "#26972C",
-            "pu_500" to "#8E85EE",
-            "tr_500" to "#00000000",
-            "tr_ac300" to "#44${tints["ac_300"]?.drop(1)}",
-            "tr_ac500" to "#77${tints["ac_500"]?.drop(1)}",
-            "tr_gr300" to "#77DBDBDB",
-            "tr_gr500" to "#77919191",
-            "tr_gr700" to "#AA707070",
-            "tr_gr800" to "#AA464646",
-        )
-
-        var theme = templateFile
-
-        hexesNames.forEach {
-            it.value?.let { it1 -> theme = theme.replace(it.key, it1) }
-        }
-
-        if (!themeProps.isGradient) {
-            theme = theme.replace("chat_outBubbleGradient", "NoGradient")
-        }
-
-        createPreview(theme, tints["ac_200"]!!, context, imageView)
-
-        return theme
-    }
-
-    private fun getHexColor(context: Context, colorInt: Int): String {
-        val color = ContextCompat.getColor(context, colorInt)
-        return String.format("#%06X", 0xFFFFFF and color)
-    }
-
-    private fun createPreview(theme: String, themeBg: String, context: Context, imageView: ImageView) {
+    operator fun invoke(context: Context, theme: String, themeBg: String, imageView: ImageView) {
         val vector = VectorChildFinder(context, R.drawable.ic_preview, imageView)
-
-        val themeList: MutableMap<String, String> = mutableMapOf()
 
         // all names from ic_preview
         val previewKeys = listOf(
@@ -223,28 +131,18 @@ object ThemeUtils {
             "chat_inBubbleShadow",
         )
 
-        // names and colors from theme file
-        val themeKeys = "^\\w+".toRegex(RegexOption.MULTILINE).findAll(theme).map { it.value }.toList()
-        val themeValues =
-            "#\\w+$".toRegex(RegexOption.MULTILINE).findAll(theme).map { it.value }.toList()
+        val themeMap = getThemeMap(previewKeys, theme)
+        themeMap["theme_bg"] = themeBg
 
-        // set themeList
-        previewKeys.forEach {
-            val value = if (it.last().isDigit()) it.dropLast(2) else it
-            themeList[it] = themeValues[themeKeys.indexOf(value)]
-        }
-        themeList["theme_bg"] = themeBg
-
-        themeList.forEach {
-            val color = Color.parseColor(it.value)
+        themeMap.forEach {
+            val color = parseColor(it.value)
             val path = vector.findPathByName(it.key)
+
             if (path != null) {
-                if (it.key == "chats_onlineCircle") {
-                    path.strokeColor = Color.parseColor(themeList["actionBarDefault_0"])
-                } else if (it.key.dropLast(2) == "actionBarDefault") {
-                    path.strokeColor = Color.parseColor(themeList["chats_secretName"])
-                } else if (it.key.dropLast(2) == "chat_inBubble") {
-                    path.strokeColor = Color.parseColor(themeList["chat_inBubbleShadow"])
+                when (it.key.unify()) {
+                    "chats_onlineCircle" -> path.strokeColor = parseColor(themeMap["actionBarDefault_0"])
+                    "actionBarDefault" -> path.strokeColor = parseColor(themeMap["chats_secretName"])
+                    "chat_inBubble" -> path.strokeColor = parseColor(themeMap["chat_inBubbleShadow"])
                 }
 
                 path.fillColor = color
@@ -254,5 +152,14 @@ object ThemeUtils {
         imageView.invalidate()
     }
 
-    private fun ThemeModel.getMonetAvailability() = this.isMonetBackground && checkVersionForMonet()
+    private fun getThemeMap(previewKeys: List<String>, theme: String): MutableMap<String, String> {
+        val themeKeys = "^\\w+".toRegex(RegexOption.MULTILINE).findAll(theme).map { it.value }.toList()
+        val themeValues = "#\\w+$".toRegex(RegexOption.MULTILINE).findAll(theme).map { it.value }.toList()
+
+        return previewKeys.associateWith {
+            themeValues[themeKeys.indexOf(it.unify())]
+        }.toMutableMap()
+    }
+
+    private fun String.unify() = if (last().isDigit()) dropLast(2) else this
 }

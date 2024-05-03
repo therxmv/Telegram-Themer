@@ -86,7 +86,7 @@ lint/tmp/
 
 app/src/androidTest
 app/src/test
-app/src/
 /.idea/kotlinc.xml
 /.idea/deploymentTargetDropDown.xml
 /.idea/misc.xml
+/app/src/main/assets/amber_twist.tgios-theme
