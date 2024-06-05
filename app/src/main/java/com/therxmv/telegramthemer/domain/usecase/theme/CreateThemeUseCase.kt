@@ -3,7 +3,7 @@ package com.therxmv.telegramthemer.domain.usecase.theme
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.therxmv.telegramthemer.R
-import com.therxmv.telegramthemer.data.models.ThemeModel
+import com.therxmv.telegramthemer.domain.model.ThemeModel
 import com.therxmv.telegramthemer.utils.ThemeAccent.ACCENT_200
 import com.therxmv.telegramthemer.utils.ThemeAccent.ACCENT_300
 import com.therxmv.telegramthemer.utils.ThemeAccent.ACCENT_500

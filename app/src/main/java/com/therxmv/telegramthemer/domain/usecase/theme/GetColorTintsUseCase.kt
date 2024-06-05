@@ -1,6 +1,6 @@
 package com.therxmv.telegramthemer.domain.usecase.theme
 
-import com.therxmv.telegramthemer.data.models.ThemeModel
+import com.therxmv.telegramthemer.domain.model.ThemeModel
 import com.therxmv.telegramthemer.utils.DefaultTheme.DEFAULT_FACTOR_200
 import com.therxmv.telegramthemer.utils.DefaultTheme.DEFAULT_FACTOR_300
 import com.therxmv.telegramthemer.utils.DefaultTheme.DEFAULT_FACTOR_700

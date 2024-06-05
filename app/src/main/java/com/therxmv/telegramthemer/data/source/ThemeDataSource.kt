@@ -1,6 +1,6 @@
 package com.therxmv.telegramthemer.data.source
 
-import com.therxmv.telegramthemer.data.models.ThemeModel
+import com.therxmv.telegramthemer.domain.model.ThemeModel
 
 interface ThemeDataSource {
     fun load(): ThemeModel

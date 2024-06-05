@@ -1,7 +1,7 @@
 package com.therxmv.telegramthemer.data.source
 
 import com.tencent.mmkv.MMKV
-import com.therxmv.telegramthemer.data.models.ThemeModel
+import com.therxmv.telegramthemer.domain.model.ThemeModel
 import com.therxmv.telegramthemer.utils.SHARED_PREFS_THEME
 
 class ThemeSharedPrefsDataSource: ThemeDataSource {

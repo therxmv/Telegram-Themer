@@ -24,7 +24,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
-import com.therxmv.telegramthemer.data.models.ThemeModel
+import com.therxmv.telegramthemer.domain.model.ThemeModel
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
 import com.therxmv.telegramthemer.utils.DEFAULT_COLOR
 import com.therxmv.telegramthemer.utils.checkVersionForMonet

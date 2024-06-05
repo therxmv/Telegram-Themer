@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.data.models
+package com.therxmv.telegramthemer.domain.model
 
 import android.os.Parcelable
 import com.therxmv.telegramthemer.utils.DEFAULT_COLOR

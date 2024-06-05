@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.ImageView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.therxmv.telegramthemer.data.models.ThemeModel
+import com.therxmv.telegramthemer.domain.model.ThemeModel
 import com.therxmv.telegramthemer.domain.usecase.InvalidState
 import com.therxmv.telegramthemer.domain.usecase.IsValidInputUseCase
 import com.therxmv.telegramthemer.domain.usecase.storage.GetCachedThemeUseCase
