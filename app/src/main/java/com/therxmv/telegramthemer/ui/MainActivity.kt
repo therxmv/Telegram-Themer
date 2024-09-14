@@ -34,6 +34,8 @@ import top.defaults.colorpicker.ColorPickerView
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
+    // TODO refactor activity
+    // TODO maybe download theme templates from github
 
     companion object {
         private const val SHARE_TEXT = "Theme made via play.google.com/store/apps/details?id=com.therxmv.telegramthemer"
