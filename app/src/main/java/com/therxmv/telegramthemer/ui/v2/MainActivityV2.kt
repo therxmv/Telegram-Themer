@@ -10,6 +10,6 @@ class MainActivityV2 : BaseBindingActivity<ActivityMainV2Binding>() {
         super.onCreate(savedInstanceState)
         setContentView(ActivityMainV2Binding::inflate)
         // TODO set up toolbar
-        ColorPickerFragment.createInstance().show(supportFragmentManager, "ColorPickerFragment")
+//        ColorPickerFragment.createInstance().show(supportFragmentManager, "ColorPickerFragment")
     }
 }

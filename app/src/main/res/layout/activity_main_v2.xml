@@ -21,6 +21,25 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.therxmv.telegramthemer.ui.v2.preview.ChatListPreview
+        android:id="@+id/chatListPreview"
+        android:layout_width="280dp"
+        android:layout_height="560dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.therxmv.telegramthemer.ui.v2.preview.ChatListPreview
+        android:id="@+id/chatListPreview2"
+        android:layout_width="140dp"
+        android:layout_height="280dp"
+        app:scale_factor="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
