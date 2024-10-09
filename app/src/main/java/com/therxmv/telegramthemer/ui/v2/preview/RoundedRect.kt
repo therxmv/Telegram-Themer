@@ -14,6 +14,9 @@ class RoundedRect(
 ) : View(context, attrs), ScalableView {
 // TODO add click listener
 
+    private val _cornerRadius: () -> Float = { // to have same radius with different size
+        maxOf(width, height) * 0.2f
+    }
     private val backgroundPaint = Paint().apply {
         isAntiAlias = true
         color = Color.GREEN // TODO set color
@@ -29,16 +32,15 @@ class RoundedRect(
     }
 
     override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        val cornerRadius = maxOf(width, height) * 0.2f // to have same radius with different size
         canvas.drawRoundRect(
             0F,
             0F,
             width.toFloat(),
             height.toFloat(),
-            cornerRadius,
-            cornerRadius,
+            _cornerRadius(),
+            _cornerRadius(),
             backgroundPaint,
         )
+        super.onDraw(canvas)
     }
 }

@@ -28,7 +28,6 @@ class HorizontalLine(
     }
 
     override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
         canvas.drawRoundRect(
             0F,
             0F,
@@ -38,5 +37,6 @@ class HorizontalLine(
             100f,
             backgroundPaint,
         )
+        super.onDraw(canvas)
     }
 }
