@@ -6,25 +6,16 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.therxmv.telegramthemer.utils.scaleMargins
 
-class HorizontalLine(
+class HorizontalLineView(
     context: Context,
-    attrs: AttributeSet,
-) : View(context, attrs), ScalableView {
+    attrs: AttributeSet? = null,
+) : View(context, attrs) {
 
     private val backgroundPaint = Paint().apply {
         isAntiAlias = true
         color = Color.CYAN // TODO set color
         style = Paint.Style.FILL
-    }
-
-    override fun scaleView(factor: Float) {
-        layoutParams.apply {
-            width = (width * factor).toInt()
-            height = (height * factor).toInt()
-            scaleMargins(factor)
-        }
     }
 
     override fun onDraw(canvas: Canvas) {

@@ -5,17 +5,19 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.view.View
-import com.therxmv.telegramthemer.utils.dpToPx
+import android.widget.RelativeLayout
 
-class BackgroundView(
+class PreviewBackground(
+    scaleFactor: Float,
     context: Context,
-    attrs: AttributeSet,
-) : View(context, attrs), ScalableView {
-// TODO add click listener
+    attrs: AttributeSet? = null,
+) : RelativeLayout(context, attrs) { // TODO add click listener
 
-    private var _cornerRadius = 20.dpToPx(context)
-    private var _strokeWidth = 8.dpToPx(context)
+    constructor(context: Context, attr: AttributeSet? = null) : this(1f, context, attr)
+
+    private val dpValues = DpValues(context, scaleFactor)
+    private var _cornerRadius = dpValues.dp20.toFloat()
+    private var _strokeWidth = dpValues.dp8.toFloat()
     private val _edge: () -> Float = { // to make stroke inside
         _strokeWidth / 2
     }
@@ -33,9 +35,8 @@ class BackgroundView(
         }
     }
 
-    override fun scaleView(factor: Float) {
-        _cornerRadius *= factor
-        _strokeWidth *= factor
+    init {
+        setWillNotDraw(false)
     }
 
     override fun onDraw(canvas: Canvas) {
