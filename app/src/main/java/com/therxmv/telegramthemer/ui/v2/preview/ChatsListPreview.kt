@@ -7,7 +7,7 @@ import android.widget.RelativeLayout
 import androidx.core.view.setPadding
 import com.therxmv.telegramthemer.R
 
-class ChatListPreview(
+class ChatsListPreview(
     context: Context,
     attrs: AttributeSet,
 ) : RelativeLayout(context, attrs) {
@@ -17,16 +17,14 @@ class ChatListPreview(
         private val appbarId = View.generateViewId()
         private val tabsId = View.generateViewId()
         private val actionButtonId = View.generateViewId()
-
-        private val chatItemIds = (0..6).map { View.generateViewId() } // TODO change impl
     }
 
     private val scaleFactor: Float
     private val dpValues: DpValues
 
     init {
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ChatListPreview)
-        scaleFactor = attributes.getFloat(R.styleable.ChatListPreview_scale_factor, 1f)
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ChatsListPreview)
+        scaleFactor = attributes.getFloat(R.styleable.ChatsListPreview_scale_factor, 1f)
         dpValues = DpValues(context, scaleFactor)
 
         val background = attachBackground()
@@ -97,14 +95,14 @@ class ChatListPreview(
     }
 
     private fun PreviewBackground.addChatItems() {
-        for (i in 0..6) {
-            PreviewChatItem(scaleFactor, context).apply {
-                id = chatItemIds[i]
+        ChatListItems.items.forEachIndexed { index, model ->
+            PreviewChatItem(model, scaleFactor, context).apply {
+                id = model.id
                 layoutParams = LayoutParams(
                     LayoutParams.MATCH_PARENT,
                     dpValues.dp40,
                 ).apply {
-                    val id = if (i == 0) tabsId else chatItemIds[i - 1]
+                    val id = if (index == 0) tabsId else ChatListItems.items[index - 1].id
                     addRule(BELOW, id)
                     topMargin = dpValues.dp20
                 }

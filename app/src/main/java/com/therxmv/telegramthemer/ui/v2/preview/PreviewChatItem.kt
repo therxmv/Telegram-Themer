@@ -5,13 +5,28 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 
+data class ChatModel(
+    val id: Int = View.generateViewId(),
+    val isSecret: Boolean = false, // view and color
+    val isActionMessage: Boolean = false, // color
+    val isMuted: Boolean = false, // view and color
+    val isOnline: Boolean = false, // view
+    val isUnread: Boolean = false, // view
+    val shouldShowSentCheck: Boolean = false, // view
+    val shouldShowSender: Boolean = false, // view
+)
+
 class PreviewChatItem(
+    private val data: ChatModel,
     scaleFactor: Float,
     context: Context,
     attr: AttributeSet? = null,
 ) : RelativeLayout(context, attr) {
 
-    constructor(context: Context, attr: AttributeSet? = null) : this(1f, context, attr)
+    constructor(
+        context: Context,
+        attr: AttributeSet? = null,
+    ) : this(data = ChatModel(), scaleFactor = 1f, context = context, attr = attr)
 
     companion object {
         private val avatarId = View.generateViewId()
@@ -24,26 +39,33 @@ class PreviewChatItem(
         private val muteId = View.generateViewId()
         private val secretId = View.generateViewId()
         private val senderId = View.generateViewId()
+        private val sentCheckId = View.generateViewId()
     }
 
     private val dpValues = DpValues(context, scaleFactor)
-    private val isSecret = false // TODO make properly
-    private val isSender = false // TODO make properly
 
     init {
         addAvatar()
-        addOnline()
         addName()
         addMessage()
         addTime()
-        addCounter()
-        addMuteIcon()
 
-        if (isSender) {
+        if (data.isOnline) {
+            addOnline()
+        }
+        if (data.shouldShowSentCheck) {
+            addSentCheck()
+        }
+        if (data.isUnread) {
+            addCounter()
+        }
+        if (data.isMuted) {
+            addMuteIcon()
+        }
+        if (data.shouldShowSender) {
             addSender()
         }
-
-        if (isSecret) {
+        if (data.isSecret) {
             addSecretIcon()
         }
     }
@@ -91,6 +113,20 @@ class PreviewChatItem(
         }
     }
 
+    private fun addSentCheck() {
+        CircleView(context).apply {
+            id = sentCheckId
+            layoutParams = LayoutParams(
+                dpValues.dp10,
+                dpValues.dp10,
+            ).apply {
+                marginEnd = dpValues.dp4
+                addRule(LEFT_OF, timeId)
+            }
+            addView(this)
+        }
+    }
+
     private fun addTime() {
         HorizontalLineView(context).apply {
             id = timeId
@@ -128,7 +164,7 @@ class PreviewChatItem(
                 dpValues.dp100,
                 dpValues.dp10,
             ).apply {
-                if (isSender) {
+                if (data.shouldShowSender) {
                     marginStart = dpValues.dp4
                     addRule(RIGHT_OF, senderId)
                 } else {
@@ -149,7 +185,7 @@ class PreviewChatItem(
                 dpValues.dp80,
                 dpValues.dp10,
             ).apply {
-                if (isSecret) {
+                if (data.isSecret) {
                     marginStart = dpValues.dp4
                     addRule(RIGHT_OF, secretId)
                 } else {
