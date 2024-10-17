@@ -1,25 +1,27 @@
-package com.therxmv.telegramthemer.ui.v2.preview
+package com.therxmv.preview.common
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.view.View
 
 class RoundedRectangleView(
     context: Context,
     attrs: AttributeSet? = null,
-) : View(context, attrs) {
+) : ColorfulView(context, attrs) {
 // TODO add click listener
 
+    private var backgroundColor = Color.WHITE // TODO default color
     private val _cornerRadius: () -> Float = { // to have same radius with different size
         maxOf(width, height) * 0.2f
     }
-    private val backgroundPaint = Paint().apply {
-        isAntiAlias = true
-        color = Color.GREEN // TODO set color
-        style = Paint.Style.FILL
+    private val backgroundPaint: () -> Paint = {
+        Paint().apply {
+            isAntiAlias = true
+            color = backgroundColor
+            style = Paint.Style.FILL
+        }
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -30,8 +32,15 @@ class RoundedRectangleView(
             height.toFloat(),
             _cornerRadius(),
             _cornerRadius(),
-            backgroundPaint,
+            backgroundPaint(),
         )
         super.onDraw(canvas)
+    }
+
+    override fun setColor(color: Int) {
+        if (backgroundColor != color) {
+            backgroundColor = color
+            invalidate()
+        }
     }
 }

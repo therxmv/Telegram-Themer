@@ -1,9 +1,14 @@
-package com.therxmv.telegramthemer.ui.v2.preview
+package com.therxmv.preview.components
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
+import com.therxmv.preview.ChatsColors
+import com.therxmv.preview.DpValues
+import com.therxmv.preview.common.CircleView
+import com.therxmv.preview.common.ColorfulView
+import com.therxmv.preview.common.HorizontalLineView
 
 data class ChatModel(
     val id: Int = View.generateViewId(),
@@ -199,7 +204,7 @@ class PreviewChatItem(
     }
 
     private fun addOnline() {
-        CircleView(context).apply {// TODO color of background like stroke
+        CircleView(context).apply {
             id = onlineBgId
             layoutParams = LayoutParams(
                 dpValues.dp14,
@@ -236,5 +241,20 @@ class PreviewChatItem(
             }
             addView(this)
         }
+    }
+
+    fun setColors(item: ChatModel, colors: ChatsColors) {
+        findViewById<ColorfulView>(avatarId).setColor(colors.avatarColor)
+        findViewById<ColorfulView>(nameId).setColor(if (item.isSecret) colors.secretName else colors.chatName)
+        findViewById<ColorfulView>(messageId).setColor(if (item.isActionMessage) colors.actionMessage else colors.message)
+        findViewById<ColorfulView>(timeId).setColor(colors.chatDate)
+
+        findViewById<ColorfulView>(onlineBgId)?.setColor(colors.background)
+        findViewById<ColorfulView>(onlineId)?.setColor(colors.online)
+        findViewById<ColorfulView>(counterId)?.setColor(if (item.isMuted) colors.unreadCounterMuted else colors.unreadCounter)
+        findViewById<ColorfulView>(muteId)?.setColor(colors.muteIcon)
+        findViewById<ColorfulView>(secretId)?.setColor(colors.secretIcon)
+        findViewById<ColorfulView>(senderId)?.setColor(colors.senderName)
+        findViewById<ColorfulView>(sentCheckId)?.setColor(colors.sentCheck)
     }
 }

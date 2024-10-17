@@ -1,7 +1,7 @@
-package com.therxmv.telegramthemer.ui.v2.preview
+package com.therxmv.preview
 
 import android.content.Context
-import com.therxmv.telegramthemer.utils.dpToPx
+import com.therxmv.preview.utils.dpToPx
 
 class DpValues(
     private val context: Context,

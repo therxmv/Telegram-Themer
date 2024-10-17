@@ -1,0 +1,11 @@
+apply from: "$rootDir/gradle/snippets/module-config.gradle"
+
+android {
+    namespace 'com.therxmv.preview'
+}
+
+dependencies {
+    implementation appDependencies.coreKtx
+    implementation appDependencies.appCompat
+    implementation appDependencies.material
+}

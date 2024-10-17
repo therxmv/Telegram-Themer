@@ -1,9 +1,14 @@
-package com.therxmv.telegramthemer.ui.v2.preview
+package com.therxmv.preview.components
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.RelativeLayout
+import com.therxmv.preview.DpValues
+import com.therxmv.preview.TabsColors
+import com.therxmv.preview.common.CircleView
+import com.therxmv.preview.common.ColorfulView
+import com.therxmv.preview.common.HorizontalLineView
+import com.therxmv.preview.common.RoundedRectangleView
 
 class PreviewTabs(
     scaleFactor: Float,
@@ -21,18 +26,18 @@ class PreviewTabs(
     companion object {
         private val tabsIds = listOf(
             TabData(
-                id = View.generateViewId(),
-                unreadCounterId = View.generateViewId(),
-                selectorId = View.generateViewId(),
+                id = generateViewId(),
+                unreadCounterId = generateViewId(),
+                selectorId = generateViewId(),
             ),
             TabData(
-                id = View.generateViewId(),
+                id = generateViewId(),
                 unreadCounterId = null,
                 selectorId = null,
             ),
             TabData(
-                id = View.generateViewId(),
-                unreadCounterId = View.generateViewId(),
+                id = generateViewId(),
+                unreadCounterId = generateViewId(),
                 selectorId = null,
             ),
         )
@@ -116,6 +121,21 @@ class PreviewTabs(
             }
             addView(this@apply)
         }
+    }
+
+    fun setColors(colors: TabsColors) {
+        val first = tabsIds[0]
+        val middle = tabsIds[1]
+        val last = tabsIds[2]
+
+        findViewById<ColorfulView>(first.id).setColor(colors.selectedTab)
+        findViewById<ColorfulView>(first.selectorId!!).setColor(colors.tabSelector)
+        findViewById<ColorfulView>(first.unreadCounterId!!).setColor(colors.tabUnread)
+
+        findViewById<ColorfulView>(middle.id).setColor(colors.tab)
+
+        findViewById<ColorfulView>(last.id).setColor(colors.tab)
+        findViewById<ColorfulView>(last.unreadCounterId!!).setColor(colors.tabUnread)
     }
 
     private data class TabData(

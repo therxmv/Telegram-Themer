@@ -1,4 +1,6 @@
-package com.therxmv.telegramthemer.ui.v2.preview
+package com.therxmv.preview
+
+import com.therxmv.preview.components.ChatModel
 
 object ChatListItems {
     val items = listOf(

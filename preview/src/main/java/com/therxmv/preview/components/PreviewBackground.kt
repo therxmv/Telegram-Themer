@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.ui.v2.preview
+package com.therxmv.preview.components
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.RelativeLayout
+import com.therxmv.preview.DpValues
 
 class PreviewBackground(
     scaleFactor: Float,
@@ -13,23 +14,33 @@ class PreviewBackground(
     attrs: AttributeSet? = null,
 ) : RelativeLayout(context, attrs) { // TODO add click listener
 
-    constructor(context: Context, attr: AttributeSet? = null) : this(1f, context, attr)
+    constructor(context: Context, attr: AttributeSet? = null) : this(
+        scaleFactor = 1f,
+        context = context,
+        attrs = attr
+    )
 
     private val dpValues = DpValues(context, scaleFactor)
+
+    private var backgroundColor = Color.BLACK
+    private var strokeColor = Color.WHITE
+
     private var _cornerRadius = dpValues.dp20.toFloat()
     private var _strokeWidth = dpValues.dp8.toFloat()
     private val _edge: () -> Float = { // to make stroke inside
         _strokeWidth / 2
     }
-    private val backgroundPaint = Paint().apply {
-        isAntiAlias = true
-        color = Color.BLACK // TODO set color
-        style = Paint.Style.FILL
+    private val backgroundPaint: () -> Paint = {
+        Paint().apply {
+            isAntiAlias = true
+            color = backgroundColor
+            style = Paint.Style.FILL
+        }
     }
     private val strokePaint: () -> Paint = {
         Paint().apply {
             isAntiAlias = true
-            color = Color.GREEN // TODO set color
+            color = strokeColor
             style = Paint.Style.STROKE
             strokeWidth = _strokeWidth
         }
@@ -47,7 +58,7 @@ class PreviewBackground(
             height - _edge(),
             _cornerRadius,
             _cornerRadius,
-            backgroundPaint,
+            backgroundPaint(),
         )
         canvas.drawRoundRect(
             _edge(),
@@ -59,5 +70,11 @@ class PreviewBackground(
             strokePaint(),
         )
         super.onDraw(canvas)
+    }
+
+    fun setColors(background: Int, accent: Int) {
+        backgroundColor = background
+        strokeColor = accent
+        invalidate()
     }
 }

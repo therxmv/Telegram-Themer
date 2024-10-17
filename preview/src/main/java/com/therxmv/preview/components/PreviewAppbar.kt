@@ -1,9 +1,14 @@
-package com.therxmv.telegramthemer.ui.v2.preview
+package com.therxmv.preview.components
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
+import com.therxmv.preview.AppbarColors
+import com.therxmv.preview.DpValues
+import com.therxmv.preview.common.ColorfulView
+import com.therxmv.preview.common.HorizontalLineView
+import com.therxmv.preview.common.RoundedRectangleView
 
 class PreviewAppbar(
     scaleFactor: Float,
@@ -68,5 +73,11 @@ class PreviewAppbar(
             }
             addView(this)
         }
+    }
+
+    fun setColors(colors: AppbarColors) {
+        findViewById<ColorfulView>(leftIconId).setColor(colors.appbarIcon)
+        findViewById<ColorfulView>(rightIconId).setColor(colors.appbarIcon)
+        findViewById<ColorfulView>(titleId).setColor(colors.appbarTitle)
     }
 }
