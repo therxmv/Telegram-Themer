@@ -1,7 +1,7 @@
 package com.therxmv.telegramthemer.di
 
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorActivity
-import com.therxmv.telegramthemer.ui.editor.di.ThemeEditorModule
+import com.therxmv.telegramthemer.ui.editor.di.ThemeEditorPresenterModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.hilt.android.scopes.ActivityScoped
@@ -10,6 +10,6 @@ import dagger.hilt.android.scopes.ActivityScoped
 abstract class ActivityModule {
 
     @ActivityScoped
-    @ContributesAndroidInjector(modules = [ThemeEditorModule::class])
+    @ContributesAndroidInjector(modules = [ThemeEditorPresenterModule::class])
     abstract fun contributesThemeEditorActivity(): ThemeEditorActivity
 }

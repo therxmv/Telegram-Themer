@@ -1,6 +1,7 @@
 package com.therxmv.telegramthemer.ui.editor
 
 import android.os.Bundle
+import androidx.lifecycle.lifecycleScope
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
 import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerFragment
@@ -15,7 +16,7 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(ActivityThemeEditorBinding::inflate)
-        presenter.attachView(this@ThemeEditorActivity)
+        presenter.attachView(this@ThemeEditorActivity, lifecycleScope)
 
 //        val list = listOf(
 //            "#ff0000",
@@ -71,6 +72,11 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
 
         // TODO set up toolbar
 //        ColorPickerFragment.createInstance().show(supportFragmentManager, "ColorPickerFragment")
+    }
+
+    override fun onDestroy() {
+        presenter.detachView()
+        super.onDestroy()
     }
 
     override fun openColorPicker() {

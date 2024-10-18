@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingFragment
 import javax.inject.Inject
@@ -22,7 +23,12 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.attachView(this@SimpleThemeEditFragment)
+        presenter.attachView(this@SimpleThemeEditFragment, lifecycleScope)
+    }
+
+    override fun onDestroyView() {
+        presenter.detachView()
+        super.onDestroyView()
     }
 
     override fun setUpColorPickerButton(onClick: () -> Unit) {

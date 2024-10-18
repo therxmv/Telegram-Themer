@@ -1,15 +1,15 @@
 package com.therxmv.telegramthemer.ui.editor.di
 
-import com.therxmv.telegramthemer.ui.editor.ThemeEditorContract
-import com.therxmv.telegramthemer.ui.editor.ThemeEditorPresenter
+import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
+import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventStore
 import dagger.Binds
 import dagger.Module
-import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Singleton
 
 @Module
 abstract class ThemeEditorModule {
 
-    @ActivityScoped
+    @Singleton
     @Binds
-    abstract fun bindsThemeEditorPresenter(presenter: ThemeEditorPresenter): ThemeEditorContract.Presenter
+    abstract fun bindsThemeEditorEventStore(eventStore: ThemeEditorEventStore): ThemeEditorEventProvider
 }

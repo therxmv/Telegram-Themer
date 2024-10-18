@@ -1,22 +1,34 @@
 package com.therxmv.telegramthemer.ui.editor
 
-import android.util.Log
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Named
 
 class ThemeEditorPresenter @Inject constructor(
-
+    @Named("Default") private val defaultDispatcher: CoroutineDispatcher,
+    private val themeEditorEventProvider: ThemeEditorEventProvider,
 ) : ThemeEditorContract.Presenter() {
 
-    init {
-        Log.d("rozmi_init", this.toString())
+    override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {
+        super.attachView(view, coroutineScope)
+
+        coroutineScope.launch(defaultDispatcher) {
+            themeEditorEventProvider.eventFlow.collect(::collectThemeEvent)
+        }
     }
 
-    override fun attachView(view: ThemeEditorContract.View) {
-        super.attachView(view)
-    }
+    private fun collectThemeEvent(event: ThemeEditorEvent?) {
+        if (event == null) return
 
-    override fun detachView() {
-        super.detachView()
+        when (event) {
+            ThemeEditorEvent.OpenColorPicker -> {
+                view.openColorPicker()
+            }
+        }
+        themeEditorEventProvider.eventFlow.update { null } // clear event
     }
 
     override fun openColorPicker() {

@@ -1,6 +1,7 @@
 package com.therxmv.telegramthemer.app
 
 import com.therxmv.telegramthemer.di.AppModule
+import com.therxmv.telegramthemer.di.SingletonModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -9,8 +10,9 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [
-        AppModule::class,
         AndroidInjectionModule::class,
+        AppModule::class,
+        SingletonModule::class,
     ]
 )
 interface ThemerAppComponent : UiDependencies {
