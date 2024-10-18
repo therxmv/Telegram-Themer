@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.view.doOnLayout
 import androidx.core.view.setPadding
 import com.therxmv.preview.ChatListItems.items
 import com.therxmv.preview.common.ColorfulView
@@ -12,6 +13,7 @@ import com.therxmv.preview.components.PreviewAppbar
 import com.therxmv.preview.components.PreviewBackground
 import com.therxmv.preview.components.PreviewChatItem
 import com.therxmv.preview.components.PreviewTabs
+import com.therxmv.preview.utils.dpToPx
 
 class ChatsListPreview(
     context: Context,
@@ -25,27 +27,28 @@ class ChatsListPreview(
         private val actionButtonId = View.generateViewId()
     }
 
-    private val scaleFactor: Float
-    private val dpValues: DpValues
+    private lateinit var dpValues: DpValues // Should be initialized before any view is drawn
 
     init {
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.ChatsListPreview)
-        scaleFactor = attributes.getFloat(R.styleable.ChatsListPreview_scale_factor, 1f)
-        dpValues = DpValues(context, scaleFactor)
-
         val background = attachBackground()
-        with(background) {
-            addAppbar()
-            addTabs()
-            addChatItems()
-            addActionButton()
-        }
+        doOnLayout {
+            val scaleFactor = width / 280.dpToPx(context)
+            dpValues = DpValues(context, scaleFactor)
 
-        attributes.recycle()
+            background.setDpValues(dpValues)
+            background.setPadding(dpValues.dp20)
+
+            with(background) {
+                addAppbar()
+                addTabs()
+                addChatItems()
+                addActionButton()
+            }
+        }
     }
 
     private fun attachBackground() =
-        PreviewBackground(scaleFactor, context).apply {
+        PreviewBackground(context).apply {
             id = backgroundId
             attachViewToParent(
                 /* child = */ this@apply,
@@ -53,15 +56,13 @@ class ChatsListPreview(
                 /* params = */ LayoutParams(
                     LayoutParams.MATCH_PARENT,
                     LayoutParams.MATCH_PARENT,
-                ).apply {
-                    setPadding(dpValues.dp20)
-                }
+                )
             )
         }
 
     private fun PreviewBackground.addAppbar() {
-        PreviewAppbar(scaleFactor, context).apply {
-            id = com.therxmv.preview.ChatsListPreview.appbarId
+        PreviewAppbar(dpValues, context).apply {
+            id = appbarId
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT,
@@ -73,14 +74,14 @@ class ChatsListPreview(
     }
 
     private fun PreviewBackground.addTabs() {
-        PreviewTabs(scaleFactor, context).apply {
-            id = com.therxmv.preview.ChatsListPreview.tabsId
+        PreviewTabs(dpValues, context).apply {
+            id = tabsId
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT,
             ).apply {
                 topMargin = dpValues.dp20
-                addRule(BELOW, com.therxmv.preview.ChatsListPreview.appbarId)
+                addRule(BELOW, appbarId)
             }
             this@addTabs.addView(this@apply)
         }
@@ -88,7 +89,7 @@ class ChatsListPreview(
 
     private fun PreviewBackground.addActionButton() {
         RoundedRectangleView(context).apply {
-            id = com.therxmv.preview.ChatsListPreview.actionButtonId
+            id = actionButtonId
             layoutParams = LayoutParams(
                 dpValues.dp50,
                 dpValues.dp50,
@@ -102,7 +103,7 @@ class ChatsListPreview(
 
     private fun PreviewBackground.addChatItems() {
         items.forEachIndexed { index, model ->
-            PreviewChatItem(model, scaleFactor, context).apply {
+            PreviewChatItem(model, dpValues, context).apply {
                 id = model.id
                 layoutParams = LayoutParams(
                     LayoutParams.MATCH_PARENT,
@@ -123,7 +124,7 @@ class ChatsListPreview(
         findViewById<PreviewAppbar>(appbarId).setColors(colors.appbarColors)
         findViewById<PreviewTabs>(tabsId).setColors(colors.tabsColors)
 
-        ChatListItems.items.forEach {
+        items.forEach {
             findViewById<PreviewChatItem>(it.id).setColors(it, colors.chatsColors)
         }
     }

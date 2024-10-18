@@ -9,27 +9,18 @@ import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
 
 class PreviewBackground(
-    scaleFactor: Float,
     context: Context,
     attrs: AttributeSet? = null,
 ) : RelativeLayout(context, attrs) { // TODO add click listener
 
-    constructor(context: Context, attr: AttributeSet? = null) : this(
-        scaleFactor = 1f,
-        context = context,
-        attrs = attr
-    )
-
-    private val dpValues = DpValues(context, scaleFactor)
+    private var dpValues: DpValues = DpValues(context, 1f)
 
     private var backgroundColor = Color.BLACK
     private var strokeColor = Color.WHITE
 
-    private var _cornerRadius = dpValues.dp20.toFloat()
-    private var _strokeWidth = dpValues.dp8.toFloat()
-    private val _edge: () -> Float = { // to make stroke inside
-        _strokeWidth / 2
-    }
+    private val _cornerRadius: () -> Float = { dpValues.dp20.toFloat() }
+    private val _strokeWidth: () -> Float = { dpValues.dp8.toFloat() }
+    private val _edge: () -> Float = { _strokeWidth() / 2 } // to make stroke inside
     private val backgroundPaint: () -> Paint = {
         Paint().apply {
             isAntiAlias = true
@@ -42,7 +33,7 @@ class PreviewBackground(
             isAntiAlias = true
             color = strokeColor
             style = Paint.Style.STROKE
-            strokeWidth = _strokeWidth
+            strokeWidth = _strokeWidth()
         }
     }
 
@@ -56,8 +47,8 @@ class PreviewBackground(
             _edge(),
             width - _edge(),
             height - _edge(),
-            _cornerRadius,
-            _cornerRadius,
+            _cornerRadius(),
+            _cornerRadius(),
             backgroundPaint(),
         )
         canvas.drawRoundRect(
@@ -65,8 +56,8 @@ class PreviewBackground(
             _edge(),
             width - _edge(),
             height - _edge(),
-            _cornerRadius,
-            _cornerRadius,
+            _cornerRadius(),
+            _cornerRadius(),
             strokePaint(),
         )
         super.onDraw(canvas)
@@ -75,6 +66,11 @@ class PreviewBackground(
     fun setColors(background: Int, accent: Int) {
         backgroundColor = background
         strokeColor = accent
+        invalidate()
+    }
+
+    fun setDpValues(values: DpValues) {
+        dpValues = values
         invalidate()
     }
 }

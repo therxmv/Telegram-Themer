@@ -11,20 +11,18 @@ import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
 
 class PreviewAppbar(
-    scaleFactor: Float,
+    private val dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
 ) : RelativeLayout(context, attr) {
 
-    constructor(context: Context, attr: AttributeSet? = null) : this(1f, context, attr)
+    constructor(context: Context, attr: AttributeSet? = null) : this(DpValues(context), context, attr)
 
     companion object {
         private val leftIconId = View.generateViewId()
         private val rightIconId = View.generateViewId()
         private val titleId = View.generateViewId()
     }
-
-    private val dpValues = DpValues(context, scaleFactor)
 
     init {
         addLeftIcon()

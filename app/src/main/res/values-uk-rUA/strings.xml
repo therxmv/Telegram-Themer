@@ -29,4 +29,10 @@
     <string name="colorPickerTitle">Виберіть колір</string>
     <string name="colorPickerConfirm">Підтвердити</string>
     <string name="colorPickerCancel">Скасувати</string>
+
+    <!-- V2 strings -->
+    <string name="picker_label">Обрати колір</string>
+    <string name="more_label">Більше опцій</string>
+    <string name="export_label">Експортувати тему</string>
+
 </resources>

@@ -29,4 +29,10 @@
     <string name="colorPickerTitle">Виберите цвет</string>
     <string name="colorPickerConfirm">Подтвердить</string>
     <string name="colorPickerCancel">Отменить</string>
+
+    <!-- V2 strings -->
+    <string name="picker_label">Выбрать цвет</string>
+    <string name="more_label">Больше опций</string>
+    <string name="export_label">Експортировать тему</string>
+
 </resources>

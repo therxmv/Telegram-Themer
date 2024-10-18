@@ -23,7 +23,7 @@ data class ChatModel(
 
 class PreviewChatItem(
     private val data: ChatModel,
-    scaleFactor: Float,
+    private val dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
 ) : RelativeLayout(context, attr) {
@@ -31,7 +31,7 @@ class PreviewChatItem(
     constructor(
         context: Context,
         attr: AttributeSet? = null,
-    ) : this(data = ChatModel(), scaleFactor = 1f, context = context, attr = attr)
+    ) : this(data = ChatModel(), dpValues = DpValues(context), context = context, attr = attr)
 
     companion object {
         private val avatarId = View.generateViewId()
@@ -46,8 +46,6 @@ class PreviewChatItem(
         private val senderId = View.generateViewId()
         private val sentCheckId = View.generateViewId()
     }
-
-    private val dpValues = DpValues(context, scaleFactor)
 
     init {
         addAvatar()

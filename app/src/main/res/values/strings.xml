@@ -32,4 +32,10 @@
         <item>Default</item>
         <item>Soza</item>
     </string-array>
+
+    <!-- V2 strings -->
+    <string name="picker_label">Pick accent color</string>
+    <string name="more_label">More options</string>
+    <string name="export_label">Export the theme</string>
+
 </resources>

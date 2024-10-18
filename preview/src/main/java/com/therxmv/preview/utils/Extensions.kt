@@ -2,10 +2,8 @@ package com.therxmv.preview.utils
 
 import android.content.Context
 
-fun Int.dpToPx(context: Context): Float {
+fun Int.dpToPx(context: Context, scaleFactor: Float = 1f): Float {
     val density = context.resources.displayMetrics.density
 
-    return this * density + 0.5f
+    return this * density * scaleFactor
 }
-
-fun Int.dpToPx(context: Context, scaleFactor: Float): Float = this.dpToPx(context) * scaleFactor

@@ -3,9 +3,12 @@ package com.therxmv.preview
 import android.content.Context
 import com.therxmv.preview.utils.dpToPx
 
+/**
+ * Provides scalable values converted from dp to px. Should be used with all custom views.
+ */
 class DpValues(
     private val context: Context,
-    private val scaleFactor: Float,
+    private val scaleFactor: Float = 1f,
 ) {
 
     val dp4: Int

@@ -11,14 +11,13 @@ import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
 
 class PreviewTabs(
-    scaleFactor: Float,
+    dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
 ) : RelativeLayout(context, attr) {
 
-    constructor(context: Context, attr: AttributeSet? = null) : this(1f, context, attr)
+    constructor(context: Context, attr: AttributeSet? = null) : this(DpValues(context), context, attr)
 
-    private val dpValues = DpValues(context, scaleFactor)
     private val tabWidth = dpValues.dp50
     private val tabHeight = dpValues.dp14
     private val margin = dpValues.dp4
