@@ -12,6 +12,8 @@ class ThemeEditorPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
 ) : ThemeEditorContract.Presenter() {
 
+    private val listeners: MutableList<(Int) -> Unit> = mutableListOf()
+
     override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {
         super.attachView(view, coroutineScope)
 
@@ -20,11 +22,17 @@ class ThemeEditorPresenter @Inject constructor(
         }
     }
 
+    override fun detachView() {
+        listeners.clear()
+        super.detachView()
+    }
+
     private fun collectThemeEvent(event: ThemeEditorEvent?) {
         if (event == null) return
 
         when (event) {
-            ThemeEditorEvent.OpenColorPicker -> {
+            is ThemeEditorEvent.OpenColorPicker -> {
+                listeners.add(event.onColorChange)
                 view.openColorPicker()
             }
         }
@@ -33,5 +41,12 @@ class ThemeEditorPresenter @Inject constructor(
 
     override fun openColorPicker() {
         view.openColorPicker()
+    }
+
+    override fun onColorChanged(color: Int) {
+        // TODO probably save color
+        listeners.forEach {
+            it(color)
+        }
     }
 }

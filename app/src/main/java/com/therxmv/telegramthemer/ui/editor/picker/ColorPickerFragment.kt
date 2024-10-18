@@ -32,6 +32,7 @@ class ColorPickerFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpTouchListeners()
+        subscribeOnColorChanges()
     }
 
     override fun onCreateView(
@@ -47,6 +48,12 @@ class ColorPickerFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBi
         dialog?.window?.setDimAmount(DEFAULT_DIM)
 
         return dialog!!
+    }
+
+    private fun subscribeOnColorChanges() {
+        binding.colorPicker.subscribe { color, _, _ ->
+            (requireActivity() as? ColorPickerSubscriber)?.onColorChanged(color)
+        }
     }
 
     private fun setUpTouchListeners() {

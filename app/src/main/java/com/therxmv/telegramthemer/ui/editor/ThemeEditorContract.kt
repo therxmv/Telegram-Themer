@@ -10,5 +10,6 @@ interface ThemeEditorContract {
 
     abstract class Presenter: BasePresenter<View>() {
         abstract fun openColorPicker()
+        abstract fun onColorChanged(color: Int)
     }
 }

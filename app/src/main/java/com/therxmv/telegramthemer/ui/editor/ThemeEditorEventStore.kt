@@ -22,5 +22,5 @@ interface ThemeEditorEventProvider {
 
 sealed interface ThemeEditorEvent {
 
-    data object OpenColorPicker : ThemeEditorEvent
+    data class OpenColorPicker(val onColorChange: (Int) -> Unit) : ThemeEditorEvent
 }
