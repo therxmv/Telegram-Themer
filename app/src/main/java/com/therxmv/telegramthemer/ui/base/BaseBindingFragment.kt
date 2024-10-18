@@ -3,10 +3,10 @@ package com.therxmv.telegramthemer.ui.base
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import dagger.android.support.DaggerFragment
 
-abstract class BaseBindingFragment<B: ViewBinding> : Fragment() {
+abstract class BaseBindingFragment<B: ViewBinding> : DaggerFragment() {
 
     private var _binding: B? = null
     protected val binding: B get() = _binding!!

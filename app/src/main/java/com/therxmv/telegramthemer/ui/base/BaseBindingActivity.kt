@@ -1,10 +1,10 @@
 package com.therxmv.telegramthemer.ui.base
 
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import dagger.android.support.DaggerAppCompatActivity
 
-abstract class BaseBindingActivity<B: ViewBinding> : AppCompatActivity() {
+abstract class BaseBindingActivity<B: ViewBinding> : DaggerAppCompatActivity() {
 
     private var _binding: B? = null
     protected val binding: B get() = _binding!!

@@ -1,0 +1,33 @@
+package com.therxmv.telegramthemer.ui.editor.simple
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
+import com.therxmv.telegramthemer.ui.base.BaseBindingFragment
+import javax.inject.Inject
+
+class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBinding>(),
+    SimpleThemeEditContract.View {
+
+    @Inject
+    lateinit var presenter: SimpleThemeEditContract.Presenter
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ) = onCreateView(inflater, container, FragmentSimpleThemeEditBinding::inflate)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.attachView(this@SimpleThemeEditFragment)
+    }
+
+    override fun setUpColorPickerButton(onClick: () -> Unit) {
+        binding.pickerButton.setOnClickListener {
+            onClick()
+        }
+    }
+}

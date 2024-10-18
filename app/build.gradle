@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -48,6 +49,13 @@ dependencies {
 
     implementation appDependencies.mkkv
     implementation appDependencies.gson
+
+    implementation appDependencies.hilt
+    implementation appDependencies.dagger
+    implementation appDependencies.daggerAndroid
+    implementation appDependencies.daggerAndroidSupport
+    kapt appDependencies.daggerCompiler
+    kapt appDependencies.daggerAndroidProcessor
 
     implementation appDependencies.navigationKtx
     implementation appDependencies.fragmentKtx

@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.ui.v2
+package com.therxmv.telegramthemer.ui.editor.picker
 
 import android.app.Dialog
 import android.os.Bundle

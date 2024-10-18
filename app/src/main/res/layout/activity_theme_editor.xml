@@ -22,31 +22,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 <!--    <com.therxmv.preview.ChatsListPreview-->
-<!--        android:id="@+id/chatListPreview"-->
-<!--        android:layout_width="380dp"-->
+<!--        android:id="@+id/chatListPreview1"-->
+<!--        android:layout_width="280dp"-->
 <!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintDimensionRatio="1:2"-->
 <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <com.therxmv.preview.ChatsListPreview
-        android:id="@+id/chatListPreview1"
-        android:layout_width="280dp"
-        android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <com.therxmv.preview.ChatsListPreview-->
-<!--        android:id="@+id/chatListPreview2"-->
-<!--        android:layout_width="140dp"-->
-<!--        android:layout_height="0dp"-->
 <!--        app:layout_constraintDimensionRatio="1:2"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
@@ -60,6 +40,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_appbar" />
+        app:layout_constraintTop_toBottomOf="@+id/main_appbar"
+        app:navGraph="@navigation/theme_edit_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
