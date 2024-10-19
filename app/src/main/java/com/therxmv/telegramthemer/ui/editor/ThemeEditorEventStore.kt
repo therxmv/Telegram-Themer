@@ -22,5 +22,7 @@ interface ThemeEditorEventProvider {
 
 sealed interface ThemeEditorEvent {
 
-    data class OpenColorPicker(val onColorChange: (Int) -> Unit) : ThemeEditorEvent
+    data object OpenColorPicker : ThemeEditorEvent
+    data class SubscribeOnColorChanges(val listener: ColorChangeListener) : ThemeEditorEvent
+    data class UnsubscribeFromColorChanges(val listener: ColorChangeListener) : ThemeEditorEvent
 }

@@ -127,14 +127,14 @@ class PreviewTabs(
         val middle = tabsIds[1]
         val last = tabsIds[2]
 
-        findViewById<ColorfulView>(first.id).setColor(colors.selectedTab)
-        findViewById<ColorfulView>(first.selectorId!!).setColor(colors.tabSelector)
-        findViewById<ColorfulView>(first.unreadCounterId!!).setColor(colors.tabUnread)
+        findViewById<ColorfulView>(first.id)?.setColor(colors.selectedTab)
+        findViewById<ColorfulView>(first.selectorId!!)?.setColor(colors.tabSelector)
+        findViewById<ColorfulView>(first.unreadCounterId!!)?.setColor(colors.tabUnread)
 
-        findViewById<ColorfulView>(middle.id).setColor(colors.tab)
+        findViewById<ColorfulView>(middle.id)?.setColor(colors.tab)
 
-        findViewById<ColorfulView>(last.id).setColor(colors.tab)
-        findViewById<ColorfulView>(last.unreadCounterId!!).setColor(colors.tabUnread)
+        findViewById<ColorfulView>(last.id)?.setColor(colors.tab)
+        findViewById<ColorfulView>(last.unreadCounterId!!)?.setColor(colors.tabUnread)
     }
 
     private data class TabData(

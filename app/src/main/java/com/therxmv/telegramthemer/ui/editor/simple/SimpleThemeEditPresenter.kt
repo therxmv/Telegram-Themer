@@ -5,6 +5,7 @@ import com.therxmv.preview.AppbarColors
 import com.therxmv.preview.ChatsColors
 import com.therxmv.preview.PreviewColorsModel
 import com.therxmv.preview.TabsColors
+import com.therxmv.telegramthemer.ui.editor.ColorChangeListener
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
 import kotlinx.coroutines.CoroutineScope
@@ -13,21 +14,28 @@ import javax.inject.Inject
 
 class SimpleThemeEditPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
-): SimpleThemeEditContract.Presenter() {
+): SimpleThemeEditContract.Presenter(), ColorChangeListener {
 
     override fun attachView(view: SimpleThemeEditContract.View, coroutineScope: CoroutineScope) {
         super.attachView(view, coroutineScope)
 
+        themeEditorEventProvider.eventFlow.update {
+            ThemeEditorEvent.SubscribeOnColorChanges(this@SimpleThemeEditPresenter)
+        }
+
         view.setUpColorPickerButton {
-            themeEditorEventProvider.eventFlow.update {
-                ThemeEditorEvent.OpenColorPicker(
-                    onColorChange = ::onColorChanged,
-                )
-            }
+            themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenColorPicker }
         }
     }
 
-    private fun onColorChanged(color: Int) {
+    override fun detachView() {
+        themeEditorEventProvider.eventFlow.update {
+            ThemeEditorEvent.UnsubscribeFromColorChanges(this@SimpleThemeEditPresenter)
+        }
+        super.detachView()
+    }
+
+    override fun onColorChange(color: Int) {
         view.setColorPickerBackground(color)
         setThemeColors(color)
     }

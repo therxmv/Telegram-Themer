@@ -242,10 +242,10 @@ class PreviewChatItem(
     }
 
     fun setColors(item: ChatModel, colors: ChatsColors) {
-        findViewById<ColorfulView>(avatarId).setColor(colors.avatarColor)
-        findViewById<ColorfulView>(nameId).setColor(if (item.isSecret) colors.secretName else colors.chatName)
-        findViewById<ColorfulView>(messageId).setColor(if (item.isActionMessage) colors.actionMessage else colors.message)
-        findViewById<ColorfulView>(timeId).setColor(colors.chatDate)
+        findViewById<ColorfulView>(avatarId)?.setColor(colors.avatarColor)
+        findViewById<ColorfulView>(nameId)?.setColor(if (item.isSecret) colors.secretName else colors.chatName)
+        findViewById<ColorfulView>(messageId)?.setColor(if (item.isActionMessage) colors.actionMessage else colors.message)
+        findViewById<ColorfulView>(timeId)?.setColor(colors.chatDate)
 
         findViewById<ColorfulView>(onlineBgId)?.setColor(colors.background)
         findViewById<ColorfulView>(onlineId)?.setColor(colors.online)

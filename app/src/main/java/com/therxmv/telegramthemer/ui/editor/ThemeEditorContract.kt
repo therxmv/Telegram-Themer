@@ -5,11 +5,10 @@ import com.therxmv.telegramthemer.ui.base.BasePresenter
 interface ThemeEditorContract {
 
     interface View {
-        fun openColorPicker()
+        fun openColorPicker(currentColor: Int)
     }
 
     abstract class Presenter: BasePresenter<View>() {
-        abstract fun openColorPicker()
         abstract fun onColorChanged(color: Int)
     }
 }

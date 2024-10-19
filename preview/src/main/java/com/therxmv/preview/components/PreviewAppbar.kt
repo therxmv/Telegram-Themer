@@ -74,8 +74,8 @@ class PreviewAppbar(
     }
 
     fun setColors(colors: AppbarColors) {
-        findViewById<ColorfulView>(leftIconId).setColor(colors.appbarIcon)
-        findViewById<ColorfulView>(rightIconId).setColor(colors.appbarIcon)
-        findViewById<ColorfulView>(titleId).setColor(colors.appbarTitle)
+        findViewById<ColorfulView>(leftIconId)?.setColor(colors.appbarIcon)
+        findViewById<ColorfulView>(rightIconId)?.setColor(colors.appbarIcon)
+        findViewById<ColorfulView>(titleId)?.setColor(colors.appbarTitle)
     }
 }

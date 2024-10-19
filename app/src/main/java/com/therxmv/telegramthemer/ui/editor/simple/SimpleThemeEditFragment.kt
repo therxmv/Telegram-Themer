@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.lifecycleScope
 import com.therxmv.preview.PreviewColorsModel
 import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
@@ -25,7 +26,9 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter.attachView(this@SimpleThemeEditFragment, lifecycleScope)
+        binding.chatPreview.doOnPreDraw { // Fragment should wait until preview is drawn
+            presenter.attachView(this@SimpleThemeEditFragment, lifecycleScope)
+        }
     }
 
     override fun onDestroyView() {

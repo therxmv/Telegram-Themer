@@ -119,13 +119,13 @@ class ChatsListPreview(
     }
 
     fun setColors(colors: PreviewColorsModel) {
-        findViewById<PreviewBackground>(backgroundId).setColors(colors.background, colors.accent)
-        findViewById<ColorfulView>(actionButtonId).setColor(colors.actionButton)
-        findViewById<PreviewAppbar>(appbarId).setColors(colors.appbarColors)
-        findViewById<PreviewTabs>(tabsId).setColors(colors.tabsColors)
+        findViewById<PreviewBackground>(backgroundId)?.setColors(colors.background, colors.accent)
+        findViewById<ColorfulView>(actionButtonId)?.setColor(colors.actionButton)
+        findViewById<PreviewAppbar>(appbarId)?.setColors(colors.appbarColors)
+        findViewById<PreviewTabs>(tabsId)?.setColors(colors.tabsColors)
 
         items.forEach {
-            findViewById<PreviewChatItem>(it.id).setColors(it, colors.chatsColors)
+            findViewById<PreviewChatItem>(it.id)?.setColors(it, colors.chatsColors)
         }
     }
 }

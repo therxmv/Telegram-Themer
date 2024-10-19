@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor
 
+import android.graphics.Color
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
@@ -12,7 +13,8 @@ class ThemeEditorPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
 ) : ThemeEditorContract.Presenter() {
 
-    private val listeners: MutableList<(Int) -> Unit> = mutableListOf()
+    private var currentColor = Color.parseColor("#299FE9") // TODO default color
+    private val listeners: MutableList<ColorChangeListener> = mutableListOf()
 
     override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {
         super.attachView(view, coroutineScope)
@@ -32,21 +34,25 @@ class ThemeEditorPresenter @Inject constructor(
 
         when (event) {
             is ThemeEditorEvent.OpenColorPicker -> {
-                listeners.add(event.onColorChange)
-                view.openColorPicker()
+                view.openColorPicker(currentColor)
+            }
+
+            is ThemeEditorEvent.SubscribeOnColorChanges -> {
+                listeners.add(event.listener)
+                event.listener.onColorChange(currentColor)
+            }
+
+            is ThemeEditorEvent.UnsubscribeFromColorChanges -> {
+                listeners.remove(event.listener)
             }
         }
         themeEditorEventProvider.eventFlow.update { null } // clear event
     }
 
-    override fun openColorPicker() {
-        view.openColorPicker()
-    }
-
     override fun onColorChanged(color: Int) {
-        // TODO probably save color
+        currentColor = color
         listeners.forEach {
-            it(color)
+            it.onColorChange(color)
         }
     }
 }

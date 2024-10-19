@@ -26,8 +26,10 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
         super.onDestroy()
     }
 
-    override fun openColorPicker() {
-        ColorPickerFragment.createInstance().show(supportFragmentManager, "ColorPickerFragment")
+    override fun openColorPicker(currentColor: Int) {
+        ColorPickerFragment
+            .createInstance(currentColor)
+            .show(supportFragmentManager, "ColorPickerFragment")
     }
 
     override fun onColorChanged(color: Int) {
