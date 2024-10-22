@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -53,21 +54,23 @@
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbMonet"
-        android:layoutDirection="rtl"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
         android:text="@string/sett_monet"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbMonetBg"
-        android:layoutDirection="rtl"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
         android:text="@string/sett_monet_bg"
         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/cbGradient"

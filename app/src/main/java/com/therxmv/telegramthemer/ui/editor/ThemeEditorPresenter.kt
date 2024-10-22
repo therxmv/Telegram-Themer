@@ -13,7 +13,7 @@ class ThemeEditorPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
 ) : ThemeEditorContract.Presenter() {
 
-    private var currentColor = Color.parseColor("#299FE9") // TODO default color
+    private var currentColor = Color.parseColor("#299FE9") // TODO default color; maybe "currentColors"
     private val listeners: MutableList<ColorChangeListener> = mutableListOf()
 
     override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {

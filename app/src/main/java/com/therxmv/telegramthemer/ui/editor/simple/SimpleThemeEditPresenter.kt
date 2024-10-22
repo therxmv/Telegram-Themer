@@ -35,10 +35,22 @@ class SimpleThemeEditPresenter @Inject constructor(
         super.detachView()
     }
 
-    override fun onColorChange(color: Int) {
+    override fun onColorChange(color: Int) { // TODO change button border and theme background
         view.setColorPickerBackground(color)
         setThemeColors(color)
     }
+
+    /* TODO
+        Make map with key as accent, background, etc and value as value to which it should apply
+        mapOf(
+            "background" to listOf("actionBarActionModeDefault"),
+            "accent_500" to listOf("actionButton", "appbarTitle"),
+        )
+        mapOf(
+            "background" to {color hex or int},
+            "accent_500" to {color hex or int},
+        )
+     */
 
     private fun setThemeColors(color: Int) {
         val background = Color.parseColor("#000000")
