@@ -9,7 +9,7 @@ interface SimpleThemeEditContract {
         fun setUpColorPickerButton(onClick: () -> Unit)
         fun setUpMoreOptionsButton(onClick: () -> Unit)
         fun setColorPickerColors(accent: Int, background: Int)
-        fun setThemeColors(colors: PreviewColorsModel)
+        fun setPreviewColors(colors: PreviewColorsModel)
     }
 
     abstract class Presenter : BasePresenter<View>() {

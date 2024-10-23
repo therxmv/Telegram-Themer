@@ -39,6 +39,6 @@ class SimpleThemeEditPresenter @Inject constructor(
     override fun onStateChange(themeState: ThemeState) { // TODO change button border and theme background
         val model = previewColorsAdapter.getDefaultThemeColors(themeState)
         view.setColorPickerColors(model.accent, model.background)
-        view.setThemeColors(model)
+        view.setPreviewColors(model)
     }
 }

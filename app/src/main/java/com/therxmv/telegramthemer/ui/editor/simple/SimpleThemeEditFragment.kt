@@ -1,6 +1,7 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
 import android.content.res.ColorStateList
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,13 +38,13 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     }
 
     override fun setUpColorPickerButton(onClick: () -> Unit) {
-        binding.pickerButton.setOnClickListener {
+        binding.pickerContainer.setOnClickListener {
             onClick()
         }
     }
 
     override fun setUpMoreOptionsButton(onClick: () -> Unit) {
-        binding.moreButton.setOnClickListener {
+        binding.moreContainer.setOnClickListener {
             onClick()
         }
     }
@@ -53,7 +54,10 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
         binding.pickerButton.foregroundTintList = ColorStateList.valueOf(background)
     }
 
-    override fun setThemeColors(colors: PreviewColorsModel) {
+    override fun setPreviewColors(colors: PreviewColorsModel) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            binding.previewBackground.outlineSpotShadowColor = colors.accent
+        }
         binding.previewBackground.backgroundTintList = ColorStateList.valueOf(colors.previewBackground)
         binding.chatListPreview.setColors(colors)
         binding.chatPreview.setColors(colors)
