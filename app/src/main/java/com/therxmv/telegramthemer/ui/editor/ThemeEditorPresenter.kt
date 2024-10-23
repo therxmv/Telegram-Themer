@@ -3,6 +3,7 @@ package com.therxmv.telegramthemer.ui.editor
 import com.therxmv.telegramthemer.domain.usecase.storage.GetCachedThemeUseCase
 import com.therxmv.telegramthemer.domain.usecase.storage.SaveThemeUseCase
 import com.therxmv.telegramthemer.ui.editor.data.ThemeState
+import com.therxmv.telegramthemer.ui.editor.data.file.ThemeFileAdapter
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
@@ -15,7 +16,14 @@ class ThemeEditorPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
     getCachedTheme: GetCachedThemeUseCase,
     private val saveTheme: SaveThemeUseCase,
+    private val themeFileAdapter: ThemeFileAdapter,
 ) : ThemeEditorContract.Presenter() {
+
+    companion object {
+        private const val SHARE_TEXT = "Theme made via play.google.com/store/apps/details?id=com.therxmv.telegramthemer"
+        private const val THERXMV_MENTION = "@therxmv_channel"
+        private const val BLANDO_MENTION = "@BlandoThemes"
+    }
 
     private var themeState = getCachedTheme()
     private val listeners: MutableList<ThemeStateListener> = mutableListOf()
@@ -45,6 +53,11 @@ class ThemeEditorPresenter @Inject constructor(
                 view.openMoreOptions(themeState)
             }
 
+            is ThemeEditorEvent.ExportTheme -> {
+                val file = themeFileAdapter.createThemeFile(themeState)
+                view.shareThemeFile(file)
+            }
+
             is ThemeEditorEvent.SubscribeOnColorChanges -> {
                 listeners.add(event.listener)
                 event.listener.onStateChange(themeState)
@@ -64,6 +77,9 @@ class ThemeEditorPresenter @Inject constructor(
     override fun onPropertyChange(themeState: ThemeState) {
         updateThemeSate(themeState)
     }
+
+    override fun getShareDescription(): String =
+        "$SHARE_TEXT\n\n$THERXMV_MENTION\n$BLANDO_MENTION"
 
     private fun updateThemeSate(newState: ThemeState) {
         themeState = newState

@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.ui.editor.data
+package com.therxmv.telegramthemer.ui.editor.data.utils
 
 fun List<Int>.rgbToHex() = String.format("#%02x%02x%02x", this[0], this[1], this[2])
 

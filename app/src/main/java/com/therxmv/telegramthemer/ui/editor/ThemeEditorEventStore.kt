@@ -24,6 +24,7 @@ sealed interface ThemeEditorEvent {
 
     data object OpenColorPicker : ThemeEditorEvent
     data object OpenMoreOptions : ThemeEditorEvent
+    data object ExportTheme : ThemeEditorEvent
     data class SubscribeOnColorChanges(val listener: ThemeStateListener) : ThemeEditorEvent
     data class UnsubscribeFromColorChanges(val listener: ThemeStateListener) : ThemeEditorEvent
 }

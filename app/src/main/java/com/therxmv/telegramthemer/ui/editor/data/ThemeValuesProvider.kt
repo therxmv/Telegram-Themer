@@ -3,6 +3,11 @@ package com.therxmv.telegramthemer.ui.editor.data
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.therxmv.telegramthemer.R
+import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys
+import com.therxmv.telegramthemer.ui.editor.data.utils.ThemeKeys
+import com.therxmv.telegramthemer.ui.editor.data.utils.colorToHex
+import com.therxmv.telegramthemer.ui.editor.data.utils.hexToRgb
+import com.therxmv.telegramthemer.ui.editor.data.utils.rgbToHex
 import javax.inject.Inject
 
 class ThemeValuesProvider @Inject constructor(
@@ -12,14 +17,14 @@ class ThemeValuesProvider @Inject constructor(
     override fun getAdvancedColorSchema(state: ThemeState): Map<String, String> {
         val baseColors = getBaseColors(state)
         val get: String.() -> String = {
-            baseColors.getValue(this)
+            baseColors.getValue(this) // to avoid nullable because key should exist
         }
 
         // TODO change numbers to correct
         val gray5 = ThemeKeys.gray.get()
-        val gray2 = gray5.getLighterColor(0.9f)
+        val gray1 = gray5.getLighterColor(0.9f)
         val gray3 = gray5.getLighterColor(0.6f)
-        val gray7 = gray5.getDarkerColor(0.2f)
+        val gray6 = gray5.getDarkerColor(0.2f)
         val gray8 = gray5.getDarkerColor(0.5f)
         val gray9 = gray5.getDarkerColor(0.7f)
 
@@ -35,10 +40,10 @@ class ThemeValuesProvider @Inject constructor(
             AdvancedThemeKeys.onBackground to ThemeKeys.onBackground.get(),
             AdvancedThemeKeys.black to ThemeKeys.black.get(),
             AdvancedThemeKeys.white to ThemeKeys.white.get(),
-            AdvancedThemeKeys.gray_2 to gray2,
+            AdvancedThemeKeys.gray_1 to gray1,
             AdvancedThemeKeys.gray_3 to gray3,
             AdvancedThemeKeys.gray_5 to gray5,
-            AdvancedThemeKeys.gray_7 to gray7,
+            AdvancedThemeKeys.gray_6 to gray6,
             AdvancedThemeKeys.gray_8 to gray8,
             AdvancedThemeKeys.gray_9 to gray9,
             AdvancedThemeKeys.accent_2 to accent2,
@@ -47,12 +52,13 @@ class ThemeValuesProvider @Inject constructor(
             AdvancedThemeKeys.accent_5 to accent5,
             AdvancedThemeKeys.accent_7 to accent7,
             AdvancedThemeKeys.accent_9 to accent9,
-            AdvancedThemeKeys.yellow_5 to ThemeKeys.yellow.get(),
-            AdvancedThemeKeys.orange_5 to ThemeKeys.orange.get(), // TODO orange
             AdvancedThemeKeys.red_5 to ThemeKeys.red.get(), // TODO 3 and 7 was dropped
+            AdvancedThemeKeys.orange_5 to ThemeKeys.orange.get(), // TODO orange
+            AdvancedThemeKeys.yellow_5 to ThemeKeys.yellow.get(),
             AdvancedThemeKeys.green_5 to ThemeKeys.green.get(), // TODO 3 and 7 was dropped
+            AdvancedThemeKeys.blue_5 to ThemeKeys.blue.get(),
             AdvancedThemeKeys.purple_5 to ThemeKeys.purple.get(),
-            AdvancedThemeKeys.transparent to ThemeKeys.transparent.get(),
+            AdvancedThemeKeys.transparent_0 to ThemeKeys.transparent.get(),
             AdvancedThemeKeys.tr_accent_3 to "#44${accent3.drop(1)}",
             AdvancedThemeKeys.tr_accent_5 to "#77${accent5.drop(1)}",
             AdvancedThemeKeys.tr_gray_5 to "#77${gray5.drop(1)}",
@@ -85,6 +91,7 @@ class ThemeValuesProvider @Inject constructor(
             ThemeKeys.orange to "#DF9700",
             ThemeKeys.red to "#E23333",
             ThemeKeys.green to "#52CF2C",
+            ThemeKeys.blue to "#299FE9",
             ThemeKeys.purple to "#776BF5",
             ThemeKeys.transparent to "#00000000",
         )

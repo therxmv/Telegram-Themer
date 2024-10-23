@@ -3,8 +3,8 @@ package com.therxmv.telegramthemer.ui.editor.simple
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
 import com.therxmv.telegramthemer.ui.editor.ThemeStateListener
-import com.therxmv.telegramthemer.ui.editor.data.PreviewColorsAdapter
 import com.therxmv.telegramthemer.ui.editor.data.ThemeState
+import com.therxmv.telegramthemer.ui.editor.data.preview.PreviewColorsAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
@@ -21,11 +21,16 @@ class SimpleThemeEditPresenter @Inject constructor(
             ThemeEditorEvent.SubscribeOnColorChanges(this@SimpleThemeEditPresenter)
         }
 
-        view.setUpColorPickerButton {
-            themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenColorPicker }
-        }
-        view.setUpMoreOptionsButton {
-            themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenMoreOptions }
+        with(view) {
+            setUpColorPickerButton {
+                themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenColorPicker }
+            }
+            setUpMoreOptionsButton {
+                themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenMoreOptions }
+            }
+            setUpExportButton {
+                themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.ExportTheme }
+            }
         }
     }
 

@@ -1,10 +1,13 @@
-package com.therxmv.telegramthemer.ui.editor.data
+package com.therxmv.telegramthemer.ui.editor.data.preview
 
 import android.graphics.Color
 import com.therxmv.preview.AppbarColors
 import com.therxmv.preview.ChatsColors
 import com.therxmv.preview.PreviewColorsModel
 import com.therxmv.preview.TabsColors
+import com.therxmv.telegramthemer.ui.editor.data.ThemeState
+import com.therxmv.telegramthemer.ui.editor.data.ThemeValues
+import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys
 import javax.inject.Inject
 
 class ThemeToPreviewAdapter @Inject constructor(

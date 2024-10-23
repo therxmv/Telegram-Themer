@@ -49,6 +49,12 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
         }
     }
 
+    override fun setUpExportButton(onClick: () -> Unit) {
+        binding.exportContainer.setOnClickListener {
+            onClick()
+        }
+    }
+
     override fun setColorPickerColors(accent: Int, background: Int) {
         binding.pickerButton.backgroundTintList = ColorStateList.valueOf(accent)
         binding.pickerButton.foregroundTintList = ColorStateList.valueOf(background)
