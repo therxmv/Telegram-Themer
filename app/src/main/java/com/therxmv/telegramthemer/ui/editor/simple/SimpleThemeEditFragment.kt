@@ -42,11 +42,19 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
         }
     }
 
-    override fun setColorPickerBackground(color: Int) {
-        binding.pickerButton.backgroundTintList = ColorStateList.valueOf(color)
+    override fun setUpMoreOptionsButton(onClick: () -> Unit) {
+        binding.moreButton.setOnClickListener {
+            onClick()
+        }
+    }
+
+    override fun setColorPickerColors(accent: Int, background: Int) {
+        binding.pickerButton.backgroundTintList = ColorStateList.valueOf(accent)
+        binding.pickerButton.foregroundTintList = ColorStateList.valueOf(background)
     }
 
     override fun setThemeColors(colors: PreviewColorsModel) {
+        binding.previewBackground.backgroundTintList = ColorStateList.valueOf(colors.previewBackground)
         binding.chatListPreview.setColors(colors)
         binding.chatPreview.setColors(colors)
     }

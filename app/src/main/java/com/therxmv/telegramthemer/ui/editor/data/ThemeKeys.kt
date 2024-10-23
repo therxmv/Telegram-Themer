@@ -2,6 +2,7 @@ package com.therxmv.telegramthemer.ui.editor.data
 
 object ThemeKeys {
     const val background = "background"
+    const val onBackground = "onBackground"
     const val accent = "accent"
     const val black = "black"
     const val white = "white"
@@ -20,6 +21,7 @@ object ThemeKeys {
  */
 object AdvancedThemeKeys {
     const val background = "background"
+    const val onBackground = "onBackground"
     const val black = "black"
     const val white = "white"
     const val gray_2 = "gray_2"

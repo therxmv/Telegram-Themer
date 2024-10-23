@@ -20,10 +20,11 @@ class ThemeToPreviewAdapter @Inject constructor(
         return PreviewColorsModel(
             accent = AdvancedThemeKeys.accent_5.get(),
             background = AdvancedThemeKeys.background.get(),
+            previewBackground = AdvancedThemeKeys.accent_2.get(),
             actionButton = AdvancedThemeKeys.accent_5.get(), // chats_actionBackground
             appbarColors = AppbarColors(
                 appbarIcon = AdvancedThemeKeys.gray_5.get(), // actionBarDefaultIcon
-                appbarTitle = AdvancedThemeKeys.black.get(), // actionBarDefaultTitle
+                appbarTitle = AdvancedThemeKeys.onBackground.get(), // actionBarDefaultTitle
             ),
             tabsColors = TabsColors(
                 tab = AdvancedThemeKeys.gray_5.get(), // actionBarTabUnactiveText
@@ -34,10 +35,10 @@ class ThemeToPreviewAdapter @Inject constructor(
             chatsColors = ChatsColors(
                 background = AdvancedThemeKeys.background.get(),
                 chatDate = AdvancedThemeKeys.gray_5.get(), // chats_date
-                unreadCounter = AdvancedThemeKeys.accent_3.get(), // chats_unreadCounter
+                unreadCounter = AdvancedThemeKeys.accent_4.get(), // chats_unreadCounter
                 unreadCounterMuted = AdvancedThemeKeys.gray_3.get(), // chats_unreadCounterMuted
                 avatarColor = AdvancedThemeKeys.accent_5.get(), // avatar_backgroundBlue
-                chatName = AdvancedThemeKeys.black.get(), // chats_name
+                chatName = AdvancedThemeKeys.onBackground.get(), // chats_name
                 senderName = AdvancedThemeKeys.accent_5.get(), // chats_nameMessage
                 message = AdvancedThemeKeys.gray_5.get(), // chats_message
                 actionMessage = AdvancedThemeKeys.accent_5.get(), // chats_actionMessage / chats_attachMessage

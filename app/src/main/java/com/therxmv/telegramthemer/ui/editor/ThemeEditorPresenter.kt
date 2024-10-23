@@ -1,6 +1,8 @@
 package com.therxmv.telegramthemer.ui.editor
 
 import android.graphics.Color
+import com.therxmv.telegramthemer.ui.editor.data.Styles
+import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
@@ -13,8 +15,15 @@ class ThemeEditorPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
 ) : ThemeEditorContract.Presenter() {
 
-    private var currentColor = Color.parseColor("#299FE9") // TODO default color; maybe "currentColors"
-    private val listeners: MutableList<ColorChangeListener> = mutableListOf()
+    private var themeState = ThemeState(
+        style = Styles.DEFAULT,
+        accent = Color.parseColor("#299FE9"), // TODO constant
+        isDark = false,
+        isAmoled = false,
+        isMonet = false,
+        isGradient = false,
+    )
+    private val listeners: MutableList<ThemeStateListener> = mutableListOf()
 
     override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {
         super.attachView(view, coroutineScope)
@@ -34,12 +43,16 @@ class ThemeEditorPresenter @Inject constructor(
 
         when (event) {
             is ThemeEditorEvent.OpenColorPicker -> {
-                view.openColorPicker(currentColor)
+                view.openColorPicker(themeState.accent)
+            }
+
+            is ThemeEditorEvent.OpenMoreOptions -> {
+                view.openMoreOptions(themeState)
             }
 
             is ThemeEditorEvent.SubscribeOnColorChanges -> {
                 listeners.add(event.listener)
-                event.listener.onColorChange(currentColor)
+                event.listener.onStateChange(themeState)
             }
 
             is ThemeEditorEvent.UnsubscribeFromColorChanges -> {
@@ -50,9 +63,16 @@ class ThemeEditorPresenter @Inject constructor(
     }
 
     override fun onColorChanged(color: Int) {
-        currentColor = color
+        themeState = themeState.copy(accent = color, isMonet = false)
         listeners.forEach {
-            it.onColorChange(color)
+            it.onStateChange(themeState)
+        }
+    }
+
+    override fun onPropertyChange(themeState: ThemeState) {
+        this.themeState = themeState
+        listeners.forEach {
+            it.onStateChange(themeState)
         }
     }
 }

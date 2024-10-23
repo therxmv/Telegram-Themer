@@ -5,14 +5,6 @@ import androidx.core.content.ContextCompat
 import com.therxmv.telegramthemer.R
 import javax.inject.Inject
 
-data class ThemeState(
-    val accent: Int,
-    val isDark: Boolean,
-    val isAmoled: Boolean,
-    val isMonet: Boolean,
-    // TODO val isGradient: Boolean,
-)
-
 class ThemeValuesProvider @Inject constructor(
     private val context: Context,
 ): ThemeValues {
@@ -40,6 +32,7 @@ class ThemeValuesProvider @Inject constructor(
 
         return mapOf( // TODO add "tt_" before each to separate from attheme (or we will build file in runtime)
             AdvancedThemeKeys.background to ThemeKeys.background.get(),
+            AdvancedThemeKeys.onBackground to ThemeKeys.onBackground.get(),
             AdvancedThemeKeys.black to ThemeKeys.black.get(),
             AdvancedThemeKeys.white to ThemeKeys.white.get(),
             AdvancedThemeKeys.gray_2 to gray2,
@@ -79,14 +72,12 @@ class ThemeValuesProvider @Inject constructor(
         }
 
         val background = black.takeIf { state.isDark } ?: white
-        val accent = when {
-            state.isMonet -> ContextCompat.getColor(context, R.color.theme_accent1_200).colorToHex()
-            else -> state.accent.colorToHex()
-        }
+        val onBackground = white.takeIf { state.isDark } ?: black
 
         return mapOf(
             ThemeKeys.background to background,
-            ThemeKeys.accent to accent,
+            ThemeKeys.onBackground to onBackground,
+            ThemeKeys.accent to state.accent.colorToHex(),
             ThemeKeys.black to black,
             ThemeKeys.white to white,
             ThemeKeys.gray to "#919191", // maybe depends on isMonet

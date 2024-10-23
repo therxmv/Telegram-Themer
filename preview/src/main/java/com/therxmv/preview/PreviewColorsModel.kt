@@ -3,6 +3,7 @@ package com.therxmv.preview
 data class PreviewColorsModel(
     val accent: Int,
     val background: Int,
+    val previewBackground: Int,
     val actionButton: Int,
     val appbarColors: AppbarColors,
     val tabsColors: TabsColors,

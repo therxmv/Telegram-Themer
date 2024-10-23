@@ -38,4 +38,10 @@
     <string name="more_label">More options</string>
     <string name="export_label">Export the theme</string>
 
+    <string name="more_dropdown_default">Default</string>
+    <string name="more_dark_label">Dark Theme</string>
+    <string name="more_amoled_label">Amoled Theme</string>
+    <string name="more_monet_label">Monet</string>
+    <string name="more_gradient_lable">Gradient</string>
+
 </resources>

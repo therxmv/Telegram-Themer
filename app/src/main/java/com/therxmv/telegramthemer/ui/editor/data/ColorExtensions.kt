@@ -9,4 +9,4 @@ fun String.hexToRgb() = listOf(
 )
 
 fun Int.colorToHex(): String =
-    Integer.toHexString(this).drop(2)
+    "#" + Integer.toHexString(this).drop(2) // TODO think about transparency

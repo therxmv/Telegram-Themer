@@ -1,20 +1,18 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
-import android.graphics.Color
-import com.therxmv.preview.AppbarColors
-import com.therxmv.preview.ChatsColors
-import com.therxmv.preview.PreviewColorsModel
-import com.therxmv.preview.TabsColors
-import com.therxmv.telegramthemer.ui.editor.ColorChangeListener
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
+import com.therxmv.telegramthemer.ui.editor.ThemeStateListener
+import com.therxmv.telegramthemer.ui.editor.data.PreviewColorsAdapter
+import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 class SimpleThemeEditPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
-): SimpleThemeEditContract.Presenter(), ColorChangeListener {
+    private val previewColorsAdapter: PreviewColorsAdapter,
+): SimpleThemeEditContract.Presenter(), ThemeStateListener {
 
     override fun attachView(view: SimpleThemeEditContract.View, coroutineScope: CoroutineScope) {
         super.attachView(view, coroutineScope)
@@ -26,6 +24,9 @@ class SimpleThemeEditPresenter @Inject constructor(
         view.setUpColorPickerButton {
             themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenColorPicker }
         }
+        view.setUpMoreOptionsButton {
+            themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenMoreOptions }
+        }
     }
 
     override fun detachView() {
@@ -35,60 +36,9 @@ class SimpleThemeEditPresenter @Inject constructor(
         super.detachView()
     }
 
-    override fun onColorChange(color: Int) { // TODO change button border and theme background
-        view.setColorPickerBackground(color)
-        setThemeColors(color)
-    }
-
-    /* TODO
-        Make map with key as accent, background, etc and value as value to which it should apply
-        mapOf(
-            "background" to listOf("actionBarActionModeDefault"),
-            "accent_500" to listOf("actionButton", "appbarTitle"),
-        )
-        mapOf(
-            "background" to {color hex or int},
-            "accent_500" to {color hex or int},
-        )
-     */
-
-    private fun setThemeColors(color: Int) {
-        val background = Color.parseColor("#000000")
-        val accentColor = color
-        val grey = Color.parseColor("#7a7a7a")
-
-        val colors = PreviewColorsModel(
-            accent = accentColor,
-            background = background,
-            actionButton = accentColor,
-            appbarColors = AppbarColors(
-                appbarIcon = grey,
-                appbarTitle = accentColor,
-            ),
-            tabsColors = TabsColors(
-                tab = grey,
-                selectedTab = accentColor,
-                tabSelector = accentColor,
-                tabUnread = accentColor,
-            ),
-            chatsColors = ChatsColors(
-                background = background,
-                chatDate = grey,
-                unreadCounter = accentColor,
-                unreadCounterMuted = grey,
-                avatarColor = accentColor,
-                chatName = grey,
-                senderName = accentColor,
-                message = grey,
-                actionMessage = accentColor,
-                muteIcon = grey,
-                online = accentColor,
-                secretIcon = accentColor,
-                secretName = accentColor,
-                sentCheck = accentColor,
-            ),
-        )
-
-        view.setThemeColors(colors)
+    override fun onStateChange(themeState: ThemeState) { // TODO change button border and theme background
+        val model = previewColorsAdapter.getDefaultThemeColors(themeState)
+        view.setColorPickerColors(model.accent, model.background)
+        view.setThemeColors(model)
     }
 }

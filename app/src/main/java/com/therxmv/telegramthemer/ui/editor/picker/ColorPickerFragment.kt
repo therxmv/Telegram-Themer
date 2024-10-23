@@ -26,7 +26,7 @@ class ColorPickerFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBi
         private const val DEFAULT_DIM = 0.3f
         private const val TRANSPARENCY_VALUE = 0.3f
         
-        const val INITIAL_COLOR_KEY = "InitialColorKey"
+        private const val INITIAL_COLOR_KEY = "InitialColorKey"
 
         fun createInstance(initialColor: Int) = ColorPickerFragment().apply {
             arguments = Bundle().apply {

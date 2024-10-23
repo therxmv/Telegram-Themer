@@ -7,7 +7,8 @@ interface SimpleThemeEditContract {
 
     interface View {
         fun setUpColorPickerButton(onClick: () -> Unit)
-        fun setColorPickerBackground(color: Int)
+        fun setUpMoreOptionsButton(onClick: () -> Unit)
+        fun setColorPickerColors(accent: Int, background: Int)
         fun setThemeColors(colors: PreviewColorsModel)
     }
 
