@@ -13,13 +13,7 @@
         <activity
             android:name=".ui.AboutActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".ui.MainActivity">
-
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.therxmv.telegramthemer.ui.MainActivity" />
-        </activity>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.editor.ThemeEditorActivity"

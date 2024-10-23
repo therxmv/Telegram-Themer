@@ -1,7 +1,8 @@
 package com.therxmv.telegramthemer.utils
 
-const val SHARED_PREFS_THEME = "sharedPrefsTheme"
 const val DEFAULT_COLOR = "299fe9"
+const val SHARED_PREFS_THEME_KEY = "ThemeStateKey"
+const val DEFAULT_HEX_COLOR = "#299FE9"
 
 object ThemeFileNames {
     const val DEFAULT_DAY_THEME = "TheDay.attheme"

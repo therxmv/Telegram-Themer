@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.di
+package com.therxmv.telegramthemer.di.singleton
 
 import dagger.Module
 import dagger.Provides

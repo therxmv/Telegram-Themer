@@ -1,7 +1,7 @@
 package com.therxmv.telegramthemer.app
 
 import com.therxmv.telegramthemer.di.AppModule
-import com.therxmv.telegramthemer.di.SingletonModule
+import com.therxmv.telegramthemer.di.singleton.SingletonModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

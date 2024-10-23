@@ -14,7 +14,7 @@ import com.therxmv.telegramthemer.databinding.FragmentMoreOptionsBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingBottomSheetFragment
 import com.therxmv.telegramthemer.ui.editor.data.Styles
 import com.therxmv.telegramthemer.ui.editor.data.ThemeState
-import com.therxmv.telegramthemer.utils.checkVersionForMonet
+import com.therxmv.telegramthemer.utils.isMonetAvailable
 import com.therxmv.telegramthemer.utils.toVisibility
 
 class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBinding>() {
@@ -86,9 +86,7 @@ class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBi
             binding.gradientCheckBox.isChecked = isGradient
 
             binding.monetCheckBox.isChecked = isMonet
-            checkVersionForMonet().toVisibility().also { isVisible ->
-                binding.monetCheckBox.visibility = isVisible
-            }
+            binding.monetCheckBox.visibility = isMonetAvailable().toVisibility()
         }
     }
 

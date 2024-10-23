@@ -1,14 +1,14 @@
 package com.therxmv.telegramthemer.domain.usecase.storage
 
-import com.therxmv.telegramthemer.domain.model.ThemeModel
-import com.therxmv.telegramthemer.data.source.ThemeDataSource
-import com.therxmv.telegramthemer.data.source.ThemeSharedPrefsDataSource
+import com.therxmv.telegramthemer.data.source.SharedPrefsSource
+import com.therxmv.telegramthemer.ui.editor.data.ThemeState
+import javax.inject.Inject
 
-class SaveThemeUseCase(
-    private val themeDataSource: ThemeDataSource = ThemeSharedPrefsDataSource(),
+class SaveThemeUseCase @Inject constructor(
+    private val themeDataSource: SharedPrefsSource,
 ) {
 
-    operator fun invoke(themeModel: ThemeModel) {
-        themeDataSource.save(themeModel)
+    operator fun invoke(themeState: ThemeState) {
+        themeDataSource.saveThemeState(themeState)
     }
 }

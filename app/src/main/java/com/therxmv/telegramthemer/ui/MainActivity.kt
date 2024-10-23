@@ -15,21 +15,18 @@ import android.widget.AutoCompleteTextView
 import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
-import com.therxmv.telegramthemer.domain.model.ThemeModel
 import com.therxmv.telegramthemer.databinding.ActivityMainBinding
+import com.therxmv.telegramthemer.domain.model.ThemeModel
 import com.therxmv.telegramthemer.utils.DEFAULT_COLOR
-import com.therxmv.telegramthemer.utils.checkVersionForMonet
+import com.therxmv.telegramthemer.utils.isMonetAvailable
 import com.therxmv.telegramthemer.utils.toVisibility
-import kotlinx.coroutines.flow.collectLatest
 import top.defaults.colorpicker.ColorPickerView
 import java.io.File
 
@@ -45,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val viewModel: MainViewModel by viewModels { MainViewModel.Factory() }
+//    private val viewModel: MainViewModel by viewModels { MainViewModel.Factory() }
 
     private var colorPickerColor = DEFAULT_COLOR
     private val styles by lazy { resources.getStringArray(R.array.styles) }
@@ -75,12 +72,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.loadFromSharedPrefs()
+//        viewModel.loadFromSharedPrefs()
     }
 
     override fun onPause() {
         super.onPause()
-        viewModel.saveToSharedPrefs()
+//        viewModel.saveToSharedPrefs()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -115,32 +112,32 @@ class MainActivity : AppCompatActivity() {
         }
 
         dropdownItems.setOnItemClickListener { _, _, _, _ ->
-            viewModel.setThemeProperties(default = dropdownInput.editText?.text.toString() == styles.first())
+//            viewModel.setThemeProperties(default = dropdownInput.editText?.text.toString() == styles.first())
         }
     }
 
     private fun observeInputError() {
         lifecycleScope.launchWhenCreated {
-            viewModel.inputValidationState.collectLatest {
-                if (it == null) {
-                    inputLayout.errorIconDrawable = null
-                    inputLayout.error = null
-                } else {
-                    inputLayout.error = getString(it.text)
-                }
-            }
+//            viewModel.inputValidationState.collectLatest {
+//                if (it == null) {
+//                    inputLayout.errorIconDrawable = null
+//                    inputLayout.error = null
+//                } else {
+//                    inputLayout.error = getString(it.text)
+//                }
+//            }
         }
     }
 
     private fun observeThemeState() {
         lifecycleScope.launchWhenCreated {
-            viewModel.themePropsState.collectLatest {
-                updateInputLayout(it)
-                updateCheckBoxes(it)
-
-                dropdownItems.setText(if (it.isDefault) styles[0] else styles[1])
-                setupDropdown(styles, dropdownItems)
-            }
+//            viewModel.themePropsState.collectLatest {
+//                updateInputLayout(it)
+//                updateCheckBoxes(it)
+//
+//                dropdownItems.setText(if (it.isDefault) styles[0] else styles[1])
+//                setupDropdown(styles, dropdownItems)
+//            }
         }
     }
 
@@ -148,14 +145,15 @@ class MainActivity : AppCompatActivity() {
         inputLayout.isEnabled = themeModel.isMonet.not()
         inputLayout.editText?.setText(themeModel.color)
 
-        val isValidInput = viewModel.isValidInput(
-            inputLayout.editText?.text.toString()
-        )
+        val isValidInput = false
+//            viewModel.isValidInput(
+//            inputLayout.editText?.text.toString()
+//        )
 
         if (isValidInput) {
             inputLayout.setEndIconTintList(ColorStateList.valueOf(Color.parseColor("#" + themeModel.color)))
             colorPickerColor = themeModel.color
-            viewModel.createThemeFile(applicationContext, binding.themePreview)
+//            viewModel.createThemeFile(applicationContext, binding.themePreview)
         }
     }
 
@@ -170,7 +168,7 @@ class MainActivity : AppCompatActivity() {
             monetCheckBox.isChecked = isMonet
             monetBgCheckBox.isChecked = isMonetBackground
 
-            checkVersionForMonet().toVisibility().also { isVisible ->
+            isMonetAvailable().toVisibility().also { isVisible ->
                 monetCheckBox.visibility = isVisible
                 monetBgCheckBox.visibility = isVisible
             }
@@ -180,35 +178,35 @@ class MainActivity : AppCompatActivity() {
     private fun initCheckBoxListeners() {
         monetCheckBox.setOnClickListener {
             it as CheckBox
-            viewModel.setThemeProperties(
-                hex = Integer.toHexString(
-                    ContextCompat.getColor(
-                        this,
-                        R.color.theme_accent1_200
-                    )
-                ).drop(2),
-                monet = it.isChecked,
-            )
+//            viewModel.setThemeProperties(
+//                hex = Integer.toHexString(
+//                    ContextCompat.getColor(
+//                        this,
+//                        R.color.theme_accent1_200
+//                    )
+//                ).drop(2),
+//                monet = it.isChecked,
+//            )
         }
 
         monetBgCheckBox.setOnClickListener {
             it as CheckBox
-            viewModel.setThemeProperties(monetBg = it.isChecked)
+//            viewModel.setThemeProperties(monetBg = it.isChecked)
         }
 
         gradientCheckBox.setOnClickListener {
             it as CheckBox
-            viewModel.setThemeProperties(gradient = it.isChecked)
+//            viewModel.setThemeProperties(gradient = it.isChecked)
         }
 
         amoledCheckBox.setOnClickListener {
             it as CheckBox
-            viewModel.setThemeProperties(amoled = it.isChecked)
+//            viewModel.setThemeProperties(amoled = it.isChecked)
         }
 
         darkCheckBox.setOnClickListener {
             it as CheckBox
-            viewModel.setThemeProperties(dark = it.isChecked)
+//            viewModel.setThemeProperties(dark = it.isChecked)
         }
     }
 
@@ -221,7 +219,7 @@ class MainActivity : AppCompatActivity() {
                 inputLayout.clearFocus()
                 hideKeyboard(v)
 
-                viewModel.setThemeProperties(hex = inputLayout.editText?.text.toString())
+//                viewModel.setThemeProperties(hex = inputLayout.editText?.text.toString())
 
                 return@OnEditorActionListener true
             }
@@ -248,7 +246,7 @@ class MainActivity : AppCompatActivity() {
 
                 inputLayout.setEndIconTintList(ColorStateList.valueOf(color))
                 inputLayout.error = null
-                viewModel.setThemeProperties(hex = hex.drop(1))
+//                viewModel.setThemeProperties(hex = hex.drop(1))
 
                 dialog.dismiss()
             }
@@ -261,7 +259,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun shareTheme() {
-        val fileName = viewModel.getFilesNames().first()
+        val fileName = ""//viewModel.getFilesNames().first()
 
         val themeFile = File(applicationContext.filesDir, fileName)
 

@@ -9,7 +9,7 @@ import com.therxmv.telegramthemer.utils.ThemeAccent.ACCENT_300
 import com.therxmv.telegramthemer.utils.ThemeAccent.ACCENT_500
 import com.therxmv.telegramthemer.utils.ThemeAccent.ACCENT_700
 import com.therxmv.telegramthemer.utils.ThemeAccent.ACCENT_800
-import com.therxmv.telegramthemer.utils.checkVersionForMonet
+import com.therxmv.telegramthemer.utils.isMonetAvailable
 
 class CreateThemeUseCase {
 
@@ -104,5 +104,5 @@ class CreateThemeUseCase {
         return String.format("#%06X", 0xFFFFFF and color)
     }
 
-    private fun ThemeModel.getMonetAvailability() = this.isMonetBackground && checkVersionForMonet()
+    private fun ThemeModel.getMonetAvailability() = this.isMonetBackground && isMonetAvailable()
 }

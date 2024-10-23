@@ -1,7 +1,7 @@
 package com.therxmv.telegramthemer.ui.editor
 
-import android.graphics.Color
-import com.therxmv.telegramthemer.ui.editor.data.Styles
+import com.therxmv.telegramthemer.domain.usecase.storage.GetCachedThemeUseCase
+import com.therxmv.telegramthemer.domain.usecase.storage.SaveThemeUseCase
 import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -13,16 +13,11 @@ import javax.inject.Named
 class ThemeEditorPresenter @Inject constructor(
     @Named("Default") private val defaultDispatcher: CoroutineDispatcher,
     private val themeEditorEventProvider: ThemeEditorEventProvider,
+    getCachedTheme: GetCachedThemeUseCase,
+    private val saveTheme: SaveThemeUseCase,
 ) : ThemeEditorContract.Presenter() {
 
-    private var themeState = ThemeState(
-        style = Styles.DEFAULT,
-        accent = Color.parseColor("#299FE9"), // TODO constant
-        isDark = false,
-        isAmoled = false,
-        isMonet = false,
-        isGradient = false,
-    )
+    private var themeState = getCachedTheme()
     private val listeners: MutableList<ThemeStateListener> = mutableListOf()
 
     override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {
@@ -63,14 +58,17 @@ class ThemeEditorPresenter @Inject constructor(
     }
 
     override fun onColorChanged(color: Int) {
-        themeState = themeState.copy(accent = color, isMonet = false)
-        listeners.forEach {
-            it.onStateChange(themeState)
-        }
+        updateThemeSate(themeState.copy(accent = color, isMonet = false))
     }
 
     override fun onPropertyChange(themeState: ThemeState) {
-        this.themeState = themeState
+        updateThemeSate(themeState)
+    }
+
+    private fun updateThemeSate(newState: ThemeState) {
+        themeState = newState
+        saveTheme(themeState)
+
         listeners.forEach {
             it.onStateChange(themeState)
         }
