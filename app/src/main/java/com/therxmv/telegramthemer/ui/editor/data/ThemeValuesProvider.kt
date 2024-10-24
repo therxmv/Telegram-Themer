@@ -36,7 +36,6 @@ class ThemeValuesProvider @Inject constructor(
             AdvancedThemeKeys.gray_1 to gray1, // TODO maybe add all 1..9 values
             AdvancedThemeKeys.gray_3 to grays[3],
             AdvancedThemeKeys.gray_5 to grays[5],
-            AdvancedThemeKeys.gray_6 to grays[6],
             AdvancedThemeKeys.gray_8 to gray8,
             AdvancedThemeKeys.gray_9 to gray9,
             AdvancedThemeKeys.accent_2 to accents[2],
@@ -55,7 +54,7 @@ class ThemeValuesProvider @Inject constructor(
             AdvancedThemeKeys.tr_accent_5 to "#77${accents[5].drop(1)}",
             AdvancedThemeKeys.tr_accent_7 to "#44${accents[7].drop(1)}",
             AdvancedThemeKeys.tr_gray_5 to "#77${grays[5].drop(1)}",
-            AdvancedThemeKeys.tr_gray_8 to "#AA${grays[8].drop(1)}",
+            AdvancedThemeKeys.tr_gray_3 to "#AA${grays[3].drop(1)}",
         )
     }
 

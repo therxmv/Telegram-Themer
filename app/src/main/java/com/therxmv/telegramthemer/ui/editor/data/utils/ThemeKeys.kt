@@ -28,7 +28,6 @@ object AdvancedThemeKeys {
     const val gray_1 = "gray_1"
     const val gray_3 = "gray_3"
     const val gray_5 = "gray_5"
-    const val gray_6 = "gray_6"
     const val gray_8 = "gray_8"
     const val gray_9 = "gray_9"
     const val accent_2 = "accent_2"
@@ -47,5 +46,5 @@ object AdvancedThemeKeys {
     const val tr_accent_5 = "tr_accent_5"
     const val tr_accent_7 = "tr_accent_7"
     const val tr_gray_5 = "tr_gray_5"
-    const val tr_gray_8 = "tr_gray_8"
+    const val tr_gray_3 = "tr_gray_3"
 }
