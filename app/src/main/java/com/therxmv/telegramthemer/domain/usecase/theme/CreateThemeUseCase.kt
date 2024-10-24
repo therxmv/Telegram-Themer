@@ -51,7 +51,6 @@ class CreateThemeUseCase {
             "#202020"
         }
 
-        // TODO extract hardcoded colors
         val hexesNames = mapOf(
             "bl_900" to black,
             "wh_100" to white,

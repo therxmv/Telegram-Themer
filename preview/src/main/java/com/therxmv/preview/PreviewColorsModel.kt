@@ -19,6 +19,7 @@ data class TabsColors(
     val tab: Int,
     val selectedTab: Int,
     val tabSelector: Int,
+    val selectedTabUnread: Int,
     val tabUnread: Int,
 )
 

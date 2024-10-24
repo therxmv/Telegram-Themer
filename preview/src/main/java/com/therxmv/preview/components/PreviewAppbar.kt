@@ -34,7 +34,7 @@ class PreviewAppbar(
         RoundedRectangleView(context).apply {
             id = leftIconId
             layoutParams = LayoutParams(
-                /* w = */ dpValues.dp30, // TODO scale size at this point
+                /* w = */ dpValues.dp30,
                 /* h = */ dpValues.dp30,
             ).apply {
                 addRule(ALIGN_PARENT_TOP)

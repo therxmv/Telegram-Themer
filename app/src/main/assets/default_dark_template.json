@@ -682,5 +682,13 @@
   "chat_inPollCorrectAnswer": "green_5",
   "chat_inPollWrongAnswer": "red_5",
   "chat_outPollCorrectAnswer": "green_5",
-  "chat_outPollWrongAnswer": "red_5"
+  "chat_outPollWrongAnswer": "red_5",
+  "color_blue": "accent_5",
+  "color_green": "green_5",
+  "color_lightblue": "blue_5",
+  "color_lightgreen": "green_5",
+  "color_orange": "orange_5",
+  "color_purple": "purple_5",
+  "color_red": "red_5",
+  "color_yellow": "yellow_5"
 }

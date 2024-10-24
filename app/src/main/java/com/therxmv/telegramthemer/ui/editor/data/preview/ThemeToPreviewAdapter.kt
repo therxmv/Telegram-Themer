@@ -7,7 +7,11 @@ import com.therxmv.preview.PreviewColorsModel
 import com.therxmv.preview.TabsColors
 import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import com.therxmv.telegramthemer.ui.editor.data.ThemeValues
-import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys
+import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.accent_2
+import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.accent_5
+import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.accent_9
+import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.background
+import com.therxmv.telegramthemer.ui.editor.data.utils.AtthemePreviewKeys
 import javax.inject.Inject
 
 class ThemeToPreviewAdapter @Inject constructor(
@@ -16,42 +20,48 @@ class ThemeToPreviewAdapter @Inject constructor(
 
     override fun getDefaultThemeColors(themeState: ThemeState): PreviewColorsModel {
         val values = themeValues.getAdvancedColorSchema(themeState)
-        val get: String.() -> Int = {
-            Color.parseColor(values.getValue(this))
+        val atthemeMap = themeValues.getAtthemeMap(themeState)
+        val get: Collection<String>.() -> Int = {
+            val colorKey = atthemeMap.getValue(this.first())
+            Color.parseColor(values.getValue(colorKey))
         }
-        val previewBackground = AdvancedThemeKeys.accent_9.get().takeIf { themeState.isDark }
-            ?: AdvancedThemeKeys.accent_2.get()
+        val backgroundKeys = atthemeMap.filter { it.value == background }.keys
+        val background = backgroundKeys.get()
+
+        val previewBackground = Color.parseColor(values.getValue(accent_9)).takeIf { themeState.isDark }
+            ?: Color.parseColor(values.getValue(accent_2))
 
         return PreviewColorsModel(
-            accent = AdvancedThemeKeys.accent_5.get(),
-            background = AdvancedThemeKeys.background.get(),
+            accent = Color.parseColor(values.getValue(accent_5)),
+            background = background,
             previewBackground = previewBackground,
-            actionButton = AdvancedThemeKeys.accent_5.get(), // chats_actionBackground
+            actionButton = AtthemePreviewKeys.chats_actionBackground.get(),
             appbarColors = AppbarColors(
-                appbarIcon = AdvancedThemeKeys.gray_5.get(), // actionBarDefaultIcon
-                appbarTitle = AdvancedThemeKeys.onBackground.get(), // actionBarDefaultTitle
+                appbarIcon = AtthemePreviewKeys.actionBarDefaultIcon.get(),
+                appbarTitle = AtthemePreviewKeys.actionBarDefaultTitle.get(),
             ),
             tabsColors = TabsColors(
-                tab = AdvancedThemeKeys.gray_5.get(), // actionBarTabUnactiveText
-                selectedTab = AdvancedThemeKeys.accent_5.get(), // actionBarTabActiveText
-                tabSelector = AdvancedThemeKeys.accent_5.get(), // actionBarTabLine
-                tabUnread = AdvancedThemeKeys.accent_5.get(), // chats_tabUnreadActiveBackground / chats_tabUnreadUnactiveBackground
+                tab = AtthemePreviewKeys.actionBarTabUnactiveText.get(),
+                selectedTab = AtthemePreviewKeys.actionBarTabActiveText.get(),
+                tabSelector = AtthemePreviewKeys.actionBarTabLine.get(),
+                selectedTabUnread = AtthemePreviewKeys.chats_tabUnreadActiveBackground.get(),
+                tabUnread = AtthemePreviewKeys.chats_tabUnreadUnactiveBackground.get(),
             ),
             chatsColors = ChatsColors(
-                background = AdvancedThemeKeys.background.get(),
-                chatDate = AdvancedThemeKeys.gray_5.get(), // chats_date
-                unreadCounter = AdvancedThemeKeys.accent_4.get(), // chats_unreadCounter
-                unreadCounterMuted = AdvancedThemeKeys.gray_8.get(), // chats_unreadCounterMuted
-                avatarColor = AdvancedThemeKeys.accent_5.get(), // avatar_backgroundBlue
-                chatName = AdvancedThemeKeys.onBackground.get(), // chats_name
-                senderName = AdvancedThemeKeys.accent_5.get(), // chats_nameMessage
-                message = AdvancedThemeKeys.gray_5.get(), // chats_message
-                actionMessage = AdvancedThemeKeys.accent_5.get(), // chats_actionMessage / chats_attachMessage
-                muteIcon = AdvancedThemeKeys.gray_8.get(), // chats_muteIcon
-                online = AdvancedThemeKeys.accent_5.get(), // chats_onlineCircle
-                secretIcon = AdvancedThemeKeys.accent_5.get(), // chats_secretIcon
-                secretName = AdvancedThemeKeys.accent_5.get(), // chats_secretName
-                sentCheck = AdvancedThemeKeys.accent_5.get(), // chats_sentReadCheck
+                background = background,
+                chatDate = AtthemePreviewKeys.chats_date.get(),
+                unreadCounter = AtthemePreviewKeys.chats_unreadCounter.get(),
+                unreadCounterMuted = AtthemePreviewKeys.chats_unreadCounterMuted.get(),
+                avatarColor = AtthemePreviewKeys.avatar_backgroundBlue.get(),
+                chatName = AtthemePreviewKeys.chats_name.get(),
+                senderName = AtthemePreviewKeys.chats_nameMessage.get(),
+                message = AtthemePreviewKeys.chats_message.get(),
+                actionMessage = AtthemePreviewKeys.chats_actionMessage.get(),
+                muteIcon = AtthemePreviewKeys.chats_muteIcon.get(),
+                online = AtthemePreviewKeys.chats_onlineCircle.get(),
+                secretIcon = AtthemePreviewKeys.chats_secretIcon.get(),
+                secretName = AtthemePreviewKeys.chats_secretName.get(),
+                sentCheck = AtthemePreviewKeys.chats_sentReadCheck.get(),
             ),
         )
     }

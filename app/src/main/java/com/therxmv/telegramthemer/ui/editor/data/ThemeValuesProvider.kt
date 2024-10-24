@@ -2,17 +2,26 @@ package com.therxmv.telegramthemer.ui.editor.data
 
 import android.content.Context
 import androidx.core.content.ContextCompat
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys
-import com.therxmv.telegramthemer.ui.editor.data.utils.ThemeKeys
+import com.therxmv.telegramthemer.ui.editor.data.utils.BaseThemeKeys
 import com.therxmv.telegramthemer.ui.editor.data.utils.colorToHex
-import com.therxmv.telegramthemer.ui.editor.data.utils.hexToRgb
-import com.therxmv.telegramthemer.ui.editor.data.utils.rgbToHex
+import com.therxmv.telegramthemer.ui.editor.data.utils.generateAllTints
+import java.io.Reader
 import javax.inject.Inject
 
 class ThemeValuesProvider @Inject constructor(
     private val context: Context,
 ): ThemeValues {
+
+    companion object {
+        private const val DEFAULT_LIGHT = "default_light_template.json"
+        private const val DEFAULT_DARK = "default_dark_template.json"
+        private const val SOZA_LIGHT = "soza_light_template.json"
+        private const val SOZA_DARK = "soza_dark_template.json"
+    }
 
     override fun getAdvancedColorSchema(state: ThemeState): Map<String, String> {
         val baseColors = getBaseColors(state)
@@ -20,8 +29,8 @@ class ThemeValuesProvider @Inject constructor(
             baseColors.getValue(this) // to avoid nullable because key should exist
         }
 
-        val grays = generateAllTints(ThemeKeys.gray.get())
-        val accents = generateAllTints(ThemeKeys.accent.get())
+        val grays = generateAllTints(BaseThemeKeys.gray.get())
+        val accents = generateAllTints(BaseThemeKeys.accent.get())
 
         // Gray should be more tinted in monet
         val gray1 = accents[1].takeIf { state.isMonet } ?: grays[1]
@@ -29,10 +38,8 @@ class ThemeValuesProvider @Inject constructor(
         val gray9 = accents[9].takeIf { state.isMonet } ?: grays[9]
 
         return mapOf(
-            AdvancedThemeKeys.background to ThemeKeys.background.get(),
-            AdvancedThemeKeys.onBackground to ThemeKeys.onBackground.get(),
-            AdvancedThemeKeys.black to ThemeKeys.black.get(),
-            AdvancedThemeKeys.white to ThemeKeys.white.get(),
+            AdvancedThemeKeys.background to BaseThemeKeys.background.get(),
+            AdvancedThemeKeys.onBackground to BaseThemeKeys.onBackground.get(),
             AdvancedThemeKeys.gray_1 to gray1, // TODO maybe add all 1..9 values
             AdvancedThemeKeys.gray_3 to grays[3],
             AdvancedThemeKeys.gray_5 to grays[5],
@@ -44,13 +51,13 @@ class ThemeValuesProvider @Inject constructor(
             AdvancedThemeKeys.accent_5 to accents[5],
             AdvancedThemeKeys.accent_7 to accents[7],
             AdvancedThemeKeys.accent_9 to accents[9],
-            AdvancedThemeKeys.red_5 to ThemeKeys.red.get(),
-            AdvancedThemeKeys.orange_5 to ThemeKeys.orange.get(),
-            AdvancedThemeKeys.yellow_5 to ThemeKeys.yellow.get(),
-            AdvancedThemeKeys.green_5 to ThemeKeys.green.get(),
-            AdvancedThemeKeys.blue_5 to ThemeKeys.blue.get(),
-            AdvancedThemeKeys.purple_5 to ThemeKeys.purple.get(),
-            AdvancedThemeKeys.transparent_0 to ThemeKeys.transparent.get(),
+            AdvancedThemeKeys.red_5 to BaseThemeKeys.red.get(),
+            AdvancedThemeKeys.orange_5 to BaseThemeKeys.orange.get(),
+            AdvancedThemeKeys.yellow_5 to BaseThemeKeys.yellow.get(),
+            AdvancedThemeKeys.green_5 to BaseThemeKeys.green.get(),
+            AdvancedThemeKeys.blue_5 to BaseThemeKeys.blue.get(),
+            AdvancedThemeKeys.purple_5 to BaseThemeKeys.purple.get(),
+            AdvancedThemeKeys.transparent_0 to BaseThemeKeys.transparent.get(),
             AdvancedThemeKeys.tr_accent_5 to "#77${accents[5].drop(1)}",
             AdvancedThemeKeys.tr_accent_7 to "#44${accents[7].drop(1)}",
             AdvancedThemeKeys.tr_gray_5 to "#77${grays[5].drop(1)}",
@@ -77,46 +84,32 @@ class ThemeValuesProvider @Inject constructor(
         val onBackground = white.takeIf { state.isDark } ?: black
 
         return mapOf(
-            ThemeKeys.background to background,
-            ThemeKeys.onBackground to onBackground,
-            ThemeKeys.accent to state.accent.colorToHex(),
-            ThemeKeys.black to black,
-            ThemeKeys.white to white,
-            ThemeKeys.gray to gray,
-            ThemeKeys.yellow to "#E3B727",
-            ThemeKeys.orange to "#DF9700",
-            ThemeKeys.red to "#E23333",
-            ThemeKeys.green to "#52CF2C",
-            ThemeKeys.blue to "#299FE9",
-            ThemeKeys.purple to "#776BF5",
-            ThemeKeys.transparent to "#00000000",
+            BaseThemeKeys.background to background,
+            BaseThemeKeys.onBackground to onBackground,
+            BaseThemeKeys.accent to state.accent.colorToHex(),
+            BaseThemeKeys.gray to gray,
+            BaseThemeKeys.yellow to "#E3B727",
+            BaseThemeKeys.orange to "#DF9700",
+            BaseThemeKeys.red to "#E23333",
+            BaseThemeKeys.green to "#52CF2C",
+            BaseThemeKeys.blue to "#299FE9",
+            BaseThemeKeys.purple to "#776BF5",
+            BaseThemeKeys.transparent to "#00000000",
         )
     }
 
-    private fun generateAllTints(baseColor: String): List<String> =
-        (0..10).map {
-            when {
-                it < 5 -> baseColor.getDarkerColor(1 - it * 0.2f)
-                it > 5 -> baseColor.getLighterColor((it - 5) * 0.2f)
-                else -> baseColor
-            }
+    override fun getAtthemeMap(state: ThemeState): Map<String, String> {
+        val jsonName = when (state.style) {
+            Styles.DEFAULT -> DEFAULT_DARK.takeIf { state.isDark } ?: DEFAULT_LIGHT
+            Styles.SOZA -> SOZA_DARK.takeIf { state.isDark } ?: SOZA_LIGHT
         }
+        val reader = context.assets.open(jsonName).bufferedReader()
 
-    private fun String.getLighterColor(factor: Float): String {
-        val rgbList = this.hexToRgb()
-        val lighterList = rgbList.map { color ->
-            (color + (factor * (255 - color))).toInt().coerceIn(0, 255)
-        }
-
-        return lighterList.rgbToHex()
+        return reader.jsonToMap()
     }
 
-    private fun String.getDarkerColor(factor: Float): String {
-        val rgbList = this.hexToRgb()
-        val darkerList = rgbList.map { color ->
-            (color * (1 - factor)).toInt().coerceIn(0, 255)
-        }
-
-        return darkerList.rgbToHex()
+    private fun Reader.jsonToMap(): Map<String, String> {
+        val type = object : TypeToken<Map<String, String>>() {}.type
+        return Gson().fromJson(this, type)
     }
 }

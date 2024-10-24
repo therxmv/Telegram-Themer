@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ThemeState(
-    val style: Styles = Styles.DEFAULT, // TODO implementation
+    val style: Styles = Styles.DEFAULT,
     val accent: Int = Color.parseColor(DEFAULT_HEX_COLOR),
     val isDark: Boolean = false,
     val isAmoled: Boolean = false,
