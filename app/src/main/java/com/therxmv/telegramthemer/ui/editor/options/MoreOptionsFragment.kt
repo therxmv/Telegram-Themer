@@ -93,8 +93,10 @@ class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBi
     private fun initCheckBoxListeners() {
         binding.monetCheckBox.setOnClickListener {
             it as CheckBox
+
+            if (it.isChecked) setMonetColor()
+
             themeState = themeState?.copy(
-                accent = ContextCompat.getColor(requireContext(), R.color.theme_accent1_200),
                 isMonet = it.isChecked,
             )
             notifyAboutChanges()
@@ -111,6 +113,7 @@ class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBi
         binding.amoledCheckBox.setOnClickListener {
             it as CheckBox
 
+            // Toggle on dark check box as well
             val isAmoled = it.isChecked
             val isDark = binding.darkCheckBox.isChecked
                 .takeIf { isAmoled.not() } ?: true
@@ -121,12 +124,15 @@ class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBi
             )
             binding.darkCheckBox.isChecked = isDark
 
+            if (themeState?.isMonet == true) setMonetColor()
+
             notifyAboutChanges()
         }
 
         binding.darkCheckBox.setOnClickListener {
             it as CheckBox
 
+            // Toggle off amoled check box as well
             val isDark = it.isChecked
             val isAmoled = binding.amoledCheckBox.isChecked
                 .takeIf { isDark } ?: false
@@ -137,8 +143,21 @@ class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBi
             )
             binding.amoledCheckBox.isChecked = isAmoled
 
+            if (themeState?.isMonet == true) setMonetColor()
+
             notifyAboutChanges()
         }
+    }
+
+    private fun setMonetColor() {
+        val color = if (themeState?.isDark == true) {
+            R.color.theme_accent1_200
+        } else {
+            R.color.theme_accent1_500
+        }
+        themeState = themeState?.copy(
+            accent = ContextCompat.getColor(requireContext(), color),
+        )
     }
 
     private fun notifyAboutChanges() {

@@ -9,6 +9,7 @@ import com.therxmv.telegramthemer.ui.editor.data.ThemeValues
 import com.therxmv.telegramthemer.ui.editor.data.utils.colorToHex
 import java.io.File
 import java.io.Reader
+import java.util.UUID
 import javax.inject.Inject
 
 class ThemeToFileAdapter @Inject constructor(
@@ -47,7 +48,7 @@ class ThemeToFileAdapter @Inject constructor(
         val dark = DARK_LABEL.takeIf { state.isDark } ?: LIGHT_LABEL
         val color = state.accent.colorToHex().drop(1)
 
-        return "$style-$dark-$color$EXTENSION"
+        return "$style-$dark-${UUID.randomUUID()}$EXTENSION" // TODO add monet instead of color
     }
 
     private fun Reader.jsonToMap(): Map<String, String> {

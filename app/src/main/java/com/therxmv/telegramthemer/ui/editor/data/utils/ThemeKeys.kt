@@ -44,8 +44,8 @@ object AdvancedThemeKeys {
     const val blue_5 = "blue_5"
     const val purple_5 = "purple_5"
     const val transparent_0 = "transparent_0"
-    const val tr_accent_3 = "tr_accent_3"
     const val tr_accent_5 = "tr_accent_5"
+    const val tr_accent_7 = "tr_accent_7"
     const val tr_gray_5 = "tr_gray_5"
     const val tr_gray_8 = "tr_gray_8"
 }
