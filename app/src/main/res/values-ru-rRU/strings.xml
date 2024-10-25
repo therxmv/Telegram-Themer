@@ -35,4 +35,13 @@
     <string name="more_label">Больше опций</string>
     <string name="export_label">Експортировать тему</string>
 
+    <string name="more_dark_label">Темная тема</string>
+    <string name="more_amoled_label">Amoled тема</string>
+    <string name="more_monet_label">Monet</string>
+    <string name="more_gradient_lable">Градиент</string>
+
+    <string name="help_dialog_title">Как пользоваться?</string>
+    <string name="help_dialog_instruction"><b>1.</b> Выберите понравившийся цвет и настройте дополнительные параметры;\n<b>2.</b> Нажмите на кнопку <i>\"Export the theme\"</i>;\n<b>3.</b> Выберите <b>Telegram</b> в диалоговом окне, если он еще не открылся;\n<b>4.</b> <b>Поделитесь файлом темы</b> с кем-то или сохраните его в своих сохраненных сообщениях\n<b>5.</b> После того как файл загрузился, примените его.</string>
+    <string name="help_dialog_button">Understand</string>
+
 </resources>

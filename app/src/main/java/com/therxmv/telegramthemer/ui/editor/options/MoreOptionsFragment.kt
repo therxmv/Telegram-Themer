@@ -1,6 +1,5 @@
 package com.therxmv.telegramthemer.ui.editor.options
 
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import androidx.core.content.ContextCompat
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentMoreOptionsBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingBottomSheetFragment
@@ -20,7 +18,6 @@ import com.therxmv.telegramthemer.utils.toVisibility
 class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBinding>() {
 
     companion object {
-        private const val DEFAULT_DIM = 0.15f
         private const val CURRENT_STATE = "CurrentState"
 
         fun createInstance(currentState: ThemeState) = MoreOptionsFragment().apply {
@@ -30,7 +27,6 @@ class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBi
         }
     }
 
-    private var dialog: BottomSheetDialog? = null
     private var themeState: ThemeState? = null
 
     override fun onCreateView(
@@ -38,15 +34,6 @@ class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBi
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ) = onCreateView(inflater, container, FragmentMoreOptionsBinding::inflate)
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-
-        dialog?.behavior?.isDraggable = false
-        dialog?.window?.setDimAmount(DEFAULT_DIM)
-
-        return dialog!!
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

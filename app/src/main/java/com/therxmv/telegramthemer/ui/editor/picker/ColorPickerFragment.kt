@@ -1,7 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor.picker
 
 import android.annotation.SuppressLint
-import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -12,10 +11,10 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.view.allViews
 import androidx.core.widget.addTextChangedListener
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
 import com.therxmv.telegramthemer.databinding.FragmentColorPickerBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingBottomSheetFragment
+import com.therxmv.telegramthemer.ui.base.BaseBindingDialogFragment.Companion.DEFAULT_DIM
 import top.defaults.colorpicker.AlphaSliderView
 import top.defaults.colorpicker.BrightnessSliderView
 import top.defaults.colorpicker.ColorWheelView
@@ -23,7 +22,6 @@ import top.defaults.colorpicker.ColorWheelView
 class ColorPickerFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBinding>() {
 
     companion object {
-        private const val DEFAULT_DIM = 0.3f
         private const val TRANSPARENCY_VALUE = 0.3f
         
         private const val INITIAL_COLOR_KEY = "InitialColorKey"
@@ -35,22 +33,11 @@ class ColorPickerFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBi
         }
     }
 
-    private var dialog: BottomSheetDialog? = null
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ) = onCreateView(inflater, container, FragmentColorPickerBinding::inflate)
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-
-        dialog?.behavior?.isDraggable = false
-        dialog?.window?.setDimAmount(DEFAULT_DIM)
-
-        return dialog!!
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -141,14 +128,14 @@ class ColorPickerFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBi
         view.onTouchEvent(motionEvent)
         when (motionEvent.action) {
             MotionEvent.ACTION_DOWN -> {
-                dialog?.window?.attributes?.alpha = TRANSPARENCY_VALUE
-                dialog?.window?.setDimAmount(0f)
+                dialog.window?.attributes?.alpha = TRANSPARENCY_VALUE
+                dialog.window?.setDimAmount(0f)
             }
 
             MotionEvent.ACTION_UP -> {
                 updateInputValues()
-                dialog?.window?.attributes?.alpha = 1f
-                dialog?.window?.setDimAmount(DEFAULT_DIM)
+                dialog.window?.attributes?.alpha = 1f
+                dialog.window?.setDimAmount(DEFAULT_DIM)
             }
         }
 

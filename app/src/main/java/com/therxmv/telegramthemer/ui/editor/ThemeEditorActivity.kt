@@ -12,6 +12,7 @@ import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
 import com.therxmv.telegramthemer.ui.editor.data.ThemeState
+import com.therxmv.telegramthemer.ui.editor.help.HelpDialogFragment
 import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsFragment
 import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsSubscriber
 import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerFragment
@@ -36,6 +37,10 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
         super.onCreate(savedInstanceState)
         setContentView(ActivityThemeEditorBinding::inflate)
         presenter.attachView(this@ThemeEditorActivity, lifecycleScope)
+
+        HelpDialogFragment
+            .createInstance()
+            .show(supportFragmentManager, "HelpDialogFragment")
     }
 
     override fun onDestroy() {
