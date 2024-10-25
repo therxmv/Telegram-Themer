@@ -19,14 +19,14 @@ import top.defaults.colorpicker.AlphaSliderView
 import top.defaults.colorpicker.BrightnessSliderView
 import top.defaults.colorpicker.ColorWheelView
 
-class ColorPickerFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBinding>() {
+class ColorPickerBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBinding>() {
 
     companion object {
         private const val TRANSPARENCY_VALUE = 0.3f
         
         private const val INITIAL_COLOR_KEY = "InitialColorKey"
 
-        fun createInstance(initialColor: Int) = ColorPickerFragment().apply {
+        fun createInstance(initialColor: Int) = ColorPickerBottomSheetFragment().apply {
             arguments = Bundle().apply {
                 putInt(INITIAL_COLOR_KEY, initialColor)
             }

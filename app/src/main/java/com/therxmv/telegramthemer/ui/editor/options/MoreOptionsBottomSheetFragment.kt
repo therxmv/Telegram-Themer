@@ -15,12 +15,12 @@ import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import com.therxmv.telegramthemer.utils.isMonetAvailable
 import com.therxmv.telegramthemer.utils.toVisibility
 
-class MoreOptionsFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBinding>() {
+class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBinding>() {
 
     companion object {
         private const val CURRENT_STATE = "CurrentState"
 
-        fun createInstance(currentState: ThemeState) = MoreOptionsFragment().apply {
+        fun createInstance(currentState: ThemeState) = MoreOptionsBottomSheetFragment().apply {
             arguments = Bundle().apply {
                 putParcelable(CURRENT_STATE, currentState)
             }

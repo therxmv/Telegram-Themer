@@ -15,9 +15,9 @@ import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
 import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import com.therxmv.telegramthemer.ui.editor.help.HelpDialogFragment
-import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsFragment
+import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsBottomSheetFragment
 import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsSubscriber
-import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerFragment
+import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerBottomSheetFragment
 import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerSubscriber
 import java.io.File
 import javax.inject.Inject
@@ -67,15 +67,15 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     }
 
     override fun openColorPicker(currentColor: Int) {
-        ColorPickerFragment
+        ColorPickerBottomSheetFragment
             .createInstance(currentColor)
-            .show(supportFragmentManager, "ColorPickerFragment")
+            .show(supportFragmentManager, "ColorPickerBottomSheetFragment")
     }
 
     override fun openMoreOptions(themeState: ThemeState) {
-        MoreOptionsFragment
+        MoreOptionsBottomSheetFragment
             .createInstance(themeState)
-            .show(supportFragmentManager, "MoreOptionsFragment")
+            .show(supportFragmentManager, "MoreOptionsBottomSheetFragment")
     }
 
     override fun onColorChanged(color: Int) {

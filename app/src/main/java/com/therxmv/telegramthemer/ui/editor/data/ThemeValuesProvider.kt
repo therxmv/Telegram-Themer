@@ -21,6 +21,7 @@ class ThemeValuesProvider @Inject constructor(
         private const val DEFAULT_DARK = "default_dark_template.json"
         private const val SOZA_LIGHT = "soza_light_template.json"
         private const val SOZA_DARK = "soza_dark_template.json"
+        private const val GRADIENT_KEY = "chat_outBubbleGradient"
     }
 
     override fun getAdvancedColorSchema(state: ThemeState): Map<String, String> {
@@ -104,8 +105,13 @@ class ThemeValuesProvider @Inject constructor(
             Styles.SOZA -> SOZA_DARK.takeIf { state.isDark } ?: SOZA_LIGHT
         }
         val reader = context.assets.open(jsonName).bufferedReader()
+        val filteredGradient = reader.jsonToMap().filter {
+            if (state.isGradient.not()) {
+                it.key != GRADIENT_KEY
+            } else true
+        }
 
-        return reader.jsonToMap()
+        return filteredGradient
     }
 
     private fun Reader.jsonToMap(): Map<String, String> {
