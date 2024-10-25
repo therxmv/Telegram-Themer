@@ -12,7 +12,7 @@ import androidx.viewbinding.ViewBinding
 abstract class BaseBindingDialogFragment<B: ViewBinding> : DialogFragment() {
 
     companion object {
-        private const val DIALOG_WIDTH_RATIO = 0.8
+        private const val DIALOG_WIDTH_RATIO = 0.9
         const val DEFAULT_DIM = 0.2f
     }
 

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
@@ -37,10 +39,26 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
         super.onCreate(savedInstanceState)
         setContentView(ActivityThemeEditorBinding::inflate)
         presenter.attachView(this@ThemeEditorActivity, lifecycleScope)
+        setSupportActionBar(binding.mainToolbar)
+    }
 
-        HelpDialogFragment
-            .createInstance()
-            .show(supportFragmentManager, "HelpDialogFragment")
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.action_bar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_help -> {
+            HelpDialogFragment
+                .createInstance()
+                .show(supportFragmentManager, "HelpDialogFragment")
+
+            true
+        }
+
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDestroy() {

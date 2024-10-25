@@ -47,5 +47,6 @@
     <string name="help_dialog_title">How to use?</string>
     <string name="help_dialog_instruction"><b>1.</b> Choose the color you like and adjust additional options;\n<b>2.</b> Click on <i>\"Export the theme\"</i> button;\n<b>3.</b> Choose <b>Telegram</b> in the dialog window if it hasn\'t opened yet;\n<b>4.</b> <b>Share theme file</b> with someone or save it to your saved messages\n<b>5.</b> After the file was shared click on it and click apply.\n\n<b>Enjoy your new theme!</b></string>
     <string name="help_dialog_button">Understand</string>
+    <string name="menu_help_action" translatable="false">Help</string>
 
 </resources>
