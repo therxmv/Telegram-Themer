@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.ui.editor.data.utils
+package com.therxmv.telegramthemer.data.theme.utils
 
 /**
  * Converts list of red, green and blue to hexadecimal color

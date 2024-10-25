@@ -1,7 +1,7 @@
 package com.therxmv.telegramthemer.di.singleton
 
+import com.therxmv.telegramthemer.data.di.ThemeValuesModule
 import com.therxmv.telegramthemer.ui.editor.di.ThemeEditorModule
-import com.therxmv.telegramthemer.ui.editor.di.ThemeValuesModule
 import dagger.Module
 
 @Module(

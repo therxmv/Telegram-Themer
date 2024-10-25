@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
+import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import com.therxmv.telegramthemer.ui.editor.help.HelpDialogFragment
 import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsBottomSheetFragment
 import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsSubscriber

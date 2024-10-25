@@ -1,14 +1,16 @@
-package com.therxmv.telegramthemer.ui.editor.data
+package com.therxmv.telegramthemer.data.theme
 
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.therxmv.telegramthemer.R
-import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys
-import com.therxmv.telegramthemer.ui.editor.data.utils.BaseThemeKeys
-import com.therxmv.telegramthemer.ui.editor.data.utils.colorToHex
-import com.therxmv.telegramthemer.ui.editor.data.utils.generateAllTints
+import com.therxmv.telegramthemer.data.theme.utils.AdvancedThemeKeys
+import com.therxmv.telegramthemer.data.theme.utils.BaseThemeKeys
+import com.therxmv.telegramthemer.data.theme.utils.colorToHex
+import com.therxmv.telegramthemer.data.theme.utils.generateAllTints
+import com.therxmv.telegramthemer.domain.model.Styles
+import com.therxmv.telegramthemer.domain.model.ThemeState
 import java.io.Reader
 import javax.inject.Inject
 

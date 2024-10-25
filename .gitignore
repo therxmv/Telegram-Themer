@@ -91,3 +91,5 @@ app/src/test
 /.idea/deploymentTargetDropDown.xml
 /.idea/misc.xml
 /app/src/main/assets/amber_twist.tgios-theme
+/.idea/runConfigurations.xml
+/.idea/deploymentTargetSelector.xml

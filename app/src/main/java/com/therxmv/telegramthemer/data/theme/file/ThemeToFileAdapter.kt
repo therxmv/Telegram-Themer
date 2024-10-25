@@ -1,9 +1,10 @@
-package com.therxmv.telegramthemer.ui.editor.data.file
+package com.therxmv.telegramthemer.data.theme.file
 
 import android.content.Context
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
-import com.therxmv.telegramthemer.ui.editor.data.ThemeValues
-import com.therxmv.telegramthemer.ui.editor.data.utils.colorToHex
+import com.therxmv.telegramthemer.data.theme.ThemeValues
+import com.therxmv.telegramthemer.data.theme.utils.colorToHex
+import com.therxmv.telegramthemer.domain.adapter.ThemeFileAdapter
+import com.therxmv.telegramthemer.domain.model.ThemeState
 import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random

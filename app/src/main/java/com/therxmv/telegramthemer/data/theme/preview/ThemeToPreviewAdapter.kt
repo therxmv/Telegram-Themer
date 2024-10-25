@@ -1,24 +1,25 @@
-package com.therxmv.telegramthemer.ui.editor.data.preview
+package com.therxmv.telegramthemer.data.theme.preview
 
 import android.graphics.Color
 import com.therxmv.preview.AppbarColors
 import com.therxmv.preview.ChatsColors
 import com.therxmv.preview.PreviewColorsModel
 import com.therxmv.preview.TabsColors
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
-import com.therxmv.telegramthemer.ui.editor.data.ThemeValues
-import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.accent_2
-import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.accent_5
-import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.accent_9
-import com.therxmv.telegramthemer.ui.editor.data.utils.AdvancedThemeKeys.background
-import com.therxmv.telegramthemer.ui.editor.data.utils.AtthemePreviewKeys
+import com.therxmv.telegramthemer.data.theme.ThemeValues
+import com.therxmv.telegramthemer.data.theme.utils.AdvancedThemeKeys.accent_2
+import com.therxmv.telegramthemer.data.theme.utils.AdvancedThemeKeys.accent_5
+import com.therxmv.telegramthemer.data.theme.utils.AdvancedThemeKeys.accent_9
+import com.therxmv.telegramthemer.data.theme.utils.AdvancedThemeKeys.background
+import com.therxmv.telegramthemer.data.theme.utils.AtthemePreviewKeys
+import com.therxmv.telegramthemer.domain.adapter.PreviewColorsAdapter
+import com.therxmv.telegramthemer.domain.model.ThemeState
 import javax.inject.Inject
 
 class ThemeToPreviewAdapter @Inject constructor(
     private val themeValues: ThemeValues,
 ): PreviewColorsAdapter {
 
-    override fun getDefaultThemeColors(themeState: ThemeState): PreviewColorsModel {
+    override fun getThemePreviewColors(themeState: ThemeState): PreviewColorsModel {
         val values = themeValues.getAdvancedColorSchema(themeState)
         val atthemeMap = themeValues.getAtthemeMap(themeState)
         val get: Collection<String>.() -> Int = {

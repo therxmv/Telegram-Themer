@@ -9,9 +9,9 @@ import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentMoreOptionsBinding
+import com.therxmv.telegramthemer.domain.model.Styles
+import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingBottomSheetFragment
-import com.therxmv.telegramthemer.ui.editor.data.Styles
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import com.therxmv.telegramthemer.utils.isMonetAvailable
 import com.therxmv.telegramthemer.utils.toVisibility
 

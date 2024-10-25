@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.ui.editor.data.utils
+package com.therxmv.telegramthemer.data.theme.utils
 
 object BaseThemeKeys {
     const val background = "background"

@@ -1,9 +1,9 @@
 package com.therxmv.telegramthemer.ui.editor
 
-import com.therxmv.telegramthemer.domain.usecase.storage.GetCachedThemeUseCase
-import com.therxmv.telegramthemer.domain.usecase.storage.SaveThemeUseCase
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
-import com.therxmv.telegramthemer.ui.editor.data.file.ThemeFileAdapter
+import com.therxmv.telegramthemer.domain.model.ThemeState
+import com.therxmv.telegramthemer.domain.usecase.GetAtthemeFileUseCase
+import com.therxmv.telegramthemer.domain.usecase.GetCachedThemeUseCase
+import com.therxmv.telegramthemer.domain.usecase.SaveThemeUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
@@ -16,7 +16,7 @@ class ThemeEditorPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
     getCachedTheme: GetCachedThemeUseCase,
     private val saveTheme: SaveThemeUseCase,
-    private val themeFileAdapter: ThemeFileAdapter,
+    private val getAtthemeFile: GetAtthemeFileUseCase,
 ) : ThemeEditorContract.Presenter() {
 
     companion object {
@@ -54,7 +54,7 @@ class ThemeEditorPresenter @Inject constructor(
             }
 
             is ThemeEditorEvent.ExportTheme -> {
-                val file = themeFileAdapter.createThemeFile(themeState)
+                val file = getAtthemeFile(themeState)
                 view.shareThemeFile(file)
             }
 

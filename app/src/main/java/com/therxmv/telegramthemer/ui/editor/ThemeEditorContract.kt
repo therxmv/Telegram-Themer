@@ -1,7 +1,7 @@
 package com.therxmv.telegramthemer.ui.editor
 
+import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BasePresenter
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
 import java.io.File
 
 interface ThemeEditorContract {

@@ -1,9 +1,10 @@
-package com.therxmv.telegramthemer.ui.editor.data
+package com.therxmv.telegramthemer.domain.model
 
 import android.graphics.Color
 import android.os.Parcelable
-import com.therxmv.telegramthemer.utils.DEFAULT_HEX_COLOR
 import kotlinx.parcelize.Parcelize
+
+const val DEFAULT_HEX_COLOR = "#299FE9"
 
 @Parcelize
 data class ThemeState(

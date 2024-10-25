@@ -1,45 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="btn_create_txt">Створити</string>
-    <string name="preview_title">Прев\'ю теми</string>
-    <!--  Input  -->
-    <string name="input_hint">Введіть шістнадцяткове число</string>
-    <!--  Settings  -->
-    <string name="sett_title">Налаштування</string>
-    <string name="sett_dropdown">Звичайна</string>
-    <string name="sett_dark_theme">Темна тема</string>
-    <string name="sett_amoled_theme">Amoled тема</string>
-    <string name="sett_monet">Monet акцент</string>
-    <string name="sett_monet_bg">Monet фон</string>
-    <string name="sett_gradient">Градієнт</string>
-    <!--  About  -->
-    <string name="about_appbar_title">Про додаток</string>
-    <string name="about_dscr">Ця програма надає вам можливість створювати теми з вашим улюбленим кольором і стилем.</string>
-    <string name="about_btn_tg">Телеграм канал</string>
-    <!--  Error messages  -->
-    <string name="empty_error">Будь ласка, введіть щось!</string>
-    <string name="length_error">Введіть шість символів!</string>
-    <string name="invalid_error">Некоректне шістнадцяткове число!</string>
     <string name="something_went_wrong">Уупс… Щось пішло не так</string>
-
-    <string-array name="styles">
-        <item>Звичайна</item>
-        <item>Soza</item>
-    </string-array>
-    <string name="colorPickerTitle">Виберіть колір</string>
-    <string name="colorPickerConfirm">Підтвердити</string>
-    <string name="colorPickerCancel">Скасувати</string>
-
-    <!-- V2 strings -->
     <string name="picker_label">Обрати колір</string>
     <string name="more_label">Більше опцій</string>
     <string name="export_label">Експортувати тему</string>
 
+    <!-- More options -->
     <string name="more_dark_label">Темна тема</string>
     <string name="more_amoled_label">Amoled тема</string>
     <string name="more_monet_label">Monet</string>
     <string name="more_gradient_lable">Градієнт</string>
 
+    <!-- Help dialog -->
     <string name="help_dialog_title">Як користуватися?</string>
     <string name="help_dialog_instruction"><b>1.</b> Виберіть колір, який вам подобається та налаштуйте додаткові параметри;\n<b>2.</b> Натисніть кнопку <i>\"Експортувати тему\"</i>;\n<b>3.</b> Виберіть <b>Telegram</b> у діалоговому вікні, якщо він ще не відкрився;\n<b>4.</b> <b>Поділіться файлом</b> теми з кимось або збережіть його у збережених повідомленнях\n<b>5.</b> Після того, як файл було завантажено, натисніть на нього та застосуйте.\n\n<b>Насолоджуйтесь своєю новою темою!</b></string>
     <string name="help_dialog_button">Зрозуміло</string>

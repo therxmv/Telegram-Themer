@@ -1,4 +1,6 @@
-package com.therxmv.telegramthemer.ui.editor.data
+package com.therxmv.telegramthemer.data.theme
+
+import com.therxmv.telegramthemer.domain.model.ThemeState
 
 interface ThemeValues {
     fun getAdvancedColorSchema(state: ThemeState): Map<String, String>

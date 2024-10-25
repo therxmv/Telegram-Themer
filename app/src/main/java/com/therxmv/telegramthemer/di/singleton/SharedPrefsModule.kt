@@ -2,7 +2,7 @@ package com.therxmv.telegramthemer.di.singleton
 
 import com.tencent.mmkv.MMKV
 import com.therxmv.telegramthemer.data.source.SharedPrefsDataSource
-import com.therxmv.telegramthemer.data.source.SharedPrefsSource
+import com.therxmv.telegramthemer.domain.source.SharedPrefsSource
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

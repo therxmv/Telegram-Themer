@@ -1,7 +1,7 @@
-package com.therxmv.telegramthemer.domain.usecase.storage
+package com.therxmv.telegramthemer.domain.usecase
 
-import com.therxmv.telegramthemer.data.source.SharedPrefsSource
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
+import com.therxmv.telegramthemer.domain.model.ThemeState
+import com.therxmv.telegramthemer.domain.source.SharedPrefsSource
 import javax.inject.Inject
 
 class SaveThemeUseCase @Inject constructor(

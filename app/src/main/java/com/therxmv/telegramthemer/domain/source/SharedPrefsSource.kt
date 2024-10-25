@@ -1,6 +1,6 @@
-package com.therxmv.telegramthemer.data.source
+package com.therxmv.telegramthemer.domain.source
 
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
+import com.therxmv.telegramthemer.domain.model.ThemeState
 
 interface SharedPrefsSource {
     fun saveThemeState(themeState: ThemeState)

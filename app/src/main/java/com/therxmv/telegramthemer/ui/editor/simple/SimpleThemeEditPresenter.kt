@@ -1,17 +1,17 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
+import com.therxmv.telegramthemer.domain.model.ThemeState
+import com.therxmv.telegramthemer.domain.usecase.GetPreviewColorsModelUseCase
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
 import com.therxmv.telegramthemer.ui.editor.ThemeStateListener
-import com.therxmv.telegramthemer.ui.editor.data.ThemeState
-import com.therxmv.telegramthemer.ui.editor.data.preview.PreviewColorsAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 class SimpleThemeEditPresenter @Inject constructor(
     private val themeEditorEventProvider: ThemeEditorEventProvider,
-    private val previewColorsAdapter: PreviewColorsAdapter,
+    private val getPreviewColorsModel: GetPreviewColorsModelUseCase,
 ): SimpleThemeEditContract.Presenter(), ThemeStateListener {
 
     override fun attachView(view: SimpleThemeEditContract.View, coroutineScope: CoroutineScope) {
@@ -42,7 +42,7 @@ class SimpleThemeEditPresenter @Inject constructor(
     }
 
     override fun onStateChange(themeState: ThemeState) {
-        val model = previewColorsAdapter.getDefaultThemeColors(themeState)
+        val model = getPreviewColorsModel(themeState)
         view.setColorPickerColors(model.accent, model.background)
         view.setPreviewColors(model)
     }

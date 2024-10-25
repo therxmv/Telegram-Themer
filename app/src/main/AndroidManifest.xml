@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TelegramThemer"
         tools:targetApi="34">
-        <activity
-            android:name=".ui.AboutActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ui.editor.ThemeEditorActivity"
