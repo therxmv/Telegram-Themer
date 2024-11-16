@@ -9,6 +9,7 @@ import androidx.core.view.setPadding
 import com.therxmv.preview.components.PreviewAppbar
 import com.therxmv.preview.components.PreviewBackground
 import com.therxmv.preview.components.chat.MessagePanel
+import com.therxmv.preview.components.chat.PlayerPanel
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.preview.utils.dpToPx
 
@@ -20,7 +21,8 @@ class ChatPreview(
     companion object {
         private val backgroundId = View.generateViewId()
         private val appbarId = View.generateViewId()
-        private val messagePanelId = View.generateViewId() // TODO add colors
+        private val messagePanelId = View.generateViewId()
+        private val playerPanelId = View.generateViewId()
 
     }
 
@@ -38,6 +40,7 @@ class ChatPreview(
             with(background) {
                 addAppbar()
                 addMessagePanel()
+                addPlayerPanel()
             }
         }
     }
@@ -81,9 +84,24 @@ class ChatPreview(
         }
     }
 
+    private fun PreviewBackground.addPlayerPanel() {
+        PlayerPanel(dpValues = dpValues, context = context).apply {
+            id = playerPanelId
+            layoutParams = LayoutParams(
+                LayoutParams.MATCH_PARENT,
+                LayoutParams.WRAP_CONTENT,
+            ).apply {
+                topMargin = dpValues.dp20
+                addRule(BELOW, appbarId)
+            }
+            this@addPlayerPanel.addView(this@apply)
+        }
+    }
+
     fun setColors(colors: PreviewColorsModel) {
         findViewById<PreviewBackground>(backgroundId)?.setColors(colors.background, colors.accent)
         findViewById<PreviewAppbar>(appbarId)?.setColors(colors.appbarColors)
         findViewById<MessagePanel>(messagePanelId)?.setColors(colors.chatColors.messagePanelColors)
+        findViewById<PlayerPanel>(playerPanelId)?.setColors(colors.chatColors.playerPanelColors)
     }
 }

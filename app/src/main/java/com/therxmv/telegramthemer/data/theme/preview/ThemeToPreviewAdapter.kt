@@ -6,6 +6,7 @@ import com.therxmv.preview.model.ChatColors
 import com.therxmv.preview.model.ChatsColors
 import com.therxmv.preview.model.ListColors
 import com.therxmv.preview.model.MessagePanelColors
+import com.therxmv.preview.model.PlayerPanelColors
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.preview.model.TabsColors
 import com.therxmv.telegramthemer.data.theme.ThemeValues
@@ -66,6 +67,11 @@ class ThemeToPreviewAdapter @Inject constructor(
             messagePanelColors = MessagePanelColors(
                 icon = AtthemePreviewKeys.chat_messagePanelIcons.get(),
                 message = AtthemePreviewKeys.chat_messagePanelText.get(),
+            ),
+            playerPanelColors = PlayerPanelColors(
+                play = AtthemePreviewKeys.inappPlayerPlayPause.get(),
+                name = AtthemePreviewKeys.inappPlayerPerformer.get(),
+                icons = AtthemePreviewKeys.inappPlayerClose.get(),
             )
         )
 

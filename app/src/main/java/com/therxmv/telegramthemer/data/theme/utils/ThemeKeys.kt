@@ -99,4 +99,7 @@ object AtthemePreviewKeys {
     val chats_sentReadCheck = listOf("chats_sentReadCheck")
     val chat_messagePanelText = listOf("chat_messagePanelText")
     val chat_messagePanelIcons = listOf("chat_messagePanelIcons")
+    val inappPlayerPlayPause = listOf("inappPlayerPlayPause")
+    val inappPlayerClose = listOf("inappPlayerClose")
+    val inappPlayerPerformer = listOf("inappPlayerPerformer")
 }
