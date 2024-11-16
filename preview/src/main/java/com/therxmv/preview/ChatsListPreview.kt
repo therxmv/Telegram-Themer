@@ -11,8 +11,9 @@ import com.therxmv.preview.common.ColorfulView
 import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.components.PreviewAppbar
 import com.therxmv.preview.components.PreviewBackground
-import com.therxmv.preview.components.PreviewChatItem
-import com.therxmv.preview.components.PreviewTabs
+import com.therxmv.preview.components.chatslist.ChatItem
+import com.therxmv.preview.components.chatslist.Tabs
+import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.preview.utils.dpToPx
 
 class ChatsListPreview(
@@ -74,7 +75,7 @@ class ChatsListPreview(
     }
 
     private fun PreviewBackground.addTabs() {
-        PreviewTabs(dpValues, context).apply {
+        Tabs(dpValues, context).apply {
             id = tabsId
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
@@ -103,7 +104,7 @@ class ChatsListPreview(
 
     private fun PreviewBackground.addChatItems() {
         items.forEachIndexed { index, model ->
-            PreviewChatItem(model, dpValues, context).apply {
+            ChatItem(model, dpValues, context).apply {
                 id = model.id
                 layoutParams = LayoutParams(
                     LayoutParams.MATCH_PARENT,
@@ -120,12 +121,12 @@ class ChatsListPreview(
 
     fun setColors(colors: PreviewColorsModel) {
         findViewById<PreviewBackground>(backgroundId)?.setColors(colors.background, colors.accent)
-        findViewById<ColorfulView>(actionButtonId)?.setColor(colors.actionButton)
+        findViewById<ColorfulView>(actionButtonId)?.setColor(colors.listColors.actionButton)
         findViewById<PreviewAppbar>(appbarId)?.setColors(colors.appbarColors)
-        findViewById<PreviewTabs>(tabsId)?.setColors(colors.tabsColors)
+        findViewById<Tabs>(tabsId)?.setColors(colors.listColors.tabsColors)
 
         items.forEach {
-            findViewById<PreviewChatItem>(it.id)?.setColors(it, colors.chatsColors)
+            findViewById<ChatItem>(it.id)?.setColors(it, colors.listColors.chatsColors)
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
-import com.therxmv.preview.PreviewColorsModel
+import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.telegramthemer.ui.base.BasePresenter
 
 interface SimpleThemeEditContract {

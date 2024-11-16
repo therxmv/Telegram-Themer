@@ -1,16 +1,16 @@
-package com.therxmv.preview.components
+package com.therxmv.preview.components.chatslist
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
-import com.therxmv.preview.TabsColors
 import com.therxmv.preview.common.CircleView
 import com.therxmv.preview.common.ColorfulView
 import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.model.TabsColors
 
-class PreviewTabs(
+class Tabs(
     dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,

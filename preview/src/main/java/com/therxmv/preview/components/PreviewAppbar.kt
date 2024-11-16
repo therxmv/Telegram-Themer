@@ -4,12 +4,12 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import com.therxmv.preview.AppbarColors
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.CircleView
 import com.therxmv.preview.common.ColorfulView
 import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.model.AppbarColors
 
 class PreviewAppbar(
     private val dpValues: DpValues,
@@ -22,7 +22,7 @@ class PreviewAppbar(
         dpValues = DpValues(context),
         isInChat = false,
         context = context,
-        attr = attr
+        attr = attr,
     )
 
     companion object {

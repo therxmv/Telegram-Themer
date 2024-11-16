@@ -1,20 +1,9 @@
-package com.therxmv.preview
+package com.therxmv.preview.model
 
-data class PreviewColorsModel(
-    val accent: Int,
-    val background: Int,
-    val previewBackground: Int,
+data class ListColors(
     val actionButton: Int,
-    val appbarColors: AppbarColors,
     val tabsColors: TabsColors,
     val chatsColors: ChatsColors,
-)
-
-data class AppbarColors(
-    val appbarIcon: Int,
-    val appbarTitle: Int,
-    val appbarSubtitle: Int,
-    val appbarAvatar: Int,
 )
 
 data class TabsColors(

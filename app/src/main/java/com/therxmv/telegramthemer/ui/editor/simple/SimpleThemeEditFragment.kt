@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.lifecycleScope
-import com.therxmv.preview.PreviewColorsModel
+import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingFragment
 import javax.inject.Inject

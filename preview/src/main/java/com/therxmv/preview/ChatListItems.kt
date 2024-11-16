@@ -1,6 +1,6 @@
 package com.therxmv.preview
 
-import com.therxmv.preview.components.ChatModel
+import com.therxmv.preview.components.chatslist.ChatModel
 
 object ChatListItems {
     val items = listOf(

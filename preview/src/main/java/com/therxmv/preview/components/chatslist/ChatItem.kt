@@ -1,14 +1,14 @@
-package com.therxmv.preview.components
+package com.therxmv.preview.components.chatslist
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import com.therxmv.preview.ChatsColors
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.CircleView
 import com.therxmv.preview.common.ColorfulView
 import com.therxmv.preview.common.HorizontalLineView
+import com.therxmv.preview.model.ChatsColors
 
 data class ChatModel(
     val id: Int = View.generateViewId(),
@@ -21,7 +21,7 @@ data class ChatModel(
     val shouldShowSender: Boolean = false, // view
 )
 
-class PreviewChatItem(
+class ChatItem(
     private val data: ChatModel,
     private val dpValues: DpValues,
     context: Context,

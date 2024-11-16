@@ -97,4 +97,6 @@ object AtthemePreviewKeys {
     val chats_secretIcon = listOf("chats_secretIcon")
     val chats_secretName = listOf("chats_secretName")
     val chats_sentReadCheck = listOf("chats_sentReadCheck")
+    val chat_messagePanelText = listOf("chat_messagePanelText")
+    val chat_messagePanelIcons = listOf("chat_messagePanelIcons")
 }
