@@ -61,7 +61,7 @@ class ChatsListPreview(
         }
 
     private fun PreviewBackground.addAppbar() {
-        PreviewAppbar(dpValues, context).apply {
+        PreviewAppbar(dpValues = dpValues, isInChat = false, context = context).apply {
             id = appbarId
             layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,

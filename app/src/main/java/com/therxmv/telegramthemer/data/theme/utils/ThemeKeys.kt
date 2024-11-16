@@ -45,6 +45,7 @@ object AdvancedThemeKeys {
     const val tr_gray_3 = "tr_gray_3"
 }
 
+// List is used to change all relatable values with pro edit. Preview uses first element of list
 object AtthemePreviewKeys {
     val actionBarDefaultIcon = listOf(
         "actionBarDefaultIcon",
@@ -59,6 +60,7 @@ object AtthemePreviewKeys {
         "avatar_actionBarIconViolet",
     )
     val actionBarDefaultTitle = listOf("actionBarDefaultTitle")
+    val actionBarDefaultSubtitle = listOf("actionBarDefaultSubtitle")
     val chats_actionBackground = listOf("chats_actionBackground")
     val actionBarTabUnactiveText = listOf("actionBarTabUnactiveText")
     val actionBarTabActiveText = listOf("actionBarTabActiveText")
@@ -68,7 +70,24 @@ object AtthemePreviewKeys {
     val chats_date = listOf("chats_date")
     val chats_unreadCounter = listOf("chats_unreadCounter")
     val chats_unreadCounterMuted = listOf("chats_unreadCounterMuted")
-    val avatar_backgroundBlue = listOf("avatar_backgroundBlue")
+    val avatar_backgroundBlue = listOf(
+        "avatar_backgroundBlue",
+        "avatar_background2Blue",
+        "avatar_backgroundCyan",
+        "avatar_background2Cyan",
+        "avatar_backgroundGreen",
+        "avatar_background2Green",
+        "avatar_backgroundOrange",
+        "avatar_background2Orange",
+        "avatar_backgroundPink",
+        "avatar_background2Pink",
+        "avatar_backgroundRed",
+        "avatar_background2Red",
+        "avatar_backgroundSaved",
+        "avatar_background2Saved",
+        "avatar_backgroundViolet",
+        "avatar_background2Violet",
+    )
     val chats_name = listOf("chats_name")
     val chats_nameMessage = listOf("chats_nameMessage")
     val chats_message = listOf("chats_message")

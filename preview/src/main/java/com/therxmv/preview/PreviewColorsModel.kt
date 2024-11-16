@@ -13,6 +13,8 @@ data class PreviewColorsModel(
 data class AppbarColors(
     val appbarIcon: Int,
     val appbarTitle: Int,
+    val appbarSubtitle: Int,
+    val appbarAvatar: Int,
 )
 
 data class TabsColors(

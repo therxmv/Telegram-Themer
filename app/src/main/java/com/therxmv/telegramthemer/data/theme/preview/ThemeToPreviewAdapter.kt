@@ -40,6 +40,8 @@ class ThemeToPreviewAdapter @Inject constructor(
             appbarColors = AppbarColors(
                 appbarIcon = AtthemePreviewKeys.actionBarDefaultIcon.get(),
                 appbarTitle = AtthemePreviewKeys.actionBarDefaultTitle.get(),
+                appbarSubtitle = AtthemePreviewKeys.actionBarDefaultSubtitle.get(),
+                appbarAvatar = AtthemePreviewKeys.avatar_backgroundBlue.get(),
             ),
             tabsColors = TabsColors(
                 tab = AtthemePreviewKeys.actionBarTabUnactiveText.get(),

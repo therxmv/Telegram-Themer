@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.45" />
 
-        <com.therxmv.preview.ChatsListPreview
+        <com.therxmv.preview.ChatPreview
             android:id="@+id/chat_preview"
             android:layout_width="0dp"
             android:layout_height="0dp"

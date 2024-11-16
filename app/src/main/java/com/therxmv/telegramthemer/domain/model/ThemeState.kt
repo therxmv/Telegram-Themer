@@ -13,7 +13,7 @@ data class ThemeState(
     val isDark: Boolean = false,
     val isAmoled: Boolean = false,
     val isMonet: Boolean = false,
-    val isGradient: Boolean = false, // TODO implementation
+    val isGradient: Boolean = false,
 ) : Parcelable
 
 enum class Styles(val label: String) {
