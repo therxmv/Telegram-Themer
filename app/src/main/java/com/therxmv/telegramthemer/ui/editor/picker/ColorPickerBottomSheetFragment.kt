@@ -20,6 +20,7 @@ import top.defaults.colorpicker.BrightnessSliderView
 import top.defaults.colorpicker.ColorWheelView
 
 class ColorPickerBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentColorPickerBinding>() {
+    // TODO luminosity bar arrow is invisible with dark theme
 
     companion object {
         private const val TRANSPARENCY_VALUE = 0.3f
