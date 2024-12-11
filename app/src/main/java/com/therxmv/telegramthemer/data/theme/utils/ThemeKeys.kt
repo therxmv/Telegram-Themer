@@ -126,6 +126,7 @@ object AtthemePreviewKeys {
     val chat_inFileNameText = listOf("chat_inFileNameText")
     val chat_inFileInfoText = listOf("chat_inFileInfoText")
 
+    // TODO maybe add audio seekbar as well
     val chat_outVoiceSeekbar = listOf("chat_outVoiceSeekbar", "chat_outVoiceSeekbarSelected")
     val chat_outVoiceSeekbarFill = listOf("chat_outVoiceSeekbarFill")
     val chat_outAudioDurationText = listOf("chat_outAudioDurationText", "chat_outAudioDurationSelectedText")

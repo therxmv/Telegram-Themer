@@ -3,11 +3,14 @@ package com.therxmv.telegramthemer.ui.editor
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowInsets
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
@@ -40,6 +43,7 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
         setContentView(ActivityThemeEditorBinding::inflate)
         presenter.attachView(this@ThemeEditorActivity, lifecycleScope)
         setSupportActionBar(binding.mainToolbar)
+        handleEdgeToEdge()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -64,6 +68,25 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     override fun onDestroy() {
         presenter.detachView()
         super.onDestroy()
+    }
+
+    private fun handleEdgeToEdge() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.VANILLA_ICE_CREAM) return
+
+        binding.layout.setOnApplyWindowInsetsListener { view, windowInsets ->
+            val insets = windowInsets.getInsets(
+                WindowInsets.Type.systemBars()
+            )
+
+            view.updatePadding(
+                left = insets.left,
+                right = insets.right,
+                top = insets.top,
+                bottom = insets.bottom
+            )
+
+            WindowInsets.CONSUMED
+        }
     }
 
     override fun openColorPicker(currentColor: Int) {

@@ -13,8 +13,8 @@ android {
         applicationId appConfig.applicationId
         minSdk appConfig.minSdkVersion
         targetSdk appConfig.targetSdkVersion
-        versionCode 204
-        versionName "2.0.4"
+        versionCode 300
+        versionName "3.0.0"
 
         resConfigs 'uk_UA'
         vectorDrawables.useSupportLibrary = true

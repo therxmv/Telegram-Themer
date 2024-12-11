@@ -283,7 +283,6 @@ class MessageItem(
     }
 
     fun setColors(colors: MessageColors) {
-
         when (data) {
             Date -> {
                 findViewById<ColorfulView>(dateId)?.setColor(colors.date)
