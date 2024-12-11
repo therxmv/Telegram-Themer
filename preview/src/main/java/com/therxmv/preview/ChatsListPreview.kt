@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.doOnLayout
 import androidx.core.view.setPadding
-import com.therxmv.preview.ChatListItems.items
+import com.therxmv.preview.PreviewConfiguration.chatListItems
 import com.therxmv.preview.common.ColorfulView
 import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.components.PreviewAppbar
@@ -103,14 +103,14 @@ class ChatsListPreview(
     }
 
     private fun PreviewBackground.addChatItems() {
-        items.forEachIndexed { index, model ->
+        chatListItems.forEachIndexed { index, model ->
             ChatItem(model, dpValues, context).apply {
                 id = model.id
                 layoutParams = LayoutParams(
                     LayoutParams.MATCH_PARENT,
                     dpValues.dp40,
                 ).apply {
-                    val id = if (index == 0) tabsId else items[index - 1].id
+                    val id = if (index == 0) tabsId else chatListItems[index - 1].id
                     addRule(BELOW, id)
                     topMargin = dpValues.dp20
                 }
@@ -125,7 +125,7 @@ class ChatsListPreview(
         findViewById<PreviewAppbar>(appbarId)?.setColors(colors.appbarColors)
         findViewById<Tabs>(tabsId)?.setColors(colors.listColors.tabsColors)
 
-        items.forEach {
+        chatListItems.forEach {
             findViewById<ChatItem>(it.id)?.setColors(it, colors.listColors.chatsColors)
         }
     }

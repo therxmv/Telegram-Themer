@@ -5,6 +5,7 @@ import com.therxmv.preview.model.AppbarColors
 import com.therxmv.preview.model.ChatColors
 import com.therxmv.preview.model.ChatsColors
 import com.therxmv.preview.model.ListColors
+import com.therxmv.preview.model.MessageColors
 import com.therxmv.preview.model.MessagePanelColors
 import com.therxmv.preview.model.PlayerPanelColors
 import com.therxmv.preview.model.PreviewColorsModel
@@ -23,7 +24,7 @@ class ThemeToPreviewAdapter @Inject constructor(
     private val themeValues: ThemeValues,
 ): PreviewColorsAdapter {
 
-    override fun getThemePreviewColors(themeState: ThemeState): PreviewColorsModel {
+    override fun getThemePreviewColors(themeState: ThemeState): PreviewColorsModel { // TODO lack of documentation
         val values = themeValues.getAdvancedColorSchema(themeState)
         val atthemeMap = themeValues.getAtthemeMap(themeState)
         val get: Collection<String>.() -> Int = {
@@ -72,7 +73,49 @@ class ThemeToPreviewAdapter @Inject constructor(
                 play = AtthemePreviewKeys.inappPlayerPlayPause.get(),
                 name = AtthemePreviewKeys.inappPlayerPerformer.get(),
                 icons = AtthemePreviewKeys.inappPlayerClose.get(),
-            )
+            ),
+            inMessageColors = MessageColors(
+                background = AtthemePreviewKeys.chat_inBubble.get(),
+                text = AtthemePreviewKeys.chat_messageTextIn.get(),
+                date = AtthemePreviewKeys.chat_serviceBackground.get(),
+                replyColors = MessageColors.ReplyColors(
+                    line = AtthemePreviewKeys.chat_inReplyLine.get(),
+                    sender = AtthemePreviewKeys.chat_inReplyNameText.get(),
+                    text = AtthemePreviewKeys.chat_inReplyMessageText.get(),
+                ),
+                fileColors = MessageColors.FileColors(
+                    loader = AtthemePreviewKeys.chat_inLoader.get(),
+                    name = AtthemePreviewKeys.chat_inFileNameText.get(),
+                    info = AtthemePreviewKeys.chat_inFileInfoText.get(),
+                ),
+                voiceColors = MessageColors.VoiceColors(
+                    loader = AtthemePreviewKeys.chat_inLoader.get(),
+                    seekbar = AtthemePreviewKeys.chat_inVoiceSeekbar.get(),
+                    seekbarFill = AtthemePreviewKeys.chat_inVoiceSeekbarFill.get(),
+                    info = AtthemePreviewKeys.chat_inAudioDurationText.get(),
+                ),
+            ),
+            outMessageColors = MessageColors(
+                background = AtthemePreviewKeys.chat_outBubble.get(),
+                text = AtthemePreviewKeys.chat_messageTextOut.get(),
+                date = AtthemePreviewKeys.chat_serviceBackground.get(),
+                replyColors = MessageColors.ReplyColors(
+                    line = AtthemePreviewKeys.chat_outReplyLine.get(),
+                    sender = AtthemePreviewKeys.chat_outReplyNameText.get(),
+                    text = AtthemePreviewKeys.chat_outReplyMessageText.get(),
+                ),
+                fileColors = MessageColors.FileColors(
+                    loader = AtthemePreviewKeys.chat_outLoader.get(),
+                    name = AtthemePreviewKeys.chat_outFileNameText.get(),
+                    info = AtthemePreviewKeys.chat_outFileInfoText.get(),
+                ),
+                voiceColors = MessageColors.VoiceColors(
+                    loader = AtthemePreviewKeys.chat_outLoader.get(),
+                    seekbar = AtthemePreviewKeys.chat_outVoiceSeekbar.get(),
+                    seekbarFill = AtthemePreviewKeys.chat_outVoiceSeekbarFill.get(),
+                    info = AtthemePreviewKeys.chat_outAudioDurationText.get(),
+                ),
+            ),
         )
 
         return PreviewColorsModel(

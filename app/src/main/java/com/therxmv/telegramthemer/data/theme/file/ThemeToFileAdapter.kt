@@ -28,7 +28,7 @@ class ThemeToFileAdapter @Inject constructor(
 
         file.printWriter().use { out ->
             atthemeMap.forEach { (key, value) ->
-                val color = colors[value] ?: value // TODO override in future
+                val color = colors[value] ?: value // TODO override in future with user color
                 out.println("$key=$color")
             }
         }

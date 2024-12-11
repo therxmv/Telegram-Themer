@@ -12,35 +12,43 @@ class DpValues(
 ) {
 
     val dp4: Int
-        get() = 4.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(4)
 
     val dp7: Int
-        get() = 7.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(7)
 
     val dp8: Int
-        get() = 8.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(8)
 
     val dp10: Int
-        get() = 10.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(10)
 
     val dp14: Int
-        get() = 14.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(14)
 
     val dp20: Int
-        get() = 20.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(20)
 
     val dp30: Int
-        get() = 30.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(30)
 
     val dp40: Int
-        get() = 40.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(40)
 
     val dp50: Int
-        get() = 50.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(50)
+
+    val dp60: Int
+        get() = dpOf(60)
 
     val dp80: Int
-        get() = 80.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(80)
 
     val dp100: Int
-        get() = 100.dpToPx(context, scaleFactor).toInt()
+        get() = dpOf(100)
+
+    val dp160: Int
+        get() = dpOf(160)
+
+    fun dpOf(value: Int) = value.dpToPx(context, scaleFactor).toInt()
 }

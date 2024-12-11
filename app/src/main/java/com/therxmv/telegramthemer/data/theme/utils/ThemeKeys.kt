@@ -65,6 +65,7 @@ object AtthemePreviewKeys {
     val actionBarTabUnactiveText = listOf("actionBarTabUnactiveText")
     val actionBarTabActiveText = listOf("actionBarTabActiveText")
     val actionBarTabLine = listOf("actionBarTabLine")
+
     val chats_tabUnreadActiveBackground = listOf("chats_tabUnreadActiveBackground")
     val chats_tabUnreadUnactiveBackground = listOf("chats_tabUnreadUnactiveBackground")
     val chats_date = listOf("chats_date")
@@ -97,9 +98,38 @@ object AtthemePreviewKeys {
     val chats_secretIcon = listOf("chats_secretIcon")
     val chats_secretName = listOf("chats_secretName")
     val chats_sentReadCheck = listOf("chats_sentReadCheck")
+
     val chat_messagePanelText = listOf("chat_messagePanelText")
     val chat_messagePanelIcons = listOf("chat_messagePanelIcons")
+
     val inappPlayerPlayPause = listOf("inappPlayerPlayPause")
     val inappPlayerClose = listOf("inappPlayerClose")
     val inappPlayerPerformer = listOf("inappPlayerPerformer")
+
+    val chat_outBubble = listOf("chat_outBubble", "chat_outBubbleSelected")
+    val chat_inBubble = listOf("chat_inBubble", "chat_inBubbleSelected")
+    val chat_messageTextOut = listOf("chat_messageTextOut")
+    val chat_messageTextIn = listOf("chat_messageTextIn")
+    val chat_serviceBackground = listOf("chat_serviceBackground")
+
+    val chat_outReplyNameText = listOf("chat_outReplyNameText")
+    val chat_outReplyLine = listOf("chat_outReplyLine")
+    val chat_outReplyMessageText = listOf("chat_outReplyMessageText", "chat_outReplyMediaMessageText", "chat_outReplyMediaMessageSelectedText")
+    val chat_inReplyNameText = listOf("chat_inReplyNameText")
+    val chat_inReplyLine = listOf("chat_inReplyLine")
+    val chat_inReplyMessageText = listOf("chat_inReplyMessageText", "chat_inReplyMediaMessageText", "chat_inReplyMediaMessageSelectedText")
+
+    val chat_inLoader = listOf("chat_inLoader", "chat_inLoaderSelected")
+    val chat_outLoader = listOf("chat_outLoader", "chat_outLoaderSelected")
+    val chat_outFileNameText = listOf("chat_outFileNameText")
+    val chat_outFileInfoText = listOf("chat_outFileInfoText")
+    val chat_inFileNameText = listOf("chat_inFileNameText")
+    val chat_inFileInfoText = listOf("chat_inFileInfoText")
+
+    val chat_outVoiceSeekbar = listOf("chat_outVoiceSeekbar", "chat_outVoiceSeekbarSelected")
+    val chat_outVoiceSeekbarFill = listOf("chat_outVoiceSeekbarFill")
+    val chat_outAudioDurationText = listOf("chat_outAudioDurationText", "chat_outAudioDurationSelectedText")
+    val chat_inVoiceSeekbar = listOf("chat_inVoiceSeekbar", "chat_inVoiceSeekbarSelected")
+    val chat_inVoiceSeekbarFill = listOf("chat_inVoiceSeekbarFill")
+    val chat_inAudioDurationText = listOf("chat_inAudioDurationText", "chat_inAudioDurationSelectedText")
 }
