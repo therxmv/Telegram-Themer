@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Themer</string>
-    <string name="btn_create_txt">Create</string>
-    <string name="preview_title">Theme preview</string>
-    <!--  Input  -->
-    <string name="input_hint">Enter hexadecimal number</string>
-    <string name="colorPickerTitle">Pick color</string>
-    <string name="colorPickerConfirm">Confirm</string>
-    <string name="colorPickerCancel">Cancel</string>
-    <!--  Settings  -->
-    <string name="sett_title">Settings</string>
-    <string name="sett_dropdown">Default</string>
-    <string name="sett_dark_theme">Dark Theme</string>
-    <string name="sett_amoled_theme">Amoled Theme</string>
-    <string name="sett_monet">Monet accent</string>
-    <string name="sett_monet_bg">Monet background</string>
-    <string name="sett_gradient">Gradient</string>
-    <!--  About  -->
-    <string name="about_appbar_title">About</string>
-    <string name="about_title" translatable="false">Themer | Ver. %1$s</string>
-    <string name="about_dscr">This app provides for your opportunity to create themes with your favorite color and style.</string>
-    <string name="about_btn_tg">Telegram Channel</string>
-    <string name="about_btn_git" translatable="false">Github</string>
-    <!--  Error messages  -->
-    <string name="empty_error">Please enter something!</string>
-    <string name="length_error">You must enter six characters!</string>
-    <string name="invalid_error">Invalid hexadecimal number!</string>
-    <string name="something_went_wrong">Oops… Something went wrong</string>
 
-    <string-array name="styles">
-        <item>Default</item>
-        <item>Soza</item>
-    </string-array>
+    <string name="something_went_wrong">Oops… Something went wrong</string>
+    <string name="picker_label">Pick accent color</string>
+    <string name="more_label">More options</string>
+    <string name="export_label">Export the theme</string>
+
+    <!-- More options -->
+    <string name="more_dropdown_default" translatable="false">Default</string>
+    <string name="more_dark_label">Dark Theme</string>
+    <string name="more_amoled_label">Amoled Theme</string>
+    <string name="more_monet_label">Monet</string>
+    <string name="more_gradient_lable">Gradient</string>
+
+    <!-- Help dialog -->
+    <string name="help_dialog_title">How to use?</string>
+    <string name="help_dialog_instruction"><b>1.</b> Choose the color you like and adjust additional options;\n<b>2.</b> Click on <i>\"Export the theme\"</i> button;\n<b>3.</b> Choose <b>Telegram</b> in the dialog window if it hasn\'t opened yet;\n<b>4.</b> <b>Share theme file</b> with someone or save it to your saved messages\n<b>5.</b> After the file was shared click on it and click apply.\n\n<b>Enjoy your new theme!</b></string>
+    <string name="help_dialog_button">Understand</string>
+    <string name="menu_help_action" translatable="false">Help</string>
+
 </resources>

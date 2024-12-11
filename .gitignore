@@ -49,6 +49,7 @@ captures/
 .idea/modules.xml
 # Comment next line if keeping position of elements in Navigation Editor is relevant for you
 .idea/navEditor.xml
+.idea/deploymentTargetSelector.xml
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
@@ -90,3 +91,5 @@ app/src/test
 /.idea/deploymentTargetDropDown.xml
 /.idea/misc.xml
 /app/src/main/assets/amber_twist.tgios-theme
+/.idea/runConfigurations.xml
+/.idea/deploymentTargetSelector.xml

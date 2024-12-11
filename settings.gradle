@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Telegram Themer"
 include ':app'
+include ':preview'

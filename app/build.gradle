@@ -2,17 +2,19 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 34
+    namespace appConfig.applicationId
+    compileSdk appConfig.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.therxmv.telegramthemer"
-        minSdk 23
-        targetSdk 34
-        versionCode 204
-        versionName "2.0.4"
+        applicationId appConfig.applicationId
+        minSdk appConfig.minSdkVersion
+        targetSdk appConfig.targetSdkVersion
+        versionCode 300
+        versionName "3.0.0"
 
         resConfigs 'uk_UA'
         vectorDrawables.useSupportLibrary = true
@@ -31,27 +33,34 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
 dependencies {
-    implementation("com.tencent:mmkv:1.3.1")
+    implementation project(":preview")
 
-    implementation("com.github.duanhong169:colorpicker:1.1.6")
-
-    implementation ("androidx.fragment:fragment-ktx:1.5.5")
-
-    implementation("com.google.code.gson:gson:2.10.1")
-
+    implementation("com.github.jarryleo:colorpicker:2.0.1")
     implementation("com.github.devsideal:VectorChildFinder:1.0.0")
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.7.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
+
+    implementation appDependencies.mkkv
+    implementation appDependencies.gson
+
+    implementation appDependencies.hilt
+    implementation appDependencies.dagger
+    implementation appDependencies.daggerAndroid
+    implementation appDependencies.daggerAndroidSupport
+    kapt appDependencies.daggerCompiler
+    kapt appDependencies.daggerAndroidProcessor
+
+    implementation appDependencies.navigationKtx
+    implementation appDependencies.fragmentKtx
+    implementation appDependencies.coreKtx
+    implementation appDependencies.appCompat
+    implementation appDependencies.material
+    implementation appDependencies.constraintLayout
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="300dp"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/style_selector"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxBackgroundColor="?attr/colorSurfaceVariant"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/selector_items"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="none"
+            android:text="@string/more_dropdown_default" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/dark_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="@string/more_dark_label"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/amoled_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="@string/more_amoled_label"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/monet_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="@string/more_monet_label"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/gradient_check_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
+        android:text="@string/more_gradient_lable"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
+</LinearLayout>

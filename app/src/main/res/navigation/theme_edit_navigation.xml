@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/theme_edit_navigation"
+    app:startDestination="@id/simpleThemeEditFragment">
+
+    <fragment
+        android:id="@+id/simpleThemeEditFragment"
+        android:name="com.therxmv.telegramthemer.ui.editor.simple.SimpleThemeEditFragment"
+        android:label="SimpleThemeEditFragment" />
+</navigation>
