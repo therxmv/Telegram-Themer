@@ -1,5 +1,8 @@
 package com.therxmv.telegramthemer.data.theme.utils
 
+/**
+ * Base colors like main accent, background, gray
+ */
 object BaseThemeKeys {
     const val background = "background"
     const val onBackground = "onBackground"
@@ -15,6 +18,7 @@ object BaseThemeKeys {
 }
 
 /**
+ * Specific color keys for attheme template file.
  * Number after the name stays for luminosity, the higher number - the lighter color.
  * From 1 to 9, 5 is default.
  */
@@ -45,7 +49,10 @@ object AdvancedThemeKeys {
     const val tr_gray_3 = "tr_gray_3"
 }
 
-// List is used to change all relatable values with pro edit. Preview uses first element of list
+/**
+ * Each variable contains all relatable theme keys. First key in list will be used for Preview.
+ * List will be used to change values with the Pro mode.
+ */
 object AtthemePreviewKeys {
     val actionBarDefaultIcon = listOf(
         "actionBarDefaultIcon",

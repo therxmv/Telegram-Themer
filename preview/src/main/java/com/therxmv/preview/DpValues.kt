@@ -11,44 +11,41 @@ class DpValues(
     private val scaleFactor: Float = 1f,
 ) {
 
+    fun pxOf(dp: Int) = dp.dpToPx(context, scaleFactor).toInt()
+
     val dp4: Int
-        get() = dpOf(4)
+        get() = pxOf(4)
 
     val dp7: Int
-        get() = dpOf(7)
+        get() = pxOf(7)
 
     val dp8: Int
-        get() = dpOf(8)
+        get() = pxOf(8)
 
     val dp10: Int
-        get() = dpOf(10)
+        get() = pxOf(10)
 
     val dp14: Int
-        get() = dpOf(14)
+        get() = pxOf(14)
 
     val dp20: Int
-        get() = dpOf(20)
+        get() = pxOf(20)
 
     val dp30: Int
-        get() = dpOf(30)
+        get() = pxOf(30)
 
     val dp40: Int
-        get() = dpOf(40)
+        get() = pxOf(40)
 
     val dp50: Int
-        get() = dpOf(50)
+        get() = pxOf(50)
 
     val dp60: Int
-        get() = dpOf(60)
+        get() = pxOf(60)
 
     val dp80: Int
-        get() = dpOf(80)
+        get() = pxOf(80)
 
     val dp100: Int
-        get() = dpOf(100)
-
-    val dp160: Int
-        get() = dpOf(160)
-
-    fun dpOf(value: Int) = value.dpToPx(context, scaleFactor).toInt()
+        get() = pxOf(100)
 }

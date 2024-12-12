@@ -7,7 +7,6 @@ import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.CircleView
 import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.model.AppbarColors
 
@@ -25,117 +24,109 @@ class PreviewAppbar(
         attr = attr,
     )
 
-    companion object {
-        private val leftIconId = View.generateViewId()
-        private val rightIconId = View.generateViewId()
-        private val titleId = View.generateViewId()
-        private val subtitleId = View.generateViewId()
-        private val avatarId = View.generateViewId()
-    }
+    private val leftIconId = View.generateViewId()
+    private val rightIconId = View.generateViewId()
+    private val titleId = View.generateViewId()
+    private val subtitleId = View.generateViewId()
+    private val avatarId = View.generateViewId()
 
     init {
-        addLeftIcon()
+        drawLeftIcon()
 
         if (isInChat) {
-            addChatInfo()
+            drawChatInfo()
         } else {
-            addTitle()
+            drawTitle()
         }
 
-        addRightIcon()
+        drawRightIcon()
     }
 
-    private fun addLeftIcon() {
-        RoundedRectangleView(context).apply {
-            id = leftIconId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp30,
-                /* h = */ dpValues.dp30,
-            ).apply {
+    private fun drawLeftIcon() {
+        RoundedRectangleView.create(
+            context = context,
+            id = leftIconId,
+            width = dpValues.dp30,
+            height = dpValues.dp30,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_TOP)
                 addRule(ALIGN_PARENT_START)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addRightIcon() {
-        RoundedRectangleView(context).apply {
-            id = rightIconId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp14,
-                /* h = */ dpValues.dp30,
-            ).apply {
+    private fun drawRightIcon() {
+        RoundedRectangleView.create(
+            context = context,
+            id = rightIconId,
+            width = dpValues.dp14,
+            height = dpValues.dp30,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_TOP)
                 addRule(ALIGN_PARENT_END)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addTitle() {
-        HorizontalLineView(context).apply {
-            id = titleId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp80,
-                /* h = */ dpValues.dp20,
-            ).apply {
+    private fun drawTitle() {
+        RoundedRectangleView.create(
+            context = context,
+            id = titleId,
+            width = dpValues.dp80,
+            height = dpValues.dp20,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp20
                 addRule(END_OF, leftIconId)
                 addRule(CENTER_VERTICAL)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addChatInfo() {
-        addAvatar()
-        addChatTitle()
-        addChatSubtitle()
+    private fun drawChatInfo() {
+        drawAvatar()
+        drawChatTitle()
+        drawChatSubtitle()
     }
 
-    private fun addAvatar() {
-        CircleView(context).apply {
-            id = avatarId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp30,
-                /* h = */ dpValues.dp30,
-            ).apply {
+    private fun drawAvatar() {
+        CircleView.create(
+            context = context,
+            id = avatarId,
+            width = dpValues.dp30,
+            height = dpValues.dp30,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp20
                 addRule(END_OF, leftIconId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addChatTitle() {
-        HorizontalLineView(context).apply {
-            id = titleId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp80,
-                /* h = */ dpValues.dp10,
-            ).apply {
+    private fun drawChatTitle() {
+        RoundedRectangleView.create(
+            context = context,
+            id = titleId,
+            width = dpValues.dp80,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
                 addRule(END_OF, avatarId)
                 addRule(ALIGN_TOP, avatarId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addChatSubtitle() {
-        HorizontalLineView(context).apply {
-            id = subtitleId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp50,
-                /* h = */ dpValues.dp10,
-            ).apply {
+    private fun drawChatSubtitle() {
+        RoundedRectangleView.create(
+            context = context,
+            id = subtitleId,
+            width = dpValues.dp50,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
                 addRule(END_OF, avatarId)
                 addRule(ALIGN_BOTTOM, avatarId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
     fun setColors(colors: AppbarColors) {

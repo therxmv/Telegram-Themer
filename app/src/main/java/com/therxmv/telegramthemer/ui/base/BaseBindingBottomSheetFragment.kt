@@ -13,10 +13,10 @@ import com.therxmv.telegramthemer.ui.base.BaseBindingDialogFragment.Companion.DE
 abstract class BaseBindingBottomSheetFragment<B: ViewBinding> : BottomSheetDialogFragment() {
 
     private var _binding: B? = null
-    protected val binding: B get() = _binding!!
+    protected val binding: B get() = requireNotNull(_binding)
 
     private var _dialog: BottomSheetDialog? = null
-    protected val dialog: BottomSheetDialog get() = _dialog!!
+    protected val dialog: BottomSheetDialog get() = requireNotNull(_dialog)
 
     protected fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +33,7 @@ abstract class BaseBindingBottomSheetFragment<B: ViewBinding> : BottomSheetDialo
         _dialog?.behavior?.isDraggable = false
         _dialog?.window?.setDimAmount(DEFAULT_DIM)
 
-        return _dialog!!
+        return requireNotNull(_dialog)
     }
 
     override fun onDestroyView() {

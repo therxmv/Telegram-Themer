@@ -5,7 +5,7 @@ data class PreviewColorsModel(
     val background: Int,
     val previewBackground: Int,
     val appbarColors: AppbarColors,
-    val listColors: ListColors,
+    val chatListColors: ChatListColors,
     val chatColors: ChatColors,
 )
 

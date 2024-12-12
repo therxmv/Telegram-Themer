@@ -1,6 +1,6 @@
 package com.therxmv.preview.model
 
-data class ListColors(
+data class ChatListColors(
     val actionButton: Int,
     val tabsColors: TabsColors,
     val chatsColors: ChatsColors,

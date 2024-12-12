@@ -6,7 +6,6 @@ import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.CircleView
 import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.model.TabsColors
 
@@ -22,122 +21,104 @@ class Tabs(
     private val tabHeight = dpValues.dp14
     private val margin = dpValues.dp4
 
-    companion object {
-        private val tabsIds = listOf(
-            TabData(
-                id = generateViewId(),
-                unreadCounterId = generateViewId(),
-                selectorId = generateViewId(),
-            ),
-            TabData(
-                id = generateViewId(),
-                unreadCounterId = null,
-                selectorId = null,
-            ),
-            TabData(
-                id = generateViewId(),
-                unreadCounterId = generateViewId(),
-                selectorId = null,
-            ),
-        )
-    }
+    private val firstTab = TabModel(
+        id = generateViewId(),
+        unreadCounterId = generateViewId(),
+        selectorId = generateViewId(),
+    )
+    private val middleTab = TabModel(
+        id = generateViewId(),
+        unreadCounterId = null,
+        selectorId = null,
+    )
+    private val lastTab = TabModel(
+        id = generateViewId(),
+        unreadCounterId = generateViewId(),
+        selectorId = null,
+    )
 
     init {
         createTabs()
     }
 
-    private fun createTabs() { // TODO can be refactored
-        val first = tabsIds[0]
-        val middle = tabsIds[1]
-        val last = tabsIds[2]
-
-        HorizontalLineView(context).apply {
-            id = first.id
-            layoutParams = LayoutParams(
-                /* w = */ tabWidth,
-                /* h = */ tabHeight,
-            ).apply {
+    private fun createTabs() { // TODO refactor to generate them like messages
+        RoundedRectangleView.create(
+            context = context,
+            id = firstTab.id,
+            width = tabWidth,
+            height = tabHeight,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_TOP)
                 addRule(ALIGN_PARENT_START)
             }
-            addView(this@apply)
-        }
+        ).also { addView(it) }
 
-        RoundedRectangleView(context).apply {
-            id = first.selectorId!!
-            layoutParams = LayoutParams(
-                /* w = */ tabHeight + tabWidth + margin,
-                /* h = */ margin,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = requireNotNull(firstTab.selectorId),
+            width = tabHeight + tabWidth + margin,
+            height = margin,
+            setUpLayoutParams = {
                 topMargin = margin
-                addRule(BELOW, first.id)
+                addRule(BELOW, firstTab.id)
             }
-            addView(this@apply)
-        }
+        ).also { addView(it) }
 
-        CircleView(context).apply {
-            id = first.unreadCounterId!!
-            layoutParams = LayoutParams(
-                /* w = */ tabHeight,
-                /* h = */ tabHeight,
-            ).apply {
+        CircleView.create(
+            context = context,
+            id = requireNotNull(firstTab.unreadCounterId),
+            width = tabHeight,
+            height = tabHeight,
+            setUpLayoutParams = {
                 marginStart = margin
-                addRule(END_OF, first.id)
+                addRule(END_OF, firstTab.id)
             }
-            addView(this@apply)
-        }
+        ).also { addView(it) }
 
-        HorizontalLineView(context).apply {
-            id = middle.id
-            layoutParams = LayoutParams(
-                /* w = */ tabWidth,
-                /* h = */ tabHeight,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = middleTab.id,
+            width = tabWidth,
+            height = tabHeight,
+            setUpLayoutParams = {
                 addRule(CENTER_HORIZONTAL)
             }
-            addView(this@apply)
-        }
+        ).also { addView(it) }
 
-        HorizontalLineView(context).apply {
-            id = last.id
-            layoutParams = LayoutParams(
-                /* w = */ tabWidth,
-                /* h = */ tabHeight,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = lastTab.id,
+            width = tabWidth,
+            height = tabHeight,
+            setUpLayoutParams = {
                 marginEnd = margin
-                addRule(START_OF, last.unreadCounterId!!)
+                addRule(START_OF, requireNotNull(lastTab.unreadCounterId))
             }
-            addView(this@apply)
-        }
+        ).also { addView(it) }
 
-        CircleView(context).apply {
-            id = last.unreadCounterId!!
-            layoutParams = LayoutParams(
-                /* w = */ tabHeight,
-                /* h = */ tabHeight,
-            ).apply {
+        CircleView.create(
+            context = context,
+            id = requireNotNull(lastTab.unreadCounterId),
+            width = tabHeight,
+            height = tabHeight,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_END)
             }
-            addView(this@apply)
-        }
+        ).also { addView(it) }
     }
 
     fun setColors(colors: TabsColors) {
-        val first = tabsIds[0]
-        val middle = tabsIds[1]
-        val last = tabsIds[2]
+        findViewById<ColorfulView>(firstTab.id)?.setColor(colors.selectedTab)
+        findViewById<ColorfulView>(requireNotNull(firstTab.selectorId))?.setColor(colors.tabSelector)
+        findViewById<ColorfulView>(requireNotNull(firstTab.unreadCounterId))?.setColor(colors.tabUnread)
 
-        findViewById<ColorfulView>(first.id)?.setColor(colors.selectedTab)
-        findViewById<ColorfulView>(first.selectorId!!)?.setColor(colors.tabSelector)
-        findViewById<ColorfulView>(first.unreadCounterId!!)?.setColor(colors.tabUnread)
+        findViewById<ColorfulView>(middleTab.id)?.setColor(colors.tab)
 
-        findViewById<ColorfulView>(middle.id)?.setColor(colors.tab)
-
-        findViewById<ColorfulView>(last.id)?.setColor(colors.tab)
-        findViewById<ColorfulView>(last.unreadCounterId!!)?.setColor(colors.tabUnread)
+        findViewById<ColorfulView>(lastTab.id)?.setColor(colors.tab)
+        findViewById<ColorfulView>(requireNotNull(lastTab.unreadCounterId))?.setColor(colors.tabUnread)
     }
 
-    private data class TabData(
+    private data class TabModel(
         val id: Int,
         val unreadCounterId: Int?,
         val selectorId: Int?,

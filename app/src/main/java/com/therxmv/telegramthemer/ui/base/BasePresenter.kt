@@ -5,10 +5,10 @@ import kotlinx.coroutines.CoroutineScope
 abstract class BasePresenter<V> : Presenter<V> {
 
     private var _view: V? = null
-    val view: V get() = _view!!
+    val view: V get() = requireNotNull(_view)
 
     private var _coroutineScope: CoroutineScope? = null
-    val coroutineScope: CoroutineScope get() = _coroutineScope!!
+    val coroutineScope: CoroutineScope get() = requireNotNull(_coroutineScope)
 
     override fun attachView(view: V, coroutineScope: CoroutineScope) {
         _view = view

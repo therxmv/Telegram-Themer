@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.doOnLayout
-import androidx.core.view.setPadding
 import com.therxmv.preview.PreviewConfiguration.chatMessages
 import com.therxmv.preview.components.PreviewAppbar
 import com.therxmv.preview.components.PreviewBackground
@@ -14,37 +13,25 @@ import com.therxmv.preview.components.chat.PlayerPanel
 import com.therxmv.preview.components.chat.message.MessageItem
 import com.therxmv.preview.components.chat.message.MessageModel
 import com.therxmv.preview.model.PreviewColorsModel
-import com.therxmv.preview.utils.dpToPx
 
 class ChatPreview(
     context: Context,
     attr: AttributeSet,
 ) : RelativeLayout(context, attr) {
 
-    companion object { // TODO why companion object
-        private val backgroundId = View.generateViewId()
-        private val appbarId = View.generateViewId()
-        private val messagePanelId = View.generateViewId()
-        private val playerPanelId = View.generateViewId()
-
-    }
-
-    private lateinit var dpValues: DpValues // Should be initialized before any view is drawn
+    private val backgroundId = View.generateViewId()
+    private val appbarId = View.generateViewId()
+    private val messagePanelId = View.generateViewId()
+    private val playerPanelId = View.generateViewId()
 
     init {
         val background = attachBackground()
         doOnLayout {
-            val scaleFactor = width / 280.dpToPx(context)
-            dpValues = DpValues(context, scaleFactor)
-
-            background.setDpValues(dpValues)
-            background.setPadding(dpValues.dp20)
-
             with(background) {
-                addAppbar()
-                addMessagePanel()
-                addPlayerPanel()
-                addMessages()
+                drawAppbar()
+                drawMessagePanel()
+                drawPlayerPanel()
+                drawMessages()
             }
         }
     }
@@ -62,7 +49,7 @@ class ChatPreview(
             )
         }
 
-    private fun PreviewBackground.addAppbar() {
+    private fun PreviewBackground.drawAppbar() {
         PreviewAppbar(dpValues = dpValues, isInChat = true, context = context).apply {
             id = appbarId
             layoutParams = LayoutParams(
@@ -71,11 +58,11 @@ class ChatPreview(
             ).apply {
                 addRule(ALIGN_PARENT_TOP)
             }
-            this@addAppbar.addView(this@apply)
+            this@drawAppbar.addView(this@apply)
         }
     }
 
-    private fun PreviewBackground.addMessagePanel() {
+    private fun PreviewBackground.drawMessagePanel() {
         MessagePanel(dpValues = dpValues, context = context).apply {
             id = messagePanelId
             layoutParams = LayoutParams(
@@ -84,11 +71,11 @@ class ChatPreview(
             ).apply {
                 addRule(ALIGN_PARENT_BOTTOM)
             }
-            this@addMessagePanel.addView(this@apply)
+            this@drawMessagePanel.addView(this@apply)
         }
     }
 
-    private fun PreviewBackground.addPlayerPanel() {
+    private fun PreviewBackground.drawPlayerPanel() {
         PlayerPanel(dpValues = dpValues, context = context).apply {
             id = playerPanelId
             layoutParams = LayoutParams(
@@ -98,11 +85,11 @@ class ChatPreview(
                 topMargin = dpValues.dp20
                 addRule(BELOW, appbarId)
             }
-            this@addPlayerPanel.addView(this@apply)
+            this@drawPlayerPanel.addView(this@apply)
         }
     }
 
-    private fun PreviewBackground.addMessages() {
+    private fun PreviewBackground.drawMessages() {
         chatMessages.forEachIndexed { index, model ->
             MessageItem(model, dpValues, context).apply {
                 id = model.id
@@ -126,7 +113,7 @@ class ChatPreview(
 
                     topMargin = dpValues.dp10
                 }
-                this@addMessages.addView(this@apply)
+                this@drawMessages.addView(this@apply)
             }
         }
     }

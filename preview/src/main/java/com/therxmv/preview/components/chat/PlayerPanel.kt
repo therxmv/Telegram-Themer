@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.model.PlayerPanelColors
 
@@ -22,78 +21,72 @@ class PlayerPanel(
         attr = attr,
     )
 
-    companion object {
-        private val playId = View.generateViewId()
-        private val nameId = View.generateViewId()
-        private val speedId = View.generateViewId()
-        private val closeId = View.generateViewId()
-    }
+    private val playButtonId = View.generateViewId()
+    private val trackNameId = View.generateViewId()
+    private val speedButtonId = View.generateViewId()
+    private val closeButtonId = View.generateViewId()
 
     init {
-        addPlayButton()
-        addName()
-        addSpeedButton()
-        addCloseButton()
+        drawPlayButton()
+        drawTrackName()
+        drawSpeedButton()
+        drawCloseButton()
     }
 
-    private fun addPlayButton() {
-        RoundedRectangleView(context).apply {
-            id = playId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp10,
-                /* h = */ dpValues.dp10,
-            ).apply {
+    private fun drawPlayButton() {
+        RoundedRectangleView.create(
+            context = context,
+            id = playButtonId,
+            width = dpValues.dp10,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_START)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addName() {
-        HorizontalLineView(context).apply {
-            id = nameId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp80,
-                /* h = */ dpValues.dp10,
-            ).apply {
+    private fun drawTrackName() {
+        RoundedRectangleView.create(
+            context = context,
+            id = trackNameId,
+            width = dpValues.dp80,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
-                addRule(END_OF, playId)
+                addRule(END_OF, playButtonId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addSpeedButton() {
-        RoundedRectangleView(context).apply {
-            id = speedId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp20,
-                /* h = */ dpValues.dp10,
-            ).apply {
+    private fun drawSpeedButton() {
+        RoundedRectangleView.create(
+            context = context,
+            id = speedButtonId,
+            width = dpValues.dp20,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginEnd = dpValues.dp10
-                addRule(START_OF, closeId)
+                addRule(START_OF, closeButtonId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addCloseButton() {
-        RoundedRectangleView(context).apply {
-            id = closeId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp10,
-                /* h = */ dpValues.dp10,
-            ).apply {
+    private fun drawCloseButton() {
+        RoundedRectangleView.create(
+            context = context,
+            id = closeButtonId,
+            width = dpValues.dp10,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_END)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
     fun setColors(colors: PlayerPanelColors) {
-        findViewById<ColorfulView>(playId)?.setColor(colors.play)
-        findViewById<ColorfulView>(nameId)?.setColor(colors.name)
-        findViewById<ColorfulView>(speedId)?.setColor(colors.icons)
-        findViewById<ColorfulView>(closeId)?.setColor(colors.icons)
+        findViewById<ColorfulView>(playButtonId)?.setColor(colors.play)
+        findViewById<ColorfulView>(trackNameId)?.setColor(colors.name)
+        findViewById<ColorfulView>(speedButtonId)?.setColor(colors.icons)
+        findViewById<ColorfulView>(closeButtonId)?.setColor(colors.icons)
     }
 }

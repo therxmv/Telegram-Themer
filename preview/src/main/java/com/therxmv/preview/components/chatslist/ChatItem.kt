@@ -7,7 +7,7 @@ import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.CircleView
 import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.HorizontalLineView
+import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.model.ChatsColors
 
 data class ChatModel(
@@ -22,7 +22,7 @@ data class ChatModel(
 )
 
 class ChatItem(
-    private val data: ChatModel,
+    private val model: ChatModel,
     private val dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
@@ -31,143 +31,135 @@ class ChatItem(
     constructor(
         context: Context,
         attr: AttributeSet? = null,
-    ) : this(data = ChatModel(), dpValues = DpValues(context), context = context, attr = attr)
+    ) : this(model = ChatModel(), dpValues = DpValues(context), context = context, attr = attr)
 
-    companion object {
-        private val avatarId = View.generateViewId()
-        private val onlineBgId = View.generateViewId()
-        private val onlineId = View.generateViewId()
-        private val nameId = View.generateViewId()
-        private val messageId = View.generateViewId()
-        private val timeId = View.generateViewId()
-        private val counterId = View.generateViewId()
-        private val muteId = View.generateViewId()
-        private val secretId = View.generateViewId()
-        private val senderId = View.generateViewId()
-        private val sentCheckId = View.generateViewId()
-    }
+    private val avatarId = View.generateViewId()
+    private val onlineBgId = View.generateViewId()
+    private val onlineId = View.generateViewId()
+    private val nameId = View.generateViewId()
+    private val messageId = View.generateViewId()
+    private val timeId = View.generateViewId()
+    private val counterId = View.generateViewId()
+    private val muteId = View.generateViewId()
+    private val secretId = View.generateViewId()
+    private val senderId = View.generateViewId()
+    private val sentCheckId = View.generateViewId()
 
     init {
-        addAvatar()
-        addName()
-        addMessage()
-        addTime()
+        drawAvatar()
+        drawName()
+        drawMessage()
+        drawTime()
 
-        if (data.isOnline) {
-            addOnline()
+        if (model.isOnline) {
+            drawOnline()
         }
-        if (data.shouldShowSentCheck) {
-            addSentCheck()
+        if (model.shouldShowSentCheck) {
+            drawSentCheck()
         }
-        if (data.isUnread) {
-            addCounter()
+        if (model.isUnread) {
+            drawCounter()
         }
-        if (data.isMuted) {
-            addMuteIcon()
+        if (model.isMuted) {
+            drawMuteIcon()
         }
-        if (data.shouldShowSender) {
-            addSender()
+        if (model.shouldShowSender) {
+            drawSender()
         }
-        if (data.isSecret) {
-            addSecretIcon()
+        if (model.isSecret) {
+            drawSecretIcon()
         }
     }
 
-    private fun addSecretIcon() {
-        CircleView(context).apply {
-            id = secretId
-            layoutParams = LayoutParams(
-                dpValues.dp10,
-                dpValues.dp10,
-            ).apply {
+    private fun drawSecretIcon() {
+        CircleView.create(
+            context = context,
+            id = secretId,
+            width = dpValues.dp10,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
                 addRule(ALIGN_PARENT_TOP)
                 addRule(RIGHT_OF, avatarId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addMuteIcon() {
-        CircleView(context).apply {
-            id = muteId
-            layoutParams = LayoutParams(
-                dpValues.dp10,
-                dpValues.dp10,
-            ).apply {
+    private fun drawMuteIcon() {
+        CircleView.create(
+            context = context,
+            id = muteId,
+            width = dpValues.dp10,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp4
                 addRule(RIGHT_OF, nameId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addCounter() {
-        CircleView(context).apply {
-            id = counterId
-            layoutParams = LayoutParams(
-                dpValues.dp20,
-                dpValues.dp20,
-            ).apply {
+    private fun drawCounter() {
+        CircleView.create(
+            context = context,
+            id = counterId,
+            width = dpValues.dp20,
+            height = dpValues.dp20,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_BOTTOM)
                 addRule(ALIGN_PARENT_END)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addSentCheck() {
-        CircleView(context).apply {
-            id = sentCheckId
-            layoutParams = LayoutParams(
-                dpValues.dp10,
-                dpValues.dp10,
-            ).apply {
+    private fun drawSentCheck() {
+        CircleView.create(
+            context = context,
+            id = sentCheckId,
+            width = dpValues.dp10,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginEnd = dpValues.dp4
                 addRule(LEFT_OF, timeId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addTime() {
-        HorizontalLineView(context).apply {
-            id = timeId
-            layoutParams = LayoutParams(
-                dpValues.dp30,
-                dpValues.dp10,
-            ).apply {
+    private fun drawTime() {
+        RoundedRectangleView.create(
+            context = context,
+            id = timeId,
+            width = dpValues.dp30,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_TOP)
                 addRule(ALIGN_PARENT_END)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addSender() {
-        HorizontalLineView(context).apply {
-            id = senderId
-            layoutParams = LayoutParams(
-                dpValues.dp40,
-                dpValues.dp10,
-            ).apply {
+    private fun drawSender() {
+        RoundedRectangleView.create(
+            context = context,
+            id = senderId,
+            width = dpValues.dp40,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 bottomMargin = dpValues.dp4
                 marginStart = dpValues.dp10
                 addRule(ALIGN_PARENT_BOTTOM)
                 addRule(RIGHT_OF, avatarId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addMessage() {
-        HorizontalLineView(context).apply {
-            id = messageId
-            layoutParams = LayoutParams(
-                dpValues.dp100,
-                dpValues.dp10,
-            ).apply {
-                if (data.shouldShowSender) {
+    private fun drawMessage() {
+        RoundedRectangleView.create(
+            context = context,
+            id = messageId,
+            width = dpValues.dp100,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
+                if (model.shouldShowSender) {
                     marginStart = dpValues.dp4
                     addRule(RIGHT_OF, senderId)
                 } else {
@@ -177,18 +169,17 @@ class ChatItem(
                 bottomMargin = dpValues.dp4
                 addRule(ALIGN_PARENT_BOTTOM)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addName() {
-        HorizontalLineView(context).apply {
-            id = nameId
-            layoutParams = LayoutParams(
-                dpValues.dp80,
-                dpValues.dp10,
-            ).apply {
-                if (data.isSecret) {
+    private fun drawName() {
+        RoundedRectangleView.create(
+            context = context,
+            id = nameId,
+            width = dpValues.dp80,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
+                if (model.isSecret) {
                     marginStart = dpValues.dp4
                     addRule(RIGHT_OF, secretId)
                 } else {
@@ -197,48 +188,44 @@ class ChatItem(
                     addRule(RIGHT_OF, avatarId)
                 }
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addOnline() {
-        CircleView(context).apply {
-            id = onlineBgId
-            layoutParams = LayoutParams(
-                dpValues.dp14,
-                dpValues.dp14,
-            ).apply {
+    private fun drawOnline() {
+        CircleView.create(
+            context = context,
+            id = onlineBgId,
+            width = dpValues.dp14,
+            height = dpValues.dp14,
+            setUpLayoutParams = {
                 addRule(ALIGN_RIGHT, avatarId)
                 addRule(ALIGN_PARENT_BOTTOM, avatarId)
             }
-            addView(this)
-        }
-        CircleView(context).apply {
-            id = onlineId
-            layoutParams = LayoutParams(
-                dpValues.dp7,
-                dpValues.dp7,
-            ).apply {
+        ).also { addView(it) }
+        CircleView.create(
+            context = context,
+            id = onlineId,
+            width = dpValues.dp7,
+            height = dpValues.dp7,
+            setUpLayoutParams = {
                 marginEnd = dpValues.dp7 / 2
                 bottomMargin = dpValues.dp7 / 2
                 addRule(ALIGN_RIGHT, avatarId)
                 addRule(ALIGN_PARENT_BOTTOM, avatarId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addAvatar() {
-        CircleView(context).apply {
-            id = avatarId
-            layoutParams = LayoutParams(
-                dpValues.dp40,
-                dpValues.dp40,
-            ).apply {
+    private fun drawAvatar() {
+        CircleView.create(
+            context = context,
+            id = avatarId,
+            width = dpValues.dp40,
+            height = dpValues.dp40,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_START)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
     fun setColors(item: ChatModel, colors: ChatsColors) {

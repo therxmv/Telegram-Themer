@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.model.MessagePanelColors
 
@@ -22,79 +21,73 @@ class MessagePanel(
         attr = attr,
     )
 
-    companion object {
-        private val stickerId = View.generateViewId()
-        private val messageId = View.generateViewId()
-        private val attachId = View.generateViewId()
-        private val voiceId = View.generateViewId()
-    }
+    private val stickerIconId = View.generateViewId()
+    private val messageId = View.generateViewId()
+    private val attachIconId = View.generateViewId()
+    private val voiceIconId = View.generateViewId()
 
     init {
-        addStickerIcon()
-        addMessage()
-        addAttachIcon()
-        addVoiceIcon()
+        drawStickerIcon()
+        drawMessage()
+        drawAttachIcon()
+        drawVoiceIcon()
     }
 
-    private fun addStickerIcon() {
-        RoundedRectangleView(context).apply {
-            id = stickerId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp20,
-                /* h = */ dpValues.dp20,
-            ).apply {
+    private fun drawStickerIcon() {
+        RoundedRectangleView.create(
+            context = context,
+            id = stickerIconId,
+            width = dpValues.dp20,
+            height = dpValues.dp20,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_START)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addMessage() {
-        HorizontalLineView(context).apply {
-            id = messageId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp80,
-                /* h = */ dpValues.dp10,
-            ).apply {
+    private fun drawMessage() {
+        RoundedRectangleView.create(
+            context = context,
+            id = messageId,
+            width = dpValues.dp80,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
-                addRule(END_OF, stickerId)
+                addRule(END_OF, stickerIconId)
                 addRule(CENTER_VERTICAL)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addAttachIcon() {
-        RoundedRectangleView(context).apply {
-            id = attachId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp10,
-                /* h = */ dpValues.dp20,
-            ).apply {
+    private fun drawAttachIcon() {
+        RoundedRectangleView.create(
+            context = context,
+            id = attachIconId,
+            width = dpValues.dp10,
+            height = dpValues.dp20,
+            setUpLayoutParams = {
                 marginEnd = dpValues.dp10
-                addRule(START_OF, voiceId)
+                addRule(START_OF, voiceIconId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addVoiceIcon() {
-        RoundedRectangleView(context).apply {
-            id = voiceId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp10,
-                /* h = */ dpValues.dp20,
-            ).apply {
+    private fun drawVoiceIcon() {
+        RoundedRectangleView.create(
+            context = context,
+            id = voiceIconId,
+            width = dpValues.dp10,
+            height = dpValues.dp20,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_END)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
     fun setColors(colors: MessagePanelColors) {
-        findViewById<ColorfulView>(stickerId)?.setColor(colors.icon)
-        findViewById<ColorfulView>(attachId)?.setColor(colors.icon)
-        findViewById<ColorfulView>(voiceId)?.setColor(colors.icon)
+        findViewById<ColorfulView>(stickerIconId)?.setColor(colors.icon)
+        findViewById<ColorfulView>(attachIconId)?.setColor(colors.icon)
+        findViewById<ColorfulView>(voiceIconId)?.setColor(colors.icon)
         findViewById<ColorfulView>(messageId)?.setColor(colors.message)
     }
 }

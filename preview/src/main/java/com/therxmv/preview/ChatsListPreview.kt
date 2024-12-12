@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.doOnLayout
-import androidx.core.view.setPadding
 import com.therxmv.preview.PreviewConfiguration.chatListItems
 import com.therxmv.preview.common.ColorfulView
 import com.therxmv.preview.common.RoundedRectangleView
@@ -14,36 +13,25 @@ import com.therxmv.preview.components.PreviewBackground
 import com.therxmv.preview.components.chatslist.ChatItem
 import com.therxmv.preview.components.chatslist.Tabs
 import com.therxmv.preview.model.PreviewColorsModel
-import com.therxmv.preview.utils.dpToPx
 
 class ChatsListPreview(
     context: Context,
     attrs: AttributeSet,
 ) : RelativeLayout(context, attrs) {
 
-    companion object {
-        private val backgroundId = View.generateViewId()
-        private val appbarId = View.generateViewId()
-        private val tabsId = View.generateViewId()
-        private val actionButtonId = View.generateViewId()
-    }
-
-    private lateinit var dpValues: DpValues // Should be initialized before any view is drawn
+    private val backgroundId = View.generateViewId()
+    private val appbarId = View.generateViewId()
+    private val tabsId = View.generateViewId()
+    private val actionButtonId = View.generateViewId()
 
     init {
         val background = attachBackground()
         doOnLayout {
-            val scaleFactor = width / 280.dpToPx(context)
-            dpValues = DpValues(context, scaleFactor)
-
-            background.setDpValues(dpValues)
-            background.setPadding(dpValues.dp20)
-
             with(background) {
-                addAppbar()
-                addTabs()
-                addChatItems()
-                addActionButton()
+                drawAppbar()
+                drawTabs()
+                drawChatItems()
+                drawActionButton()
             }
         }
     }
@@ -61,7 +49,7 @@ class ChatsListPreview(
             )
         }
 
-    private fun PreviewBackground.addAppbar() {
+    private fun PreviewBackground.drawAppbar() {
         PreviewAppbar(dpValues = dpValues, isInChat = false, context = context).apply {
             id = appbarId
             layoutParams = LayoutParams(
@@ -70,11 +58,11 @@ class ChatsListPreview(
             ).apply {
                 addRule(ALIGN_PARENT_TOP)
             }
-            this@addAppbar.addView(this@apply)
+            this@drawAppbar.addView(this@apply)
         }
     }
 
-    private fun PreviewBackground.addTabs() {
+    private fun PreviewBackground.drawTabs() {
         Tabs(dpValues, context).apply {
             id = tabsId
             layoutParams = LayoutParams(
@@ -84,25 +72,24 @@ class ChatsListPreview(
                 topMargin = dpValues.dp20
                 addRule(BELOW, appbarId)
             }
-            this@addTabs.addView(this@apply)
+            this@drawTabs.addView(this@apply)
         }
     }
 
-    private fun PreviewBackground.addActionButton() {
-        RoundedRectangleView(context).apply {
-            id = actionButtonId
-            layoutParams = LayoutParams(
-                dpValues.dp50,
-                dpValues.dp50,
-            ).apply {
+    private fun PreviewBackground.drawActionButton() {
+        RoundedRectangleView.create(
+            context = context,
+            id = actionButtonId,
+            width = dpValues.dp50,
+            height = dpValues.dp50,
+            setUpLayoutParams = {
                 addRule(ALIGN_PARENT_END)
                 addRule(ALIGN_PARENT_BOTTOM)
             }
-            this@addActionButton.addView(this@apply)
-        }
+        ).also { addView(it) }
     }
 
-    private fun PreviewBackground.addChatItems() {
+    private fun PreviewBackground.drawChatItems() {
         chatListItems.forEachIndexed { index, model ->
             ChatItem(model, dpValues, context).apply {
                 id = model.id
@@ -114,19 +101,19 @@ class ChatsListPreview(
                     addRule(BELOW, id)
                     topMargin = dpValues.dp20
                 }
-                this@addChatItems.addView(this@apply)
+                this@drawChatItems.addView(this@apply)
             }
         }
     }
 
     fun setColors(colors: PreviewColorsModel) {
         findViewById<PreviewBackground>(backgroundId)?.setColors(colors.background, colors.accent)
-        findViewById<ColorfulView>(actionButtonId)?.setColor(colors.listColors.actionButton)
+        findViewById<ColorfulView>(actionButtonId)?.setColor(colors.chatListColors.actionButton)
         findViewById<PreviewAppbar>(appbarId)?.setColors(colors.appbarColors)
-        findViewById<Tabs>(tabsId)?.setColors(colors.listColors.tabsColors)
+        findViewById<Tabs>(tabsId)?.setColors(colors.chatListColors.tabsColors)
 
         chatListItems.forEach {
-            findViewById<ChatItem>(it.id)?.setColors(it, colors.listColors.chatsColors)
+            findViewById<ChatItem>(it.id)?.setColors(it, colors.chatListColors.chatsColors)
         }
     }
 }

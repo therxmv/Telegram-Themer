@@ -6,7 +6,7 @@ import com.therxmv.telegramthemer.domain.source.SharedPrefsSource
 import javax.inject.Inject
 
 class SharedPrefsDataSource @Inject constructor(
-    private val mmkv: MMKV,
+    private val mmkv: MMKV, // TODO try data store lib
 ) : SharedPrefsSource {
 
     companion object {

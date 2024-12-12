@@ -44,10 +44,10 @@ android {
 dependencies {
     implementation project(":preview")
 
-    implementation("com.github.jarryleo:colorpicker:2.0.1")
+    implementation("com.github.jarryleo:colorpicker:2.0.1") // TODO remove or move
     implementation("com.github.devsideal:VectorChildFinder:1.0.0")
 
-    implementation appDependencies.mkkv
+    implementation appDependencies.mmkv
     implementation appDependencies.gson
 
     implementation appDependencies.hilt

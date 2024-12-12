@@ -12,7 +12,7 @@ ext {
     navigation_ktx_version = "2.8.2"
     fragment_ktx_version = "1.8.4"
     constraint_layout_version = "2.1.4"
-    mkkv_version = "1.3.1"
+    mmkv_version = "1.3.1"
     gson_version = "2.11.0"
     dagger_version = "2.51.1"
 
@@ -23,7 +23,7 @@ ext {
             navigationKtx           : "androidx.navigation:navigation-fragment-ktx:$navigation_ktx_version",
             fragmentKtx             : "androidx.fragment:fragment-ktx:$fragment_ktx_version",
             constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
-            mkkv                    : "com.tencent:mmkv:$mkkv_version",
+            mmkv                    : "com.tencent:mmkv:$mmkv_version",
             gson                    : "com.google.code.gson:gson:$gson_version",
             hilt                     : "com.google.dagger:hilt-android:$dagger_version",
             dagger                   : "com.google.dagger:dagger:$dagger_version",

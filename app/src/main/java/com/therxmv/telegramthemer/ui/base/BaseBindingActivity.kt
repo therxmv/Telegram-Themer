@@ -7,7 +7,7 @@ import dagger.android.support.DaggerAppCompatActivity
 abstract class BaseBindingActivity<B: ViewBinding> : DaggerAppCompatActivity() {
 
     private var _binding: B? = null
-    protected val binding: B get() = _binding!!
+    protected val binding: B get() = requireNotNull(_binding)
 
     protected fun setContentView(bindingInflater: (LayoutInflater) -> B) {
         _binding = bindingInflater(layoutInflater)

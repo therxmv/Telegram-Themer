@@ -9,7 +9,7 @@ import dagger.android.support.DaggerFragment
 abstract class BaseBindingFragment<B: ViewBinding> : DaggerFragment() {
 
     private var _binding: B? = null
-    protected val binding: B get() = _binding!!
+    protected val binding: B get() = requireNotNull(_binding)
 
     protected fun onCreateView(
         inflater: LayoutInflater,

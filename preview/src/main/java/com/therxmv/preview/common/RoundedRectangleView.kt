@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.widget.RelativeLayout.LayoutParams
 
 class RoundedRectangleView(
     context: Context,
@@ -12,27 +13,40 @@ class RoundedRectangleView(
 ) : ColorfulView(context, attrs) {
 // TODO add click listener
 
-    private var backgroundColor = Color.WHITE // TODO default color
-    private val _cornerRadius: () -> Float = { // to have same radius with different size
-        maxOf(width, height) * 0.2f
+    companion object {
+        fun create(
+            context: Context,
+            id: Int,
+            width: Int,
+            height: Int,
+            setUpLayoutParams: LayoutParams.() -> Unit = {},
+        ) = RoundedRectangleView(context).apply {
+            this.id = id
+            layoutParams = LayoutParams(
+                /* w = */ width,
+                /* h = */ height,
+            ).apply(setUpLayoutParams)
+        }
     }
-    private val backgroundPaint: () -> Paint = {
-        Paint().apply {
+
+    private var backgroundColor = Color.WHITE // TODO default color
+    private val _cornerRadius: Float get() = maxOf(width, height) * 0.2f // to have same radius with different size
+    private val backgroundPaint: Paint
+        get() = Paint().apply {
             isAntiAlias = true
             color = backgroundColor
             style = Paint.Style.FILL
         }
-    }
 
     override fun onDraw(canvas: Canvas) {
         canvas.drawRoundRect(
-            0F,
-            0F,
-            width.toFloat(),
-            height.toFloat(),
-            _cornerRadius(),
-            _cornerRadius(),
-            backgroundPaint(),
+            /* left = */ 0F,
+            /* top = */ 0F,
+            /* right = */ width.toFloat(),
+            /* bottom = */ height.toFloat(),
+            /* rx = */ _cornerRadius,
+            /* ry = */ _cornerRadius,
+            /* paint = */ backgroundPaint,
         )
         super.onDraw(canvas)
     }

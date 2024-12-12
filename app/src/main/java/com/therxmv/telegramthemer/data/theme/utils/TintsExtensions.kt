@@ -12,7 +12,7 @@ fun generateAllTints(baseColor: String): List<String> =
         }
     }
 
-fun String.getLighterColor(factor: Float): String {
+private fun String.getLighterColor(factor: Float): String {
     val rgbList = this.hexToRgb()
     val lighterList = rgbList.map { color ->
         (color + (factor * (255 - color))).toInt().coerceIn(0, 255)
@@ -21,7 +21,7 @@ fun String.getLighterColor(factor: Float): String {
     return lighterList.rgbToHex()
 }
 
-fun String.getDarkerColor(factor: Float): String {
+private fun String.getDarkerColor(factor: Float): String {
     val rgbList = this.hexToRgb()
     val darkerList = rgbList.map { color ->
         (color * (1 - factor)).toInt().coerceIn(0, 255)

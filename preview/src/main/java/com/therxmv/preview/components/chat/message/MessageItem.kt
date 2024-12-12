@@ -12,7 +12,6 @@ import androidx.core.view.setPadding
 import com.therxmv.preview.DpValues
 import com.therxmv.preview.common.CircleView
 import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.HorizontalLineView
 import com.therxmv.preview.common.RoundedRectangleView
 import com.therxmv.preview.components.chat.message.MessageModel.Date
 import com.therxmv.preview.components.chat.message.MessageModel.Message
@@ -35,251 +34,232 @@ class MessageItem(
         attr = attr,
     )
 
-    companion object {
-        private val dateId = View.generateViewId()
-        private val textId = View.generateViewId()
+    private val dateId = View.generateViewId()
+    private val textId = View.generateViewId()
 
-        private val replySenderId = View.generateViewId()
-        private val replyTextId = View.generateViewId()
-        private val replyLineId = View.generateViewId()
+    private val replySenderId = View.generateViewId()
+    private val replyTextId = View.generateViewId()
+    private val replyLineId = View.generateViewId()
 
-        private val loaderIconId = View.generateViewId()
-        private val loaderId = View.generateViewId()
-        private val fileNameId = View.generateViewId()
-        private val fileInfoId = View.generateViewId()
+    private val loaderIconId = View.generateViewId()
+    private val loaderId = View.generateViewId()
+    private val fileNameId = View.generateViewId()
+    private val fileInfoId = View.generateViewId()
 
-        private val voiceInfoId = View.generateViewId()
-        private val voiceSeekbarId = View.generateViewId()
-        private val voiceSeekbarCircleId = View.generateViewId()
-        private val voiceSeekbarFillId = View.generateViewId()
-    }
+    private val voiceInfoId = View.generateViewId()
+    private val voiceSeekbarId = View.generateViewId()
+    private val voiceSeekbarCircleId = View.generateViewId()
+    private val voiceSeekbarFillId = View.generateViewId()
 
     private var backgroundColor = Color.WHITE // TODO default color
     private val _cornerRadius: Float = dpValues.dp14.toFloat()
-    private val backgroundPaint: () -> Paint = {
-        Paint().apply {
+    private val backgroundPaint: Paint
+        get() = Paint().apply {
             isAntiAlias = true
             color = backgroundColor
             style = Paint.Style.FILL
         }
-    }
 
     init {
         when (data) {
-            Date -> addDate()
+            Date -> drawDate()
 
             is Message -> {
-                addMessage(data)
+                drawMessage(data)
             }
-        }
-    }
-
-    private fun addDate() {
-        HorizontalLineView(context).apply {
-            id = dateId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp60,
-                /* h = */ dpValues.dp14,
-            )
-            addView(this)
         }
     }
 
     override fun onDraw(canvas: Canvas) {
         canvas.drawRoundRect(
-            0F,
-            0F,
-            width.toFloat(),
-            height.toFloat(),
-            _cornerRadius,
-            _cornerRadius,
-            backgroundPaint(),
+            /* left = */ 0F,
+            /* top = */ 0F,
+            /* right = */ width.toFloat(),
+            /* bottom = */ height.toFloat(),
+            /* rx = */ _cornerRadius,
+            /* ry = */ _cornerRadius,
+            /* paint = */ backgroundPaint,
         )
         super.onDraw(canvas)
     }
 
-    private fun addMessage(data: Message) {
-        setWillNotDraw(false)
+    private fun drawDate() {
+        RoundedRectangleView.create(
+            context = context,
+            id = dateId,
+            width = dpValues.dp60,
+            height = dpValues.dp14,
+        ).also { addView(it) }
+    }
+
+    private fun drawMessage(data: Message) {
+        setWillNotDraw(false) // To draw background only for messages
         setPadding(dpValues.dp10)
 
         when (data) {
             is Message.TextMessage -> {
-                addText()
+                drawText()
 
-                if (data.isReply) addReply()
+                if (data.isReply) drawReply()
             }
 
-            is Message.FileMessage -> addFile()
-            is Message.VoiceMessage -> addVoice()
+            is Message.FileMessage -> drawFile()
+            is Message.VoiceMessage -> drawVoice()
         }
     }
 
-    private fun addText() {
-        HorizontalLineView(context).apply {
-            id = textId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp160,
-                /* h = */ dpValues.dp8,
-            ).apply {
+    private fun drawText() {
+        RoundedRectangleView.create(
+            context = context,
+            id = textId,
+            width = dpValues.pxOf(160),
+            height = dpValues.dp8,
+            setUpLayoutParams = {
                 if (data is Message.TextMessage && data.isReply) {
                     topMargin = dpValues.dp14
                     addRule(BELOW, replyTextId)
                 }
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addReply() {
-        RoundedRectangleView(context).apply {
-            id = replyLineId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp8,
-                /* h = */ dpValues.dp30,
-            )
-            addView(this)
-        }
+    private fun drawReply() {
+        RoundedRectangleView.create(
+            context = context,
+            id = replyLineId,
+            width = dpValues.dp8,
+            height = dpValues.dp30,
+        ).also { addView(it) }
 
-        HorizontalLineView(context).apply {
-            id = replySenderId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp50,
-                /* h = */ dpValues.dp8,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = replySenderId,
+            width = dpValues.dp50,
+            height = dpValues.dp8,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp8
                 addRule(RIGHT_OF, replyLineId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
 
-        HorizontalLineView(context).apply {
-            id = replyTextId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp80,
-                /* h = */ dpValues.dp8,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = replyTextId,
+            width = dpValues.dp80,
+            height = dpValues.dp8,
+            setUpLayoutParams = {
                 topMargin = dpValues.dp10
                 addRule(BELOW, replySenderId)
 
                 marginStart = dpValues.dp8
                 addRule(RIGHT_OF, replyLineId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addLoader() {
-        CircleView(context).apply {
-            id = loaderId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp40,
-                /* h = */ dpValues.dp40,
-            )
-            addView(this)
-        }
+    private fun drawLoader() {
+        CircleView.create(
+            context = context,
+            id = loaderId,
+            width = dpValues.dp40,
+            height = dpValues.dp40,
+        ).also { addView(it) }
 
-        RoundedRectangleView(context).apply {
-            id = loaderIconId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp20,
-                /* h = */ dpValues.dp20,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = loaderIconId,
+            width = dpValues.dp20,
+            height = dpValues.dp20,
+            setUpLayoutParams = {
                 addRule(ALIGN_START, loaderId)
                 addRule(ALIGN_END, loaderId)
                 addRule(ALIGN_BOTTOM, loaderId)
                 addRule(ALIGN_TOP, loaderId)
-                setMargins(dpValues.dp10)
+                setMargins(dpValues.pxOf(12))
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addFile() {
-        addLoader()
+    private fun drawFile() {
+        drawLoader()
 
-        HorizontalLineView(context).apply {
-            id = fileNameId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp60,
-                /* h = */ dpValues.dp10,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = fileNameId,
+            width = dpValues.dp60,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
                 addRule(RIGHT_OF, loaderId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
 
-        HorizontalLineView(context).apply {
-            id = fileInfoId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp100,
-                /* h = */ dpValues.dp10,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = fileInfoId,
+            width = dpValues.dp100,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
                 addRule(RIGHT_OF, loaderIconId)
 
                 topMargin = dpValues.dp10
                 addRule(BELOW, fileNameId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
-    private fun addVoice() {
-        addLoader()
+    private fun drawVoice() {
+        drawLoader()
 
-        HorizontalLineView(context).apply {
-            id = voiceInfoId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp40,
-                /* h = */ dpValues.dp10,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = voiceInfoId,
+            width = dpValues.dp40,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 marginStart = dpValues.dp10
                 addRule(RIGHT_OF, loaderId)
 
                 topMargin = dpValues.dp8
                 addRule(BELOW, voiceSeekbarFillId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
 
-        HorizontalLineView(context).apply {
-            id = voiceSeekbarFillId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp80,
-                /* h = */ dpValues.dp10,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = voiceSeekbarFillId,
+            width = dpValues.dp80,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 topMargin = dpValues.dp10
                 marginStart = dpValues.dp10
                 addRule(RIGHT_OF, loaderId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
 
-        CircleView(context).apply {
-            id = voiceSeekbarCircleId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp14,
-                /* h = */ dpValues.dp14,
-            ).apply {
+        CircleView.create(
+            context = context,
+            id = voiceSeekbarCircleId,
+            width = dpValues.dp14,
+            height = dpValues.dp14,
+            setUpLayoutParams = {
                 topMargin = dpValues.dp7
                 addRule(ALIGN_END, voiceSeekbarFillId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
 
-        HorizontalLineView(context).apply {
-            id = voiceSeekbarId
-            layoutParams = LayoutParams(
-                /* w = */ dpValues.dp40,
-                /* h = */ dpValues.dp10,
-            ).apply {
+        RoundedRectangleView.create(
+            context = context,
+            id = voiceSeekbarId,
+            width = dpValues.dp40,
+            height = dpValues.dp10,
+            setUpLayoutParams = {
                 topMargin = dpValues.dp10
-                marginStart = dpValues.dp8
+                marginStart = dpValues.dp4
                 addRule(RIGHT_OF, voiceSeekbarCircleId)
             }
-            addView(this)
-        }
+        ).also { addView(it) }
     }
 
     fun setColors(colors: MessageColors) {

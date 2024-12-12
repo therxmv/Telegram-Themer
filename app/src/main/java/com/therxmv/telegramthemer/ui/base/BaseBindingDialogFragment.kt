@@ -17,10 +17,10 @@ abstract class BaseBindingDialogFragment<B: ViewBinding> : DialogFragment() {
     }
 
     private var _binding: B? = null
-    protected val binding: B get() = _binding!!
+    protected val binding: B get() = requireNotNull(_binding)
 
     private var _dialog: ComponentDialog? = null
-    protected val dialog: ComponentDialog get() = _dialog!!
+    protected val dialog: ComponentDialog get() = requireNotNull(_dialog)
 
     protected fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +45,7 @@ abstract class BaseBindingDialogFragment<B: ViewBinding> : DialogFragment() {
 
         _dialog?.window?.setDimAmount(DEFAULT_DIM)
 
-        return _dialog!!
+        return requireNotNull(_dialog)
     }
 
     override fun onDestroyView() {

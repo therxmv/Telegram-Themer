@@ -61,8 +61,8 @@ class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMo
                 this.themeState = this.themeState?.copy(
                     style = it,
                 )
+                notifyAboutChanges()
             }
-            notifyAboutChanges()
         }
     }
 
