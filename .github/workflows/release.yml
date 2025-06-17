@@ -36,7 +36,7 @@ jobs:
       - name: Read version from file
         if: success()
         run: |
-          VERSION=$(cat analytics-sdk/build/version.txt  | tr -d '[:space:]')
+          VERSION=$(cat app/build/version.txt  | tr -d '[:space:]')
           echo "VERSION=v$VERSION" >> $GITHUB_ENV
 
       - name: Create Tag
