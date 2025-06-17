@@ -1,0 +1,54 @@
+name: Build and Create Release.
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    name: Build and Release APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      version: ${{ steps.read_version.outputs.version }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.target_branch || github.head_ref || github.ref_name }}
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: gradle
+
+      - name: Build APK
+        run: ./gradlew clean assembleRelease writeVersion --stacktrace
+
+      - name: Read version from file
+        if: success()
+        run: |
+          VERSION=$(cat analytics-sdk/build/version.txt  | tr -d '[:space:]')
+          echo "VERSION=v$VERSION" >> $GITHUB_ENV
+
+      - name: Create Tag
+        if: success()
+        run: |
+          git tag ${{ env.VERSION }}
+          git push origin ${{ env.VERSION }}
+
+      - name: Create Release
+        if: success()
+        uses: softprops/action-gh-release@v2
+        with:
+          files: app/build/outputs/apk/release/app-release.apk
+          tag_name: ${{ env.VERSION }}
+          body: |
+            Release created automatically by GitHub Actions.
+          draft: false
+          prerelease: false

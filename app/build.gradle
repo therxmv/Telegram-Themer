@@ -13,8 +13,8 @@ android {
         applicationId appConfig.applicationId
         minSdk appConfig.minSdkVersion
         targetSdk appConfig.targetSdkVersion
-        versionCode 300
-        versionName "3.0.0"
+        versionCode appConfig.versionCode
+        versionName appConfig.versionName
 
         resConfigs 'uk_UA'
         vectorDrawables.useSupportLibrary = true
@@ -63,4 +63,13 @@ dependencies {
     implementation appDependencies.appCompat
     implementation appDependencies.material
     implementation appDependencies.constraintLayout
+}
+
+tasks.register("writeVersion") {
+    var versionFile = layout.buildDirectory.file("version.txt").get().asFile
+    doLast {
+        println("execute write version ${versionFile.absolutePath}")
+        versionFile.parentFile?.mkdirs()
+        versionFile.write(appConfig.versionName)
+    }
 }

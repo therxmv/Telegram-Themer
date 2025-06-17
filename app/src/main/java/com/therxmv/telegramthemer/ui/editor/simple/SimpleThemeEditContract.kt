@@ -11,6 +11,7 @@ interface SimpleThemeEditContract {
         fun setUpExportButton(onClick: () -> Unit)
         fun setColorPickerColors(accent: Int, background: Int)
         fun setPreviewColors(colors: PreviewColorsModel)
+        fun startPreviewAnimation(newGradient: IntArray, oldGradient: IntArray = newGradient.reversedArray())
     }
 
     abstract class Presenter : BasePresenter<View>() {

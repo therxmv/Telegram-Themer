@@ -3,7 +3,7 @@ package com.therxmv.preview.model
 data class PreviewColorsModel(
     val accent: Int,
     val background: Int,
-    val previewBackground: Int,
+    val previewGradient: List<Int>,
     val appbarColors: AppbarColors,
     val chatListColors: ChatListColors,
     val chatColors: ChatColors,

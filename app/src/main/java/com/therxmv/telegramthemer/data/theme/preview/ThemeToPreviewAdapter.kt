@@ -39,22 +39,25 @@ class ThemeToPreviewAdapter @Inject constructor(
             AdvancedThemeKeys.accent_2
         }.run { Color.parseColor(values.getValue(this)) }
 
-        val chatListColors = getChatListColors(background, get)
+        val accentColor = Color.parseColor(values.getValue(AdvancedThemeKeys.accent_5))
 
-        val chatColors = getChatColors(get)
+        val previewGradient = when {
+            themeState.isDark -> listOf(previewBackground, accentColor, background)
+            else -> listOf(background, accentColor, previewBackground)
+        }
 
         return PreviewColorsModel(
-            accent = Color.parseColor(values.getValue(AdvancedThemeKeys.accent_5)),
+            accent = accentColor,
             background = background,
-            previewBackground = previewBackground,
+            previewGradient = previewGradient,
             appbarColors = AppbarColors(
                 appbarIcon = AtthemePreviewKeys.actionBarDefaultIcon.get(),
                 appbarTitle = AtthemePreviewKeys.actionBarDefaultTitle.get(),
                 appbarSubtitle = AtthemePreviewKeys.actionBarDefaultSubtitle.get(),
                 appbarAvatar = AtthemePreviewKeys.avatar_backgroundBlue.get(),
             ),
-            chatListColors = chatListColors,
-            chatColors = chatColors,
+            chatListColors = getChatListColors(background, get),
+            chatColors = getChatColors(get),
         )
     }
 

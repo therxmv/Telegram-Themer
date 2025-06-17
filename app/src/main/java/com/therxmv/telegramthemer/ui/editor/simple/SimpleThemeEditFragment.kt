@@ -1,7 +1,9 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
+import android.animation.ArgbEvaluator
+import android.animation.ValueAnimator
 import android.content.res.ColorStateList
-import android.os.Build
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +17,10 @@ import javax.inject.Inject
 
 class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBinding>(),
     SimpleThemeEditContract.View {
+
+    companion object {
+        private const val GRADIENT_DURATION = 1000L
+    }
 
     @Inject
     lateinit var presenter: SimpleThemeEditContract.Presenter
@@ -61,11 +67,41 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     }
 
     override fun setPreviewColors(colors: PreviewColorsModel) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            binding.previewBackground.outlineSpotShadowColor = colors.accent
-        }
-        binding.previewBackground.backgroundTintList = ColorStateList.valueOf(colors.previewBackground)
+        setPreviewGradient(colors.previewGradient.toIntArray())
         binding.chatListPreview.setColors(colors)
         binding.chatPreview.setColors(colors)
+    }
+
+    override fun startPreviewAnimation(newGradient: IntArray, oldGradient: IntArray) {
+        val evaluator = ArgbEvaluator()
+
+        ValueAnimator.ofFloat(0f, 1f).apply {
+            duration = GRADIENT_DURATION
+            addUpdateListener { animation ->
+                val fraction = animation.animatedFraction
+
+                val currentColors = newGradient
+                    .zip(oldGradient).map { (start, end) ->
+                        evaluator.evaluate(fraction, start, end) as Int
+                    }.toIntArray()
+                    .zip(newGradient).map { (start, end) ->
+                        evaluator.evaluate(fraction, start, end) as Int
+                    }.toIntArray()
+
+                setPreviewGradient(currentColors)
+            }
+            start()
+        }
+    }
+
+    private fun setPreviewGradient(gradient: IntArray) {
+        val drawable = GradientDrawable().apply {
+            colors = gradient
+            orientation = GradientDrawable.Orientation.TL_BR
+            gradientType = GradientDrawable.LINEAR_GRADIENT
+            shape = GradientDrawable.OVAL
+
+        }
+        binding.previewBackground.background = drawable
     }
 }

@@ -13,7 +13,6 @@
         android:elevation="0dp"
         android:background="@drawable/preview_background"
         android:padding="20dp"
-        android:layout_marginTop="16dp"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent">
@@ -44,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/button_gradient_background"
         android:gravity="center_vertical"
         android:minHeight="54dp"
         app:layout_constraintTop_toBottomOf="@+id/preview_background">
@@ -65,7 +64,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="6dp"
-            android:background="@drawable/button_background"
+            android:background="@drawable/circle_shape"
             android:backgroundTint="@android:color/black"
             android:foreground="@drawable/color_picker_button"
             android:foregroundTint="@android:color/white" />
@@ -78,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/button_gradient_background"
         android:gravity="center_vertical"
         android:minHeight="54dp"
         app:layout_constraintTop_toBottomOf="@+id/picker_container">
@@ -111,6 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_background"
         android:gravity="center"
         android:minHeight="54dp"
