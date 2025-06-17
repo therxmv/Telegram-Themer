@@ -27,6 +27,9 @@ jobs:
           java-version: '17'
           cache: gradle
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Build APK
         run: ./gradlew clean assembleRelease writeVersion --stacktrace
 
