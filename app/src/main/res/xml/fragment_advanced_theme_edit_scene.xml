@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@+id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="500" />
+
+    <ConstraintSet android:id="@+id/start" />
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/chat_list_preview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="4dp"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            app:layout_constraintDimensionRatio="1:2"
+            app:layout_constraintEnd_toStartOf="@id/chat_preview"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@+id/chat_preview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="4dp"
+            android:scaleX="1"
+            android:scaleY="1"
+            app:layout_constraintDimensionRatio="1:2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+</MotionScene>

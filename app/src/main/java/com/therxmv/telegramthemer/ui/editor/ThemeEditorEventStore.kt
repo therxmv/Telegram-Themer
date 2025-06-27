@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor
 
+import com.therxmv.preview.utils.AtthemePreviewKeys
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
@@ -22,8 +23,9 @@ interface ThemeEditorEventProvider {
 
 sealed interface ThemeEditorEvent {
 
-    data object OpenColorPicker : ThemeEditorEvent
+    data class OpenColorPicker(val overwrittenKey: AtthemePreviewKeys? = null, val currentColor: Int? = null) : ThemeEditorEvent
     data object OpenMoreOptions : ThemeEditorEvent
+    data object ResetOverwrittenColors : ThemeEditorEvent
     data object ExportTheme : ThemeEditorEvent
     data class SubscribeOnColorChanges(val listener: ThemeStateListener) : ThemeEditorEvent
     data class UnsubscribeFromColorChanges(val listener: ThemeStateListener) : ThemeEditorEvent

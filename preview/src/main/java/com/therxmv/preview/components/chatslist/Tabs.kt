@@ -2,18 +2,28 @@ package com.therxmv.preview.components.chatslist
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.CircleView
-import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
+import com.therxmv.preview.common.view.CircleView
+import com.therxmv.preview.common.view.ColorfulView
+import com.therxmv.preview.common.view.RoundedRectangleView
 import com.therxmv.preview.model.TabsColors
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabActiveText
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabLine
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabUnactiveText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_tabUnreadUnactiveBackground
 
 class Tabs(
     dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
-) : RelativeLayout(context, attr) {
+) : RelativeLayout(context, attr),
+    ColorfulPreview<TabsColors>,
+    ClickablePreview {
 
     constructor(context: Context, attr: AttributeSet? = null) : this(DpValues(context), context, attr)
 
@@ -107,7 +117,7 @@ class Tabs(
         ).also { addView(it) }
     }
 
-    fun setColors(colors: TabsColors) {
+    override fun setColors(colors: TabsColors) {
         findViewById<ColorfulView>(firstTab.id)?.setColor(colors.selectedTab)
         findViewById<ColorfulView>(requireNotNull(firstTab.selectorId))?.setColor(colors.tabSelector)
         findViewById<ColorfulView>(requireNotNull(firstTab.unreadCounterId))?.setColor(colors.tabUnread)
@@ -116,6 +126,17 @@ class Tabs(
 
         findViewById<ColorfulView>(lastTab.id)?.setColor(colors.tab)
         findViewById<ColorfulView>(requireNotNull(lastTab.unreadCounterId))?.setColor(colors.tabUnread)
+    }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        findViewById<ColorfulView>(firstTab.id)?.openColorPicker(actionBarTabActiveText)
+        findViewById<ColorfulView>(requireNotNull(firstTab.selectorId))?.openColorPicker(actionBarTabLine)
+        findViewById<ColorfulView>(requireNotNull(firstTab.unreadCounterId))?.openColorPicker(chats_tabUnreadUnactiveBackground)
+
+        findViewById<ColorfulView>(middleTab.id)?.openColorPicker(actionBarTabUnactiveText)
+
+        findViewById<ColorfulView>(lastTab.id)?.openColorPicker(actionBarTabUnactiveText)
+        findViewById<ColorfulView>(requireNotNull(lastTab.unreadCounterId))?.openColorPicker(chats_tabUnreadUnactiveBackground)
     }
 
     private data class TabModel(

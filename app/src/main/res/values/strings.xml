@@ -16,7 +16,8 @@
 
     <!-- Help dialog -->
     <string name="help_dialog_title">How to use?</string>
-    <string name="help_dialog_instruction"><b>1.</b> Choose the color you like and adjust additional options;\n<b>2.</b> Click on <i>\"Export the theme\"</i> button;\n<b>3.</b> Choose <b>Telegram</b> in the dialog window if it hasn\'t opened yet;\n<b>4.</b> <b>Share theme file</b> with someone or save it to your saved messages\n<b>5.</b> After the file was shared click on it and click apply.\n\n<b>Enjoy your new theme!</b></string>
+    <string name="help_dialog_export_instruction"><b>1.</b> Choose the color you like and adjust additional options;\n<b>2.</b> Click on <i>\"Export the theme\"</i> button;\n<b>3.</b> Choose <b>Telegram</b> in the dialog window if it hasn\'t opened yet;\n<b>4.</b> <b>Share theme file</b> with someone or save it to your saved messages\n<b>5.</b> After the file was shared click on it and click apply.\n\n<b>Enjoy your new theme!</b></string>
+    <string name="help_dialog_advanced_instruction"><b>1.</b> Click on any element within the preview to select it;\n<b>2.</b> A color picker will appear — choose your desired color for the selected element.\n\nTo discard all advanced changes and return to the simple theme, use the button in the <b>bottom left corner.</b></string>
     <string name="help_dialog_button">Understand</string>
     <string name="menu_help_action" translatable="false">Help</string>
 

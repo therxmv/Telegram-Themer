@@ -5,15 +5,23 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
+import com.therxmv.preview.common.view.ColorfulView
+import com.therxmv.preview.common.view.RoundedRectangleView
 import com.therxmv.preview.model.PlayerPanelColors
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerClose
+import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPerformer
+import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPlayPause
 
 class PlayerPanel(
     private val dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
-) : RelativeLayout(context, attr) {
+) : RelativeLayout(context, attr),
+    ColorfulPreview<PlayerPanelColors>,
+    ClickablePreview {
 
     constructor(context: Context, attr: AttributeSet? = null) : this(
         dpValues = DpValues(context),
@@ -83,10 +91,17 @@ class PlayerPanel(
         ).also { addView(it) }
     }
 
-    fun setColors(colors: PlayerPanelColors) {
+    override fun setColors(colors: PlayerPanelColors) {
         findViewById<ColorfulView>(playButtonId)?.setColor(colors.play)
         findViewById<ColorfulView>(trackNameId)?.setColor(colors.name)
         findViewById<ColorfulView>(speedButtonId)?.setColor(colors.icons)
         findViewById<ColorfulView>(closeButtonId)?.setColor(colors.icons)
+    }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        findViewById<ColorfulView>(playButtonId)?.openColorPicker(inappPlayerPlayPause)
+        findViewById<ColorfulView>(trackNameId)?.openColorPicker(inappPlayerPerformer)
+        findViewById<ColorfulView>(speedButtonId)?.openColorPicker(inappPlayerClose)
+        findViewById<ColorfulView>(closeButtonId)?.openColorPicker(inappPlayerClose)
     }
 }

@@ -31,7 +31,7 @@ class SimpleThemeEditPresenter @Inject constructor(
 
         with(view) {
             setUpColorPickerButton {
-                themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenColorPicker }
+                themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenColorPicker() }
             }
             setUpMoreOptionsButton {
                 themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.OpenMoreOptions }

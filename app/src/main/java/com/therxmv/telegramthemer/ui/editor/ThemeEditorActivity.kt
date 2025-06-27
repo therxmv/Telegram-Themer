@@ -12,11 +12,15 @@ import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
+import com.therxmv.telegramthemer.ui.editor.advanced.AdvancedThemeEditFragment
 import com.therxmv.telegramthemer.ui.editor.help.HelpDialogFragment
 import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsBottomSheetFragment
 import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsSubscriber
@@ -41,9 +45,9 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(ActivityThemeEditorBinding::inflate)
-        presenter.attachView(this@ThemeEditorActivity, lifecycleScope)
-        setSupportActionBar(binding.mainToolbar)
         handleEdgeToEdge()
+        presenter.attachView(this@ThemeEditorActivity, lifecycleScope)
+        setUpActionBar()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,8 +57,10 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_help -> {
+            val navHost = binding.navHostFragment.getFragment<NavHostFragment>()
+            val isAdvancedFragment = navHost.childFragmentManager.fragments.first() is AdvancedThemeEditFragment
             HelpDialogFragment
-                .createInstance()
+                .createInstance(isAdvancedFragment)
                 .show(supportFragmentManager, "HelpDialogFragment")
 
             true
@@ -68,6 +74,15 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     override fun onDestroy() {
         presenter.detachView()
         super.onDestroy()
+    }
+
+    private fun setUpActionBar() {
+        val toolbar = binding.mainToolbar
+        setSupportActionBar(toolbar)
+
+        val navController = binding.navHostFragment.getFragment<NavHostFragment>().navController
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
     private fun handleEdgeToEdge() {

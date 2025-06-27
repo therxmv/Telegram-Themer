@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor
 
+import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetAtthemeFileUseCase
 import com.therxmv.telegramthemer.domain.usecase.GetCachedThemeUseCase
@@ -26,6 +27,7 @@ class ThemeEditorPresenter @Inject constructor(
     }
 
     private var themeState = getCachedTheme()
+    private var currentOverwrittenKey: AtthemePreviewKeys? = null
     private val listeners: MutableList<ThemeStateListener> = mutableListOf()
 
     override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {
@@ -46,11 +48,19 @@ class ThemeEditorPresenter @Inject constructor(
 
         when (event) {
             is ThemeEditorEvent.OpenColorPicker -> {
-                view.openColorPicker(themeState.accent)
+                currentOverwrittenKey = event.overwrittenKey
+
+                val color = event.currentColor ?: themeState.accent
+                view.openColorPicker(color)
             }
 
             is ThemeEditorEvent.OpenMoreOptions -> {
                 view.openMoreOptions(themeState)
+            }
+
+            is ThemeEditorEvent.ResetOverwrittenColors -> {
+                currentOverwrittenKey = null
+                updateThemeSate(themeState.copy(overwrittenColors = emptyMap()))
             }
 
             is ThemeEditorEvent.ExportTheme -> {
@@ -71,7 +81,20 @@ class ThemeEditorPresenter @Inject constructor(
     }
 
     override fun onColorChanged(color: Int) {
-        updateThemeSate(themeState.copy(accent = color, isMonet = false))
+        val newState = if (currentOverwrittenKey == null) {
+            themeState.copy(accent = color, isMonet = false)
+        } else {
+            val overwrittenMap = themeState.overwrittenColors.toMutableMap()
+            currentOverwrittenKey?.let {
+                it.similarKeys.forEach { name ->
+                    overwrittenMap[name] = color
+                }
+            }
+
+            themeState.copy(overwrittenColors = overwrittenMap)
+        }
+
+        updateThemeSate(newState)
     }
 
     override fun onPropertyChange(themeState: ThemeState) {

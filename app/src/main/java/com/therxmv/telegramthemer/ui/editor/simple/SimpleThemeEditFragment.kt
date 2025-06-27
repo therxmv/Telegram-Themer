@@ -4,15 +4,19 @@ import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.therxmv.preview.model.PreviewColorsModel
+import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
 import com.therxmv.telegramthemer.ui.base.BaseBindingFragment
+import com.therxmv.telegramthemer.utils.startRadiusAnimation
 import javax.inject.Inject
 
 class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBinding>(),
@@ -25,6 +29,8 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     @Inject
     lateinit var presenter: SimpleThemeEditContract.Presenter
 
+    private var previewAnimation: ValueAnimator? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,9 +42,12 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
         binding.chatPreview.doOnPreDraw { // Fragment should wait until preview is drawn
             presenter.attachView(this@SimpleThemeEditFragment, lifecycleScope)
         }
+        setUpAdvancedButton()
     }
 
     override fun onDestroyView() {
+        previewAnimation?.cancel()
+        previewAnimation = null
         presenter.detachView()
         super.onDestroyView()
     }
@@ -57,7 +66,18 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
 
     override fun setUpExportButton(onClick: () -> Unit) {
         binding.exportContainer.setOnClickListener {
+            it.background.startRadiusAnimation(requireContext())
+
             onClick()
+        }
+    }
+
+    private fun setUpAdvancedButton() {
+        binding.advancedEditButton.setOnClickListener {
+            val layers = it.background as LayerDrawable
+            layers.findDrawableByLayerId(R.id.edit_background).startRadiusAnimation(requireContext())
+
+            findNavController().navigate(R.id.action_simpleThemeEditFragment_to_advancedThemeEditFragment)
         }
     }
 
@@ -75,7 +95,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     override fun startPreviewAnimation(newGradient: IntArray, oldGradient: IntArray) {
         val evaluator = ArgbEvaluator()
 
-        ValueAnimator.ofFloat(0f, 1f).apply {
+        previewAnimation = ValueAnimator.ofFloat(0f, 1f).apply {
             duration = GRADIENT_DURATION
             addUpdateListener { animation ->
                 val fraction = animation.animatedFraction

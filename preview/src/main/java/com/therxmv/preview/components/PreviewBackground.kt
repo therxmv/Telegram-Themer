@@ -13,7 +13,7 @@ import com.therxmv.preview.utils.dpToPx
 class PreviewBackground(
     context: Context,
     attrs: AttributeSet? = null,
-) : RelativeLayout(context, attrs) { // TODO add click listener
+) : RelativeLayout(context, attrs) {
 
     private var _dpValues: DpValues? = null
     val dpValues: DpValues get() = requireNotNull(_dpValues) // Provides scalable values for children
@@ -22,13 +22,13 @@ class PreviewBackground(
     private val _strokeWidth: Float get() = dpValues.dp8.toFloat()
     private val _edge: Float get() = _strokeWidth / 2 // to make stroke inside
 
-    private var backgroundColor = Color.BLACK
+    var backgroundViewColor = Color.BLACK
     private var strokeColor = Color.WHITE
 
     private val backgroundPaint: Paint
         get() = Paint().apply {
             isAntiAlias = true
-            color = backgroundColor
+            color = backgroundViewColor
             style = Paint.Style.FILL
         }
     private val strokePaint: Paint
@@ -47,8 +47,8 @@ class PreviewBackground(
         if (_dpValues == null) {
             val scaleFactor = width / 280.dpToPx(context)
             _dpValues = DpValues(context, scaleFactor)
+            setPadding(dpValues.dp20)
         }
-        setPadding(dpValues.dp20)
 
         super.onLayout(changed, l, t, r, b)
     }
@@ -76,7 +76,7 @@ class PreviewBackground(
     }
 
     fun setColors(background: Int, accent: Int) {
-        backgroundColor = background
+        backgroundViewColor = background
         strokeColor = accent
         invalidate()
     }

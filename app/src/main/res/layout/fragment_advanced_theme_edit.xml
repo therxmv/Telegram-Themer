@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/motionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_advanced_theme_edit_scene">
+
+    <com.therxmv.preview.ChatPreview
+        android:id="@+id/chat_preview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="4dp"
+        android:scaleX="0.9"
+        android:scaleY="0.9"
+        app:layout_constraintDimensionRatio="1:2"
+        app:layout_constraintStart_toEndOf="@id/chat_list_preview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.9" />
+
+    <com.therxmv.preview.ChatsListPreview
+        android:id="@+id/chat_list_preview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="4dp"
+        android:scaleX="1"
+        android:scaleY="1"
+        app:layout_constraintDimensionRatio="1:2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.9" />
+
+    <View
+        android:id="@+id/reset_button"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/advanced_reset_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

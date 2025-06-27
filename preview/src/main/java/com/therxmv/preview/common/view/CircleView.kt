@@ -1,4 +1,4 @@
-package com.therxmv.preview.common
+package com.therxmv.preview.common.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,11 +7,10 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.RelativeLayout.LayoutParams
 
-class RoundedRectangleView(
+class CircleView(
     context: Context,
     attrs: AttributeSet? = null,
 ) : ColorfulView(context, attrs) {
-// TODO add click listener
 
     companion object {
         fun create(
@@ -20,7 +19,7 @@ class RoundedRectangleView(
             width: Int,
             height: Int,
             setUpLayoutParams: LayoutParams.() -> Unit = {},
-        ) = RoundedRectangleView(context).apply {
+        ) = CircleView(context).apply {
             this.id = id
             layoutParams = LayoutParams(
                 /* w = */ width,
@@ -29,31 +28,27 @@ class RoundedRectangleView(
         }
     }
 
-    private var backgroundColor = Color.WHITE // TODO default color
-    private val _cornerRadius: Float get() = maxOf(width, height) * 0.2f // to have same radius with different size
+    override var backgroundViewColor = Color.WHITE // TODO default color
     private val backgroundPaint: Paint
         get() = Paint().apply {
             isAntiAlias = true
-            color = backgroundColor
+            color = backgroundViewColor
             style = Paint.Style.FILL
         }
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawRoundRect(
-            /* left = */ 0F,
-            /* top = */ 0F,
-            /* right = */ width.toFloat(),
-            /* bottom = */ height.toFloat(),
-            /* rx = */ _cornerRadius,
-            /* ry = */ _cornerRadius,
+        canvas.drawCircle(
+            /* cx = */ width / 2f,
+            /* cy = */ height / 2f,
+            /* radius = */ width / 2f,
             /* paint = */ backgroundPaint,
         )
         super.onDraw(canvas)
     }
 
     override fun setColor(color: Int) {
-        if (backgroundColor != color) {
-            backgroundColor = color
+        if (backgroundViewColor != color) {
+            backgroundViewColor = color
             invalidate()
         }
     }

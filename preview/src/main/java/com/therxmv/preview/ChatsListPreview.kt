@@ -6,18 +6,25 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.doOnLayout
 import com.therxmv.preview.PreviewConfiguration.chatListItems
-import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
+import com.therxmv.preview.common.view.ColorfulView
+import com.therxmv.preview.common.view.RoundedRectangleView
 import com.therxmv.preview.components.PreviewAppbar
 import com.therxmv.preview.components.PreviewBackground
 import com.therxmv.preview.components.chatslist.ChatItem
 import com.therxmv.preview.components.chatslist.Tabs
 import com.therxmv.preview.model.PreviewColorsModel
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_actionBackground
+import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
 
 class ChatsListPreview(
     context: Context,
     attrs: AttributeSet,
-) : RelativeLayout(context, attrs) {
+) : RelativeLayout(context, attrs),
+    ColorfulPreview<PreviewColorsModel>,
+    ClickablePreview {
 
     private val backgroundId = View.generateViewId()
     private val appbarId = View.generateViewId()
@@ -106,14 +113,26 @@ class ChatsListPreview(
         }
     }
 
-    fun setColors(colors: PreviewColorsModel) {
+    override fun setColors(colors: PreviewColorsModel) {
         findViewById<PreviewBackground>(backgroundId)?.setColors(colors.background, colors.accent)
         findViewById<ColorfulView>(actionButtonId)?.setColor(colors.chatListColors.actionButton)
         findViewById<PreviewAppbar>(appbarId)?.setColors(colors.appbarColors)
         findViewById<Tabs>(tabsId)?.setColors(colors.chatListColors.tabsColors)
 
         chatListItems.forEach {
-            findViewById<ChatItem>(it.id)?.setColors(it, colors.chatListColors.chatsColors)
+            findViewById<ChatItem>(it.id)?.setColors(colors.chatListColors.chatsColors)
+        }
+    }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        findViewById<PreviewBackground>(backgroundId)?.openColorPicker(tt_background)
+        findViewById<ColorfulView>(actionButtonId)?.openColorPicker(chats_actionBackground)
+
+        findViewById<PreviewAppbar>(appbarId)?.setColorPickerAction(openColorPicker)
+        findViewById<Tabs>(tabsId)?.setColorPickerAction(openColorPicker)
+
+        chatListItems.forEach {
+            findViewById<ChatItem>(it.id)?.setColorPickerAction(openColorPicker)
         }
     }
 }

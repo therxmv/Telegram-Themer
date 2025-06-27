@@ -5,10 +5,26 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.CircleView
-import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
+import com.therxmv.preview.common.view.CircleView
+import com.therxmv.preview.common.view.ColorfulView
+import com.therxmv.preview.common.view.RoundedRectangleView
 import com.therxmv.preview.model.ChatsColors
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.avatar_backgroundBlue
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_actionMessage
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_date
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_message
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_muteIcon
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_name
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_nameMessage
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_onlineCircle
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_secretIcon
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_secretName
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_sentReadCheck
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_unreadCounter
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_unreadCounterMuted
 
 data class ChatModel(
     val id: Int = View.generateViewId(),
@@ -26,7 +42,9 @@ class ChatItem(
     private val dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
-) : RelativeLayout(context, attr) {
+) : RelativeLayout(context, attr),
+    ColorfulPreview<ChatsColors>,
+    ClickablePreview {
 
     constructor(
         context: Context,
@@ -228,18 +246,32 @@ class ChatItem(
         ).also { addView(it) }
     }
 
-    fun setColors(item: ChatModel, colors: ChatsColors) {
+    override fun setColors(colors: ChatsColors) {
         findViewById<ColorfulView>(avatarId)?.setColor(colors.avatarColor)
-        findViewById<ColorfulView>(nameId)?.setColor(if (item.isSecret) colors.secretName else colors.chatName)
-        findViewById<ColorfulView>(messageId)?.setColor(if (item.isActionMessage) colors.actionMessage else colors.message)
+        findViewById<ColorfulView>(nameId)?.setColor(if (model.isSecret) colors.secretName else colors.chatName)
+        findViewById<ColorfulView>(messageId)?.setColor(if (model.isActionMessage) colors.actionMessage else colors.message)
         findViewById<ColorfulView>(timeId)?.setColor(colors.chatDate)
 
         findViewById<ColorfulView>(onlineBgId)?.setColor(colors.background)
         findViewById<ColorfulView>(onlineId)?.setColor(colors.online)
-        findViewById<ColorfulView>(counterId)?.setColor(if (item.isMuted) colors.unreadCounterMuted else colors.unreadCounter)
+        findViewById<ColorfulView>(counterId)?.setColor(if (model.isMuted) colors.unreadCounterMuted else colors.unreadCounter)
         findViewById<ColorfulView>(muteId)?.setColor(colors.muteIcon)
         findViewById<ColorfulView>(secretId)?.setColor(colors.secretIcon)
         findViewById<ColorfulView>(senderId)?.setColor(colors.senderName)
         findViewById<ColorfulView>(sentCheckId)?.setColor(colors.sentCheck)
+    }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        findViewById<ColorfulView>(avatarId)?.openColorPicker(avatar_backgroundBlue)
+        findViewById<ColorfulView>(nameId)?.openColorPicker(if (model.isSecret) chats_secretName else chats_name)
+        findViewById<ColorfulView>(messageId)?.openColorPicker(if (model.isActionMessage) chats_actionMessage else chats_message)
+        findViewById<ColorfulView>(timeId)?.openColorPicker(chats_date)
+
+        findViewById<ColorfulView>(onlineId)?.openColorPicker(chats_onlineCircle)
+        findViewById<ColorfulView>(counterId)?.openColorPicker(if (model.isMuted) chats_unreadCounterMuted else chats_unreadCounter)
+        findViewById<ColorfulView>(muteId)?.openColorPicker(chats_muteIcon)
+        findViewById<ColorfulView>(secretId)?.openColorPicker(chats_secretIcon)
+        findViewById<ColorfulView>(senderId)?.openColorPicker(chats_nameMessage)
+        findViewById<ColorfulView>(sentCheckId)?.openColorPicker(chats_sentReadCheck)
     }
 }

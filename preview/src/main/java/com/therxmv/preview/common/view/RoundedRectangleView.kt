@@ -1,4 +1,4 @@
-package com.therxmv.preview.common
+package com.therxmv.preview.common.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,7 +7,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.RelativeLayout.LayoutParams
 
-class CircleView(
+class RoundedRectangleView(
     context: Context,
     attrs: AttributeSet? = null,
 ) : ColorfulView(context, attrs) {
@@ -19,7 +19,7 @@ class CircleView(
             width: Int,
             height: Int,
             setUpLayoutParams: LayoutParams.() -> Unit = {},
-        ) = CircleView(context).apply {
+        ) = RoundedRectangleView(context).apply {
             this.id = id
             layoutParams = LayoutParams(
                 /* w = */ width,
@@ -28,27 +28,31 @@ class CircleView(
         }
     }
 
-    private var backgroundColor = Color.WHITE // TODO default color
+    override var backgroundViewColor = Color.WHITE // TODO default color
+    private val _cornerRadius: Float get() = maxOf(width, height) * 0.2f // to have same radius with different size
     private val backgroundPaint: Paint
         get() = Paint().apply {
             isAntiAlias = true
-            color = backgroundColor
+            color = backgroundViewColor
             style = Paint.Style.FILL
         }
 
     override fun onDraw(canvas: Canvas) {
-        canvas.drawCircle(
-            /* cx = */ width / 2f,
-            /* cy = */ height / 2f,
-            /* radius = */ width / 2f,
+        canvas.drawRoundRect(
+            /* left = */ 0F,
+            /* top = */ 0F,
+            /* right = */ width.toFloat(),
+            /* bottom = */ height.toFloat(),
+            /* rx = */ _cornerRadius,
+            /* ry = */ _cornerRadius,
             /* paint = */ backgroundPaint,
         )
         super.onDraw(canvas)
     }
 
     override fun setColor(color: Int) {
-        if (backgroundColor != color) {
-            backgroundColor = color
+        if (backgroundViewColor != color) {
+            backgroundViewColor = color
             invalidate()
         }
     }

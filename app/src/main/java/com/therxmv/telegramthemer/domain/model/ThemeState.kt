@@ -14,6 +14,7 @@ data class ThemeState(
     val isAmoled: Boolean = false,
     val isMonet: Boolean = false,
     val isGradient: Boolean = false,
+    val overwrittenColors: Map<String, Int> = emptyMap(),
 ) : Parcelable
 
 enum class Styles(val label: String) {

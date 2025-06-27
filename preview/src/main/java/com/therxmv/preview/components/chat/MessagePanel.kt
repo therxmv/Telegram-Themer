@@ -5,15 +5,22 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
+import com.therxmv.preview.common.view.ColorfulView
+import com.therxmv.preview.common.view.RoundedRectangleView
 import com.therxmv.preview.model.MessagePanelColors
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messagePanelIcons
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messagePanelText
 
 class MessagePanel(
     private val dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
-) : RelativeLayout(context, attr) {
+) : RelativeLayout(context, attr),
+    ColorfulPreview<MessagePanelColors>,
+    ClickablePreview {
 
     constructor(context: Context, attr: AttributeSet? = null) : this(
         dpValues = DpValues(context),
@@ -84,10 +91,17 @@ class MessagePanel(
         ).also { addView(it) }
     }
 
-    fun setColors(colors: MessagePanelColors) {
+    override fun setColors(colors: MessagePanelColors) {
         findViewById<ColorfulView>(stickerIconId)?.setColor(colors.icon)
         findViewById<ColorfulView>(attachIconId)?.setColor(colors.icon)
         findViewById<ColorfulView>(voiceIconId)?.setColor(colors.icon)
         findViewById<ColorfulView>(messageId)?.setColor(colors.message)
+    }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        findViewById<ColorfulView>(stickerIconId)?.openColorPicker(chat_messagePanelIcons)
+        findViewById<ColorfulView>(attachIconId)?.openColorPicker(chat_messagePanelIcons)
+        findViewById<ColorfulView>(voiceIconId)?.openColorPicker(chat_messagePanelIcons)
+        findViewById<ColorfulView>(messageId)?.openColorPicker(chat_messagePanelText)
     }
 }

@@ -10,19 +10,47 @@ import android.widget.RelativeLayout
 import androidx.core.view.setMargins
 import androidx.core.view.setPadding
 import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.CircleView
-import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
+import com.therxmv.preview.common.view.CircleView
+import com.therxmv.preview.common.view.ColorfulView
+import com.therxmv.preview.common.view.RoundedRectangleView
 import com.therxmv.preview.components.chat.message.MessageModel.Date
 import com.therxmv.preview.components.chat.message.MessageModel.Message
 import com.therxmv.preview.model.MessageColors
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inAudioDurationText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inBubble
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inFileInfoText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inFileNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inLoader
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inReplyLine
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inReplyMessageText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inReplyNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inVoiceSeekbar
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inVoiceSeekbarFill
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messageTextIn
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messageTextOut
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outAudioDurationText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outBubble
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outFileInfoText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outFileNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outLoader
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outReplyLine
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outReplyMessageText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outReplyNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outVoiceSeekbar
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outVoiceSeekbarFill
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_serviceBackground
 
 class MessageItem(
     private val data: MessageModel,
     private val dpValues: DpValues,
     context: Context,
     attr: AttributeSet? = null,
-) : RelativeLayout(context, attr) {
+) : RelativeLayout(context, attr),
+    ColorfulPreview<MessageColors>,
+    ClickablePreview {
 
     constructor(
         context: Context,
@@ -51,12 +79,12 @@ class MessageItem(
     private val voiceSeekbarCircleId = View.generateViewId()
     private val voiceSeekbarFillId = View.generateViewId()
 
-    private var backgroundColor = Color.WHITE // TODO default color
+    var backgroundBubbleColor = Color.WHITE // TODO default color
     private val _cornerRadius: Float = dpValues.dp14.toFloat()
     private val backgroundPaint: Paint
         get() = Paint().apply {
             isAntiAlias = true
-            color = backgroundColor
+            color = backgroundBubbleColor
             style = Paint.Style.FILL
         }
 
@@ -262,7 +290,7 @@ class MessageItem(
         ).also { addView(it) }
     }
 
-    fun setColors(colors: MessageColors) {
+    override fun setColors(colors: MessageColors) {
         when (data) {
             Date -> {
                 findViewById<ColorfulView>(dateId)?.setColor(colors.date)
@@ -295,7 +323,46 @@ class MessageItem(
             }
         }
 
-        backgroundColor = colors.background
+        backgroundBubbleColor = colors.background
         invalidate()
     }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        this.openColorPicker(chat_inBubble.orOutline(chat_outBubble))
+
+        when (data) {
+            Date -> {
+                findViewById<ColorfulView>(dateId)?.openColorPicker(chat_serviceBackground)
+            }
+
+            is Message.TextMessage -> {
+                findViewById<ColorfulView>(textId)?.openColorPicker(chat_messageTextIn.orOutline(chat_messageTextOut))
+
+                if (data.isReply) {
+                    findViewById<ColorfulView>(replySenderId)?.openColorPicker(chat_inReplyNameText.orOutline(chat_outReplyNameText))
+                    findViewById<ColorfulView>(replyTextId)?.openColorPicker(chat_inReplyMessageText.orOutline(chat_outReplyMessageText))
+                    findViewById<ColorfulView>(replyLineId)?.openColorPicker(chat_inReplyLine.orOutline(chat_outReplyLine))
+                }
+            }
+
+            is Message.FileMessage -> {
+                findViewById<ColorfulView>(loaderId)?.openColorPicker(chat_inLoader.orOutline(chat_outLoader))
+                findViewById<ColorfulView>(loaderIconId)?.openColorPicker(chat_inBubble.orOutline(chat_outBubble))
+                findViewById<ColorfulView>(fileNameId)?.openColorPicker(chat_inFileNameText.orOutline(chat_outFileNameText))
+                findViewById<ColorfulView>(fileInfoId)?.openColorPicker(chat_inFileInfoText.orOutline(chat_outFileInfoText))
+            }
+
+            is Message.VoiceMessage -> {
+                findViewById<ColorfulView>(loaderId)?.openColorPicker(chat_inLoader.orOutline(chat_outLoader))
+                findViewById<ColorfulView>(loaderIconId)?.openColorPicker(chat_inBubble.orOutline(chat_outBubble))
+                findViewById<ColorfulView>(voiceInfoId)?.openColorPicker(chat_inAudioDurationText.orOutline(chat_outAudioDurationText))
+                findViewById<ColorfulView>(voiceSeekbarId)?.openColorPicker(chat_inVoiceSeekbar.orOutline(chat_outVoiceSeekbar))
+                findViewById<ColorfulView>(voiceSeekbarCircleId)?.openColorPicker(chat_inVoiceSeekbarFill.orOutline(chat_outVoiceSeekbarFill))
+                findViewById<ColorfulView>(voiceSeekbarFillId)?.openColorPicker(chat_inVoiceSeekbarFill.orOutline(chat_outVoiceSeekbarFill))
+            }
+        }
+    }
+
+    private fun AtthemePreviewKeys.orOutline(key: AtthemePreviewKeys): AtthemePreviewKeys =
+        if (data is Message && data.isIncome) this else key
 }

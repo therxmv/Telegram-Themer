@@ -6,5 +6,5 @@
         android:endColor="?attr/colorPrimaryContainer"
         android:angle="0"/>
 
-    <corners android:radius="1000dp" />
+    <corners android:radius="100dp" />
 </shape>

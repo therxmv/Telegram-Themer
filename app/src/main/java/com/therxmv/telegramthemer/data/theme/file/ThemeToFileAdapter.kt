@@ -9,6 +9,7 @@ import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random
 
+// TODO javadoc
 class ThemeToFileAdapter @Inject constructor(
     private val context: Context,
     private val themeValues: ThemeValues,
@@ -22,13 +23,16 @@ class ThemeToFileAdapter @Inject constructor(
     }
 
     override fun createThemeFile(themeState: ThemeState): File {
-        val colors = themeValues.getAdvancedColorSchema(themeState)
+        val tints = themeValues.getTintedColorSchema(themeState)
         val atthemeMap = themeValues.getAtthemeMap(themeState)
-        val file = File(context.filesDir, getFileName(themeState))
 
+        val file = File(context.filesDir, getFileName(themeState))
         file.printWriter().use { out ->
             atthemeMap.forEach { (key, value) ->
-                val color = colors[value] ?: value // TODO override in future with user color
+                // themeState.overwrittenColors[value] is required for "tt_background"
+                val overwrittenColor = themeState.overwrittenColors[key] ?: themeState.overwrittenColors[value]
+                val color = (overwrittenColor ?: tints[value]).colorToHex()
+
                 out.println("$key=$color")
             }
         }

@@ -58,6 +58,7 @@ dependencies {
     kapt appDependencies.daggerAndroidProcessor
 
     implementation appDependencies.navigationKtx
+    implementation appDependencies.navigationUiKtx
     implementation appDependencies.fragmentKtx
     implementation appDependencies.coreKtx
     implementation appDependencies.appCompat

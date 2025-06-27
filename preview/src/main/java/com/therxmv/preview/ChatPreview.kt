@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.doOnLayout
 import com.therxmv.preview.PreviewConfiguration.chatMessages
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
 import com.therxmv.preview.components.PreviewAppbar
 import com.therxmv.preview.components.PreviewBackground
 import com.therxmv.preview.components.chat.MessagePanel
@@ -13,11 +15,15 @@ import com.therxmv.preview.components.chat.PlayerPanel
 import com.therxmv.preview.components.chat.message.MessageItem
 import com.therxmv.preview.components.chat.message.MessageModel
 import com.therxmv.preview.model.PreviewColorsModel
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
 
 class ChatPreview(
     context: Context,
     attr: AttributeSet,
-) : RelativeLayout(context, attr) {
+) : RelativeLayout(context, attr),
+    ColorfulPreview<PreviewColorsModel>,
+    ClickablePreview {
 
     private val backgroundId = View.generateViewId()
     private val appbarId = View.generateViewId()
@@ -118,7 +124,7 @@ class ChatPreview(
         }
     }
 
-    fun setColors(colors: PreviewColorsModel) {
+    override fun setColors(colors: PreviewColorsModel) {
         findViewById<PreviewBackground>(backgroundId)?.setColors(colors.background, colors.accent)
         findViewById<PreviewAppbar>(appbarId)?.setColors(colors.appbarColors)
         findViewById<MessagePanel>(messagePanelId)?.setColors(colors.chatColors.messagePanelColors)
@@ -131,6 +137,17 @@ class ChatPreview(
                 colors.chatColors.outMessageColors
             }
             findViewById<MessageItem>(it.id)?.setColors(messageColors)
+        }
+    }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        findViewById<PreviewBackground>(backgroundId)?.openColorPicker(tt_background)
+        findViewById<PreviewAppbar>(appbarId)?.setColorPickerAction(openColorPicker)
+        findViewById<MessagePanel>(messagePanelId)?.setColorPickerAction(openColorPicker)
+        findViewById<PlayerPanel>(playerPanelId)?.setColorPickerAction(openColorPicker)
+
+        chatMessages.forEach {
+            findViewById<MessageItem>(it.id)?.setColorPickerAction(openColorPicker)
         }
     }
 }

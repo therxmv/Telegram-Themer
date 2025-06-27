@@ -1,6 +1,5 @@
 package com.therxmv.telegramthemer.data.theme.preview
 
-import android.graphics.Color
 import com.therxmv.preview.model.AppbarColors
 import com.therxmv.preview.model.ChatColors
 import com.therxmv.preview.model.ChatListColors
@@ -10,37 +9,83 @@ import com.therxmv.preview.model.MessagePanelColors
 import com.therxmv.preview.model.PlayerPanelColors
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.preview.model.TabsColors
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultIcon
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultSubtitle
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultTitle
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabActiveText
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabLine
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabUnactiveText
+import com.therxmv.preview.utils.AtthemePreviewKeys.avatar_backgroundBlue
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inAudioDurationText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inBubble
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inFileInfoText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inFileNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inLoader
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inReplyLine
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inReplyMessageText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inReplyNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inVoiceSeekbar
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_inVoiceSeekbarFill
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messagePanelIcons
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messagePanelText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messageTextIn
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messageTextOut
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outAudioDurationText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outBubble
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outFileInfoText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outFileNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outLoader
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outReplyLine
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outReplyMessageText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outReplyNameText
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outVoiceSeekbar
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outVoiceSeekbarFill
+import com.therxmv.preview.utils.AtthemePreviewKeys.chat_serviceBackground
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_actionBackground
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_actionMessage
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_date
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_message
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_muteIcon
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_name
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_nameMessage
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_onlineCircle
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_secretIcon
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_secretName
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_sentReadCheck
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_tabUnreadActiveBackground
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_tabUnreadUnactiveBackground
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_unreadCounter
+import com.therxmv.preview.utils.AtthemePreviewKeys.chats_unreadCounterMuted
+import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerClose
+import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPerformer
+import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPlayPause
+import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
 import com.therxmv.telegramthemer.data.theme.ThemeValues
-import com.therxmv.telegramthemer.data.theme.utils.AdvancedThemeKeys
-import com.therxmv.telegramthemer.data.theme.utils.AtthemePreviewKeys
 import com.therxmv.telegramthemer.domain.adapter.PreviewColorsAdapter
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import javax.inject.Inject
 
+// TODO javadoc
+@Suppress("RemoveRedundantQualifierName")
 class ThemeToPreviewAdapter @Inject constructor(
     private val themeValues: ThemeValues,
-): PreviewColorsAdapter {
+) : PreviewColorsAdapter {
 
-    override fun getThemePreviewColors(themeState: ThemeState): PreviewColorsModel { // TODO lack of documentation
-        val values = themeValues.getAdvancedColorSchema(themeState)
+    override fun getThemePreviewColors(themeState: ThemeState): PreviewColorsModel {
+        val tints = themeValues.getTintedColorSchema(themeState)
         val atthemeMap = themeValues.getAtthemeMap(themeState)
-        val get: Collection<String>.() -> Int = {
-            val colorKey = atthemeMap.getValue(this.first())
-            Color.parseColor(values.getValue(colorKey))
+
+        val getTint: AtthemePreviewKeys.() -> Int = {
+            val tintKey = atthemeMap.getValue(this.name)
+            // themeState.overwrittenColors[tintKey] is required for "tt_background"
+            val overwrittenColor = (themeState.overwrittenColors[this.name] ?: themeState.overwrittenColors[tintKey])
+            overwrittenColor ?: tints[tintKey]
         }
-        val backgroundKeys = atthemeMap.filter {
-            it.value == AdvancedThemeKeys.background
-        }.keys // TODO investigate if need
-        val background = backgroundKeys.get()
 
-        val previewBackground = if (themeState.isDark) {
-            AdvancedThemeKeys.accent_9
-        } else {
-            AdvancedThemeKeys.accent_2
-        }.run { Color.parseColor(values.getValue(this)) }
-
-        val accentColor = Color.parseColor(values.getValue(AdvancedThemeKeys.accent_5))
-
+        val background = themeState.overwrittenColors[tt_background.name] ?: tints[tt_background.name]
+        val accentColor = tints["accent_5"]
+        val previewBackground = tints["accent_9"].takeIf { themeState.isDark } ?: tints["accent_2"]
         val previewGradient = when {
             themeState.isDark -> listOf(previewBackground, accentColor, background)
             else -> listOf(background, accentColor, previewBackground)
@@ -51,93 +96,93 @@ class ThemeToPreviewAdapter @Inject constructor(
             background = background,
             previewGradient = previewGradient,
             appbarColors = AppbarColors(
-                appbarIcon = AtthemePreviewKeys.actionBarDefaultIcon.get(),
-                appbarTitle = AtthemePreviewKeys.actionBarDefaultTitle.get(),
-                appbarSubtitle = AtthemePreviewKeys.actionBarDefaultSubtitle.get(),
-                appbarAvatar = AtthemePreviewKeys.avatar_backgroundBlue.get(),
+                appbarIcon = actionBarDefaultIcon.getTint(),
+                appbarTitle = actionBarDefaultTitle.getTint(),
+                appbarSubtitle = actionBarDefaultSubtitle.getTint(),
+                appbarAvatar = avatar_backgroundBlue.getTint(),
             ),
-            chatListColors = getChatListColors(background, get),
-            chatColors = getChatColors(get),
+            chatListColors = getChatListColors(background, getTint),
+            chatColors = getChatColors(getTint),
         )
     }
 
-    private fun getChatListColors(background: Int, get: Collection<String>.() -> Int) = ChatListColors(
-        actionButton = AtthemePreviewKeys.chats_actionBackground.get(),
+    private fun getChatListColors(background: Int, getTint: AtthemePreviewKeys.() -> Int) = ChatListColors(
+        actionButton = chats_actionBackground.getTint(),
         tabsColors = TabsColors(
-            tab = AtthemePreviewKeys.actionBarTabUnactiveText.get(),
-            selectedTab = AtthemePreviewKeys.actionBarTabActiveText.get(),
-            tabSelector = AtthemePreviewKeys.actionBarTabLine.get(),
-            selectedTabUnread = AtthemePreviewKeys.chats_tabUnreadActiveBackground.get(),
-            tabUnread = AtthemePreviewKeys.chats_tabUnreadUnactiveBackground.get(),
+            tab = actionBarTabUnactiveText.getTint(),
+            selectedTab = actionBarTabActiveText.getTint(),
+            tabSelector = actionBarTabLine.getTint(),
+            selectedTabUnread = chats_tabUnreadActiveBackground.getTint(),
+            tabUnread = chats_tabUnreadUnactiveBackground.getTint(),
         ),
         chatsColors = ChatsColors(
             background = background,
-            chatDate = AtthemePreviewKeys.chats_date.get(),
-            unreadCounter = AtthemePreviewKeys.chats_unreadCounter.get(),
-            unreadCounterMuted = AtthemePreviewKeys.chats_unreadCounterMuted.get(),
-            avatarColor = AtthemePreviewKeys.avatar_backgroundBlue.get(),
-            chatName = AtthemePreviewKeys.chats_name.get(),
-            senderName = AtthemePreviewKeys.chats_nameMessage.get(),
-            message = AtthemePreviewKeys.chats_message.get(),
-            actionMessage = AtthemePreviewKeys.chats_actionMessage.get(),
-            muteIcon = AtthemePreviewKeys.chats_muteIcon.get(),
-            online = AtthemePreviewKeys.chats_onlineCircle.get(),
-            secretIcon = AtthemePreviewKeys.chats_secretIcon.get(),
-            secretName = AtthemePreviewKeys.chats_secretName.get(),
-            sentCheck = AtthemePreviewKeys.chats_sentReadCheck.get(),
+            chatDate = chats_date.getTint(),
+            unreadCounter = chats_unreadCounter.getTint(),
+            unreadCounterMuted = chats_unreadCounterMuted.getTint(),
+            avatarColor = avatar_backgroundBlue.getTint(),
+            chatName = chats_name.getTint(),
+            senderName = chats_nameMessage.getTint(),
+            message = chats_message.getTint(),
+            actionMessage = chats_actionMessage.getTint(),
+            muteIcon = chats_muteIcon.getTint(),
+            online = chats_onlineCircle.getTint(),
+            secretIcon = chats_secretIcon.getTint(),
+            secretName = chats_secretName.getTint(),
+            sentCheck = chats_sentReadCheck.getTint(),
         ),
     )
 
-    private fun getChatColors(get: Collection<String>.() -> Int) = ChatColors(
+    private fun getChatColors(getTint: AtthemePreviewKeys.() -> Int) = ChatColors(
         messagePanelColors = MessagePanelColors(
-            icon = AtthemePreviewKeys.chat_messagePanelIcons.get(),
-            message = AtthemePreviewKeys.chat_messagePanelText.get(),
+            icon = chat_messagePanelIcons.getTint(),
+            message = chat_messagePanelText.getTint(),
         ),
         playerPanelColors = PlayerPanelColors(
-            play = AtthemePreviewKeys.inappPlayerPlayPause.get(),
-            name = AtthemePreviewKeys.inappPlayerPerformer.get(),
-            icons = AtthemePreviewKeys.inappPlayerClose.get(),
+            play = inappPlayerPlayPause.getTint(),
+            name = inappPlayerPerformer.getTint(),
+            icons = inappPlayerClose.getTint(),
         ),
         inMessageColors = MessageColors(
-            background = AtthemePreviewKeys.chat_inBubble.get(),
-            text = AtthemePreviewKeys.chat_messageTextIn.get(),
-            date = AtthemePreviewKeys.chat_serviceBackground.get(),
+            background = chat_inBubble.getTint(),
+            text = chat_messageTextIn.getTint(),
+            date = chat_serviceBackground.getTint(),
             replyColors = MessageColors.ReplyColors(
-                line = AtthemePreviewKeys.chat_inReplyLine.get(),
-                sender = AtthemePreviewKeys.chat_inReplyNameText.get(),
-                text = AtthemePreviewKeys.chat_inReplyMessageText.get(),
+                line = chat_inReplyLine.getTint(),
+                sender = chat_inReplyNameText.getTint(),
+                text = chat_inReplyMessageText.getTint(),
             ),
             fileColors = MessageColors.FileColors(
-                loader = AtthemePreviewKeys.chat_inLoader.get(),
-                name = AtthemePreviewKeys.chat_inFileNameText.get(),
-                info = AtthemePreviewKeys.chat_inFileInfoText.get(),
+                loader = chat_inLoader.getTint(),
+                name = chat_inFileNameText.getTint(),
+                info = chat_inFileInfoText.getTint(),
             ),
             voiceColors = MessageColors.VoiceColors(
-                loader = AtthemePreviewKeys.chat_inLoader.get(),
-                seekbar = AtthemePreviewKeys.chat_inVoiceSeekbar.get(),
-                seekbarFill = AtthemePreviewKeys.chat_inVoiceSeekbarFill.get(),
-                info = AtthemePreviewKeys.chat_inAudioDurationText.get(),
+                loader = chat_inLoader.getTint(),
+                seekbar = chat_inVoiceSeekbar.getTint(),
+                seekbarFill = chat_inVoiceSeekbarFill.getTint(),
+                info = chat_inAudioDurationText.getTint(),
             ),
         ),
         outMessageColors = MessageColors(
-            background = AtthemePreviewKeys.chat_outBubble.get(),
-            text = AtthemePreviewKeys.chat_messageTextOut.get(),
-            date = AtthemePreviewKeys.chat_serviceBackground.get(),
+            background = chat_outBubble.getTint(),
+            text = chat_messageTextOut.getTint(),
+            date = chat_serviceBackground.getTint(),
             replyColors = MessageColors.ReplyColors(
-                line = AtthemePreviewKeys.chat_outReplyLine.get(),
-                sender = AtthemePreviewKeys.chat_outReplyNameText.get(),
-                text = AtthemePreviewKeys.chat_outReplyMessageText.get(),
+                line = chat_outReplyLine.getTint(),
+                sender = chat_outReplyNameText.getTint(),
+                text = chat_outReplyMessageText.getTint(),
             ),
             fileColors = MessageColors.FileColors(
-                loader = AtthemePreviewKeys.chat_outLoader.get(),
-                name = AtthemePreviewKeys.chat_outFileNameText.get(),
-                info = AtthemePreviewKeys.chat_outFileInfoText.get(),
+                loader = chat_outLoader.getTint(),
+                name = chat_outFileNameText.getTint(),
+                info = chat_outFileInfoText.getTint(),
             ),
             voiceColors = MessageColors.VoiceColors(
-                loader = AtthemePreviewKeys.chat_outLoader.get(),
-                seekbar = AtthemePreviewKeys.chat_outVoiceSeekbar.get(),
-                seekbarFill = AtthemePreviewKeys.chat_outVoiceSeekbarFill.get(),
-                info = AtthemePreviewKeys.chat_outAudioDurationText.get(),
+                loader = chat_outLoader.getTint(),
+                seekbar = chat_outVoiceSeekbar.getTint(),
+                seekbarFill = chat_outVoiceSeekbarFill.getTint(),
+                info = chat_outAudioDurationText.getTint(),
             ),
         ),
     )

@@ -5,17 +5,26 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.CircleView
-import com.therxmv.preview.common.ColorfulView
-import com.therxmv.preview.common.RoundedRectangleView
+import com.therxmv.preview.common.preview.ClickablePreview
+import com.therxmv.preview.common.preview.ColorfulPreview
+import com.therxmv.preview.common.view.CircleView
+import com.therxmv.preview.common.view.ColorfulView
+import com.therxmv.preview.common.view.RoundedRectangleView
 import com.therxmv.preview.model.AppbarColors
+import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultIcon
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultSubtitle
+import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultTitle
+import com.therxmv.preview.utils.AtthemePreviewKeys.avatar_backgroundBlue
 
 class PreviewAppbar(
     private val dpValues: DpValues,
     isInChat: Boolean = false,
     context: Context,
     attr: AttributeSet? = null,
-) : RelativeLayout(context, attr) {
+) : RelativeLayout(context, attr),
+    ColorfulPreview<AppbarColors>,
+    ClickablePreview {
 
     constructor(context: Context, attr: AttributeSet? = null) : this(
         dpValues = DpValues(context),
@@ -129,11 +138,19 @@ class PreviewAppbar(
         ).also { addView(it) }
     }
 
-    fun setColors(colors: AppbarColors) {
+    override fun setColors(colors: AppbarColors) {
         findViewById<ColorfulView>(leftIconId)?.setColor(colors.appbarIcon)
         findViewById<ColorfulView>(rightIconId)?.setColor(colors.appbarIcon)
         findViewById<ColorfulView>(titleId)?.setColor(colors.appbarTitle)
         findViewById<ColorfulView>(subtitleId)?.setColor(colors.appbarSubtitle)
         findViewById<ColorfulView>(avatarId)?.setColor(colors.appbarAvatar)
+    }
+
+    override fun setColorPickerAction(openColorPicker: View.(AtthemePreviewKeys) -> Unit) {
+        findViewById<ColorfulView>(leftIconId)?.openColorPicker(actionBarDefaultIcon)
+        findViewById<ColorfulView>(rightIconId)?.openColorPicker(actionBarDefaultIcon)
+        findViewById<ColorfulView>(titleId)?.openColorPicker(actionBarDefaultTitle)
+        findViewById<ColorfulView>(subtitleId)?.openColorPicker(actionBarDefaultSubtitle)
+        findViewById<ColorfulView>(avatarId)?.openColorPicker(avatar_backgroundBlue)
     }
 }

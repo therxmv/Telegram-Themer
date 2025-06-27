@@ -1,7 +1,7 @@
 ext {
     appConfig = [
-            versionCode             : 301,
-            versionName             : "3.0.1",
+            versionCode             : 310,
+            versionName             : "3.1.0",
             applicationId           : "com.therxmv.telegramthemer",
             minSdkVersion           : 23,
             compileSdkVersion       : 35,
@@ -23,6 +23,7 @@ ext {
             appCompat               : "androidx.appcompat:appcompat:$appcompat_version",
             material                : "com.google.android.material:material:$material_version",
             navigationKtx           : "androidx.navigation:navigation-fragment-ktx:$navigation_ktx_version",
+            navigationUiKtx           : "androidx.navigation:navigation-ui-ktx:$navigation_ktx_version",
             fragmentKtx             : "androidx.fragment:fragment-ktx:$fragment_ktx_version",
             constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraint_layout_version",
             mmkv                    : "com.tencent:mmkv:$mmkv_version",
