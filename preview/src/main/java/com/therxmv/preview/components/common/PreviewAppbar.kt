@@ -1,21 +1,21 @@
-package com.therxmv.preview.components
+package com.therxmv.preview.components.common
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.preview.ClickablePreview
-import com.therxmv.preview.common.preview.ColorfulPreview
-import com.therxmv.preview.common.view.CircleView
-import com.therxmv.preview.common.view.ColorfulView
-import com.therxmv.preview.common.view.RoundedRectangleView
+import com.therxmv.preview.base.preview.ClickablePreview
+import com.therxmv.preview.base.preview.ColorfulPreview
+import com.therxmv.preview.base.view.CircleView
+import com.therxmv.preview.base.view.ColorfulView
+import com.therxmv.preview.base.view.RoundedRectangleView
 import com.therxmv.preview.model.AppbarColors
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultIcon
 import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultSubtitle
 import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarDefaultTitle
 import com.therxmv.preview.utils.AtthemePreviewKeys.avatar_backgroundBlue
+import com.therxmv.preview.utils.DpValues
 
 class PreviewAppbar(
     private val dpValues: DpValues,

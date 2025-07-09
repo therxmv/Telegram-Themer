@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.data.theme.utils
+package com.therxmv.telegramthemer.data.extensions
 
 /**
  * Generates list of color tints from 0 to 10 luminosity. 0 is black and 10 is white

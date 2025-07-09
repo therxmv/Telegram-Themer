@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
+import android.animation.Animator
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
@@ -15,8 +16,9 @@ import androidx.navigation.fragment.findNavController
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
+import com.therxmv.telegramthemer.ui.animator.FadeAnimator
+import com.therxmv.telegramthemer.ui.animator.RadiusAnimator.animateToCircle
 import com.therxmv.telegramthemer.ui.base.BaseBindingFragment
-import com.therxmv.telegramthemer.utils.startRadiusAnimation
 import javax.inject.Inject
 
 class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBinding>(),
@@ -45,6 +47,10 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
         setUpAdvancedButton()
     }
 
+    override fun onCreateAnimator(transit: Int, enter: Boolean, nextAnim: Int): Animator {
+        return FadeAnimator.inside().takeIf { enter } ?: FadeAnimator.outside()
+    }
+
     override fun onDestroyView() {
         previewAnimation?.cancel()
         previewAnimation = null
@@ -66,7 +72,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
 
     override fun setUpExportButton(onClick: () -> Unit) {
         binding.exportContainer.setOnClickListener {
-            it.background.startRadiusAnimation(requireContext())
+            it.background.animateToCircle(requireContext())
 
             onClick()
         }
@@ -75,7 +81,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     private fun setUpAdvancedButton() {
         binding.advancedEditButton.setOnClickListener {
             val layers = it.background as LayerDrawable
-            layers.findDrawableByLayerId(R.id.edit_background).startRadiusAnimation(requireContext())
+            layers.findDrawableByLayerId(R.id.edit_background).animateToCircle(requireContext())
 
             findNavController().navigate(R.id.action_simpleThemeEditFragment_to_advancedThemeEditFragment)
         }

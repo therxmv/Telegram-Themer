@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.data.theme.utils
+package com.therxmv.telegramthemer.domain.model
 
 /**
  * Base colors like main accent, background, gray

@@ -4,15 +4,15 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.preview.ClickablePreview
-import com.therxmv.preview.common.preview.ColorfulPreview
-import com.therxmv.preview.common.view.ColorfulView
-import com.therxmv.preview.common.view.RoundedRectangleView
+import com.therxmv.preview.base.preview.ClickablePreview
+import com.therxmv.preview.base.preview.ColorfulPreview
+import com.therxmv.preview.base.view.ColorfulView
+import com.therxmv.preview.base.view.RoundedRectangleView
 import com.therxmv.preview.model.MessagePanelColors
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messagePanelIcons
 import com.therxmv.preview.utils.AtthemePreviewKeys.chat_messagePanelText
+import com.therxmv.preview.utils.DpValues
 
 class MessagePanel(
     private val dpValues: DpValues,

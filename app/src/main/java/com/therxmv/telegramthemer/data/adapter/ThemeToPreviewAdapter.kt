@@ -1,4 +1,4 @@
-package com.therxmv.telegramthemer.data.theme.preview
+package com.therxmv.telegramthemer.data.adapter
 
 import com.therxmv.preview.model.AppbarColors
 import com.therxmv.preview.model.ChatColors
@@ -61,12 +61,16 @@ import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerClose
 import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPerformer
 import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPlayPause
 import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
-import com.therxmv.telegramthemer.data.theme.ThemeValues
 import com.therxmv.telegramthemer.domain.adapter.PreviewColorsAdapter
 import com.therxmv.telegramthemer.domain.model.ThemeState
+import com.therxmv.telegramthemer.domain.model.accent
+import com.therxmv.telegramthemer.domain.values.ThemeValues
 import javax.inject.Inject
 
-// TODO javadoc
+/**
+ * Uses tints and attheme map from [ThemeValues]
+ * to create objects for [com.therxmv.preview.ChatPreview] and [com.therxmv.preview.ChatsListPreview].
+ */
 @Suppress("RemoveRedundantQualifierName")
 class ThemeToPreviewAdapter @Inject constructor(
     private val themeValues: ThemeValues,
@@ -84,8 +88,8 @@ class ThemeToPreviewAdapter @Inject constructor(
         }
 
         val background = themeState.overwrittenColors[tt_background.name] ?: tints[tt_background.name]
-        val accentColor = tints["accent_5"]
-        val previewBackground = tints["accent_9"].takeIf { themeState.isDark } ?: tints["accent_2"]
+        val accentColor = tints[accent(5)]
+        val previewBackground = tints[accent(9)].takeIf { themeState.isDark } ?: tints[accent(2)]
         val previewGradient = when {
             themeState.isDark -> listOf(previewBackground, accentColor, background)
             else -> listOf(background, accentColor, previewBackground)

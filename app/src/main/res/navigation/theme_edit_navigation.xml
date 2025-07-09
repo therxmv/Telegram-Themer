@@ -10,11 +10,7 @@
         android:label="Themer">
         <action
             android:id="@+id/action_simpleThemeEditFragment_to_advancedThemeEditFragment"
-            app:destination="@id/advancedThemeEditFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:destination="@id/advancedThemeEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/advancedThemeEditFragment"

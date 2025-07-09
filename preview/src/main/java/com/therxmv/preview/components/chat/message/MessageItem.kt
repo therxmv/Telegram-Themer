@@ -2,19 +2,18 @@ package com.therxmv.preview.components.chat.message
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.setMargins
 import androidx.core.view.setPadding
-import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.preview.ClickablePreview
-import com.therxmv.preview.common.preview.ColorfulPreview
-import com.therxmv.preview.common.view.CircleView
-import com.therxmv.preview.common.view.ColorfulView
-import com.therxmv.preview.common.view.RoundedRectangleView
+import com.therxmv.preview.base.preview.ClickablePreview
+import com.therxmv.preview.base.preview.ColorfulPreview
+import com.therxmv.preview.base.view.CircleView
+import com.therxmv.preview.base.view.ColorfulView
+import com.therxmv.preview.base.view.DEFAULT_ACCENT_COLOR
+import com.therxmv.preview.base.view.RoundedRectangleView
 import com.therxmv.preview.components.chat.message.MessageModel.Date
 import com.therxmv.preview.components.chat.message.MessageModel.Message
 import com.therxmv.preview.model.MessageColors
@@ -42,6 +41,7 @@ import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outReplyNameText
 import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outVoiceSeekbar
 import com.therxmv.preview.utils.AtthemePreviewKeys.chat_outVoiceSeekbarFill
 import com.therxmv.preview.utils.AtthemePreviewKeys.chat_serviceBackground
+import com.therxmv.preview.utils.DpValues
 
 class MessageItem(
     private val data: MessageModel,
@@ -79,7 +79,7 @@ class MessageItem(
     private val voiceSeekbarCircleId = View.generateViewId()
     private val voiceSeekbarFillId = View.generateViewId()
 
-    var backgroundBubbleColor = Color.WHITE // TODO default color
+    var backgroundBubbleColor = DEFAULT_ACCENT_COLOR
     private val _cornerRadius: Float = dpValues.dp14.toFloat()
     private val backgroundPaint: Paint
         get() = Paint().apply {

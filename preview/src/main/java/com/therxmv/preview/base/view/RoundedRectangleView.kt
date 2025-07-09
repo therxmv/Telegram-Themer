@@ -1,8 +1,7 @@
-package com.therxmv.preview.common.view
+package com.therxmv.preview.base.view
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.RelativeLayout.LayoutParams
@@ -28,7 +27,6 @@ class RoundedRectangleView(
         }
     }
 
-    override var backgroundViewColor = Color.WHITE // TODO default color
     private val _cornerRadius: Float get() = maxOf(width, height) * 0.2f // to have same radius with different size
     private val backgroundPaint: Paint
         get() = Paint().apply {

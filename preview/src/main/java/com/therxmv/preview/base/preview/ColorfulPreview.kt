@@ -1,4 +1,4 @@
-package com.therxmv.preview.common.preview
+package com.therxmv.preview.base.preview
 
 interface ColorfulPreview <T> {
     fun setColors(colors: T)

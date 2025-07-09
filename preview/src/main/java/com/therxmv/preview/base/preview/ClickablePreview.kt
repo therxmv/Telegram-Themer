@@ -1,4 +1,4 @@
-package com.therxmv.preview.common.preview
+package com.therxmv.preview.base.preview
 
 import android.view.View
 import com.therxmv.preview.utils.AtthemePreviewKeys

@@ -1,4 +1,4 @@
-package com.therxmv.preview.components
+package com.therxmv.preview.components.common
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,7 +7,8 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import androidx.core.view.setPadding
-import com.therxmv.preview.DpValues
+import com.therxmv.preview.base.view.DEFAULT_ACCENT_COLOR
+import com.therxmv.preview.utils.DpValues
 import com.therxmv.preview.utils.dpToPx
 
 class PreviewBackground(
@@ -22,8 +23,8 @@ class PreviewBackground(
     private val _strokeWidth: Float get() = dpValues.dp8.toFloat()
     private val _edge: Float get() = _strokeWidth / 2 // to make stroke inside
 
-    var backgroundViewColor = Color.BLACK
-    private var strokeColor = Color.WHITE
+    var backgroundViewColor = Color.WHITE
+    private var strokeColor = DEFAULT_ACCENT_COLOR
 
     private val backgroundPaint: Paint
         get() = Paint().apply {

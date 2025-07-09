@@ -1,7 +1,6 @@
-package com.therxmv.preview
+package com.therxmv.preview.utils
 
 import android.content.Context
-import com.therxmv.preview.utils.dpToPx
 
 /**
  * Provides scalable values converted from dp to px. Should be used with all custom views.

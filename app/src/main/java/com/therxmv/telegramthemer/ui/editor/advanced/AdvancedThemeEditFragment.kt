@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor.advanced
 
+import android.animation.Animator
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,8 +14,9 @@ import com.therxmv.preview.utils.getColor
 import com.therxmv.preview.utils.setOnSwipeListener
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentAdvancedThemeEditBinding
+import com.therxmv.telegramthemer.ui.animator.RadiusAnimator.animateToCircle
+import com.therxmv.telegramthemer.ui.animator.SlideHorizontalAnimator
 import com.therxmv.telegramthemer.ui.base.BaseBindingFragment
-import com.therxmv.telegramthemer.utils.startRadiusAnimation
 import javax.inject.Inject
 
 class AdvancedThemeEditFragment : BaseBindingFragment<FragmentAdvancedThemeEditBinding>(),
@@ -34,6 +36,11 @@ class AdvancedThemeEditFragment : BaseBindingFragment<FragmentAdvancedThemeEditB
         binding.chatPreview.doOnPreDraw { // Fragment should wait until preview is drawn
             presenter.attachView(this@AdvancedThemeEditFragment, lifecycleScope)
         }
+    }
+
+    override fun onCreateAnimator(transit: Int, enter: Boolean, nextAnim: Int): Animator {
+        val screenWidth = resources.displayMetrics.widthPixels.toFloat()
+        return SlideHorizontalAnimator.inFromRight(screenWidth).takeIf { enter } ?: SlideHorizontalAnimator.outToRight(screenWidth)
     }
 
     override fun onDestroyView() {
@@ -68,7 +75,7 @@ class AdvancedThemeEditFragment : BaseBindingFragment<FragmentAdvancedThemeEditB
     override fun setUpResetButton(onClick: () -> Unit) {
         binding.resetButton.setOnClickListener {
             val layers = it.background as LayerDrawable
-            layers.findDrawableByLayerId(R.id.reset_background).startRadiusAnimation(requireContext())
+            layers.findDrawableByLayerId(R.id.reset_background).animateToCircle(requireContext())
 
             onClick()
         }

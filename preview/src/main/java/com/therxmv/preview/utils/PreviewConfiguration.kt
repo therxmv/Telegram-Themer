@@ -1,4 +1,4 @@
-package com.therxmv.preview
+package com.therxmv.preview.utils
 
 import com.therxmv.preview.components.chat.message.MessageModel.Date
 import com.therxmv.preview.components.chat.message.MessageModel.Message

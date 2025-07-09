@@ -4,9 +4,9 @@ import android.content.Context
 import android.graphics.Color
 import android.view.MotionEvent
 import android.view.View
-import com.therxmv.preview.common.view.ColorfulView
-import com.therxmv.preview.components.PreviewBackground
+import com.therxmv.preview.base.view.ColorfulView
 import com.therxmv.preview.components.chat.message.MessageItem
+import com.therxmv.preview.components.common.PreviewBackground
 
 fun Int.dpToPx(context: Context, scaleFactor: Float = 1f): Float {
     val density = context.resources.displayMetrics.density

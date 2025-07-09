@@ -1,15 +1,18 @@
-package com.therxmv.telegramthemer.data.theme.file
+package com.therxmv.telegramthemer.data.adapter
 
 import android.content.Context
-import com.therxmv.telegramthemer.data.theme.ThemeValues
-import com.therxmv.telegramthemer.data.theme.utils.colorToHex
+import com.therxmv.telegramthemer.data.extensions.colorToHex
 import com.therxmv.telegramthemer.domain.adapter.ThemeFileAdapter
 import com.therxmv.telegramthemer.domain.model.ThemeState
+import com.therxmv.telegramthemer.domain.values.ThemeValues
 import java.io.File
 import javax.inject.Inject
 import kotlin.random.Random
 
-// TODO javadoc
+/**
+ * Uses tints and attheme map from [ThemeValues]
+ * to replace keys("accent_5") in json file with given hexadecimal color.
+ */
 class ThemeToFileAdapter @Inject constructor(
     private val context: Context,
     private val themeValues: ThemeValues,

@@ -5,18 +5,18 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.doOnLayout
-import com.therxmv.preview.PreviewConfiguration.chatMessages
-import com.therxmv.preview.common.preview.ClickablePreview
-import com.therxmv.preview.common.preview.ColorfulPreview
-import com.therxmv.preview.components.PreviewAppbar
-import com.therxmv.preview.components.PreviewBackground
+import com.therxmv.preview.base.preview.ClickablePreview
+import com.therxmv.preview.base.preview.ColorfulPreview
 import com.therxmv.preview.components.chat.MessagePanel
 import com.therxmv.preview.components.chat.PlayerPanel
 import com.therxmv.preview.components.chat.message.MessageItem
 import com.therxmv.preview.components.chat.message.MessageModel
+import com.therxmv.preview.components.common.PreviewAppbar
+import com.therxmv.preview.components.common.PreviewBackground
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
+import com.therxmv.preview.utils.PreviewConfiguration.chatMessages
 
 class ChatPreview(
     context: Context,

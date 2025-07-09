@@ -1,7 +1,7 @@
-package com.therxmv.telegramthemer.data.theme
+package com.therxmv.telegramthemer.domain.values
 
-import com.therxmv.telegramthemer.data.theme.utils.TintedThemeColors
 import com.therxmv.telegramthemer.domain.model.ThemeState
+import com.therxmv.telegramthemer.domain.model.TintedThemeColors
 
 interface ThemeValues {
     fun getTintedColorSchema(state: ThemeState): TintedThemeColors

@@ -5,19 +5,19 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import androidx.core.view.doOnLayout
-import com.therxmv.preview.PreviewConfiguration.chatListItems
-import com.therxmv.preview.common.preview.ClickablePreview
-import com.therxmv.preview.common.preview.ColorfulPreview
-import com.therxmv.preview.common.view.ColorfulView
-import com.therxmv.preview.common.view.RoundedRectangleView
-import com.therxmv.preview.components.PreviewAppbar
-import com.therxmv.preview.components.PreviewBackground
+import com.therxmv.preview.base.preview.ClickablePreview
+import com.therxmv.preview.base.preview.ColorfulPreview
+import com.therxmv.preview.base.view.ColorfulView
+import com.therxmv.preview.base.view.RoundedRectangleView
 import com.therxmv.preview.components.chatslist.ChatItem
 import com.therxmv.preview.components.chatslist.Tabs
+import com.therxmv.preview.components.common.PreviewAppbar
+import com.therxmv.preview.components.common.PreviewBackground
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.preview.utils.AtthemePreviewKeys.chats_actionBackground
 import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
+import com.therxmv.preview.utils.PreviewConfiguration.chatListItems
 
 class ChatsListPreview(
     context: Context,

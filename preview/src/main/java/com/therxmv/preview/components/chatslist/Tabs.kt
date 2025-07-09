@@ -4,18 +4,18 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import com.therxmv.preview.DpValues
-import com.therxmv.preview.common.preview.ClickablePreview
-import com.therxmv.preview.common.preview.ColorfulPreview
-import com.therxmv.preview.common.view.CircleView
-import com.therxmv.preview.common.view.ColorfulView
-import com.therxmv.preview.common.view.RoundedRectangleView
+import com.therxmv.preview.base.preview.ClickablePreview
+import com.therxmv.preview.base.preview.ColorfulPreview
+import com.therxmv.preview.base.view.CircleView
+import com.therxmv.preview.base.view.ColorfulView
+import com.therxmv.preview.base.view.RoundedRectangleView
 import com.therxmv.preview.model.TabsColors
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabActiveText
 import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabLine
 import com.therxmv.preview.utils.AtthemePreviewKeys.actionBarTabUnactiveText
 import com.therxmv.preview.utils.AtthemePreviewKeys.chats_tabUnreadUnactiveBackground
+import com.therxmv.preview.utils.DpValues
 
 class Tabs(
     dpValues: DpValues,

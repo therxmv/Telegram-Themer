@@ -7,6 +7,7 @@ package com.therxmv.preview.utils
 @Suppress("EnumEntryName")
 enum class AtthemePreviewKeys(val similarKeys: List<String>) {
     tt_background(listOf(tt_background.name)),
+    tt_onBackground(listOf(tt_onBackground.name)),
     actionBarDefaultIcon(listOf(
         actionBarDefaultIcon.name,
         "actionBarActionModeDefaultIcon",

@@ -12,8 +12,8 @@ import com.therxmv.telegramthemer.databinding.FragmentMoreOptionsBinding
 import com.therxmv.telegramthemer.domain.model.Styles
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingBottomSheetFragment
-import com.therxmv.telegramthemer.utils.isMonetAvailable
-import com.therxmv.telegramthemer.utils.toVisibility
+import com.therxmv.telegramthemer.ui.extensions.isMonetAvailable
+import com.therxmv.telegramthemer.ui.extensions.toVisibility
 
 class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBinding>() {
 
