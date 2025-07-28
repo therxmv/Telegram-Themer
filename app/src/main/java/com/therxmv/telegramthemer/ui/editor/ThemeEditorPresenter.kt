@@ -1,12 +1,13 @@
 package com.therxmv.telegramthemer.ui.editor
 
+import androidx.lifecycle.LifecycleCoroutineScope
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetAtthemeFileUseCase
 import com.therxmv.telegramthemer.domain.usecase.GetCachedThemeUseCase
 import com.therxmv.telegramthemer.domain.usecase.SaveThemeUseCase
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,17 +30,20 @@ class ThemeEditorPresenter @Inject constructor(
     private var themeState = getCachedTheme()
     private var currentOverwrittenKey: AtthemePreviewKeys? = null
     private val listeners: MutableList<ThemeStateListener> = mutableListOf()
+    private var collectJob: Job? = null
 
-    override fun attachView(view: ThemeEditorContract.View, coroutineScope: CoroutineScope) {
+    override fun attachView(view: ThemeEditorContract.View, coroutineScope: LifecycleCoroutineScope) {
         super.attachView(view, coroutineScope)
 
-        coroutineScope.launch(defaultDispatcher) {
+        collectJob = coroutineScope.launch(defaultDispatcher) {
             themeEditorEventProvider.eventFlow.collect(::collectThemeEvent)
         }
     }
 
     override fun detachView() {
         listeners.clear()
+        collectJob?.cancel()
+        collectJob = null
         super.detachView()
     }
 

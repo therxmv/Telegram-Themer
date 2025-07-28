@@ -49,8 +49,10 @@ class AdvancedThemeEditFragment : BaseBindingFragment<FragmentAdvancedThemeEditB
     }
 
     override fun setPreviewColors(colors: PreviewColorsModel) {
-        binding.chatListPreview.setColors(colors)
-        binding.chatPreview.setColors(colors)
+        requireActivity().runOnUiThread {
+            binding.chatListPreview.setColors(colors)
+            binding.chatPreview.setColors(colors)
+        }
     }
 
     override fun setUpOnPreviewClick(action: (AtthemePreviewKeys, Int) -> Unit) {

@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.plugin.parcelize'
+    id 'org.jetbrains.kotlin.plugin.serialization'
     id 'kotlin-kapt'
 }
 
@@ -45,8 +45,9 @@ dependencies {
     implementation project(":preview")
 
     implementation appDependencies.colorPicker
-    implementation appDependencies.mmkv
     implementation appDependencies.gson
+    implementation appDependencies.serialization
+    implementation appDependencies.dataStore
 
     implementation appDependencies.hilt
     implementation appDependencies.dagger

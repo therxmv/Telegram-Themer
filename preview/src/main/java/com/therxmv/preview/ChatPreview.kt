@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
-import androidx.core.view.doOnLayout
+import androidx.core.view.doOnPreDraw
 import com.therxmv.preview.base.preview.ClickablePreview
 import com.therxmv.preview.base.preview.ColorfulPreview
 import com.therxmv.preview.components.chat.MessagePanel
@@ -25,14 +25,14 @@ class ChatPreview(
     ColorfulPreview<PreviewColorsModel>,
     ClickablePreview {
 
-    private val backgroundId = View.generateViewId()
-    private val appbarId = View.generateViewId()
-    private val messagePanelId = View.generateViewId()
-    private val playerPanelId = View.generateViewId()
+    private val backgroundId = generateViewId()
+    private val appbarId = generateViewId()
+    private val messagePanelId = generateViewId()
+    private val playerPanelId = generateViewId()
 
     init {
         val background = attachBackground()
-        doOnLayout {
+        doOnPreDraw {
             with(background) {
                 drawAppbar()
                 drawMessagePanel()

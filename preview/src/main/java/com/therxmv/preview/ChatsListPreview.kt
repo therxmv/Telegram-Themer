@@ -2,9 +2,10 @@ package com.therxmv.preview
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
-import androidx.core.view.doOnLayout
+import androidx.core.view.doOnPreDraw
 import com.therxmv.preview.base.preview.ClickablePreview
 import com.therxmv.preview.base.preview.ColorfulPreview
 import com.therxmv.preview.base.view.ColorfulView
@@ -26,20 +27,21 @@ class ChatsListPreview(
     ColorfulPreview<PreviewColorsModel>,
     ClickablePreview {
 
-    private val backgroundId = View.generateViewId()
-    private val appbarId = View.generateViewId()
-    private val tabsId = View.generateViewId()
-    private val actionButtonId = View.generateViewId()
+    private val backgroundId = generateViewId()
+    private val appbarId = generateViewId()
+    private val tabsId = generateViewId()
+    private val actionButtonId = generateViewId()
 
     init {
         val background = attachBackground()
-        doOnLayout {
+        doOnPreDraw {
             with(background) {
                 drawAppbar()
                 drawTabs()
                 drawChatItems()
                 drawActionButton()
             }
+            Log.d("rozmi1", "ChatsListPreview doOnPreDraw")
         }
     }
 

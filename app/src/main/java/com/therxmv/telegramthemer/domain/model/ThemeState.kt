@@ -1,10 +1,9 @@
 package com.therxmv.telegramthemer.domain.model
 
-import android.os.Parcelable
 import com.therxmv.preview.base.view.DEFAULT_ACCENT_COLOR
-import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
-@Parcelize
+@Serializable
 data class ThemeState(
     val style: Styles = Styles.DEFAULT,
     val accent: Int = DEFAULT_ACCENT_COLOR,
@@ -13,7 +12,7 @@ data class ThemeState(
     val isMonet: Boolean = false,
     val isGradient: Boolean = false,
     val overwrittenColors: Map<String, Int> = emptyMap(),
-) : Parcelable
+)
 
 enum class Styles(val label: String) {
     DEFAULT("Default"),

@@ -14,6 +14,8 @@ import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingBottomSheetFragment
 import com.therxmv.telegramthemer.ui.extensions.isMonetAvailable
 import com.therxmv.telegramthemer.ui.extensions.toVisibility
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMoreOptionsBinding>() {
 
@@ -22,7 +24,7 @@ class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMo
 
         fun createInstance(currentState: ThemeState) = MoreOptionsBottomSheetFragment().apply {
             arguments = Bundle().apply {
-                putParcelable(CURRENT_STATE, currentState)
+                putString(CURRENT_STATE, Json.encodeToString(currentState))
             }
         }
     }
@@ -37,7 +39,9 @@ class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMo
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        themeState = arguments?.getParcelable(CURRENT_STATE) as ThemeState?
+        themeState = arguments?.getString(CURRENT_STATE)?.let {
+            Json.decodeFromString<ThemeState>(it)
+        }
         themeState?.let {
             setUpDropDown(it)
             updateCheckBoxes(it)

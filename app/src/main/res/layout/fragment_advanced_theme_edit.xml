@@ -4,6 +4,8 @@
     android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     app:layoutDescription="@xml/fragment_advanced_theme_edit_scene">
 
     <com.therxmv.preview.ChatPreview

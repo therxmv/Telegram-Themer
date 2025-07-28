@@ -1,12 +1,12 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
+import androidx.lifecycle.LifecycleCoroutineScope
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetPreviewColorsModelUseCase
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
 import com.therxmv.telegramthemer.ui.editor.ThemeStateListener
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ class SimpleThemeEditPresenter @Inject constructor(
     private var currentState: ThemeState? = null
     private var previewAnimationJob: Job? = null
 
-    override fun attachView(view: SimpleThemeEditContract.View, coroutineScope: CoroutineScope) {
+    override fun attachView(view: SimpleThemeEditContract.View, coroutineScope: LifecycleCoroutineScope) {
         super.attachView(view, coroutineScope)
 
         themeEditorEventProvider.eventFlow.update {
@@ -47,6 +47,8 @@ class SimpleThemeEditPresenter @Inject constructor(
             ThemeEditorEvent.UnsubscribeFromColorChanges(this@SimpleThemeEditPresenter)
         }
         currentState = null
+        previewAnimationJob?.cancel()
+        previewAnimationJob = null
         super.detachView()
     }
 

@@ -1,11 +1,11 @@
 package com.therxmv.telegramthemer.ui.editor.advanced
 
+import androidx.lifecycle.LifecycleCoroutineScope
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetPreviewColorsModelUseCase
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
 import com.therxmv.telegramthemer.ui.editor.ThemeStateListener
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
@@ -16,7 +16,7 @@ class AdvancedThemeEditPresenter @Inject constructor(
 
     private var currentState: ThemeState? = null
 
-    override fun attachView(view: AdvancedThemeEditContract.View, coroutineScope: CoroutineScope) {
+    override fun attachView(view: AdvancedThemeEditContract.View, coroutineScope: LifecycleCoroutineScope) {
         super.attachView(view, coroutineScope)
 
         themeEditorEventProvider.eventFlow.update {

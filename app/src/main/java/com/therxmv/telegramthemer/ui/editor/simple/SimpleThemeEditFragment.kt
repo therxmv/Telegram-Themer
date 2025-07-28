@@ -88,14 +88,18 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     }
 
     override fun setColorPickerColors(accent: Int, background: Int) {
-        binding.pickerButton.backgroundTintList = ColorStateList.valueOf(accent)
-        binding.pickerButton.foregroundTintList = ColorStateList.valueOf(background)
+        requireActivity().runOnUiThread {
+            binding.pickerButton.backgroundTintList = ColorStateList.valueOf(accent)
+            binding.pickerButton.foregroundTintList = ColorStateList.valueOf(background)
+        }
     }
 
     override fun setPreviewColors(colors: PreviewColorsModel) {
-        setPreviewGradient(colors.previewGradient.toIntArray())
-        binding.chatListPreview.setColors(colors)
-        binding.chatPreview.setColors(colors)
+        requireActivity().runOnUiThread {
+            setPreviewGradient(colors.previewGradient.toIntArray())
+            binding.chatListPreview.setColors(colors)
+            binding.chatPreview.setColors(colors)
+        }
     }
 
     override fun startPreviewAnimation(newGradient: IntArray, oldGradient: IntArray) {
