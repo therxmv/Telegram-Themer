@@ -8,6 +8,6 @@ Personalize further with options for light, dark, or AMOLED modes, effortlessly 
 Android 12+ users can explore our exclusive Monet themes feature, seamlessly blending colors and styles for a truly captivating visual experience.
 
 ### Demo
-https://github.com/user-attachments/assets/55ea2238-87e0-472f-b048-35ff402dc8f3
+https://github.com/user-attachments/assets/9ac2b114-0826-480a-a798-47a984fe281b
 
 ### Channel with Telegram Themes: [Blando Themes](https://t.me/BlandoThemes)
