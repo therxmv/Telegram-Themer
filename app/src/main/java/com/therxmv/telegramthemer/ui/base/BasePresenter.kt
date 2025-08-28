@@ -1,27 +1,27 @@
 package com.therxmv.telegramthemer.ui.base
 
-import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.LifecycleOwner
 
 abstract class BasePresenter<V> : Presenter<V> {
 
     private var _view: V? = null
     val view: V get() = requireNotNull(_view)
 
-    private var _coroutineScope: LifecycleCoroutineScope? = null
-    val coroutineScope: LifecycleCoroutineScope get() = requireNotNull(_coroutineScope)
+    private var _lifecycleOwner: LifecycleOwner? = null
+    val lifecycleOwner: LifecycleOwner get() = requireNotNull(_lifecycleOwner)
 
-    override fun attachView(view: V, coroutineScope: LifecycleCoroutineScope) {
+    override fun attachView(view: V) {
         _view = view
-        _coroutineScope = coroutineScope
+        _lifecycleOwner = view as? LifecycleOwner
     }
 
     override fun detachView() {
-        _coroutineScope = null
+        _lifecycleOwner = null
         _view = null
     }
 }
 
 private interface Presenter<V> {
-    fun attachView(view: V, coroutineScope: LifecycleCoroutineScope)
+    fun attachView(view: V)
     fun detachView()
 }

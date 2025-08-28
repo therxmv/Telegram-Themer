@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnPreDraw
-import androidx.lifecycle.lifecycleScope
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.preview.utils.getColor
@@ -34,7 +33,7 @@ class AdvancedThemeEditFragment : BaseBindingFragment<FragmentAdvancedThemeEditB
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.chatPreview.doOnPreDraw { // Fragment should wait until preview is drawn
-            presenter.attachView(this@AdvancedThemeEditFragment, lifecycleScope)
+            presenter.attachView(this@AdvancedThemeEditFragment)
         }
     }
 

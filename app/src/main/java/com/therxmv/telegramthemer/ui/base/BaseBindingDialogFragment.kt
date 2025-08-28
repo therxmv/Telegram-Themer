@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.ComponentDialog
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseBindingDialogFragment<B: ViewBinding> : DialogFragment() {
@@ -51,6 +52,12 @@ abstract class BaseBindingDialogFragment<B: ViewBinding> : DialogFragment() {
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    override fun show(manager: FragmentManager, tag: String?) {
+        if (manager.isStateSaved) return
+
+        super.show(manager, tag)
     }
 
     private fun getDialogWidth(): Int {

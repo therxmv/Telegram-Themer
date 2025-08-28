@@ -1,6 +1,6 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
-import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.lifecycleScope
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetPreviewColorsModelUseCase
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
@@ -22,8 +22,8 @@ class SimpleThemeEditPresenter @Inject constructor(
     private var currentState: ThemeState? = null
     private var previewAnimationJob: Job? = null
 
-    override fun attachView(view: SimpleThemeEditContract.View, coroutineScope: LifecycleCoroutineScope) {
-        super.attachView(view, coroutineScope)
+    override fun attachView(view: SimpleThemeEditContract.View) {
+        super.attachView(view)
 
         themeEditorEventProvider.eventFlow.update {
             ThemeEditorEvent.SubscribeOnColorChanges(this@SimpleThemeEditPresenter)
@@ -72,7 +72,7 @@ class SimpleThemeEditPresenter @Inject constructor(
 
     private fun animatePreviewBackground(gradient: List<Int>) {
         previewAnimationJob?.cancel()
-        previewAnimationJob = coroutineScope.launch(mainDispatcher) {
+        previewAnimationJob = lifecycleOwner.lifecycleScope.launch(mainDispatcher) {
             view.startPreviewAnimation(gradient.toIntArray())
         }
     }

@@ -1,6 +1,5 @@
 package com.therxmv.telegramthemer.ui.editor.advanced
 
-import androidx.lifecycle.LifecycleCoroutineScope
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetPreviewColorsModelUseCase
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
@@ -16,8 +15,8 @@ class AdvancedThemeEditPresenter @Inject constructor(
 
     private var currentState: ThemeState? = null
 
-    override fun attachView(view: AdvancedThemeEditContract.View, coroutineScope: LifecycleCoroutineScope) {
-        super.attachView(view, coroutineScope)
+    override fun attachView(view: AdvancedThemeEditContract.View) {
+        super.attachView(view)
 
         themeEditorEventProvider.eventFlow.update {
             ThemeEditorEvent.SubscribeOnColorChanges(this@AdvancedThemeEditPresenter)

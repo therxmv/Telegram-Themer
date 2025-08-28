@@ -11,7 +11,6 @@ import android.view.WindowInsets
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.core.view.updatePadding
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -46,7 +45,7 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
         super.onCreate(savedInstanceState)
         setContentView(ActivityThemeEditorBinding::inflate)
         handleEdgeToEdge()
-        presenter.attachView(this@ThemeEditorActivity, lifecycleScope)
+        presenter.attachView(this@ThemeEditorActivity)
         setUpActionBar()
     }
 

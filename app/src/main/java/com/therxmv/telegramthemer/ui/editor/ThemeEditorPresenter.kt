@@ -1,6 +1,8 @@
 package com.therxmv.telegramthemer.ui.editor
 
-import androidx.lifecycle.LifecycleCoroutineScope
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetAtthemeFileUseCase
@@ -32,11 +34,13 @@ class ThemeEditorPresenter @Inject constructor(
     private val listeners: MutableList<ThemeStateListener> = mutableListOf()
     private var collectJob: Job? = null
 
-    override fun attachView(view: ThemeEditorContract.View, coroutineScope: LifecycleCoroutineScope) {
-        super.attachView(view, coroutineScope)
+    override fun attachView(view: ThemeEditorContract.View) {
+        super.attachView(view)
 
-        collectJob = coroutineScope.launch(defaultDispatcher) {
-            themeEditorEventProvider.eventFlow.collect(::collectThemeEvent)
+        collectJob = lifecycleOwner.lifecycleScope.launch(defaultDispatcher) {
+            lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                themeEditorEventProvider.eventFlow.collect(::collectThemeEvent)
+            }
         }
     }
 
