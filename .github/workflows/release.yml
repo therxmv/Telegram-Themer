@@ -31,12 +31,12 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build APK
-        run: ./gradlew clean assembleRelease writeVersion --stacktrace
+        run: ./gradlew clean assembleRelease --stacktrace
 
       - name: Read version from file
         if: success()
         run: |
-          VERSION=$(cat app/build/version.txt  | tr -d '[:space:]')
+          VERSION=$(./gradlew -q printVersion)
           echo "VERSION=v$VERSION" >> $GITHUB_ENV
 
       - name: Create Tag
