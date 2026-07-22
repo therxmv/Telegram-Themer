@@ -1,11 +1,11 @@
 ext {
     appConfig = [
-            versionCode      : 314,
-            versionName      : "3.1.4",
+            versionCode      : 315,
+            versionName      : "3.1.5",
             applicationId    : "com.therxmv.telegramthemer",
             minSdkVersion    : 23,
-            compileSdkVersion: 35,
-            targetSdkVersion : 35
+            compileSdkVersion: 36,
+            targetSdkVersion : 36
     ]
 
     core_ktx_version = "1.13.1"
