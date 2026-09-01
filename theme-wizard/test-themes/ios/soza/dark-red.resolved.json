@@ -1,0 +1,2093 @@
+{
+  "scenario": {
+    "name": "dark-red",
+    "is_dark": true,
+    "is_amoled": false,
+    "accent": "#E53935"
+  },
+  "keys": {
+    "basedOn": {
+      "role": "night",
+      "intended_hex": null,
+      "exported": "night",
+      "literal": true
+    },
+    "dark": {
+      "role": true,
+      "intended_hex": null,
+      "exported": true,
+      "literal": true
+    },
+    "intro.statusBar": {
+      "role": "white",
+      "intended_hex": null,
+      "exported": "white",
+      "literal": true
+    },
+    "intro.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "intro.accentText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "intro.disabledText": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "intro.startButton": {
+      "role": "accent_4",
+      "intended_hex": "#b72d2a",
+      "exported": "b72d2a"
+    },
+    "intro.dot": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "passcode.bg.top": {
+      "role": "accent_1",
+      "intended_hex": "#2d0b0a",
+      "exported": "2d0b0a"
+    },
+    "passcode.bg.bottom": {
+      "role": "accent_1",
+      "intended_hex": "#2d0b0a",
+      "exported": "2d0b0a"
+    },
+    "passcode.button": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "root.statusBar": {
+      "role": "white",
+      "intended_hex": null,
+      "exported": "white",
+      "literal": true
+    },
+    "root.tabBar.background": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "root.tabBar.separator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.tabBar.icon": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.tabBar.selectedIcon": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "root.tabBar.text": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "root.tabBar.selectedText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "root.tabBar.badgeBackground": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "root.tabBar.badgeStroke": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "root.tabBar.badgeText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "root.navBar.button": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "root.navBar.disabledButton": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.navBar.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "root.navBar.secondaryText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "root.navBar.control": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "root.navBar.accentText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "root.navBar.background": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "root.navBar.opaqueBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "root.navBar.separator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.navBar.badgeFill": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "root.navBar.badgeStroke": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "root.navBar.badgeText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "root.navBar.segmentedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "root.navBar.segmentedFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "root.navBar.segmentedText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "root.navBar.segmentedDivider": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.searchBar.background": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "root.searchBar.accent": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "root.searchBar.inputFill": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "root.searchBar.inputText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "root.searchBar.inputPlaceholderText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "root.searchBar.inputIcon": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.searchBar.inputClearButton": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.searchBar.separator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "root.keyboard": {
+      "role": "dark",
+      "intended_hex": null,
+      "exported": "dark",
+      "literal": true
+    },
+    "list.blocksBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "list.plainBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "list.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "list.secondaryText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "list.disabledText": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.accent": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "list.highlighted": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "list.destructive": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "list.placeholderText": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.itemBlocksBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "list.itemHighlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "list.blocksSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.plainSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.disclosureArrow": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.sectionHeaderText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "list.freeText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "list.freeTextError": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "list.freeTextSuccess": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "list.freeMonoIcon": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.switch.frame": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.switch.handle": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "list.switch.content": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "list.switch.positive": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "list.switch.negative": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "list.disclosureActions.neutral1.bg": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "list.disclosureActions.neutral1.fg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "list.disclosureActions.neutral2.bg": {
+      "role": "orange_5",
+      "intended_hex": "#DF9700",
+      "exported": "df9700"
+    },
+    "list.disclosureActions.neutral2.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "list.disclosureActions.destructive.bg": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "list.disclosureActions.destructive.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "list.disclosureActions.constructive.bg": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "list.disclosureActions.constructive.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "list.disclosureActions.accent.bg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "list.disclosureActions.accent.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "list.disclosureActions.warning.bg": {
+      "role": "orange_5",
+      "intended_hex": "#DF9700",
+      "exported": "df9700"
+    },
+    "list.disclosureActions.warning.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "list.disclosureActions.inactive.bg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.disclosureActions.inactive.fg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "list.check.bg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "list.check.stroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.check.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "list.controlSecondary": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.freeInputField.bg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.freeInputField.stroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.freeInputField.placeholder": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "list.freeInputField.primary": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "list.freeInputField.control": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.mediaPlaceholder": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "list.scrollIndicator": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "list.pageIndicatorInactive": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.inputClearButton": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.itemBarChart.color1": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "list.itemBarChart.color2": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.itemBarChart.color3": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.itemInputField.bg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.itemInputField.stroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "list.itemInputField.placeholder": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "list.itemInputField.primary": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "list.itemInputField.control": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.bg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.itemSeparator": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.itemBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.pinnedItemBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.itemHighlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chatList.pinnedItemHighlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chatList.itemSelectedBg": {
+      "role": "tr_accent_7",
+      "intended_hex": "#44ef8885",
+      "exported": "44ef8885"
+    },
+    "chatList.title": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chatList.secretTitle": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chatList.dateText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chatList.authorName": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chatList.messageText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chatList.messageHighlightedText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chatList.messageDraftText": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chatList.checkmark": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chatList.pendingIndicator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.failedFill": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chatList.failedFg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chatList.muteIcon": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.unreadBadgeActiveBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chatList.unreadBadgeActiveText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.unreadBadgeInactiveBg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.unreadBadgeInactiveText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.reactionBadgeActiveBg": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chatList.pinnedBadge": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.pinnedSearchBar": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chatList.regularSearchBar": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chatList.sectionHeaderBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.sectionHeaderText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chatList.verifiedIconBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chatList.verifiedIconFg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chatList.secretIcon": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chatList.pinnedArchiveAvatar.background.top": {
+      "role": "accent_7",
+      "intended_hex": "#ef8885",
+      "exported": "ef8885"
+    },
+    "chatList.pinnedArchiveAvatar.background.bottom": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chatList.pinnedArchiveAvatar.foreground": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chatList.unpinnedArchiveAvatar.background.top": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.unpinnedArchiveAvatar.background.bottom": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.unpinnedArchiveAvatar.foreground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chatList.onlineDot": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chatList.storyUnseen.top": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chatList.storyUnseen.bottom": {
+      "role": "blue_5",
+      "intended_hex": "#299FE9",
+      "exported": "299fe9"
+    },
+    "chatList.storyUnseenPrivate.top": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chatList.storyUnseenPrivate.bottom": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chatList.storySeen.top": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chatList.storySeen.bottom": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.defaultWallpaper": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.animateMessageColors": {
+      "role": true,
+      "intended_hex": null,
+      "exported": true,
+      "literal": true
+    },
+    "chat.message.incoming.bubble.withWp.bg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.incoming.bubble.withWp.gradientBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.incoming.bubble.withWp.highlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.incoming.bubble.withWp.stroke": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.incoming.bubble.withWp.reactionInactiveBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.incoming.bubble.withWp.reactionInactiveFg": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.incoming.bubble.withWp.reactionActiveBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.bubble.withWp.reactionActiveFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.incoming.bubble.withWp.reactionInactiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.incoming.bubble.withWp.reactionActiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.incoming.bubble.withoutWp.bg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.incoming.bubble.withoutWp.gradientBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.incoming.bubble.withoutWp.highlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.incoming.bubble.withoutWp.stroke": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.incoming.bubble.withoutWp.reactionInactiveBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.incoming.bubble.withoutWp.reactionInactiveFg": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.incoming.bubble.withoutWp.reactionActiveBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.bubble.withoutWp.reactionActiveFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.incoming.bubble.withoutWp.reactionInactiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.incoming.bubble.withoutWp.reactionActiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.incoming.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.incoming.secondaryText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.incoming.linkText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.linkHighlight": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77e53935",
+      "exported": "77e53935"
+    },
+    "chat.message.incoming.scam": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.message.incoming.textHighlight": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "e23333"
+    },
+    "chat.message.incoming.accentText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.accentControl": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.mediaActiveControl": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.mediaInactiveControl": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.incoming.mediaControlInnerBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.incoming.pendingActivity": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.incoming.fileTitle": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.fileDescription": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chat.message.incoming.fileDuration": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chat.message.incoming.mediaPlaceholder": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.incoming.polls.radioButton": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.incoming.polls.radioProgress": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.polls.highlight": {
+      "role": "tr_accent_7",
+      "intended_hex": "#44ef8885",
+      "exported": "44ef8885"
+    },
+    "chat.message.incoming.polls.separator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.incoming.polls.bar": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.polls.barIconForeground": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.incoming.polls.barPositive": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chat.message.incoming.polls.barNegative": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.message.incoming.actionButtonsBg.withWp": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.incoming.actionButtonsBg.withoutWp": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "chat.message.incoming.actionButtonsStroke.withWp": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.incoming.actionButtonsStroke.withoutWp": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.actionButtonsText.withWp": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.incoming.actionButtonsText.withoutWp": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.incoming.textSelection": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77e53935",
+      "exported": "77e53935"
+    },
+    "chat.message.incoming.textSelectionKnob": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.bubble.withWp.bg": {
+      "role": "accent_2",
+      "intended_hex": "#5b1615",
+      "exported": "5b1615"
+    },
+    "chat.message.outgoing.bubble.withWp.highlightedBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.outgoing.bubble.withWp.stroke": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.outgoing.bubble.withWp.reactionInactiveBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.outgoing.bubble.withWp.reactionInactiveFg": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.outgoing.bubble.withWp.reactionActiveBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.bubble.withWp.reactionActiveFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.outgoing.bubble.withWp.reactionInactiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.outgoing.bubble.withWp.reactionActiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.outgoing.bubble.withoutWp.bg": {
+      "role": "accent_2",
+      "intended_hex": "#5b1615",
+      "exported": "5b1615"
+    },
+    "chat.message.outgoing.bubble.withoutWp.highlightedBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.outgoing.bubble.withoutWp.stroke": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.outgoing.bubble.withoutWp.reactionInactiveBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.outgoing.bubble.withoutWp.reactionInactiveFg": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.outgoing.bubble.withoutWp.reactionActiveBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.bubble.withoutWp.reactionActiveFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.outgoing.bubble.withoutWp.reactionInactiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.outgoing.bubble.withoutWp.reactionActiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.outgoing.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.outgoing.secondaryText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.outgoing.linkText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.linkHighlight": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.outgoing.scam": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.outgoing.textHighlight": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "e23333"
+    },
+    "chat.message.outgoing.accentText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.accentControl": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.mediaActiveControl": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.mediaInactiveControl": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "chat.message.outgoing.mediaControlInnerBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.outgoing.pendingActivity": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "chat.message.outgoing.fileTitle": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.fileDescription": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "chat.message.outgoing.fileDuration": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "chat.message.outgoing.mediaPlaceholder": {
+      "role": "accent_1",
+      "intended_hex": "#2d0b0a",
+      "exported": "2d0b0a"
+    },
+    "chat.message.outgoing.polls.radioButton": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "chat.message.outgoing.polls.radioProgress": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.polls.highlight": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "chat.message.outgoing.polls.separator": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "d3d3d3"
+    },
+    "chat.message.outgoing.polls.bar": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.polls.barIconForeground": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.outgoing.polls.barPositive": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "52cf2c"
+    },
+    "chat.message.outgoing.polls.barNegative": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.message.outgoing.actionButtonsBg.withWp": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.outgoing.actionButtonsBg.withoutWp": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "chat.message.outgoing.actionButtonsStroke.withWp": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.outgoing.actionButtonsStroke.withoutWp": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.actionButtonsText.withWp": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.outgoing.actionButtonsText.withoutWp": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoing.textSelection": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77e53935",
+      "exported": "77e53935"
+    },
+    "chat.message.outgoing.textSelectionKnob": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.freeform.withWp.bg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.freeform.withWp.gradientBg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.freeform.withWp.highlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.freeform.withWp.stroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.freeform.withWp.reactionInactiveBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.freeform.withWp.reactionInactiveFg": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.freeform.withWp.reactionActiveBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.freeform.withWp.reactionActiveFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.freeform.withWp.reactionInactiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.freeform.withWp.reactionActiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.freeform.withoutWp.bg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.freeform.withoutWp.gradientBg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.freeform.withoutWp.highlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.freeform.withoutWp.stroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.freeform.withoutWp.reactionInactiveBg": {
+      "role": "accent_3",
+      "intended_hex": "#89221f",
+      "exported": "89221f"
+    },
+    "chat.message.freeform.withoutWp.reactionInactiveFg": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.freeform.withoutWp.reactionActiveBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.freeform.withoutWp.reactionActiveFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.message.freeform.withoutWp.reactionInactiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.freeform.withoutWp.reactionActiveMediaPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.infoPrimaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.message.infoLinkText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.outgoingCheck": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.mediaDateAndStatusBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.mediaDateAndStatusText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.shareButtonBg.withWp": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.shareButtonBg.withoutWp": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "chat.message.shareButtonStroke.withWp": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.message.shareButtonStroke.withoutWp": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.shareButtonFg.withWp": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.shareButtonFg.withoutWp": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.mediaOverlayControl.bg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.mediaOverlayControl.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.selectionControl.bg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.message.selectionControl.stroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.message.selectionControl.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.deliveryFailed.bg": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.message.deliveryFailed.fg": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.message.mediaHighlightOverlay": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.stickerPlaceholder.withWp": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.stickerPlaceholder.withoutWp": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.message.stickerPlaceholderShimmer.withWp": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.message.stickerPlaceholderShimmer.withoutWp": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.serviceMessage.components.withDefaultWp.bg": {
+      "role": "tr_accent_7",
+      "intended_hex": "#44ef8885",
+      "exported": "44ef8885"
+    },
+    "chat.serviceMessage.components.withDefaultWp.primaryText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.serviceMessage.components.withDefaultWp.linkHighlight": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.serviceMessage.components.withDefaultWp.scam": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.serviceMessage.components.withDefaultWp.dateFillStatic": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.serviceMessage.components.withDefaultWp.dateFillFloat": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.serviceMessage.components.withCustomWp.bg": {
+      "role": "tr_accent_7",
+      "intended_hex": "#44ef8885",
+      "exported": "44ef8885"
+    },
+    "chat.serviceMessage.components.withCustomWp.primaryText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.serviceMessage.components.withCustomWp.linkHighlight": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.serviceMessage.components.withCustomWp.scam": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.serviceMessage.components.withCustomWp.dateFillStatic": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.serviceMessage.components.withCustomWp.dateFillFloat": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.serviceMessage.unreadBarBg": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.serviceMessage.unreadBarStroke": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "chat.serviceMessage.unreadBarText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chat.serviceMessage.dateText.withWp": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.serviceMessage.dateText.withoutWp": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chat.inputPanel.panelBg": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "chat.inputPanel.panelSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputPanel.panelControlAccent": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.inputPanel.panelControl_v2": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.inputPanel.panelControlDisabled": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputPanel.panelControlDestructive": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.inputPanel.inputBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputPanel.inputStroke": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputPanel.inputPlaceholder_v2": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.inputPanel.inputText_v2": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.inputPanel.inputControl_v2": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputPanel.actionControlBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.inputPanel.actionControlFg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.inputPanel.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.inputPanel.secondaryText": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputPanel.mediaRecordDot": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "chat.inputPanel.mediaRecordControl.button": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.inputPanel.mediaRecordControl.micLevel": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77e53935",
+      "exported": "77e53935"
+    },
+    "chat.inputPanel.mediaRecordControl.activeIcon": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.inputMediaPanel.panelSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputMediaPanel.panelIcon": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputMediaPanel.panelHighlightedIconBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputMediaPanel.panelHighlightedIcon": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "chat.inputMediaPanel.panelContentVibrantOverlay": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputMediaPanel.panelContentControlVibrantOverlay": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputMediaPanel.panelContentControlVibrantSelection": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputMediaPanel.panelContentControlOpaqueOverlay": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputMediaPanel.panelContentControlOpaqueSelection": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputMediaPanel.panelContentVibrantSearchOverlay": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputMediaPanel.panelContentVibrantSearchOverlaySelected": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputMediaPanel.panelContentVibrantSearchOverlayHighlight": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputMediaPanel.panelContentOpaqueSearchOverlay": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputMediaPanel.panelContentOpaqueSearchOverlaySelected": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputMediaPanel.panelContentOpaqueSearchOverlayHighlight": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputMediaPanel.stickersBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.inputMediaPanel.stickersSectionText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chat.inputMediaPanel.stickersSearchBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputMediaPanel.stickersSearchPlaceholder": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chat.inputMediaPanel.stickersSearchPrimary": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.inputMediaPanel.stickersSearchControl": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputMediaPanel.gifsBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.inputMediaPanel.bg": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "chat.inputButtonPanel.panelBg": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "chat.inputButtonPanel.panelSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputButtonPanel.buttonBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.inputButtonPanel.buttonHighlight": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chat.inputButtonPanel.buttonStroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputButtonPanel.buttonHighlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chat.inputButtonPanel.buttonHighlightedStroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.inputButtonPanel.buttonText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "chat.historyNav.bg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chat.historyNav.stroke": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.historyNav.fg": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chat.historyNav.badgeBg": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.historyNav.badgeStroke": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "chat.historyNav.badgeText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "actionSheet.dim": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "actionSheet.bgType": {
+      "role": "dark",
+      "intended_hex": null,
+      "exported": "dark",
+      "literal": true
+    },
+    "actionSheet.opaqueItemBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "actionSheet.itemBg": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "actionSheet.opaqueItemHighlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "actionSheet.itemHighlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "actionSheet.opaqueItemSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "actionSheet.standardActionText": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "actionSheet.destructiveActionText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "actionSheet.disabledActionText": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "actionSheet.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "actionSheet.secondaryText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "actionSheet.controlAccent": {
+      "role": "accent_5",
+      "intended_hex": "#e53935",
+      "exported": "e53935"
+    },
+    "actionSheet.inputBg": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "actionSheet.inputHollowBg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "actionSheet.inputBorder": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "actionSheet.inputPlaceholder": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "actionSheet.inputText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "actionSheet.inputClearButton": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "actionSheet.checkContent": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    },
+    "contextMenu.dim": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "contextMenu.background": {
+      "role": "tr_background_9",
+      "intended_hex": "#E5181818",
+      "exported": "e5181818"
+    },
+    "contextMenu.itemSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "contextMenu.sectionSeparator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "contextMenu.itemBg": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "clear"
+    },
+    "contextMenu.itemHighlightedBg": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "contextMenu.primary": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "contextMenu.secondary": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "contextMenu.destructive": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "e3b727"
+    },
+    "notification.bg": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "notification.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "notification.expanded.bgType": {
+      "role": "dark",
+      "intended_hex": null,
+      "exported": "dark",
+      "literal": true
+    },
+    "notification.expanded.navBar.background": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "notification.expanded.navBar.primaryText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "ffffff"
+    },
+    "notification.expanded.navBar.control": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "notification.expanded.navBar.separator": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chart.labels": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "77919191"
+    },
+    "chart.helperLines": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chart.strongLines": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chart.barStrongLines": {
+      "role": "tr_gray_3",
+      "intended_hex": "#AA575757",
+      "exported": "aa575757"
+    },
+    "chart.detailsText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "919191"
+    },
+    "chart.detailsArrow": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chart.detailsView": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "181818"
+    },
+    "chart.rangeViewFrame": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "575757"
+    },
+    "chart.rangeViewMarker": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "e9e9e9"
+    }
+  }
+}

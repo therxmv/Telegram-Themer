@@ -1,0 +1,4307 @@
+{
+  "scenario": {
+    "name": "dark-blue",
+    "is_dark": true,
+    "is_amoled": false,
+    "accent": "#007AFF"
+  },
+  "keys": {
+    "actionBarActionModeDefault": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarActionModeDefaultIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "actionBarActionModeDefaultSelector": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "actionBarActionModeDefaultTop": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "actionBarBrowser": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarDefault": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarDefaultArchived": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarDefaultArchivedIcon": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "actionBarDefaultArchivedSearch": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarDefaultArchivedSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "actionBarDefaultArchivedTitle": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "actionBarDefaultIcon": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "actionBarDefaultSearch": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "actionBarDefaultSearchArchivedPlaceholder": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "actionBarDefaultSearchPlaceholder": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "#919191"
+    },
+    "actionBarDefaultSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "actionBarDefaultSubmenuBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarDefaultSubmenuItem": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "actionBarDefaultSubmenuItemIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "actionBarDefaultSubmenuSeparator": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarDefaultSubtitle": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "actionBarDefaultTitle": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "actionBarTabActiveText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "actionBarTabLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "actionBarTabSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "actionBarTabUnactiveText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "actionBarWhiteSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarIconBlue": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_actionBarIconCyan": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarIconGreen": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarIconOrange": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarIconPink": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarIconRed": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarIconViolet": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarSelectorBlue": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarSelectorCyan": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarSelectorGreen": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarSelectorOrange": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarSelectorPink": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarSelectorRed": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_actionBarSelectorViolet": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_backgroundActionBarBlue": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundActionBarCyan": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundActionBarGreen": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundActionBarOrange": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundActionBarPink": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundActionBarRed": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundActionBarViolet": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundArchived": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_backgroundArchivedHidden": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_backgroundBlue": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Blue": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_backgroundCyan": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Cyan": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_backgroundGreen": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Green": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_backgroundGroupCreateSpanBlue": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "avatar_backgroundInProfileBlue": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_backgroundOrange": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Orange": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_backgroundPink": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Pink": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_backgroundRed": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Red": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_backgroundSaved": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Saved": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_backgroundViolet": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_background2Violet": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "avatar_nameInMessageBlue": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_nameInMessageCyan": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_nameInMessageGreen": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_nameInMessageOrange": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_nameInMessagePink": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_nameInMessageRed": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_nameInMessageViolet": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "avatar_subtitleInProfileBlue": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "avatar_subtitleInProfileCyan": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "avatar_subtitleInProfileGreen": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "avatar_subtitleInProfileOrange": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "avatar_subtitleInProfilePink": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "avatar_subtitleInProfileRed": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "avatar_subtitleInProfileViolet": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "avatar_text": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "calls_callReceivedGreenIcon": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "calls_callReceivedRedIcon": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "changephoneinfo_image2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "changephoneinfo_image": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_TextSelectionCursor": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_addContact": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_adminSelectedText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_adminText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_attachActiveTab": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachAudioBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachAudioIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachAudioText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachCheckBoxBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachCheckBoxCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachContactBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachContactIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachContactText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachEmptyImage": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_attachFileBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachFileIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachFileText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachGalleryBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachGalleryIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachGalleryText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachLocationBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachLocationIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachLocationText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachMediaBanBackground": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_attachMediaBanText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachPermissionImage": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_attachPermissionMark": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_attachPermissionText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_attachPhotoBackground": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_attachPollBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachPollIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_attachPollText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachSendBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachUnactiveTab": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_BlurAlpha": {
+      "role": "#BE000000",
+      "intended_hex": null,
+      "exported": "#000000",
+      "unresolved_role": true
+    },
+    "chat_botButtonText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_botKeyboardButtonBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_botKeyboardButtonBackgroundPressed": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_botKeyboardButtonText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_botProgress": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_botSwitchToInlineText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_editDoneIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_emojiBottomPanelIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_emojiPanelBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_emojiPanelBackspace": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_emojiPanelBadgeBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_emojiPanelBadgeText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_emojiPanelEmptyText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_emojiPanelIcon": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_emojiPanelIconSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_emojiPanelMasksIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_emojiPanelMasksIconSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_emojiPanelNewTrending": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_emojiPanelShadowLine": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_emojiPanelStickerPackSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_emojiPanelStickerPackSelectorLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_emojiPanelStickerSetName": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_emojiPanelStickerSetNameHighlight": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_emojiPanelStickerSetNameIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_emojiPanelTrendingDescription": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_emojiPanelTrendingTitle": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_emojiSearchBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_emojiSearchIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_fieldOverlayText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_gifSaveHintBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_gifSaveHintText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_goDownButton": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_goDownButtonCounter": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_goDownButtonCounterBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_goDownButtonIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_goDownButtonShadow": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inAudioCacheSeekbar": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_inAudioDurationSelectedText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inAudioDurationText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inAudioPerfomerSelectedText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inAudioPerfomerText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inAudioProgress": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inAudioSeekbar": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inAudioSeekbarFill": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inAudioSeekbarSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inAudioSelectedProgress": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inAudioTitleText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inBubble": {
+      "role": "gray_1",
+      "intended_hex": "#1c1c1c",
+      "exported": "#1c1c1c"
+    },
+    "chat_inBubbleSelected": {
+      "role": "gray_1",
+      "intended_hex": "#1c1c1c",
+      "exported": "#1c1c1c"
+    },
+    "chat_inBubbleShadow": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_inContactBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inContactIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inContactNameText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inContactPhoneSelectedText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inContactPhoneText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inDownCall": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "chat_inFileBackground": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_inFileBackgroundSelected": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_inFileIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inFileInfoSelectedText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inFileInfoText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inFileNameText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inFileProgress": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inFileProgressSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inFileSelectedIcon": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_inForwardedNameText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inInstant": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inInstantSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inLoader": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inLoaderPhoto": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inLoaderPhotoIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inLoaderPhotoIconSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inLoaderPhotoSelected": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inLoaderSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inLocationBackground": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_inLocationIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inMediaIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inMediaIconSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inMenu": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_inMenuSelected": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "#919191"
+    },
+    "chat_inPreviewInstantSelectedText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inPreviewInstantText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inPreviewLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inReplyLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inReplyMediaMessageSelectedText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inReplyMediaMessageText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inReplyMessageText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inReplyNameText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inSentClock": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inSentClockSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inSiteNameText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inTextSelectionHighlight": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_inTimeSelectedText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inTimeText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_inUpCall": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "chat_inVenueInfoSelectedText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inVenueInfoText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_inViaBotNameText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inViews": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_inViewsSelected": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_inVoiceSeekbar": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_inVoiceSeekbarFill": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inVoiceSeekbarSelected": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_inlineResultIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_linkSelectBackground": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_lockIcon": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_mediaBroadcast": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_mediaInfoText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_mediaLoaderPhoto": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_mediaLoaderPhotoIcon": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_mediaLoaderPhotoIconSelected": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_mediaLoaderPhotoSelected": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_mediaMenu": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_mediaProgress": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_mediaSentCheck": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_mediaSentClock": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_mediaTimeBackground": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77007aff",
+      "exported": "#007aff"
+    },
+    "chat_mediaTimeText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_mediaViews": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_messageLinkIn": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_messageLinkOut": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_messagePanelBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_messagePanelCancelInlineBot": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_messagePanelCursor": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_messagePanelHint": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_messagePanelIcons": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_messagePanelPressedSend": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_messagePanelSend": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_messagePanelShadow": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_messagePanelText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_messagePanelVideoFrame": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_messagePanelVoiceBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_messagePanelVoiceDelete": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_messagePanelVoiceDuration": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_messagePanelVoicePressed": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_messagePanelVoiceShadow": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_messageTextIn": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_messageTextOut": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_muteIcon": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "#919191"
+    },
+    "chat_outAudioCacheSeekbar": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outAudioDurationSelectedText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outAudioDurationText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outAudioPerfomerSelectedText": {
+      "role": "gray_1",
+      "intended_hex": "#1c1c1c",
+      "exported": "#1c1c1c"
+    },
+    "chat_outAudioPerfomerText": {
+      "role": "gray_1",
+      "intended_hex": "#1c1c1c",
+      "exported": "#1c1c1c"
+    },
+    "chat_outAudioProgress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outAudioSeekbar": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outAudioSeekbarFill": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outAudioSeekbarSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outAudioSelectedProgress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outAudioTitleText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outBroadcast": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "chat_outBubble": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outBubbleSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outBubbleShadow": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_outContactBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outContactIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outContactNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outContactPhoneSelectedText": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outContactPhoneText": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outFileBackground": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_outFileBackgroundSelected": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_outFileIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_outFileInfoSelectedText": {
+      "role": "gray_1",
+      "intended_hex": "#1c1c1c",
+      "exported": "#1c1c1c"
+    },
+    "chat_outFileInfoText": {
+      "role": "gray_6",
+      "intended_hex": "#a7a7a7",
+      "exported": "#a7a7a7"
+    },
+    "chat_outFileNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outFileProgress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outFileProgressSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outFileSelectedIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_outForwardedNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outInstant": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outInstantSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outLinkSelectBackground": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chat_outLoader": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outLoaderPhoto": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_outLoaderPhotoIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outLoaderPhotoIconSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outLoaderPhotoSelected": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_outLoaderSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outLocationBackground": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_outLocationIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outMediaIcon": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "chat_outMediaIconSelected": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "chat_outMenu": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outMenuSelected": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outPreviewInstantSelectedText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outPreviewInstantText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outPreviewLine": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outReactionButtonBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outReplyLine": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outReplyMediaMessageSelectedText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outReplyMediaMessageText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outReplyMessageText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outReplyNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outSentCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outSentCheckRead": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outSentCheckReadSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outSentCheckSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outSentClock": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outSentClockSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outSiteNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outTextSelectionCursor": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outTextSelectionHighlight": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outTimeSelectedText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outTimeText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outUpCall": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outVenueInfoSelectedText": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outVenueInfoText": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outVenueNameText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outViaBotNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outViews": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outViewsSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outVoiceSeekbar": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outVoiceSeekbarFill": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_outVoiceSeekbarSelected": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_previewDurationText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_previewGameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_recordTime": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_recordVoiceCancel": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_recordedVoiceBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_recordedVoiceDot": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "chat_recordedVoicePlayPause": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_recordedVoicePlayPausePressed": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_recordedVoiceProgress": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_recordedVoiceProgressInner": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_replyPanelClose": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_replyPanelIcons": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_replyPanelLine": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_replyPanelMessage": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_replyPanelName": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_reportSpam": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "chat_searchPanelIcons": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_searchPanelText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_secretChatStatusText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_secretTimeText": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chat_secretTimerBackground": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_secretTimerText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_selectedBackground": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77007aff",
+      "exported": "#007aff"
+    },
+    "chat_sentError": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "chat_sentErrorIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_serviceBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_serviceBackgroundSelected": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77007aff",
+      "exported": "#007aff"
+    },
+    "chat_serviceIcon": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_serviceLink": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_serviceText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_shareBackground": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_shareBackgroundSelected": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chat_status": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_stickerNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_stickerReplyLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_stickerReplyMessageText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_stickerReplyNameText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_stickerViaBotNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_stickersHintPanel": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_textSelectBackground": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77007aff",
+      "exported": "#007aff"
+    },
+    "chat_topPanelBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_topPanelClose": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_topPanelLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_topPanelMessage": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_topPanelTitle": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_unreadMessagesStartArrowIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_unreadMessagesStartBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_unreadMessagesStartText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chat_wallpaper": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_wallpaper_gradient_rotation": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chats_actionBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_actionIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_actionMessage": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chats_actionPressedBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_actionUnreadBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_actionUnreadIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chats_actionUnreadPressedBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_archiveBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_archiveIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_archivePinBackground": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chats_archiveText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_attachMessage": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_date": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chats_draft": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chats_mentionIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_menuBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_menuCloud": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_menuCloudBackgroundCats": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chats_menuItemCheck": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chats_menuItemIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chats_menuItemText": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chats_menuName": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_menuPhone": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chats_menuPhoneCats": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chats_menuTopBackgroundCats": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chats_menuTopShadow": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chats_menuTopShadowCats": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_message": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chats_messageArchived": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chats_message_threeLines": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chats_muteIcon": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chats_name": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chats_nameArchived": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chats_nameIcon": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chats_nameMessage": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chats_nameMessageArchived": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chats_nameMessageArchived_threeLines": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chats_nameMessage_threeLines": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "chats_onlineCircle": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_pinnedIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chats_pinnedOverlay": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chats_secretIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_secretName": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_sentCheck": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_sentClock": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "chats_sentError": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "chats_sentErrorIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chats_sentReadCheck": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_tabUnreadActiveBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_tabUnreadUnactiveBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_tabletSelectedOverlay": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "chats_unreadCounter": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chats_unreadCounterMuted": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chats_unreadCounterText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "topics_unreadCounter": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "topics_unreadCounterMuted": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "chats_verifiedBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chats_verifiedCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "checkbox": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "checkboxCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "checkboxDisabled": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "checkboxSquareBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "checkboxSquareCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "checkboxSquareDisabled": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "checkboxSquareUnchecked": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "contacts_inviteBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "contacts_inviteText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "contextProgressInner1": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "contextProgressInner2": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "contextProgressInner3": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "contextProgressInner4": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "contextProgressOuter1": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "contextProgressOuter2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "contextProgressOuter3": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "contextProgressOuter4": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogBackgroundGray": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogBadgeBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogBadgeText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogButton": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "dialogButtonSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogCameraIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogCheckboxSquareBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogCheckboxSquareCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogCheckboxSquareDisabled": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogCheckboxSquareUnchecked": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogFloatingButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogFloatingButtonPressed": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "dialogFloatingIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogGrayLine": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "dialogIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogInputField": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "dialogInputFieldActivated": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogLineProgress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogLineProgressBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "dialogLinkSelection": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "dialogProgressCircle": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogRadioBackground": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "dialogRadioBackgroundChecked": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogReactionMentionBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogRedIcon": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "dialogRoundCheckBox": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogRoundCheckBoxCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogScrollGlow": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogSearchBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogSearchHint": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogSearchIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogSearchText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "dialogShadowLine": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "dialogTextBlack": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "dialogTextBlue2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogTextBlue3": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogTextBlue4": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogTextBlue": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogTextGray2": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogTextGray3": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "dialogTextGray4": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "dialogTextGray": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogTextHint": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogTextLink": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "dialogTextRed2": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "dialogTextRed": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "dialogTopBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "dialog_inlineProgress": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialog_inlineProgressBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialog_liveLocationProgress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "divider": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "emptyListPlaceholder": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "fastScrollActive": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "fastScrollInactive": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "fastScrollText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "featuredStickers_addButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "featuredStickers_addButtonPressed": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "featuredStickers_addedIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "featuredStickers_buttonProgress": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "featuredStickers_buttonText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "featuredStickers_delButton": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "featuredStickers_delButtonPressed": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "featuredStickers_unread": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "files_folderIcon": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "files_folderIconBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "files_iconText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "graySection": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "groupcreate_checkbox": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "groupcreate_cursor": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "groupcreate_hintText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "groupcreate_sectionShadow": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "groupcreate_sectionText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "groupcreate_spanBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "groupcreate_spanDelete": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "groupcreate_spanText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "inappPlayerBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "inappPlayerClose": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "inappPlayerPerformer": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "inappPlayerPlayPause": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "inappPlayerTitle": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "key_changephoneinfo_changeText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "key_chat_messagePanelVoiceLock": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "key_chat_messagePanelVoiceLockBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "key_chat_messagePanelVoiceLockShadow": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "key_graySectionText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "key_player_progressCachedBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "key_sheet_other": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "key_sheet_scrollUp": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "listSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "listSelectorSDK21": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "#575757"
+    },
+    "location_liveLocationProgress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "location_placeLocationBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "location_sendLiveLocationBackground": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "location_sendLiveLocationIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "location_sendLocationBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "location_sendLocationIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "login_progressInner": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "login_progressOuter": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "musicPicker_buttonBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "musicPicker_buttonIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "musicPicker_checkbox": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "musicPicker_checkboxCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "passport_authorizeBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "passport_authorizeBackgroundSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "passport_authorizeText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "picker_badge": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "picker_badgeText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "picker_disabledButton": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "picker_enabledButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "player_actionBar": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "player_actionBarItems": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "player_actionBarSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "player_actionBarSubtitle": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "player_actionBarTitle": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "player_actionBarTop": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "player_background": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "player_button": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "player_buttonActive": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "player_placeholder": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "player_placeholderBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "player_progress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "player_progressBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "player_time": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "profile_actionBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "profile_actionIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "profile_actionPressedBackground": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "profile_creatorIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "profile_status": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "profile_title": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "profile_verifiedBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "profile_verifiedCheck": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "progressCircle": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "radioBackground": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "radioBackgroundChecked": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "returnToCallBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "returnToCallText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "sessions_devicesImage": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "sharedMedia_actionMode": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "sharedMedia_linkPlaceholder": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "sharedMedia_linkPlaceholderText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "sharedMedia_photoPlaceholder": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "sharedMedia_startStopLoadIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "statisticChartActiveLine": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "statisticChartLine_accent": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "statisticChartLine_golden": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "#e23333"
+    },
+    "statisticChartLine_green": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "statisticChartLine_indigo": {
+      "role": "purple_5",
+      "intended_hex": "#776BF5",
+      "exported": "#776bf5"
+    },
+    "statisticChartLine_lightaccent": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "statisticChartLine_lightgreen": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "statisticChartLine_orange": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "#e23333"
+    },
+    "statisticChartLine_red": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "stickers_menu": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "stickers_menuSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "stories_circle_closeFriends1": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "stories_circle_closeFriends2": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "stories_circle_dialog1": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "stories_circle_dialog2": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "stories_circle1": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "stories_circle2": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "switch2Track": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "switch2TrackChecked": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "switchThumbChecked": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "switchTrack": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "switchTrackBlue": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "switchTrackBlueChecked": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "switchTrackBlueSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "switchTrackBlueSelectorChecked": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "switchTrackBlueThumb": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "switchTrackBlueThumbChecked": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "switchTrackChecked": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "undo_background": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "undo_cancelColor": {
+      "role": "gray_9",
+      "intended_hex": "#e9e9e9",
+      "exported": "#e9e9e9"
+    },
+    "undo_infoColor": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "wallpaperFileOffset": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "windowBackgroundCheckText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "windowBackgroundChecked": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundGray": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "windowBackgroundGrayShadow": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "windowBackgroundUnchecked": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhite": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "windowBackgroundWhiteBlackText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "windowBackgroundWhiteBlueButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueHeader": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueText2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueText3": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueText4": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueText5": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueText6": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "windowBackgroundWhiteBlueText7": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteBlueText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteGrayIcon": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGrayLine": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "windowBackgroundWhiteGrayText2": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGrayText3": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGrayText4": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGrayText5": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGrayText6": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGrayText7": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "windowBackgroundWhiteGrayText8": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGrayText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteGreenText2": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "windowBackgroundWhiteGreenText": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "windowBackgroundWhiteHintText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "windowBackgroundWhiteInputField": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "windowBackgroundWhiteInputFieldActivated": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteLinkSelection": {
+      "role": "tr_accent_7",
+      "intended_hex": "#4466afff",
+      "exported": "#66afff"
+    },
+    "windowBackgroundWhiteLinkText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteRedText2": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "windowBackgroundWhiteRedText3": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "windowBackgroundWhiteRedText4": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "windowBackgroundWhiteRedText5": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "windowBackgroundWhiteRedText6": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "windowBackgroundWhiteRedText": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "windowBackgroundWhiteValueText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "windowBackgroundWhiteYellowText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_attachIcon": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_inPollCorrectAnswer": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "chat_inPollWrongAnswer": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "chat_outPollCorrectAnswer": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "chat_outPollWrongAnswer": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "color_blue": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "color_green": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "color_lightblue": {
+      "role": "blue_5",
+      "intended_hex": "#299FE9",
+      "exported": "#299fe9"
+    },
+    "color_lightgreen": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "color_orange": {
+      "role": "orange_5",
+      "intended_hex": "#DF9700",
+      "exported": "#df9700"
+    },
+    "color_purple": {
+      "role": "purple_5",
+      "intended_hex": "#776BF5",
+      "exported": "#776bf5"
+    },
+    "color_red": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "color_yellow": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "#e23333"
+    },
+    "chats_archivePullDownBackground": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chats_archivePullDownBackgroundActive": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chats_menuTopBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "profile_tabSelectedLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "profile_tabSelectedText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "profile_tabText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "statisticChartLine_blue": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "statisticChartLine_lightblue": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "voipgroup_overlayAlertGradientMuted": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "#575757"
+    },
+    "voipgroup_overlayAlertGradientMuted2": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "voipgroup_overlayAlertGradientUnmuted": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_overlayAlertGradientUnmuted2": {
+      "role": "accent_9",
+      "intended_hex": "#cce4ff",
+      "exported": "#cce4ff"
+    },
+    "voipgroup_overlayBlue1": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "#575757"
+    },
+    "voipgroup_overlayBlue2": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "voipgroup_overlayGreen1": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_overlayGreen2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_topPanelBlue1": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "voipgroup_topPanelBlue2": {
+      "role": "gray_3",
+      "intended_hex": "#575757",
+      "exported": "#575757"
+    },
+    "voipgroup_topPanelGreen1": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "voipgroup_topPanelGreen2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "--glass_tabSelected": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "--glass_tabSelectedText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "--glass_tabUnselected": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "--glass_targetMainTabs": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "--glass_targetMainTopPanel": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "actionBarActionModeReaction": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "actionBarActionModeReactionDot": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "actionBarActionModeReactionText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "botKeyboard_button_danger": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "botKeyboard_button_primary": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "botKeyboard_button_success": {
+      "role": "green_5",
+      "intended_hex": "#52CF2C",
+      "exported": "#52cf2c"
+    },
+    "bot_loadingIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "buttonNeutral": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "buttonNeutralText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_BlurAlphaSlow": {
+      "role": "#99000000",
+      "intended_hex": null,
+      "exported": "#000000",
+      "unresolved_role": true
+    },
+    "chat_editMediaButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inPsaNameText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_inReactionButtonBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_inReactionButtonText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_inReactionButtonTextSelected": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_outAdminSelectedText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outAdminText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outBubbleGradientSelectedOverlay": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_outPsaNameText": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "chat_outReactionButtonText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_outReactionButtonTextSelected": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "chat_recordedVoiceDarkerBackground": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "chat_serviceBackgroundSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "chat_tagAdmin": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "chat_tagCreator": {
+      "role": "purple_5",
+      "intended_hex": "#776BF5",
+      "exported": "#776bf5"
+    },
+    "chats_date_bold": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogCardShadow": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "dialogEmptyImage": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogEmptyText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "dialogGiftsBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "dialogGiftsTabText": {
+      "role": "tt_onBackground",
+      "intended_hex": "#FFFFFF",
+      "exported": "#ffffff"
+    },
+    "dialogSwipeRemove": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "featuredStickers_addButton2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "featuredStickers_removeButtonText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "fill_RedDark": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "fill_RedNormal": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "gift_ribbon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "gift_ribbon_soldout": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "iv_ab_progress": {
+      "role": "accent_3",
+      "intended_hex": "#004999",
+      "exported": "#004999"
+    },
+    "iv_background": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "iv_backgroundGray": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "iv_navigationBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "location_actionActiveIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "location_actionBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "location_actionIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "location_actionPressedBackground": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "location_sendLiveLocationText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "location_sendLocationText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "noGradient": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "noGradient2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "noGradient3": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "pollCreateIcons": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumCoinGradient1": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumCoinGradient2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradient0": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradient1": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradient2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradient3": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradient4": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradientBackground1": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradientBackground2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradientBackground3": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradientBackground4": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradientBackgroundOverlay": {
+      "role": "transparent_0",
+      "intended_hex": "#00000000",
+      "exported": "#"
+    },
+    "premiumGradientBottomSheet1": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradientBottomSheet2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumGradientBottomSheet3": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "premiumStarGradient1": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "#e23333"
+    },
+    "premiumStarGradient2": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "#e23333"
+    },
+    "premiumStartSmallStarsColor": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "#e23333"
+    },
+    "premiumStartSmallStarsColor2": {
+      "role": "yellow_5",
+      "intended_hex": "#E23333",
+      "exported": "#e23333"
+    },
+    "profile_tabSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "reactionStarSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "returnToCallMutedBackground": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "statisticChartActivePickerChart": {
+      "role": "accent_4",
+      "intended_hex": "#0061cc",
+      "exported": "#0061cc"
+    },
+    "statisticChartBackZoomColor": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "statisticChartChevronColor": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "statisticChartHintLine": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "statisticChartInactivePickerChart": {
+      "role": "tr_gray_5",
+      "intended_hex": "#77919191",
+      "exported": "#919191"
+    },
+    "statisticChartLineEmpty": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "statisticChartLine_cyan": {
+      "role": "blue_5",
+      "intended_hex": "#299FE9",
+      "exported": "#299fe9"
+    },
+    "statisticChartLine_purple": {
+      "role": "purple_5",
+      "intended_hex": "#776BF5",
+      "exported": "#776bf5"
+    },
+    "statisticChartRipple": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77007aff",
+      "exported": "#007aff"
+    },
+    "statisticChartSignature": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "statisticChartSignatureAlpha": {
+      "role": "tr_accent_5",
+      "intended_hex": "#77007aff",
+      "exported": "#007aff"
+    },
+    "table_background": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "table_border": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "telegram_color": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "telegram_color_dialogsLogo": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "telegram_color_text": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "text_RedBold": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "text_RedRegular": {
+      "role": "red_5",
+      "intended_hex": "#E3B727",
+      "exported": "#e3b727"
+    },
+    "voipgroup_actionBar": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_actionBarItems": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_actionBarItemsSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_actionBarUnscrolled": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_checkMenu": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_connectingProgress": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_dialogBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_disabledButton": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_disabledButtonActive": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_disabledButtonActiveScrolled": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_inviteMembersBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_lastSeenText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_lastSeenTextUnscrolled": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_leaveButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_leaveButtonScrolled": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_leaveCallMenu": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_listSelector": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_listViewBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_listViewBackgroundUnscrolled": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_listeningText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_muteButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_muteButton2": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_muteButton3": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_mutedByAdminGradient": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_mutedByAdminGradient2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_mutedByAdminGradient3": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_mutedByAdminIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_mutedByAdminMuteButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_mutedByAdminMuteButtonDisabled": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_mutedIcon": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_mutedIconUnscrolled": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_nameText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_overlayAlertMutedByAdmin": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_overlayAlertMutedByAdmin2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_rtmpButton": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_scrollUp": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_searchBackground": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_searchPlaceholder": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_searchText": {
+      "role": "gray_8",
+      "intended_hex": "#d3d3d3",
+      "exported": "#d3d3d3"
+    },
+    "voipgroup_soundButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_soundButton2": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_soundButtonActive": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_soundButtonActive2": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_soundButtonActive2Scrolled": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_soundButtonActiveScrolled": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_speakingText": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_topPanelGray": {
+      "role": "tt_background",
+      "intended_hex": "#181818",
+      "exported": "#181818"
+    },
+    "voipgroup_unmuteButton": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_unmuteButton2": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    },
+    "voipgroup_windowBackgroundWhiteInputField": {
+      "role": "gray_5",
+      "intended_hex": "#919191",
+      "exported": "#919191"
+    },
+    "voipgroup_windowBackgroundWhiteInputFieldActivated": {
+      "role": "accent_5",
+      "intended_hex": "#007aff",
+      "exported": "#007aff"
+    }
+  }
+}

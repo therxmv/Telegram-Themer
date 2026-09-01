@@ -1,0 +1,408 @@
+{
+  "platform": "android",
+  "style": "soza",
+  "scenarios_checked": [
+    "dark-blue-amoled",
+    "dark-blue",
+    "dark-deep-purple",
+    "dark-pale-yellow",
+    "dark-red",
+    "light-blue",
+    "light-deep-purple",
+    "light-pale-yellow",
+    "light-red"
+  ],
+  "pair_rollup": [
+    {
+      "id": "appbar_title",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "actionBarDefault",
+      "fg_key": "actionBarDefaultTitle"
+    },
+    {
+      "id": "appbar_subtitle",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "actionBarDefault",
+      "fg_key": "actionBarDefaultSubtitle"
+    },
+    {
+      "id": "appbar_icon",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "icon",
+      "bg_key": "actionBarDefault",
+      "fg_key": "actionBarDefaultIcon"
+    },
+    {
+      "id": "appbar_archived_title",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "actionBarDefaultArchived",
+      "fg_key": "actionBarDefaultArchivedTitle"
+    },
+    {
+      "id": "appbar_archived_icon",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "icon",
+      "bg_key": "actionBarDefaultArchived",
+      "fg_key": "actionBarDefaultArchivedIcon"
+    },
+    {
+      "id": "tab_unselected",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "actionBarDefault",
+      "fg_key": "actionBarTabUnactiveText"
+    },
+    {
+      "id": "tab_selected",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "actionBarDefault",
+      "fg_key": "actionBarTabActiveText"
+    },
+    {
+      "id": "chatlist_name",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "role:tt_background",
+      "fg_key": "chats_name"
+    },
+    {
+      "id": "chatlist_message",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "role:tt_background",
+      "fg_key": "chats_message"
+    },
+    {
+      "id": "chatlist_sender_name",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "role:tt_background",
+      "fg_key": "chats_nameMessage"
+    },
+    {
+      "id": "chatlist_date",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "role:tt_background",
+      "fg_key": "chats_date"
+    },
+    {
+      "id": "chatlist_action_message",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "role:tt_background",
+      "fg_key": "chats_actionMessage"
+    },
+    {
+      "id": "unread_counter",
+      "verdict": "isolated",
+      "fail_count": 7,
+      "total": 9,
+      "fails": [
+        {
+          "scenario": "dark-blue-amoled",
+          "ratio": 4.02,
+          "threshold": 4.5,
+          "bg_hex": "#007aff",
+          "fg_hex": "#ffffff"
+        },
+        {
+          "scenario": "dark-blue",
+          "ratio": 4.02,
+          "threshold": 4.5,
+          "bg_hex": "#007aff",
+          "fg_hex": "#ffffff"
+        },
+        {
+          "scenario": "dark-pale-yellow",
+          "ratio": 1.41,
+          "threshold": 4.5,
+          "bg_hex": "#ffd54f",
+          "fg_hex": "#ffffff"
+        },
+        {
+          "scenario": "dark-red",
+          "ratio": 4.23,
+          "threshold": 4.5,
+          "bg_hex": "#e53935",
+          "fg_hex": "#ffffff"
+        },
+        {
+          "scenario": "light-blue",
+          "ratio": 1.8,
+          "threshold": 4.5,
+          "bg_hex": "#007aff",
+          "fg_hex": "#575757"
+        },
+        {
+          "scenario": "light-deep-purple",
+          "ratio": 1.64,
+          "threshold": 4.5,
+          "bg_hex": "#4a148c",
+          "fg_hex": "#575757"
+        },
+        {
+          "scenario": "light-red",
+          "ratio": 1.71,
+          "threshold": 4.5,
+          "bg_hex": "#e53935",
+          "fg_hex": "#575757"
+        }
+      ],
+      "kind": "text",
+      "bg_key": "chats_unreadCounter",
+      "fg_key": "chats_unreadCounterText"
+    },
+    {
+      "id": "unread_counter_muted",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chats_unreadCounterMuted",
+      "fg_key": "chats_unreadCounterText"
+    },
+    {
+      "id": "in_bubble_text",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_inBubble",
+      "fg_key": "chat_messageTextIn"
+    },
+    {
+      "id": "out_bubble_text",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_outBubble",
+      "fg_key": "chat_messageTextOut"
+    },
+    {
+      "id": "in_reply_sender",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_inBubble",
+      "fg_key": "chat_inReplyNameText"
+    },
+    {
+      "id": "in_reply_text",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_inBubble",
+      "fg_key": "chat_inReplyMessageText"
+    },
+    {
+      "id": "out_reply_sender",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_outBubble",
+      "fg_key": "chat_outReplyNameText"
+    },
+    {
+      "id": "out_reply_text",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_outBubble",
+      "fg_key": "chat_outReplyMessageText"
+    },
+    {
+      "id": "in_file_name",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_inBubble",
+      "fg_key": "chat_inFileNameText"
+    },
+    {
+      "id": "in_file_info",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_inBubble",
+      "fg_key": "chat_inFileInfoText"
+    },
+    {
+      "id": "out_file_name",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_outBubble",
+      "fg_key": "chat_outFileNameText"
+    },
+    {
+      "id": "out_file_info",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_outBubble",
+      "fg_key": "chat_outFileInfoText"
+    },
+    {
+      "id": "in_audio_duration",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_inBubble",
+      "fg_key": "chat_inAudioDurationText"
+    },
+    {
+      "id": "out_audio_duration",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_outBubble",
+      "fg_key": "chat_outAudioDurationText"
+    },
+    {
+      "id": "messagepanel_text",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_messagePanelBackground",
+      "fg_key": "chat_messagePanelText"
+    },
+    {
+      "id": "messagepanel_icon",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "icon",
+      "bg_key": "chat_messagePanelBackground",
+      "fg_key": "chat_messagePanelIcons"
+    },
+    {
+      "id": "messagepanel_hint",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "chat_messagePanelBackground",
+      "fg_key": "chat_messagePanelHint"
+    },
+    {
+      "id": "player_title",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "inappPlayerBackground",
+      "fg_key": "inappPlayerTitle"
+    },
+    {
+      "id": "player_performer",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "inappPlayerBackground",
+      "fg_key": "inappPlayerPerformer"
+    },
+    {
+      "id": "dialog_text",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "dialogBackground",
+      "fg_key": "dialogTextBlack"
+    },
+    {
+      "id": "dialog_button",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "text",
+      "bg_key": "dialogBackground",
+      "fg_key": "dialogButton"
+    },
+    {
+      "id": "avatar_icon_on_bg",
+      "verdict": "ok",
+      "fail_count": 0,
+      "total": 9,
+      "fails": [],
+      "kind": "icon",
+      "bg_key": "avatar_backgroundBlue",
+      "fg_key": "avatar_actionBarIconBlue"
+    }
+  ],
+  "distinct_violations": {}
+}
