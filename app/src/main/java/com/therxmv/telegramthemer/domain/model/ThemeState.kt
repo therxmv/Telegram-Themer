@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ThemeState(
     val style: Styles = Styles.DEFAULT,
+    val platform: Platform = Platform.ANDROID,
     val accent: Int = DEFAULT_ACCENT_COLOR,
     val isDark: Boolean = false,
     val isAmoled: Boolean = false,

@@ -61,24 +61,32 @@ import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerClose
 import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPerformer
 import com.therxmv.preview.utils.AtthemePreviewKeys.inappPlayerPlayPause
 import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
+import com.therxmv.telegramthemer.data.values.AndroidThemeValuesProvider
 import com.therxmv.telegramthemer.domain.adapter.PreviewColorsAdapter
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.model.accent
-import com.therxmv.telegramthemer.domain.values.ThemeValues
+import com.therxmv.telegramthemer.domain.values.ThemeColors
 import javax.inject.Inject
 
 /**
- * Uses tints and attheme map from [ThemeValues]
- * to create objects for [com.therxmv.preview.ChatPreview] and [com.therxmv.preview.ChatsListPreview].
+ * Uses tints from [ThemeColors] and the Android template map from
+ * [AndroidThemeValuesProvider] to create objects for [com.therxmv.preview.ChatPreview]
+ * and [com.therxmv.preview.ChatsListPreview]. [AndroidThemeValuesProvider] is
+ * injected concretely, not through the
+ * [com.therxmv.telegramthemer.domain.values.ThemeValues] interface, so this
+ * always resolves through the Android map regardless of [ThemeState.platform] -
+ * this preview mocks up the app's Android-style chat UI, not an iOS one, so
+ * it isn't platform-selectable.
  */
 @Suppress("RemoveRedundantQualifierName")
 class ThemeToPreviewAdapter @Inject constructor(
-    private val themeValues: ThemeValues,
+    private val themeColors: ThemeColors,
+    private val androidThemeValues: AndroidThemeValuesProvider,
 ) : PreviewColorsAdapter {
 
     override fun getThemePreviewColors(themeState: ThemeState): PreviewColorsModel {
-        val tints = themeValues.getTintedColorSchema(themeState)
-        val atthemeMap = themeValues.getAtthemeMap(themeState)
+        val tints = themeColors.getTintedColorSchema(themeState)
+        val atthemeMap = androidThemeValues.getTemplateMap(themeState)
 
         val getTint: AtthemePreviewKeys.() -> Int = {
             val tintKey = atthemeMap.getValue(this.name)

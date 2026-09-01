@@ -71,6 +71,10 @@ class ThemeEditorPresenter @Inject constructor(
                 updateThemeSate(themeState.copy(overwrittenColors = emptyMap()))
             }
 
+            is ThemeEditorEvent.ChangePlatform -> {
+                updateThemeSate(themeState.copy(platform = event.platform))
+            }
+
             is ThemeEditorEvent.ExportTheme -> {
                 val file = getAtthemeFile(themeState)
                 view.shareThemeFile(file)

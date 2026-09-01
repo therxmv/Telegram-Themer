@@ -117,6 +117,58 @@
 
         </LinearLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/platform_selector_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/platform_selector_border"
+            android:padding="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/more_container">
+
+            <!--
+                Sliding pill: pinned to the start edge (width = 50% of the row) and
+                positioned/animated purely via translationX in code, see SimpleThemeEditFragment.
+                Deliberately NOT also constrained to the end edge - that would center it
+                (default 0.5 bias) instead of anchoring it to the left, breaking translationX math.
+            -->
+            <View
+                android:id="@+id/platform_selector_indicator"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/platform_button_selected"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/android_platform_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:text="@string/platform_android_label"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintEnd_toStartOf="@+id/ios_platform_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ios_platform_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:text="@string/platform_ios_label"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/android_platform_button"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <View
             android:id="@+id/space_filler"
             android:layout_width="0dp"
@@ -125,7 +177,7 @@
             app:layout_constraintBottom_toTopOf="@+id/export_container"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/more_container" />
+            app:layout_constraintTop_toBottomOf="@+id/platform_selector_container" />
 
         <LinearLayout
             android:id="@+id/export_container"

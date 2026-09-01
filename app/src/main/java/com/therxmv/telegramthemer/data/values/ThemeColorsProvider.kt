@@ -2,15 +2,12 @@ package com.therxmv.telegramthemer.data.values
 
 import android.content.Context
 import androidx.core.content.ContextCompat
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.therxmv.preview.utils.AtthemePreviewKeys.tt_background
 import com.therxmv.preview.utils.AtthemePreviewKeys.tt_onBackground
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.data.extensions.colorToHex
 import com.therxmv.telegramthemer.data.extensions.generateAllTints
 import com.therxmv.telegramthemer.domain.model.BaseThemeColors
-import com.therxmv.telegramthemer.domain.model.Styles
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.model.TintedColor
 import com.therxmv.telegramthemer.domain.model.TintedThemeColors
@@ -22,29 +19,25 @@ import com.therxmv.telegramthemer.domain.model.orange
 import com.therxmv.telegramthemer.domain.model.purple
 import com.therxmv.telegramthemer.domain.model.red
 import com.therxmv.telegramthemer.domain.model.trAccent
+import com.therxmv.telegramthemer.domain.model.trBackground
 import com.therxmv.telegramthemer.domain.model.trGray
 import com.therxmv.telegramthemer.domain.model.transparent
 import com.therxmv.telegramthemer.domain.model.yellow
-import com.therxmv.telegramthemer.domain.values.ThemeValues
-import java.io.Reader
+import com.therxmv.telegramthemer.domain.values.ThemeColors
 import javax.inject.Inject
 
 /**
  * Provides tinted colors that will be used in
- * [com.therxmv.telegramthemer.domain.adapter.ThemeFileAdapter] and [com.therxmv.telegramthemer.domain.adapter.PreviewColorsAdapter]
+ * [com.therxmv.telegramthemer.domain.adapter.ThemeFileAdapter] and [com.therxmv.telegramthemer.domain.adapter.PreviewColorsAdapter],
+ * shared as-is across platforms - only the template maps that get resolved
+ * against these tints ([com.therxmv.telegramthemer.domain.values.ThemeValues],
+ * implemented once per platform) differ.
  */
-class ThemeValuesProvider @Inject constructor(
+class ThemeColorsProvider @Inject constructor(
     private val context: Context,
-) : ThemeValues {
+) : ThemeColors {
 
     companion object {
-        private const val DEFAULT_LIGHT = "default_light_template.json"
-        private const val DEFAULT_DARK = "default_dark_template.json"
-        private const val SOZA_LIGHT = "soza_light_template.json"
-        private const val SOZA_DARK = "soza_dark_template.json"
-
-        private const val GRADIENT_KEY = "chat_outBubbleGradient"
-
         private val TINTS_RANGE = 1..9
 
         private const val AMOLED_BLACK = "#000000"
@@ -88,6 +81,7 @@ class ThemeValuesProvider @Inject constructor(
             TintedColor(name = trAccent(7), value = "#44${accents[7].drop(1)}").also(::add)
             TintedColor(name = trGray(5), value = "#77${grays[5].drop(1)}").also(::add)
             TintedColor(name = trGray(3), value = "#AA${grays[3].drop(1)}").also(::add)
+            TintedColor(name = trBackground(9), value = "#E5${baseColors.background.drop(1)}").also(::add)
         }
 
         return TintedThemeColors(colors)
@@ -121,28 +115,5 @@ class ThemeValuesProvider @Inject constructor(
             accent = state.accent.colorToHex(),
             gray = gray,
         )
-    }
-
-    /**
-     * Reads correct theme file based on [state] and returns it as Map<String, String>.
-     */
-    override fun getAtthemeMap(state: ThemeState): Map<String, String> {
-        val jsonName = when (state.style) {
-            Styles.DEFAULT -> DEFAULT_DARK.takeIf { state.isDark } ?: DEFAULT_LIGHT
-            Styles.SOZA -> SOZA_DARK.takeIf { state.isDark } ?: SOZA_LIGHT
-        }
-        val reader = context.assets.open(jsonName).bufferedReader()
-        val filteredGradient = reader.jsonToMap().filter {
-            if (state.isGradient.not()) {
-                it.key != GRADIENT_KEY
-            } else true
-        }
-
-        return filteredGradient
-    }
-
-    private fun Reader.jsonToMap(): Map<String, String> {
-        val type = object : TypeToken<Map<String, String>>() {}.type
-        return Gson().fromJson(this, type)
     }
 }

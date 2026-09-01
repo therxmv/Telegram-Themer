@@ -10,12 +10,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.color.MaterialColors
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
+import com.therxmv.telegramthemer.domain.model.Platform
 import com.therxmv.telegramthemer.ui.animator.FadeAnimator
+import com.therxmv.telegramthemer.ui.animator.PlatformSelectorAnimator.animateSlideTo
+import com.therxmv.telegramthemer.ui.animator.PlatformSelectorAnimator.animateTextColorTo
 import com.therxmv.telegramthemer.ui.animator.RadiusAnimator.animateToCircle
 import com.therxmv.telegramthemer.ui.base.BaseBindingFragment
 import javax.inject.Inject
@@ -31,6 +36,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     lateinit var presenter: SimpleThemeEditContract.Presenter
 
     private var previewAnimation: ValueAnimator? = null
+    private var platformSelectionInitialized = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,6 +75,11 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
         }
     }
 
+    override fun setUpPlatformButtons(onAndroidClick: () -> Unit, onIosClick: () -> Unit) {
+        binding.androidPlatformButton.setOnClickListener { onAndroidClick() }
+        binding.iosPlatformButton.setOnClickListener { onIosClick() }
+    }
+
     override fun setUpExportButton(onClick: () -> Unit) {
         binding.exportContainer.setOnClickListener {
             it.background.animateToCircle(requireContext())
@@ -98,6 +109,42 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
             setPreviewGradient(colors.previewGradient.toIntArray())
             binding.chatListPreview.setColors(colors)
             binding.chatPreview.setColors(colors)
+        }
+    }
+
+    override fun setPlatformSelection(platform: Platform) {
+        requireActivity().runOnUiThread {
+            // Defer until the row has a final, stable measured width - reading widths any
+            // earlier (e.g. straight off doOnPreDraw) can catch an intermediate ConstraintLayout
+            // percent-width pass and produce a wrong (too small) offset.
+            binding.platformSelectorContainer.doOnLayout {
+                applyPlatformSelection(platform)
+            }
+        }
+    }
+
+    private fun applyPlatformSelection(platform: Platform) {
+        val indicator = binding.platformSelectorIndicator
+        val androidButton = binding.androidPlatformButton
+        val iosButton = binding.iosPlatformButton
+        val isAndroidSelected = platform == Platform.ANDROID
+        val targetX = if (isAndroidSelected) 0f else (iosButton.left - androidButton.left).toFloat()
+
+        val selectedTextColor = MaterialColors.getColor(indicator, com.google.android.material.R.attr.colorOnPrimary)
+        val unselectedTextColor = MaterialColors.getColor(indicator, com.google.android.material.R.attr.colorPrimary)
+        val androidTextColor = selectedTextColor.takeIf { isAndroidSelected } ?: unselectedTextColor
+        val iosTextColor = selectedTextColor.takeUnless { isAndroidSelected } ?: unselectedTextColor
+
+        // First render has nothing meaningful to slide/fade from - snap instantly.
+        if (platformSelectionInitialized) {
+            indicator.animateSlideTo(targetX)
+            androidButton.animateTextColorTo(androidTextColor)
+            iosButton.animateTextColorTo(iosTextColor)
+        } else {
+            indicator.translationX = targetX
+            androidButton.setTextColor(androidTextColor)
+            iosButton.setTextColor(iosTextColor)
+            platformSelectionInitialized = true
         }
     }
 

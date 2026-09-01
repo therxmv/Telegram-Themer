@@ -1,6 +1,7 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
 import androidx.lifecycle.lifecycleScope
+import com.therxmv.telegramthemer.domain.model.Platform
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetPreviewColorsModelUseCase
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
@@ -39,6 +40,14 @@ class SimpleThemeEditPresenter @Inject constructor(
             setUpExportButton {
                 themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.ExportTheme }
             }
+            setUpPlatformButtons(
+                onAndroidClick = {
+                    themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.ChangePlatform(Platform.ANDROID) }
+                },
+                onIosClick = {
+                    themeEditorEventProvider.eventFlow.update { ThemeEditorEvent.ChangePlatform(Platform.IOS) }
+                },
+            )
         }
     }
 
@@ -66,6 +75,7 @@ class SimpleThemeEditPresenter @Inject constructor(
 
         view.setColorPickerColors(model.accent, model.background)
         view.setPreviewColors(model)
+        view.setPlatformSelection(themeState.platform)
 
         currentState = themeState
     }
