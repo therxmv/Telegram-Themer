@@ -94,3 +94,5 @@ app/src/test
 /.idea/runConfigurations.xml
 /.idea/deploymentTargetSelector.xml
 /.idea/AndroidProjectSystem.xml
+/.idea/markdown.xml
+/.idea/compiler.xml
