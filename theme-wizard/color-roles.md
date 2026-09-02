@@ -71,9 +71,9 @@ accent, so they remain recognizable across any theme.
 
 | Role | Purpose | Default color |
 |---|---|---|
-| `red_5` | Red status color | `#E3B727` |
+| `red_5` | Red status color | `#E23333` |
 | `orange_5` | Orange status color | `#DF9700` |
-| `yellow_5` | Yellow status color | `#E23333` |
+| `yellow_5` | Yellow status color | `#E3B727` |
 | `green_5` | Green status color | `#52CF2C` |
 | `blue_5` | Blue status color | `#299FE9` |
 | `purple_5` | Purple status color | `#776BF5` |
