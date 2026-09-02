@@ -1,8 +1,8 @@
 # Default style — Android templates
 
 This folder holds the **"Default"** style template pair:
-[`default_dark_template.json`](default_dark_template.json) and
-[`default_light_template.json`](default_light_template.json).
+[`android_default_dark.json`](android_default_dark.json) and
+[`android_default_light.json`](android_default_light.json).
 
 Read [../../../theme-generation-flow.md](../../../theme-generation-flow.md)
 and [../../../color-roles.md](../../../color-roles.md) first — this file
@@ -49,7 +49,7 @@ lower-saturation option:
 ## Editing checklist
 
 1. Pick the key you want to change (or add) and find its equivalent in
-   *both* `default_dark_template.json` and `default_light_template.json` —
+   *both* `android_default_dark.json` and `android_default_light.json` —
    the two files are key-for-key parallel; don't let them drift apart.
 2. Point the value at an existing role name from
    [`color-roles.md`](../../../color-roles.md) (`gray_1`–`gray_9`,

@@ -1,8 +1,8 @@
 # Soza style — Android templates
 
 This folder holds the **"Soza"** style template pair:
-[`soza_dark_template.json`](soza_dark_template.json) and
-[`soza_light_template.json`](soza_light_template.json).
+[`android_soza_dark.json`](android_soza_dark.json) and
+[`android_soza_light.json`](android_soza_light.json).
 
 Read [../../../theme-generation-flow.md](../../../theme-generation-flow.md)
 and [../../../color-roles.md](../../../color-roles.md) first — this file
@@ -57,7 +57,7 @@ templates:
 ## Editing checklist
 
 1. Pick the key you want to change (or add) and find its equivalent in
-   *both* `soza_dark_template.json` and `soza_light_template.json` — the two
+   *both* `android_soza_dark.json` and `android_soza_light.json` — the two
    files are key-for-key parallel; don't let them drift apart.
 2. Point the value at an existing role name from
    [`color-roles.md`](../../../color-roles.md) (`gray_1`–`gray_9`,

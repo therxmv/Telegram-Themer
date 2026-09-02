@@ -1,8 +1,8 @@
 # Default style — iOS templates
 
 This folder holds the **"Default"** style template pair:
-[`default_dark_template.json`](default_dark_template.json) and
-[`default_light_template.json`](default_light_template.json) — the iOS
+[`ios_default_dark.json`](ios_default_dark.json) and
+[`ios_default_light.json`](ios_default_light.json) — the iOS
 counterpart to [`../../android/default`](../../android/default).
 
 Read [`../CLAUDE.md`](../CLAUDE.md) first — it explains the dot-path key
@@ -89,8 +89,8 @@ bubble, whose Default fill is mode-dependent as described above.
 
 ## Editing checklist
 
-1. Find the key's equivalent in *both* `default_dark_template.json` and
-   `default_light_template.json` — they're key-for-key parallel; don't let
+1. Find the key's equivalent in *both* `ios_default_dark.json` and
+   `ios_default_light.json` — they're key-for-key parallel; don't let
    them drift apart. Then check the same key in
    [`../soza`](../soza) — the two styles are also key-for-key parallel
    with each other.

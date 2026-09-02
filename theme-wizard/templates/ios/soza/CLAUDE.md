@@ -1,8 +1,8 @@
 # Soza style — iOS templates
 
 This folder holds the **"Soza"** style template pair:
-[`soza_dark_template.json`](soza_dark_template.json) and
-[`soza_light_template.json`](soza_light_template.json) — the iOS
+[`ios_soza_dark.json`](ios_soza_dark.json) and
+[`ios_soza_light.json`](ios_soza_light.json) — the iOS
 counterpart to [`../../android/soza`](../../android/soza).
 
 Read [`../CLAUDE.md`](../CLAUDE.md) first — it explains the dot-path key
@@ -145,8 +145,8 @@ version.
 
 ## Editing checklist
 
-1. Find the key's equivalent in *both* `soza_dark_template.json` and
-   `soza_light_template.json` — they're key-for-key parallel; don't let
+1. Find the key's equivalent in *both* `ios_soza_dark.json` and
+   `ios_soza_light.json` — they're key-for-key parallel; don't let
    them drift apart. Then check the same key in
    [`../default`](../default) — the two styles are also key-for-key
    parallel with each other.
