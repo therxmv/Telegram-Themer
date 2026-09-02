@@ -11,9 +11,10 @@ There are three ingredients that combine to produce a theme:
 1. **The accent color** — one color the user picks. Everything else is
    derived from it.
 2. **The template** — a fixed list of every themeable element in Telegram
-   (roughly 700 of them), where each element doesn't point to a color
-   directly, but to a *role* like "background," "gray, slightly darker,"
-   "accent, much lighter."
+   for one platform (841 elements for Android's `.attheme` format, 417 for
+   iOS's `.tgios-theme` format — see [`templates/`](templates)), where each
+   element doesn't point to a color directly, but to a *role* like
+   "background," "gray, slightly darker," "accent, much lighter."
 3. **Overrides** — an optional set of manual exceptions, where the user says
    "for this one specific element, ignore whatever the template says and use
    this color instead."
@@ -54,14 +55,16 @@ readable regardless of theme.
 
 The result is a small palette of named shades — "accent, one step darker,"
 "accent, default," "accent, three steps lighter," "gray, faded," and so on —
-all mathematically derived from the single color the user chose.
+all mathematically derived from the single color the user chose. The full
+list of shade names and what they mean lives in
+[`color-roles.md`](color-roles.md).
 
 ## Step 3 — The template
 
 The template is where the visual design of the theme actually lives. It's a
 prepared list pairing every themeable part of the Telegram app — action bar
 icon, chat bubble background, unread badge, tab underline, reply-quote line,
-timestamp text, and roughly 700 more — with one shade from the palette built
+timestamp text, and hundreds more — with one shade from the palette built
 in Step 2.
 
 Crucially, the template never stores an actual color. It stores a
@@ -71,9 +74,10 @@ template itself never has to change when the user picks a new accent — it
 always points at the same named shades, and those shades are simply
 recalculated from whatever accent is currently selected.
 
-There are a few variants of the template (a default style and an
-alternative "Soza" style, each with a light and a dark version), so the
-overall look can change independently of the accent color.
+There are two styles per platform — a default style and an alternative
+"Soza" style, each with a light and a dark version — so the overall look can
+change independently of the accent color. See each style's own `CLAUDE.md`
+under [`templates/`](templates) for how Default and Soza actually diverge.
 
 ## Step 4 — Applying the template (producing the ready theme)
 
@@ -81,15 +85,22 @@ Producing the actual theme means walking through every entry in the
 template, one themeable element at a time, and resolving its shade
 reference against the palette calculated from the current accent. "Chat
 bubble background points to the lighter accent shade" becomes "chat bubble
-background is this exact color." Do that for all ~700 entries and the
-result is a complete, concrete theme — every part of the app assigned one
-real color, all of it consistently related back to the single accent the
-user picked.
+background is this exact color." Do that for every entry (841 on Android,
+417 on iOS) and the result is a complete, concrete theme — every part of the
+app assigned one real color, all of it consistently related back to the
+single accent the user picked.
 
 This resolved theme is used two ways at once: it's what repaints the live
 mockup inside the app in real time as the user experiments, and — when the
 user is ready — it's what gets written out as the finished theme file that
 can be shared into Telegram.
+
+A handful of template entries per platform aren't role references at all —
+Android has two fixed literal colors (a blur overlay alpha that shouldn't
+scale with the accent), and iOS has eight non-color settings (`dark`,
+`keyboard`, and similar flags) that get passed through unchanged instead of
+resolved against the palette. See each platform's template `CLAUDE.md` for
+the exact list.
 
 ## Step 5 — Overriding one specific element
 
@@ -132,8 +143,9 @@ finished, ready-to-use theme.
 
 - **Accent color** → expanded into a **palette** of related shades (darker
   and lighter versions, plus background/gray/status colors).
-- **Template** → a fixed map of every themeable element to a shade in that
-  palette, never to a literal color.
+- **Template** → a fixed map of every themeable element (841 on Android,
+  417 on iOS) to a shade in that palette, never to a literal color, plus a
+  small number of fixed literals/flags that bypass the palette entirely.
 - **Resolving** the template against the palette produces the actual theme,
   used both for the live preview and the exported file.
 - **Overrides** let the user pin one element to a manually chosen color,

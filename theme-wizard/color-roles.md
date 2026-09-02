@@ -1,7 +1,7 @@
 # Theme Color Roles
 
 The full list of named shades that make up a generated palette (see
-[theme-generation-flow.md](theme-generation-flow.md)). Every entry in the
+[theme-generation-flow.md](theme-generation-flow.md)). Every entry in a
 template refers to one of these roles by name instead of to a literal color
 — this page is the reference for what each role name means and where its
 color comes from.
@@ -10,6 +10,13 @@ Roles that come in a numbered family (like `gray_5` or `accent_5`) all share
 the same idea: the number is a luminosity step. **5 is the unchanged,
 "default" shade. Numbers below 5 get progressively darker, numbers above 5
 get progressively lighter.**
+
+> Not every template actually uses every step. As of the current templates
+> (see [`templates/`](templates)), Android only ever references
+> `accent_{2,3,4,5,7,9}` and `gray_{1,3,5,8,9}`; iOS uses the full
+> `accent_1`–`accent_9` range but the same restricted `gray_{1,3,5,8,9}`
+> set. The unreferenced steps still exist and are fair game to use — they
+> just haven't been reached for by any key yet.
 
 ## Surface roles
 
@@ -21,6 +28,9 @@ from the device's system wallpaper colors when Monet is enabled).
 |---|---|
 | `tt_background` | The app's base background color |
 | `tt_onBackground` | The color used for content drawn on top of the background (primary text, icons) |
+
+These are also the two most-used roles in the templates by a wide margin —
+across Android's Default style they cover roughly 246–247 of the 841 keys.
 
 ## Gray ramp — `gray_1` … `gray_9`
 
@@ -44,6 +54,15 @@ visually with the accent.
 > extreme ends of this ramp (`gray_1`, `gray_8`, `gray_9`) are replaced with
 > the matching steps from the accent ramp instead, so neutral surfaces still
 > feel tied to the wallpaper color.
+
+On iOS specifically, `gray_9` (the fixed lightest step, which doesn't flip
+between light/dark mode) has a second job: it's used for content that has
+to stay light in *both* modes because it sits on a fixed-brightness fill —
+white digits on a red notification badge, white text on a filled accent
+button. See [`templates/ios/CLAUDE.md`](templates/ios/CLAUDE.md) for the
+full convention and the pitfall to avoid (`gray_9` next to a plain gray
+background is nearly unreadable — it only works against a genuinely
+saturated accent/status fill).
 
 ## Accent ramp — `accent_1` … `accent_9`
 
@@ -80,6 +99,8 @@ accent, so they remain recognizable across any theme.
 
 Unlike the gray and accent families, these only exist at a single
 luminosity step (5) — no darker/lighter variants are generated for them.
+`purple_5` is defined but currently unused by any iOS template key (Android
+uses it, e.g. `statisticChartLine_indigo`, `statisticChartLine_purple`).
 
 ## Transparency roles
 
@@ -101,7 +122,7 @@ varying levels of opacity layered on top.
 translucent "materials" for bars and panels (nav bar, tab bar, action
 sheet, context menu, dialogs) — a surface that's *almost* `tt_background`
 but still shows a hint of whatever's behind it. Android's templates don't
-currently need it (nothing in `.attheme` calls for that specific look), but
+currently use it (nothing in `.attheme` calls for that specific look), but
 it's a legitimate general-purpose role, not an iOS-only hack — anything
 that wants a nearly-solid, barely-translucent background surface can use
 it.
@@ -122,6 +143,24 @@ template for that platform:
 - Every other role (`gray_*`, `accent_*`, `tt_background`,
   `tt_onBackground`, the status colors) resolves to a plain 6-digit hex,
   same as on Android, for template fields that expect an opaque color.
+
+## Non-role values
+
+A template key isn't required to hold a role name. Two kinds of exceptions
+exist, both intentionally rare:
+
+- **Literal colors** — a fixed hex value that shouldn't scale with the
+  accent. Android has exactly two: `chat_BlurAlpha` and
+  `chat_BlurAlphaSlow` (a translucent-black blur overlay). Every other
+  Android key is a role reference.
+- **Literal settings** — non-color values (booleans, fixed strings) for
+  keys that aren't colors at all, like iOS's `dark` flag or `root.keyboard`.
+  iOS has exactly eight of these. See
+  [`templates/ios/CLAUDE.md`](templates/ios/CLAUDE.md) for the full list.
+
+If you find a template key holding something that's neither a known role
+name nor one of these documented exceptions, treat it as a bug — it's
+probably a value that was never resolved into the role system correctly.
 
 ## How a role turns into a real color
 

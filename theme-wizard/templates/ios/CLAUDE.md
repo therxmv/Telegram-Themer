@@ -1,18 +1,14 @@
 # iOS templates — `.tgios-theme`
 
 This folder holds the iOS counterpart to [`../android`](../android): two
-styles (`default` and `soza`), each with a light and dark template, that
-resolve into a Telegram-for-iOS `.tgios-theme` file the same way the
-Android templates resolve into `.attheme` files.
+styles (`default` and `soza`), each with a light and dark template (417
+keys each), that resolve into a Telegram-for-iOS `.tgios-theme` file the
+same way the Android templates resolve into `.attheme` files.
 
 Read [`../../theme-generation-flow.md`](../../theme-generation-flow.md) and
 [`../../color-roles.md`](../../color-roles.md) first. Everything below
 assumes you already know what a "role" is and how a template resolves
-against an accent-derived palette. Read a real sample fully before editing
-anything here — [`../../samples/ios/Blue Shadow.tgios-theme`](../../samples/ios/Blue%20Shadow.tgios-theme)
-(light) and [`../../samples/ios/Instant Blue.tgios-theme`](../../samples/ios/Instant%20Blue.tgios-theme)
-(dark) — they're what these templates ultimately produce, and the nesting
-shown there is exactly what the dot-paths below unflatten back into.
+against an accent-derived palette.
 
 This whole `theme-wizard` tree is a standalone proof-of-concept — see the
 top-level [`../../CLAUDE.md`](../../CLAUDE.md). Nothing here is a fixed
@@ -35,23 +31,31 @@ work, so it's adapted here rather than copied:
    full nested path joined with `.` (`root.tabBar.background`,
    `chat.message.outgoing.bubble.withWp.gradientBg`). Producing the
    finished `.tgios-theme` file means splitting each dot-path back into
-   its nested, indented form — the reverse of how the samples were
-   flattened to build this template in the first place. This keeps the
-   template itself simple (one flat JSON object, diffable line-by-line
-   like Android's) while still round-tripping losslessly to and from the
-   real nested format.
+   its nested, indented form. This keeps the template itself simple (one
+   flat JSON object, diffable line-by-line like Android's) while still
+   round-tripping losslessly to the real nested format.
 2. **Two kinds of values, not one.** Most values are still role names from
    [`color-roles.md`](../../color-roles.md), resolved exactly like
-   Android. But a handful of keys aren't colors at all — `dark`,
-   `basedOn`, `root.keyboard`, `intro.statusBar` / `root.statusBar`,
-   `actionSheet.bgType`, `notification.expanded.bgType`,
-   `chat.animateMessageColors` — these hold **literal** JSON values
-   (booleans or fixed strings) instead of role names, and a template
-   resolver must pass them through unchanged rather than looking them up
-   in the palette. Every other key's value is a role name; there are no
-   literal hex-color exceptions in these templates (unlike Android's
-   `chat_BlurAlpha`) — `tr_background_9` below covers the one case that
-   would otherwise have needed one.
+   Android. But exactly 8 keys per template aren't colors at all — they
+   hold **literal** JSON values (booleans or fixed strings) that a
+   template resolver must pass through unchanged instead of looking up in
+   the palette:
+
+   | Key | Default | Soza |
+   |---|---|---|
+   | `dark` | `false` (light) / `true` (dark) | same |
+   | `basedOn` | `"day"` / `"night"` | same |
+   | `root.keyboard` | `"light"` / `"dark"` | same |
+   | `intro.statusBar` | `"black"` / `"white"` | same |
+   | `root.statusBar` | `"black"` / `"white"` | same |
+   | `actionSheet.bgType` | `"light"` / `"dark"` | same |
+   | `notification.expanded.bgType` | `"light"` / `"dark"` | same |
+   | `chat.animateMessageColors` | `false` (both modes) | `true` (both modes) |
+
+   Every other key's value is a role name; there are no literal hex-color
+   exceptions in these templates (unlike Android's `chat_BlurAlpha`) —
+   `tr_background_9` below covers the one case that would otherwise have
+   needed one.
 3. **One new role**: `tr_background_9`, documented in
    [`color-roles.md`](../../color-roles.md#transparency-roles). iOS's bars
    and panels (nav bar, tab bar, action sheet, context menu, dialogs) are
@@ -86,26 +90,21 @@ and outgoing-bubble text/controls; that's this convention, not a
 coincidence or a copy-paste of the neutral-text tier.
 
 **`gray_9` only belongs on a genuinely saturated accent/status
-background — never on a plain gray tier.** A caught-and-fixed bug: three
-places (`chatList.unreadBadgeInactiveText`, one of the
-`list.disclosureActions.*.fg` keys, `chatList.unpinnedArchiveAvatar.
-foreground`) paired `gray_9` with a background that was itself a gray
-tier (`GRAY_MUTED`, whose light-mode step is `gray_8`) rather than an
-accent or status color. `gray_9` and `gray_8` are one step apart on the
-ramp — next to unreadable, and confirmed as such on-device. If the
-background a `gray_9` key sits on is `GRAY_SOFT`/`GRAY_MUTED`/any other
-gray tier rather than an `accent_*`/status role, it needs
-`tt_background` instead (which correctly resolves to white in light mode
-and black in dark, giving real separation from any gray step) — not
-`gray_9`.
+background — never on a plain gray tier.** `gray_9` and `gray_8` are one
+step apart on the ramp — next to unreadable if paired together (e.g. a
+`gray_9` text key sitting on a `gray_8` background). If the background a
+`gray_9` key sits on is a gray tier rather than an `accent_*`/status role,
+it needs `tt_background` instead (which correctly resolves to white in
+light mode and black in dark, giving real separation from any gray step) —
+not `gray_9`.
 
 ## Style folders
 
 | Path | What it is |
 |---|---|
 | [`default/`](default) | The conservative style — neutral chrome, an accent-tinted but not overpowering outgoing bubble, incoming bubbles read as a plain neutral card. |
-| [`soza/`](soza) | The louder style — accent reaches further into chrome that Default leaves neutral, the outgoing bubble sits a step darker/richer, incoming bubbles pick up a faint accent wash instead of staying neutral. |
+| [`soza/`](soza) | The louder style — accent reaches further into chrome that Default leaves neutral, the outgoing bubble sits a step darker/richer, incoming bubbles blend into the background instead of staying a visible neutral card. |
 
-Both cover the same 417 leaf keys (the full set of `.tgios-theme` leaves
-in the samples, minus `name`, which is per-instance metadata — the theme's
-display name — not a themeable element).
+Both cover the same 417 leaf keys — the full set of themeable `.tgios-theme`
+elements currently modeled, not counting per-instance metadata like a
+theme's display `name`, which isn't a themeable element.
