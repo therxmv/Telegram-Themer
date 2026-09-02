@@ -15,10 +15,10 @@ class AndroidThemeValuesProvider @Inject constructor(
 ) : ThemeValues { // TODO download json templates from github
 
     companion object {
-        private const val DEFAULT_LIGHT = "default_light_template.json"
-        private const val DEFAULT_DARK = "default_dark_template.json"
-        private const val SOZA_LIGHT = "soza_light_template.json"
-        private const val SOZA_DARK = "soza_dark_template.json"
+        private const val DEFAULT_LIGHT = "android_default_light.json"
+        private const val DEFAULT_DARK = "android_default_dark.json"
+        private const val SOZA_LIGHT = "android_soza_light.json"
+        private const val SOZA_DARK = "android_soza_dark.json"
 
         private const val GRADIENT_KEY = "chat_outBubbleGradient"
     }

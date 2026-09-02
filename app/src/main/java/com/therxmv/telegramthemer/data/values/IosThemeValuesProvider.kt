@@ -17,10 +17,10 @@ class IosThemeValuesProvider @Inject constructor(
 ) : ThemeValues { // TODO download json templates from github
 
     companion object {
-        private const val DEFAULT_LIGHT = "ios_default_light_template.json"
-        private const val DEFAULT_DARK = "ios_default_dark_template.json"
-        private const val SOZA_LIGHT = "ios_soza_light_template.json"
-        private const val SOZA_DARK = "ios_soza_dark_template.json"
+        private const val DEFAULT_LIGHT = "ios_default_light.json"
+        private const val DEFAULT_DARK = "ios_default_dark.json"
+        private const val SOZA_LIGHT = "ios_soza_light.json"
+        private const val SOZA_DARK = "ios_soza_dark.json"
 
         // Android's toggle filters one key (chat_outBubbleGradient, the outgoing bubble's
         // gradient); the iOS templates split that into a withWp/withoutWp pair.
