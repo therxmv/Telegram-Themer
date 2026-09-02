@@ -2,7 +2,7 @@
 
 This folder holds the **"Soza"** style template pair:
 [`android_soza_dark.json`](android_soza_dark.json) and
-[`android_soza_light.json`](android_soza_light.json) — 841 keys each, the
+[`android_soza_light.json`](android_soza_light.json) — 819 keys each, the
 same key set as [`../default`](../default).
 
 Read [../../../theme-generation-flow.md](../../../theme-generation-flow.md)
@@ -21,16 +21,16 @@ true."
 
 Soza is the alternative, more saturated/expressive style — pick it when you
 want the accent color to visibly dominate more of the UI. Compared to the
-Default style in [`../default`](../default), measured across the same 841
+Default style in [`../default`](../default), measured across the same 819
 keys:
 
 | | Default (dark / light) | Soza (dark / light) |
 |---|---|---|
-| `accent_*` | ~286 / 287 | ~303 / 302 |
-| `tt_background` / `tt_onBackground` | ~246 / 247 | ~183 / 186 |
-| `gray_*` | ~206 / 207 | ~225 / 222 |
-| `tr_*` / `transparent_0` | ~46 / 47 | ~63 / 65 |
-| status colors | ~52 / 53 | ~65 / 65 |
+| `accent_*` | 282 / 283 | 299 / 298 |
+| `tt_background` / `tt_onBackground` | 228 / 228 | 169 / 172 |
+| `gray_*` | 187 / 187 | 226 / 223 |
+| `tr_*` / `transparent_0` | 67 / 66 | 63 / 64 |
+| status colors | 53 / 53 | 60 / 60 |
 
 - **The accent role is used more, and more broadly** — Soza reaches for
   `accent_*` on secondary chrome that Default would leave neutral: reply
@@ -86,7 +86,7 @@ keys:
    *both* `android_soza_dark.json` and `android_soza_light.json` — the two
    files are key-for-key parallel; don't let them drift apart. Then check
    the same key in [`../default`](../default) — the two styles are also
-   key-for-key parallel with each other (same 841 keys in every file).
+   key-for-key parallel with each other (same 819 keys in every file).
 2. Point the value at an existing role name from
    [`color-roles.md`](../../../color-roles.md) (`gray_1`–`gray_9`,
    `accent_1`–`accent_9`, `tt_background`, `tt_onBackground`,

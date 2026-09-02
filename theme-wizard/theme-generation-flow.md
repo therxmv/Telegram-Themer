@@ -11,7 +11,7 @@ There are three ingredients that combine to produce a theme:
 1. **The accent color** — one color the user picks. Everything else is
    derived from it.
 2. **The template** — a fixed list of every themeable element in Telegram
-   for one platform (841 elements for Android's `.attheme` format, 417 for
+   for one platform (819 elements for Android's `.attheme` format, 417 for
    iOS's `.tgios-theme` format — see [`templates/`](templates)), where each
    element doesn't point to a color directly, but to a *role* like
    "background," "gray, slightly darker," "accent, much lighter."
@@ -85,7 +85,7 @@ Producing the actual theme means walking through every entry in the
 template, one themeable element at a time, and resolving its shade
 reference against the palette calculated from the current accent. "Chat
 bubble background points to the lighter accent shade" becomes "chat bubble
-background is this exact color." Do that for every entry (841 on Android,
+background is this exact color." Do that for every entry (819 on Android,
 417 on iOS) and the result is a complete, concrete theme — every part of the
 app assigned one real color, all of it consistently related back to the
 single accent the user picked.
@@ -143,7 +143,7 @@ finished, ready-to-use theme.
 
 - **Accent color** → expanded into a **palette** of related shades (darker
   and lighter versions, plus background/gray/status colors).
-- **Template** → a fixed map of every themeable element (841 on Android,
+- **Template** → a fixed map of every themeable element (819 on Android,
   417 on iOS) to a shade in that palette, never to a literal color, plus a
   small number of fixed literals/flags that bypass the palette entirely.
 - **Resolving** the template against the palette produces the actual theme,

@@ -2,7 +2,7 @@
 
 This folder holds the **"Default"** style template pair:
 [`android_default_dark.json`](android_default_dark.json) and
-[`android_default_light.json`](android_default_light.json) — 841 keys each.
+[`android_default_light.json`](android_default_light.json) — 819 keys each.
 
 Read [../../../theme-generation-flow.md](../../../theme-generation-flow.md)
 and [../../../color-roles.md](../../../color-roles.md) first — this file
@@ -21,15 +21,15 @@ true."
 This is the baseline, safe-default look — a starting point before reaching
 for something louder like "Soza." Compared to the Soza style in
 [`../soza`](../soza), Default is the more conservative, higher-contrast,
-lower-saturation option. Measured across the 841 keys in each file:
+lower-saturation option. Measured across the 819 keys in each file:
 
 | | Default (dark / light) | Soza (dark / light) |
 |---|---|---|
-| `accent_*` | ~286 / 287 | ~303 / 302 |
-| `tt_background` / `tt_onBackground` | ~246 / 247 | ~183 / 186 |
-| `gray_*` | ~206 / 207 | ~225 / 222 |
-| `tr_*` / `transparent_0` | ~46 / 47 | ~63 / 65 |
-| status colors | ~52 / 53 | ~65 / 65 |
+| `accent_*` | 282 / 283 | 299 / 298 |
+| `tt_background` / `tt_onBackground` | 228 / 228 | 169 / 172 |
+| `gray_*` | 187 / 187 | 226 / 223 |
+| `tr_*` / `transparent_0` | 67 / 66 | 63 / 64 |
+| status colors | 53 / 53 | 60 / 60 |
 
 Default leans on the neutral `tt_background`/`tt_onBackground` pair and the
 gray ramp far more than Soza does, and reaches for the accent and
@@ -73,7 +73,7 @@ translucent (`tr_*`) roles less.
    *both* `android_default_dark.json` and `android_default_light.json` —
    the two files are key-for-key parallel; don't let them drift apart.
    Then check the same key in [`../soza`](../soza) — the two styles are
-   also key-for-key parallel with each other (same 841 keys in every file).
+   also key-for-key parallel with each other (same 819 keys in every file).
 2. Point the value at an existing role name from
    [`color-roles.md`](../../../color-roles.md) (`gray_1`–`gray_9`,
    `accent_1`–`accent_9`, `tt_background`, `tt_onBackground`,

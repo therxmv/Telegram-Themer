@@ -22,9 +22,10 @@ Two things live here:
 |---|---|
 | [`theme-generation-flow.md`](theme-generation-flow.md) | Conceptual walkthrough of the pipeline: one accent color → a generated palette → a template → a finished theme, plus how single-element overrides work. Start here. |
 | [`color-roles.md`](color-roles.md) | Reference for every named shade ("role") a template can point to — `accent_5`, `gray_8`, `tt_background`, the status colors, the translucent variants. |
-| [`templates/android/default/`](templates/android/default) | The "Default" Android style: two templates (dark/light), 841 keys each, each key mapped to a role. Has its own `CLAUDE.md`. |
-| [`templates/android/soza/`](templates/android/soza) | The "Soza" Android style — same 841 keys, more accent-forward mappings. Also has its own `CLAUDE.md`. |
+| [`templates/android/default/`](templates/android/default) | The "Default" Android style: two templates (dark/light), 819 keys each, each key mapped to a role. Has its own `CLAUDE.md`. |
+| [`templates/android/soza/`](templates/android/soza) | The "Soza" Android style — same 819 keys, more accent-forward mappings. Also has its own `CLAUDE.md`. |
 | [`templates/ios/`](templates/ios) | The iOS platform's Default/Soza style pair, targeting `.tgios-theme` (417 keys each). Its `CLAUDE.md` explains the dot-path key convention and role/literal split this platform needed that Android didn't. |
+| [`memory-map/`](memory-map) | Raw source material for the Android key reference: the sample `.attheme` and screenshots it was built against. The compiled reference itself now lives in the [`theme-keys`](../.claude/skills/theme-keys/SKILL.md) skill (see below). |
 
 There is currently only one Android role vocabulary (the `color-roles.md`
 one) and only these two styles per platform — no other template variants
@@ -77,13 +78,41 @@ only one, and is as open to rework as everything else in this folder.
 ## Current focus — what does each element ID actually mean?
 
 The templates map every key to a *role* (`chat_outBubble → accent_5`), but
-neither the templates nor these docs currently say what `chat_outBubble`
-*is* — which part of the Telegram UI it paints. With 841 Android keys and
-417 iOS keys, that's the current gap worth closing: a reference that lets
-someone look up an unfamiliar key (`voipgroup_listViewBackground`,
-`chat.message.outgoing.bubble.withWp.highlightedBg`) and learn what it
-draws, without reverse-engineering it from Telegram's own source.
+they don't say what `chat_outBubble` *is* — which part of the Telegram UI it
+paints. Closing that gap means a reference someone can look an unfamiliar key
+up in (`voipgroup_listViewBackground`,
+`chat.message.outgoing.bubble.withWp.highlightedBg`) without
+reverse-engineering it from Telegram's own source.
 
-Nothing under this heading exists yet as a committed file — it's the
-direction this workspace is being taken in next, not a finished thread like
-the two above.
+**The Android half is done** and lives as a skill rather than a single doc:
+[`.claude/skills/theme-keys/`](../.claude/skills/theme-keys/SKILL.md) covers
+all 819 keys, split into six `references/*.md` files by UI surface (so a
+lookup only loads the surface it's about), with the relations between keys
+(`chat_in*`/`chat_out*` twins, `*Selected` states, `dialog*` ↔
+`windowBackgroundWhite*` mirrors, gradient-stop families) and Telegram's own
+stock color for each. It was originally compiled as a single
+`memory-map/android-element-map.md` file, which has since been split into the
+skill's `references/` — `memory-map/` now holds only the sample `.attheme`
+and screenshots it was built against.
+
+Building it also reconciled the templates against Telegram's key table in
+both directions. 124 keys Telegram no longer reads were dropped — except the
+five `--glass_*` keys, whose stray `--` prefix was the only thing wrong with
+them, so they were renamed to the real `glass_*` names. Then 97 keys
+Telegram *does* read but the templates never covered were added: message
+quote/code/table blocks, the 30-key `chat_msgIvButton*` set, the Premium
+gradient family, the real wallpaper gradient stops, and `share_*`. Net 841
+→ 819, and the two sets are now identical — nothing ignored on import,
+nothing left unthemed.
+
+Each addition inherits its role from the closest existing analog, per file,
+so the Default/Soza and light/dark conventions carry over. Two things to
+keep in mind, both written up at the end of the map: the new wallpaper
+gradient stops are the one change that could alter how a background renders
+(all four resolve to the same role, so it should look identical — worth
+confirming), and the bubble-gradient toggle in `AndroidThemeValuesProvider`
+now has to filter four keys instead of one, so any future gradient key must
+be added to `GRADIENT_KEYS` as well.
+
+**iOS is still open**: the same treatment for `templates/ios/`'s 417
+dot-path keys has not been written.

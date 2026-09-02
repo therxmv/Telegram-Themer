@@ -30,7 +30,7 @@ from the device's system wallpaper colors when Monet is enabled).
 | `tt_onBackground` | The color used for content drawn on top of the background (primary text, icons) |
 
 These are also the two most-used roles in the templates by a wide margin —
-across Android's Default style they cover roughly 246–247 of the 841 keys.
+across Android's Default style they cover 228 of the 819 keys.
 
 ## Gray ramp — `gray_1` … `gray_9`
 
