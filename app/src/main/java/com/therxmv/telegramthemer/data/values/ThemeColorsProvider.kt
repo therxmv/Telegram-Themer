@@ -89,18 +89,22 @@ class ThemeColorsProvider @Inject constructor(
 
     /**
      * Defines [BaseThemeColors] object with colors based on [state].
-     * e.g. decides between monet black, amoled black or dark black.
+     * e.g. decides between amoled black and regular dark black; only the
+     * neutral gray base (not the background/onBackground surfaces) is
+     * wallpaper-derived under Monet.
      */
     private fun getBaseColors(state: ThemeState): BaseThemeColors {
+        // tt_background/tt_onBackground stay a fixed near-black/white regardless
+        // of Monet: windowBackgroundWhite (the chat list, most screens) and its
+        // recessed "card" siblings (windowBackgroundGray etc.) share this one id,
+        // and a wallpaper-extracted neutral tone can land far lighter than a
+        // real dark background - only the accent-tinted gray-ramp extremes below
+        // (grays[1]/[8]/[9]) carry the wallpaper hue into recessed surfaces.
         val black = when {
-            state.isMonet -> ContextCompat.getColor(context, R.color.theme_neutral1_900).colorToHex()
             state.isAmoled && state.isDark -> AMOLED_BLACK
             else -> DARK_BLACK
         }
-        val white = when {
-            state.isMonet -> ContextCompat.getColor(context, R.color.theme_neutral1_50).colorToHex()
-            else -> WHITE
-        }
+        val white = WHITE
         val gray = when {
             state.isMonet -> ContextCompat.getColor(context, R.color.theme_neutral1_400).colorToHex()
             else -> GRAY

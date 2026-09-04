@@ -39,7 +39,12 @@ class AndroidThemeFileAdapter @Inject constructor(
             atthemeMap.forEach { (key, value) ->
                 // themeState.overwrittenColors[value] is required for "tt_background"
                 val overwrittenColor = themeState.overwrittenColors[key] ?: themeState.overwrittenColors[value]
-                val color = (overwrittenColor ?: tints[value]).colorToHex()
+                // rawHex keeps the exact digit count (6 or 8) of the role's tint,
+                // e.g. tr_accent_5 stays translucent instead of losing its alpha
+                // byte. A value that isn't a known role (a literal like
+                // "#BE000000", "-1" or "0") has no matching tint, so it's used
+                // as-is instead of silently falling back to opaque black.
+                val color = overwrittenColor?.colorToHex() ?: tints.rawHex(value) ?: value
 
                 out.println("$key=$color")
             }
