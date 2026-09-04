@@ -1,4 +1,4 @@
-> Part of the [theme-keys](../SKILL.md) skill's Android key reference. Covers §5 Chat screen in full (5.1–5.15: wallpaper/service messages, bubbles, text selection, replies/forwards/previews, media/loaders, audio/voice, files, cards, top panels, composer/recording, attach sheet, emoji/sticker panel, bots, quotes/code/tables, Instant View buttons). The largest single surface — 347 of the 819 keys. Relation-tag vocabulary and markers are defined once in `SKILL.md`.
+> Part of the [android-theme-key](../SKILL.md) skill's Android key reference. Covers §5 Chat screen in full (5.1–5.15: wallpaper/service messages, bubbles, text selection, replies/forwards/previews, media/loaders, audio/voice, files, cards, top panels, composer/recording, attach sheet, emoji/sticker panel, bots, quotes/code/tables, Instant View buttons). The largest single surface — 347 of the 819 keys. Relation-tag vocabulary and markers are defined once in `SKILL.md`.
 
 ## 5. Chat screen
 

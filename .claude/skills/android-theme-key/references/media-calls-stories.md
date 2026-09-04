@@ -1,4 +1,4 @@
-> Part of the [theme-keys](../SKILL.md) skill's Android key reference. Covers §9 Music player, §10 Stories, §11 Location and maps, §12 Shared media/files/sticker store, §13 Group voice and video chats (`voipgroup_*`). Relation-tag vocabulary and markers are defined once in `SKILL.md`.
+> Part of the [android-theme-key](../SKILL.md) skill's Android key reference. Covers §9 Music player, §10 Stories, §11 Location and maps, §12 Shared media/files/sticker store, §13 Group voice and video chats (`voipgroup_*`). Relation-tag vocabulary and markers are defined once in `SKILL.md`.
 
 ## 9. Music player
 

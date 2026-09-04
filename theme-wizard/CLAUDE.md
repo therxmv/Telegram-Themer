@@ -44,7 +44,7 @@ Two things live here:
 | [`templates/android/default/`](templates/android/default) | The "Default" Android style: two templates (dark/light), 819 keys each, each key mapped to a role. Has its own `CLAUDE.md`. |
 | [`templates/android/soza/`](templates/android/soza) | The "Soza" Android style — same 819 keys, more accent-forward mappings. Also has its own `CLAUDE.md`. |
 | [`templates/ios/`](templates/ios) | The iOS platform's Default/Soza style pair, targeting `.tgios-theme` (417 keys each). Its `CLAUDE.md` explains the dot-path key convention and role/literal split this platform needed that Android didn't. |
-| [`memory-map/`](memory-map) | Raw source material for the Android key reference: the sample `.attheme` and screenshots it was built against. The compiled reference itself now lives in the [`theme-keys`](../.claude/skills/theme-keys/SKILL.md) skill (see below). |
+| [`memory-map/`](memory-map) | Raw source material for the Android key reference: the sample `.attheme` and screenshots it was built against. The compiled reference itself now lives in the [`android-theme-key`](../.claude/skills/android-theme-key/SKILL.md) skill (see below). |
 
 There is currently only one Android role vocabulary (the `color-roles.md`
 one) and only these two styles per platform — no other template variants
@@ -104,7 +104,7 @@ up in (`voipgroup_listViewBackground`,
 reverse-engineering it from Telegram's own source.
 
 **The Android half is done** and lives as a skill rather than a single doc:
-[`.claude/skills/theme-keys/`](../.claude/skills/theme-keys/SKILL.md) covers
+[`.claude/skills/android-theme-key/`](../.claude/skills/android-theme-key/SKILL.md) covers
 all 819 keys, split into six `references/*.md` files by UI surface (so a
 lookup only loads the surface it's about), with the relations between keys
 (`chat_in*`/`chat_out*` twins, `*Selected` states, `dialog*` ↔

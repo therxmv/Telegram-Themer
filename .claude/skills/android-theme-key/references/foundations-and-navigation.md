@@ -1,4 +1,4 @@
-> Part of the [theme-keys](../SKILL.md) skill's Android key reference. Covers §1 Foundations/window chrome, §2 Action bar and tab bars, §3 Chat list and side menu, §4 Avatars. Relation-tag vocabulary and markers are defined once in `SKILL.md`, not repeated here.
+> Part of the [android-theme-key](../SKILL.md) skill's Android key reference. Covers §1 Foundations/window chrome, §2 Action bar and tab bars, §3 Chat list and side menu, §4 Avatars. Relation-tag vocabulary and markers are defined once in `SKILL.md`, not repeated here.
 
 ## 1. Foundations — window chrome
 

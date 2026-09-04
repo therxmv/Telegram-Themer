@@ -1,4 +1,4 @@
-> Part of the [theme-keys](../SKILL.md) skill's Android key reference. Covers §19 Cross-cutting suffix patterns (decode a key this reference somehow missed), §20 Open questions/Worth watching, and how the reference was originally compiled.
+> Part of the [android-theme-key](../SKILL.md) skill's Android key reference. Covers §19 Cross-cutting suffix patterns (decode a key this reference somehow missed), §20 Open questions/Worth watching, and how the reference was originally compiled.
 
 ## 19. Cross-cutting suffix patterns
 

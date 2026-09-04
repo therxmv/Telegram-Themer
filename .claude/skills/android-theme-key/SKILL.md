@@ -1,5 +1,5 @@
 ---
-name: theme-keys
+name: android-theme-key
 description: Use when working with TelegramThemer's Android .attheme template keys — looking up what a key like chat_outBubble or windowBackgroundWhiteGrayText draws, what it's paired/related to, or what role (accent_5, gray_8, tr_gray_3, ...) means. Triggers on: what does key X do, explain this theme key, theme key relations, .attheme, ThemeColors, android_default/android_soza json.
 ---
 
@@ -56,7 +56,7 @@ treating any key as isolated:
 
 Six files, split by UI surface so a lookup only loads the part of the app
 it's actually about. If the surface isn't obvious, `grep -rn '<key>'
-.claude/skills/theme-keys/references/` finds it regardless of file.
+.claude/skills/android-theme-key/references/` finds it regardless of file.
 
 | File | Covers |
 |---|---|

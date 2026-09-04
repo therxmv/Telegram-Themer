@@ -1,4 +1,4 @@
-> Part of the [theme-keys](../SKILL.md) skill's Android key reference. Covers §6 Form controls, §7 Dialogs and bottom sheets, §8 Profile screen. Relation-tag vocabulary and markers are defined once in `SKILL.md`.
+> Part of the [android-theme-key](../SKILL.md) skill's Android key reference. Covers §6 Form controls, §7 Dialogs and bottom sheets, §8 Profile screen. Relation-tag vocabulary and markers are defined once in `SKILL.md`.
 
 ## 6. Form controls
 

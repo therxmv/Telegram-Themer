@@ -1,4 +1,4 @@
-> Part of the [theme-keys](../SKILL.md) skill's Android key reference. Covers §14 Statistics charts, §15 Instant View, §16 Gifts/stars/Premium/polls, §17 One-off screens, §18 Named palette slots (`color_*`). Relation-tag vocabulary and markers are defined once in `SKILL.md`.
+> Part of the [android-theme-key](../SKILL.md) skill's Android key reference. Covers §14 Statistics charts, §15 Instant View, §16 Gifts/stars/Premium/polls, §17 One-off screens, §18 Named palette slots (`color_*`). Relation-tag vocabulary and markers are defined once in `SKILL.md`.
 
 ## 14. Statistics charts
 
