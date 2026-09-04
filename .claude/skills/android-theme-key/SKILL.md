@@ -70,5 +70,6 @@ it's actually about. If the surface isn't obvious, `grep -rn '<key>'
 ## Scope
 
 Android only. iOS's templates (`theme-wizard/templates/ios/`, 417 dot-path
-keys) have no equivalent reference yet — for an iOS key, say so rather than
-guessing from the Android map.
+keys) have their own reference at
+[`ios-theme-key`](../ios-theme-key/SKILL.md) — for an iOS key, use that
+skill instead of guessing from this map.
