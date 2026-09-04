@@ -60,6 +60,69 @@ translucent (`tr_*`) roles less.
   `dialogButtonSelector`, and similar "highlighted item" keys all resolve to
   `gray_5` (light) / `gray_8` (dark). Soza uses a translucent `tr_gray_5`/
   `tr_gray_3` for the same surfaces instead.
+  - Exception confirmed on-device: `listSelectorSDK21` — the ripple on *any*
+    list row, including chat rows with an avatar photo — must stay
+    translucent (`tr_gray_5` in `android_default_light.json`) even in
+    Default. An opaque fill there doesn't read as a highlight, it replaces
+    the avatar and text outright while pressed.
+- **`gray_*`/`accent_*` resolve to the *same* hex in light and dark** — only
+  `tt_background`/`tt_onBackground` flip. A role picked for contrast against
+  a *flipping* surface (`tt_background`, `chat_wallpaper`,
+  `windowBackgroundWhite`, `dialogBackground`, ...) therefore needs the
+  **opposite-direction step** between the two files: light's "readable text
+  on white" (`gray_3`) becomes dark's "readable text on near-black"
+  (`gray_8`); light's "subtle divider on white" (`gray_8`/`gray_9`) becomes
+  dark's "subtle divider on near-black" (`gray_3`, not `gray_1` — `gray_1`
+  (`#1c1c1c`) is close enough to dark's `tt_background` (`#181818`) to be
+  effectively invisible, the same failure mode as picking `gray_9` on a
+  white surface in light). Copying a light fix's role name straight into
+  the dark file without flipping the step is a real, easy-to-miss bug, not
+  a style choice — it happened to ~100 keys here before being caught.
+  - The opposite applies to a role that's pinned to one *fixed* shade
+    regardless of mode — a status color, or an accent step used for
+    branding rather than contrast (e.g. `chat_serviceBackground`,
+    `chat_unreadMessagesStartBackground`, both a constant dark-ish accent
+    in both files). Content drawn on *that* needs a role that reads as
+    light-on-dark in **both** files, which means the two files can't share
+    the same content-role name here either: light gets `tt_background`
+    (white in light), dark needs `tt_onBackground` (white in dark) — using
+    `tt_background` in the dark file would silently go black-on-dark.
+  - Roles that are already mode-independent by nature — the status colors,
+    and any accent/gray step used for its own sake rather than for contrast
+    against a flipping surface (gradient family stops, `*Selected`/pressed
+    tint families, syntax-highlight colors) — resolve to the identical hex
+    in both files and should just be copied verbatim; don't invert those.
+- **Recessed "card" surfaces read as wallpaper/accent-tinted only if you
+  point them at the accent ramp directly.** `windowBackgroundGray` /
+  `dialogBackgroundGray` / `iv_backgroundGray` are `accent_1`, not a
+  `gray_*` step — under Monet the gray ramp only gets accent-tinted at its
+  three extremes (`grays[1]/[8]/[9]`, see `color-roles.md`), and outside
+  Monet it isn't tinted at all, so a `gray_*` value here reads as flat
+  neutral in the common (non-Monet) case. Going straight to `accent_1`
+  guarantees the tint in both Monet and manual-accent themes with no
+  dependence on that override. Don't use `accent_1`/`windowBackgroundGray`
+  for `windowBackgroundWhite` itself, though — that key is the main content
+  surface (chat list included), used far too broadly for an accent tint to
+  be anything but jarring there; keep it on `tt_background`.
+- **When checking contrast on a `tr_*` role, composite it over its real
+  backdrop first** — don't treat its own stripped RGB as opaque. A
+  translucent fill's *effective* color is `alpha·role + (1-alpha)·backdrop`
+  (e.g. `tr_accent_7` over `chat_inBubble`, not `tr_accent_7` alone); doing
+  the naive opaque comparison produces false "still broken" contrast
+  failures for things that actually render fine.
+- **After any scripted/batch edit across many keys, diff against the last
+  known-good version and specifically re-check the broad-blast-radius keys**
+  (`windowBackgroundWhite`, `dialogBackground`, `chats_menuBackground`,
+  `player_background`, and their kin — anything that's effectively "the
+  app's main surface," used on dozens of screens) even if they weren't the
+  ones you meant to touch. One editing pass this project went through
+  silently left six such keys pointed at `accent_2` instead of
+  `tt_background` — never intentionally written by any tracked script —
+  and because they're used everywhere, the result (the *entire* app reading
+  as accent-tinted instead of neutral) looked like a much bigger, scarier
+  bug than a six-line JSON diff actually was. A key-count check alone
+  (`len(keys) == 819`) won't catch this kind of silent value corruption;
+  you have to actually diff the values.
 - **Two literal colors, not role references**: `chat_BlurAlpha`
   (`#BE000000` in both light and dark) and `chat_BlurAlphaSlow`
   (`#99000000` in both) — a fixed blur-overlay alpha and its slower
@@ -95,3 +158,7 @@ translucent (`tr_*`) roles less.
 5. If a template key's value is neither a known role name nor one of the
    two documented literals above, that's a bug (not a third kind of
    allowed exception) — fix it to a role name.
+6. Copy the edited file to `app/src/main/assets/` and clean-rebuild before
+   judging the result on-device — see
+   [`../../../CLAUDE.md`](../../../CLAUDE.md) for why both steps are
+   necessary.

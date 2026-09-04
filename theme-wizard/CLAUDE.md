@@ -2,9 +2,28 @@
 
 A standalone proof-of-concept workspace for the *theme generation system*
 itself — separate from the shipped Android app elsewhere in this repo.
-Nothing here needs to stay in sync with `app/src/main/assets` or any other
-part of the main app; treat the current design as a first draft to iterate
-on, not a spec to preserve.
+Treat the current design as a first draft to iterate on, not a spec to
+preserve.
+
+**Exception, and it matters in practice:** `app/src/main/assets/
+android_default_{dark,light}.json` (and the Soza pair alongside them) *are*
+literally the same 819-key files as
+[`templates/android/default/`](templates/android/default)'s — the shipped
+app reads its templates straight from Android assets, not from this
+folder, and there's no build step or symlink that keeps the two in sync.
+If you edit a template here and want it to show up in a real build (which
+is the only way a person can actually see or screenshot the result), you
+must copy the file across yourself:
+```
+cp theme-wizard/templates/android/default/android_default_dark.json \
+   app/src/main/assets/android_default_dark.json
+```
+And even then: a plain incremental build can serve a **stale** merged copy
+from `app/build/intermediates/assets/.../mergeDebugAssets/` — if a change
+that's confirmed present in `app/src/main/assets/` still isn't showing up
+on-device, `./gradlew :app:clean :app:assembleDebug` (or Android
+Studio's Clean Project + Rebuild) before assuming the template itself is
+wrong.
 
 Two things live here:
 

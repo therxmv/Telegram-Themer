@@ -307,6 +307,15 @@ The input row at the bottom, plus everything the voice-message recorder swaps in
 over it. Note the three `key_chat_messagePanelVoiceLock*` keys keep Telegram's own
 `key_` prefix — that is their real spelling, not a mistake.
 
+Confirmed on-device: the mic/camera glyph at the end of the composer is
+**not** part of `chat_messagePanelIcons` (that key only tints the attach
+and emoji/sticker glyphs elsewhere in the same bar). It's its own filled
+circle — `chat_messagePanelVoiceBackground` is the circle's fill,
+`chat_messagePanelVoicePressed` is the glyph drawn on top of it. Despite
+the "…Pressed" name suggesting an interaction-state-only key, changing
+`chat_messagePanelVoicePressed` visibly recolors that glyph in its normal
+resting state too, not only while actively held to record.
+
 | Key | Draws | Telegram default | Relations |
 |---|---|---|---|
 | `chat_messagePanelBackground` | The composer bar's background | `#FFFFFF` | `fill→on-fill`: `chat_messagePanelText`, `chat_messagePanelIcons` |
