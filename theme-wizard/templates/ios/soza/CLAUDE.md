@@ -76,11 +76,14 @@ exists.
   than a neutral one — that's the split that defines Soza, matching how
   Android Soza reaches for `accent_*` on secondary chrome (reply lines,
   seekbars, loaders) that Default leaves gray.
-- **Press/selection feedback is a translucent overlay, not an opaque
-  fill.** `list.itemHighlightedBg`, `chatList.itemHighlightedBg`, and the
-  other "highlighted item" surfaces resolve to `tr_gray_5` (light) /
-  `tr_gray_3` (dark) here. See [`../default/CLAUDE.md`](../default/CLAUDE.md)
-  for Default's opaque side of this split.
+- **Press/selection feedback is a translucent overlay** — `tr_gray_5`
+  (light) / `tr_gray_3` (dark) for `list.itemHighlightedBg`,
+  `chatList.itemHighlightedBg`, and the other "highlighted item" surfaces.
+  This is no longer a Soza-only trait: Default also moved to a translucent
+  `tr_gray_5` after an opaque `gray_5`/`gray_8` fill there was found to wash
+  out same-toned secondary text/icons on a pressed row. The two styles
+  still diverge in dark mode (Soza's `tr_gray_3` vs. Default's `tr_gray_5`)
+  — see [`../default/CLAUDE.md`](../default/CLAUDE.md).
 - **Readable neutral text does not get pushed more muted — only icons do.**
   `chatList.dateText`/`chatList.messageText` and their Android analogs
   (`chats_date`/`chats_message`) stay flat `gray_5` in both modes here

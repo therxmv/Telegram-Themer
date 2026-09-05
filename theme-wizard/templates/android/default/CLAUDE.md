@@ -92,18 +92,24 @@ translucent (`tr_*`) roles less.
     against a flipping surface (gradient family stops, `*Selected`/pressed
     tint families, syntax-highlight colors) — resolve to the identical hex
     in both files and should just be copied verbatim; don't invert those.
-- **Recessed "card" surfaces read as wallpaper/accent-tinted only if you
-  point them at the accent ramp directly.** `windowBackgroundGray` /
-  `dialogBackgroundGray` / `iv_backgroundGray` are `accent_1`, not a
-  `gray_*` step — under Monet the gray ramp only gets accent-tinted at its
-  three extremes (`grays[1]/[8]/[9]`, see `color-roles.md`), and outside
-  Monet it isn't tinted at all, so a `gray_*` value here reads as flat
-  neutral in the common (non-Monet) case. Going straight to `accent_1`
-  guarantees the tint in both Monet and manual-accent themes with no
-  dependence on that override. Don't use `accent_1`/`windowBackgroundGray`
-  for `windowBackgroundWhite` itself, though — that key is the main content
-  surface (chat list included), used far too broadly for an accent tint to
-  be anything but jarring there; keep it on `tt_background`.
+- **`windowBackgroundGray` / `dialogBackgroundGray` / `iv_backgroundGray`
+  are not a matched pair between the two files — check the actual value,
+  don't assume.** `android_default_dark.json` points all three at
+  `accent_1`; `android_default_light.json` points all three at `gray_9`.
+  An earlier version of this note claimed both files used `accent_1` "to
+  guarantee the tint in both Monet and manual-accent themes" — that was
+  wrong about the light file specifically; verify against the JSON, not
+  this paragraph, before porting this convention anywhere else (e.g. iOS's
+  `list.blocksBg`, which should match each file independently rather than
+  using one shared role for both light and dark). `gray_9` is one of the
+  ramp's three Monet-tinted extremes (`grays[1]/[8]/[9]`, see
+  `color-roles.md`) so it still picks up the accent tint under Monet, just
+  not under a plain manual-accent theme — a real, if minor, difference
+  from `accent_1`'s "always tinted" behavior, and not one this file should
+  paper over. Don't use `accent_1`/`gray_9`/`windowBackgroundGray` for
+  `windowBackgroundWhite` itself, though — that key is the main content
+  surface (chat list included), used far too broadly for a tint to be
+  anything but jarring there; keep it on `tt_background`.
 - **When checking contrast on a `tr_*` role, composite it over its real
   backdrop first** — don't treat its own stripped RGB as opaque. A
   translucent fill's *effective* color is `alpha·role + (1-alpha)·backdrop`

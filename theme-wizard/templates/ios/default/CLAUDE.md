@@ -48,13 +48,26 @@ Android equivalent exists.
   selection knob is `accent_4` light / `accent_3` dark specifically — the
   two bubble directions don't share one flat value. Poll correct/wrong
   answers are `green_5`/`red_5` on both incoming and outgoing.
-- **Press/selection feedback is an opaque gray fill, not a translucent
-  overlay.** `list.itemHighlightedBg`, `chatList.itemHighlightedBg`, and
-  the other "highlighted item" surfaces resolve to `gray_5` (light) /
-  `gray_8` (dark) — matching Android's `actionBarDefaultSelector`/
-  `listSelector`/`dialogButtonSelector`. Soza uses a translucent
-  `tr_gray_5`/`tr_gray_3` for the same surfaces instead; see
-  [`../soza/CLAUDE.md`](../soza/CLAUDE.md).
+- **Press/selection feedback is a translucent overlay, `tr_gray_5` in both
+  modes — not a style differentiator from Soza.** `list.itemHighlightedBg`,
+  `chatList.itemHighlightedBg`, `chatList.pinnedItemHighlightedBg`,
+  `actionSheet.opaqueItemHighlightedBg`, `actionSheet.itemHighlightedBg`,
+  `contextMenu.itemHighlightedBg`, and `chat.inputButtonPanel.
+  buttonHighlightedBg` all resolve to `tr_gray_5`, matching Android's actual
+  list-row selector (`listSelectorSDK21`, which is `tr_gray_5` in *both*
+  light and dark on Android — not the opaque `actionBarDefaultSelector`/
+  `dialogButtonSelector` this file previously (and incorrectly) cited as the
+  analog). An earlier version of these templates used an opaque `gray_5`
+  (light) / `gray_8` (dark) fill here instead; that was a real bug, not a
+  style choice — a pressed chat-list row's own `gray_5`-toned secondary text
+  and icons (date, message preview, mute icon) would wash out to the exact
+  same tone as the now-opaque background underneath them and disappear
+  (confirmed on-device). A translucent overlay tints whatever's already
+  there instead of replacing it, so that content stays legible. Default
+  uses `tr_gray_5` in both light and dark (mirroring Android's
+  `listSelectorSDK21` exactly); Soza uses `tr_gray_5` (light) / `tr_gray_3`
+  (dark) for the same surfaces — see [`../soza/CLAUDE.md`](../soza/CLAUDE.md).
+  The two styles now coincide in light mode but still diverge in dark.
 - **Chrome stays neutral.** Nav bar controls, tab bar icons/labels
   (unselected state), and general secondary text all resolve through the
   gray tiers rather than the accent — `root.navBar.control` in particular
