@@ -48,6 +48,8 @@ dependencies {
     implementation appDependencies.gson
     implementation appDependencies.serialization
     implementation appDependencies.dataStore
+    implementation appDependencies.okhttp
+    implementation appDependencies.splashScreen
 
     implementation appDependencies.hilt
     implementation appDependencies.dagger

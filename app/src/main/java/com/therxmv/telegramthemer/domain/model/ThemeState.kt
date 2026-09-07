@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ThemeState(
-    val style: Styles = Styles.DEFAULT,
+    val style: String = DEFAULT_STYLE_ID,
     val platform: Platform = Platform.ANDROID,
     val accent: Int = DEFAULT_ACCENT_COLOR,
     val isDark: Boolean = false,
@@ -14,8 +14,3 @@ data class ThemeState(
     val isGradient: Boolean = false,
     val overwrittenColors: Map<String, Int> = emptyMap(),
 )
-
-enum class Styles(val label: String) {
-    DEFAULT("Default"),
-    SOZA("Soza"),
-}

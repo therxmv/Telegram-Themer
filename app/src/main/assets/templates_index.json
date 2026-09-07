@@ -1,0 +1,6 @@
+{
+    "styles": [
+        { "id": "default", "label": "Default" },
+        { "id": "soza", "label": "Soza" }
+    ]
+}

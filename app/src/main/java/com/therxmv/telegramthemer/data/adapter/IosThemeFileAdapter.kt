@@ -128,7 +128,7 @@ class IosThemeFileAdapter @Inject constructor(
     }
 
     private fun getBaseName(state: ThemeState): String {
-        val style = state.style.label
+        val style = state.style
         val dark = DARK_LABEL.takeIf { state.isDark } ?: LIGHT_LABEL
         val color = MONET_LABEL.takeIf { state.isMonet } ?: state.accent.colorToHex().drop(1)
 

@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.WindowInsets
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -17,6 +18,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
+import com.therxmv.telegramthemer.domain.model.TemplateCapabilities
+import com.therxmv.telegramthemer.domain.model.TemplateStyle
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
 import com.therxmv.telegramthemer.ui.editor.advanced.AdvancedThemeEditFragment
@@ -42,8 +45,10 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     lateinit var presenter: ThemeEditorContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(ActivityThemeEditorBinding::inflate)
+        splashScreen.setKeepOnScreenCondition { !presenter.areTemplatesReady }
         handleEdgeToEdge()
         presenter.attachView(this@ThemeEditorActivity)
         setUpActionBar()
@@ -109,9 +114,13 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
             .show(supportFragmentManager, "ColorPickerBottomSheetFragment")
     }
 
-    override fun openMoreOptions(themeState: ThemeState) {
+    override fun openMoreOptions(
+        themeState: ThemeState,
+        styles: List<TemplateStyle>,
+        capabilitiesByStyle: Map<String, TemplateCapabilities>,
+    ) {
         MoreOptionsBottomSheetFragment
-            .createInstance(themeState)
+            .createInstance(themeState, styles, capabilitiesByStyle)
             .show(supportFragmentManager, "MoreOptionsBottomSheetFragment")
     }
 
