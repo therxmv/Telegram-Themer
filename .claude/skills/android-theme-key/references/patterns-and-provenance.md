@@ -92,12 +92,19 @@ it is a style decision worth a second look.
 - **Telegram default column**: `createDefaultColors()` from the same file, with
   `TELEGRAM_COLOR`, `TELEGRAM_COLOR_TEXT` and `DEFAULT_BLACK_TEXT` resolved to
   literals and the alpha byte kept wherever it isn't `FF`.
-- **Semantics**: Telegram Android source (`DrKLO/Telegram`) — `ThemeColors.java`
-  for the key table and stock colors, `ActionBar/Theme.java` for the wallpaper
-  and service-background logic, plus targeted code searches for the keys whose
-  names were ambiguous (`chat_attachPhotoBackground`, `chat_stickersHintPanel`,
-  `chats_tabletSelectedOverlay`, `reactionStarSelector`, `wallpaperFileOffset`,
-  `gift_ribbon`, `text_RedRegular`, and the `glass_*` set).
+- **Semantics**: Telegram Android source
+  ([`DrKLO/Telegram`](https://github.com/DrKLO/Telegram)) —
+  [`ThemeColors.java`](https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/ui/ActionBar/ThemeColors.java)
+  for the key table and stock colors,
+  [`ActionBar/Theme.java`](https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/ui/ActionBar/Theme.java)
+  for the wallpaper and service-background logic, plus targeted code
+  searches (`https://github.com/search?q=repo%3ADrKLO%2FTelegram+%22<key>%22&type=code`)
+  for the keys whose names were ambiguous (`chat_attachPhotoBackground`,
+  `chat_stickersHintPanel`, `chats_tabletSelectedOverlay`,
+  `reactionStarSelector`, `wallpaperFileOffset`, `gift_ribbon`,
+  `text_RedRegular`, and the `glass_*` set). See the skill's
+  [`SKILL.md`](../SKILL.md) "When a key isn't in this reference" for this
+  same fallback path.
 - **Visual grounding**: the 17 screenshots in
   [`screenshots/`](screenshots) — chat list, search, drawer, archive pull-down,
   chat with bubbles and link previews, attach sheet (File / Music / Poll /

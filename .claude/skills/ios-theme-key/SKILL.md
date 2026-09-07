@@ -107,6 +107,41 @@ if you know that skill's layout this one is a straight parallel.
 | [`references/sheets-menus-notifications.md`](references/sheets-menus-notifications.md) | Action sheets, the long-press context menu, in-app and expanded notification banners. 36 keys |
 | [`references/patterns-and-provenance.md`](references/patterns-and-provenance.md) | Suffix/shape patterns for decoding a key not otherwise listed (`withWp`/`withoutWp`, `bg`/`gradientBg`/`highlightedBg`, the 8 non-color literal keys), and how this reference was compiled |
 
+## When a key isn't in this reference
+
+These tables aim to cover all 417 keys, but if you hit one they somehow
+miss — or want to confirm a description first-hand instead of trusting the
+inferred ones flagged in `patterns-and-provenance.md` §20 — go straight to
+the iOS client source instead of guessing:
+
+- **[`TelegramMessenger/Telegram-iOS`](https://github.com/TelegramMessenger/Telegram-iOS)**
+  — the actual iOS client this project themes.
+- **[`PresentationTheme.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/PresentationTheme.swift)**
+  — the struct every dot-path segment belongs to, and its (usually more
+  verbose) Swift property name. Start here for "what struct owns this key".
+- **[`PresentationThemeCodable.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/PresentationThemeCodable.swift)**
+  — the exact `CodingKeys` strings that produce the `.tgios-theme` dot-path,
+  plus the fallback logic documented in `patterns-and-provenance.md` §19.
+- **[`DefaultDayPresentationTheme.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/DefaultDayPresentationTheme.swift)**
+  / **[`DefaultDarkPresentationTheme.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/DefaultDarkPresentationTheme.swift)**
+  — the constructors for Telegram's own stock Day/Night themes, useful to
+  verify an ambiguous key against a known-good render.
+- Still nothing in those three files? Search the whole repo for the key
+  (its dot-path, or the last segment or two):
+  `https://github.com/search?q=repo%3ATelegramMessenger%2FTelegram-iOS+%22<key.or.segment>%22&type=code`
+  — that's how this reference confirmed `message.freeform` and
+  `panelContentVibrantOverlayColor` (see `patterns-and-provenance.md` §20).
+
+**Found it? Write it back before moving on.** This reference is only as
+useful as it is exhaustive — a key looked up in source and then discarded
+just means the next lookup repeats the same dig. Add a row for it to
+whichever `references/*.md` file matches its surface (see the Reference
+index above), matching that file's existing `Key | Draws | Example |
+Relations` columns, and name the source file/struct/method you confirmed it
+from. If it's a genuinely new shape pattern rather than one more key of a
+kind already listed, add it to `references/patterns-and-provenance.md` §18
+instead (or as well).
+
 ## Scope
 
 iOS only. Android's templates (`theme-wizard/templates/android/`, 819 flat

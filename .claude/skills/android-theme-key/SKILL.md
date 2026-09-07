@@ -67,6 +67,38 @@ it's actually about. If the surface isn't obvious, `grep -rn '<key>'
 | [`references/charts-iv-gifts-misc.md`](references/charts-iv-gifts-misc.md) | Statistics charts, Instant View, gifts/stars/Premium/polls, one-off screens, named palette slots (`color_*`) |
 | [`references/patterns-and-provenance.md`](references/patterns-and-provenance.md) | Suffix patterns for decoding a key not otherwise listed, open questions, how the reference was compiled |
 
+## When a key isn't in this reference
+
+These tables aim to cover all 819 keys, but if you hit one they somehow
+miss — or want to confirm a description first-hand instead of trusting the
+inferred ones flagged in `patterns-and-provenance.md` §20 — go straight to
+the Android client source instead of guessing:
+
+- **[`DrKLO/Telegram`](https://github.com/DrKLO/Telegram)** — the actual
+  Android client this project themes.
+- **[`ThemeColors.java`](https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/ui/ActionBar/ThemeColors.java)**
+  — the full key table (`colorKeysMap`) and Telegram's own stock
+  light-theme defaults (`createDefaultColors()`). Start here for "does this
+  key even exist" and "what does Telegram ship as its default".
+- **[`ActionBar/Theme.java`](https://github.com/DrKLO/Telegram/blob/master/TMessagesProj/src/main/java/org/telegram/ui/ActionBar/Theme.java)**
+  — wallpaper/service-background rendering logic and the bulk of the
+  `getColor(Theme.key_*)` call sites, i.e. what a key actually draws.
+- Still nothing in those two files? Search the whole repo for the key name:
+  `https://github.com/search?q=repo%3ADrKLO%2FTelegram+%22<key_name>%22&type=code`
+  (swap in the key, e.g. `chat_attachPhotoBackground`) — that's how this
+  reference resolved its ambiguous one-off keys in the first place (see
+  `patterns-and-provenance.md`, "Semantics").
+
+**Found it? Write it back before moving on.** This reference is only as
+useful as it is exhaustive — a key looked up in source and then discarded
+just means the next lookup repeats the same dig. Add a row for it to
+whichever `references/*.md` file matches its surface (see the Reference
+index above), matching that file's existing `Key | Draws | Example |
+Relations` columns, and name the source file/method you confirmed it from.
+If it's a genuinely new suffix pattern rather than one more key of a kind
+already listed, add it to `references/patterns-and-provenance.md` §19
+instead (or as well).
+
 ## Scope
 
 Android only. iOS's templates (`theme-wizard/templates/ios/`, 417 dot-path

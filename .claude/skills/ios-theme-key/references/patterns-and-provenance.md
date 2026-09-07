@@ -106,26 +106,34 @@ type that might reuse it.
   four template files' key set and the two real exports' key set (minus the
   one non-themeable `name` field) are **exactly** the same 417 keys in both
   directions — there is no Android-style `†` gap to track here.
-- **Structural grounding**: `TelegramMessenger/Telegram-iOS`,
-  `submodules/TelegramPresentationData/Sources/PresentationTheme.swift`
+- **Structural grounding**:
+  [`TelegramMessenger/Telegram-iOS`](https://github.com/TelegramMessenger/Telegram-iOS),
+  [`submodules/TelegramPresentationData/Sources/PresentationTheme.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/PresentationTheme.swift)
   (struct definitions — every dot-path segment corresponds to one Swift
   property, confirmed for every struct referenced in this reference) and
-  `PresentationThemeCodable.swift` (the `CodingKeys` enums that produce the
-  exact `.tgios-theme` string keys, plus the fallback logic in §19).
-- **Stock-default cross-check**: `DefaultDayPresentationTheme.swift` /
-  `DefaultDarkPresentationTheme.swift` — the constructors for Telegram's own
-  built-in Day/Night themes. Spot-checked against both sample exports; most
-  neutral values in "Blue Shadow" match `DefaultDayPresentationTheme.swift`
-  literally (e.g. `list.blocksBg` = `#EFEFF4` in both), which is strong
-  independent evidence that "Blue Shadow" is a lightly recolored stock Day
-  Classic theme (its accent is `#007AFF` against stock's
-  `defaultDayAccentColor = #0088FF`, and its passcode gradient and start
-  button are customized) rather than an unrelated theme that happens to
-  agree by chance.
+  [`PresentationThemeCodable.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/PresentationThemeCodable.swift)
+  (the `CodingKeys` enums that produce the exact `.tgios-theme` string keys,
+  plus the fallback logic in §19).
+- **Stock-default cross-check**:
+  [`DefaultDayPresentationTheme.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/DefaultDayPresentationTheme.swift)
+  /
+  [`DefaultDarkPresentationTheme.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramPresentationData/Sources/DefaultDarkPresentationTheme.swift)
+  — the constructors for Telegram's own built-in Day/Night themes.
+  Spot-checked against both sample exports; most neutral values in "Blue
+  Shadow" match `DefaultDayPresentationTheme.swift` literally (e.g.
+  `list.blocksBg` = `#EFEFF4` in both), which is strong independent evidence
+  that "Blue Shadow" is a lightly recolored stock Day Classic theme (its
+  accent is `#007AFF` against stock's `defaultDayAccentColor = #0088FF`, and
+  its passcode gradient and start button are customized) rather than an
+  unrelated theme that happens to agree by chance.
 - **Usage grounding for ambiguous keys**: targeted `gh api search/code`
-  sweeps against `TelegramMessenger/Telegram-iOS` for keys whose meaning
-  wasn't obvious from name + struct alone — `message.freeform` (§7c above),
-  `panelContentVibrantOverlayColor` (chat-panels.md §10).
+  sweeps (or the equivalent `https://github.com/search?q=repo%3ATelegramMessenger%2FTelegram-iOS+%22<key>%22&type=code`)
+  against `TelegramMessenger/Telegram-iOS` for keys whose meaning wasn't
+  obvious from name + struct alone — `message.freeform` (§7c above),
+  `panelContentVibrantOverlayColor`
+  ([`GroupHeaderLayer.swift`](https://github.com/TelegramMessenger/Telegram-iOS/blob/master/submodules/TelegramUI/Components/EntityKeyboard/Sources/GroupHeaderLayer.swift),
+  chat-panels.md §10). See the skill's [`SKILL.md`](../SKILL.md) "When a key
+  isn't in this reference" for this same fallback path.
 - **Visual grounding**: the four attached iOS screenshots — main Chats list
   with story rings and a folder tab bar; a group chat mid-voice-message
   recording with a poll and an animated sticker; a chat with a photo grid,
