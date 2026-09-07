@@ -97,10 +97,10 @@ type that might reuse it.
 
 ## How this was compiled
 
-- **Key set**: `theme-wizard/templates/ios/default/ios_default_light.json`,
-  all 417 keys, cross-checked against `ios_default_dark.json` and both
-  `ios_soza_*.json` files (all four are key-for-key identical, as their own
-  `CLAUDE.md` files require) and against two real `.tgios-theme` exports —
+- **Key set**: `app/src/main/assets/ios_default_light.json`, all 417 keys,
+  cross-checked against `ios_default_dark.json` and both `ios_soza_*.json`
+  files (all four are key-for-key identical) and against two real
+  `.tgios-theme` exports —
   "Blue Shadow" (light) and "Instant Blue" (dark) — parsed from their native
   indented format down to the same dot-path shape as the templates. The
   four template files' key set and the two real exports' key set (minus the
@@ -142,16 +142,14 @@ type that might reuse it.
   a "took a screenshot" service message.
 - **Checks run**: all four template files parse as JSON with the same 417
   keys, each once; that key set equals each real export's key set exactly
-  (minus `name`); every role named in the templates is one
-  [`color-roles.md`](../../../theme-wizard/color-roles.md) actually defines;
-  every `pair`/`mirror`/`family` relation named in these tables resolves to
-  a key that exists somewhere in this reference.
+  (minus `name`); every `pair`/`mirror`/`family` relation named in these
+  tables resolves to a key that exists somewhere in this reference.
 
 Descriptions of elements not visible in the four screenshots and not
 individually confirmed via source are inferred from Telegram's naming
 conventions, the Swift struct they belong to, and (for the `default` style)
-the explicit Android-key equivalents already stated in
-`theme-wizard/templates/ios/default/CLAUDE.md`. They are most confident for
-keys with a stated Android analog or a confirmed source call site, and least
-confident for one-off keys with neither — the `Vibrant`/`Opaque` panel-content
-split noted in §20 is the clearest example.
+Android-key equivalents cross-checked against
+[`android-theme-key`](../../android-theme-key/SKILL.md). They are most
+confident for keys with a stated Android analog or a confirmed source call
+site, and least confident for one-off keys with neither — the
+`Vibrant`/`Opaque` panel-content split noted in §20 is the clearest example.

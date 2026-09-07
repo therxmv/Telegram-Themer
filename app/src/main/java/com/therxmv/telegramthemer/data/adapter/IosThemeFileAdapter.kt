@@ -20,9 +20,8 @@ import kotlin.random.Random
  * always resolves iOS regardless of [ThemeState.platform]) to build a nested,
  * indentation-scoped `.tgios-theme` document (Telegram-for-iOS's theme
  * format), the iOS counterpart to [AndroidThemeFileAdapter]'s `.attheme`
- * output. See `theme-wizard/templates/ios/CLAUDE.md` for the dot-path
- * template convention and `theme-wizard/color-roles.md`'s
- * "Platform-specific resolution notes" for the role → format rules below.
+ * output. See the `ios-theme-key` project skill for the dot-path template
+ * convention and the role → format rules below.
  */
 class IosThemeFileAdapter @Inject constructor(
     private val context: Context,

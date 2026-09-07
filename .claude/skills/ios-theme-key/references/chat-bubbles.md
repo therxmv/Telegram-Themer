@@ -128,7 +128,7 @@ Soza: a step that flips brightness by mode). Same 52-key shape as incoming.
 | `chat.message.outgoing.bubble.withoutWp.reactionActiveFg` | Tapped pill text | `clear → 00000000` | `mirror`: `.withWp.reactionActiveFg` |
 | `chat.message.outgoing.bubble.withoutWp.reactionInactiveMediaPlaceholder` | Untapped reaction shimmer | `#33FFFFFF → #19FFFFFF` | `mirror`: `.withWp.reactionInactiveMediaPlaceholder` |
 | `chat.message.outgoing.bubble.withoutWp.reactionActiveMediaPlaceholder` | Tapped reaction shimmer | `#33FFFFFF → #19FFFFFF` | `mirror`: `.withWp.reactionActiveMediaPlaceholder` |
-| `chat.message.outgoing.primaryText` | Message body text | `#FFFFFF → #FFFFFF` | `pair:in/out` with `incoming.primaryText`; Default resolves this through `tt_background` (the "inverted" convention — see `templates/ios/default/CLAUDE.md`), Soza through flat `tt_onBackground` |
+| `chat.message.outgoing.primaryText` | Message body text | `#FFFFFF → #FFFFFF` | `pair:in/out` with `incoming.primaryText`; Default resolves this through `tt_background` (the "inverted" convention), Soza through flat `tt_onBackground` |
 | `chat.message.outgoing.secondaryText` | Muted metadata text on the bubble | `#A5FFFFFF → #7FFFFFFF` | `pair:in/out` with `incoming.secondaryText`; this one is the Default exception to the inversion rule — always an actual muted gray (`gray_8`/`gray_1`), never inverted |
 | `chat.message.outgoing.linkText` | Hyperlink text | `#FFFFFF → #FFFFFF` | `pair:in/out` with `incoming.linkText` |
 | `chat.message.outgoing.linkHighlight` | Highlight behind a long-pressed link | `#4CFFFFFF → #7FFFFFFF` | `pair:rest/pressed` with `.linkText` |

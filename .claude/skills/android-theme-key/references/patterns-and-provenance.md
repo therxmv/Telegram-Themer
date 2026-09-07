@@ -73,18 +73,18 @@ it is a style decision worth a second look.
 
 ## How this was compiled
 
-- **Key set**: `templates/android/default/android_default_light.json`, all 819
+- **Key set**: `app/src/main/assets/android_default_light.json`, all 819
   keys, after reconciling both ways against `ThemeColors.java`. The `†` set is
   exactly the 244 keys the template has and
-  `test-theme/Default-light-monet-757.attheme` doesn't.
+  `Default-light-monet-757.attheme` doesn't.
 - **Reconciliation**: `ThemeColors.java`'s `colorKeysMap` is the table Telegram
   consults when reading an `.attheme`, so it defines both directions. A key
   absent from it changes nothing on import and was removed — that flagged 124,
   of which five were the misspelled `--glass_*` set and were renamed instead,
   leaving 119 deletions. A key present in it but missing from the templates left
   an element unthemed — 97 of those were added. All of it applied to the same
-  eight Android template files (`theme-wizard/templates/android/**` and
-  `app/src/main/assets/android_*.json`), which stay key-for-key identical.
+  four Android template files (`app/src/main/assets/android_*.json`), which
+  stay key-for-key identical.
 - **Role assignment for the 97 additions**: each new key copies the role of its
   closest existing analog, per file, so the Default/Soza split and each style's
   light/dark and `in`/`out` conventions carry over without being restated. The

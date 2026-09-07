@@ -10,7 +10,7 @@ import javax.inject.Inject
 /**
  * Loads the iOS `.tgios-theme` template map from assets. Keys are dot-paths
  * (e.g. "root.tabBar.background") that [com.therxmv.telegramthemer.data.adapter.IosThemeFileAdapter]
- * re-nests at export time - see `theme-wizard/templates/ios/CLAUDE.md`.
+ * re-nests at export time - see the `ios-theme-key` project skill.
  */
 class IosThemeValuesProvider @Inject constructor(
     private val context: Context,

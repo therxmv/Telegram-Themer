@@ -7,25 +7,16 @@ description: Use when working with TelegramThemer's iOS .tgios-theme template ke
 
 Answers "what does this `.tgios-theme` key draw, and what else is it tied to?"
 for all 417 keys in the iOS templates
-(`theme-wizard/templates/ios/{default,soza}/*.json`).
+(`ios_default_{light,dark}.json` and `ios_soza_{light,dark}.json` in
+`app/src/main/assets/`).
 
-Two documents, two different jobs:
-
-- **`references/` in this skill** (below) — what a key *draws*, and its
-  relations to other keys. Start here for "what is
-  `chat.message.outgoing.bubble.withWp.bg`".
-- **[`theme-wizard/color-roles.md`](../../../theme-wizard/color-roles.md)** —
-  what a *role* (`accent_5`, `gray_8`, `tr_background_9`, …) resolves to. A
-  template maps each key to one of these role names; this skill's reference
-  says what the key means, `color-roles.md` says what the role means.
+`references/` in this skill (below) documents what a key *draws*, and its
+relations to other keys. Start here for "what is
+`chat.message.outgoing.bubble.withWp.bg`".
 
 This is a lookup/explanation skill — it answers "what is this key" and "what
 is it related to", not "how do I safely change it across every template
-file". For the iOS-specific conventions that govern *how* a role gets picked
-for a key (the `gray_9` stays-light-regardless-of-mode rule, `withWp`/
-`withoutWp`, `tr_background_9` for materials, the literal-value keys), read
-[`theme-wizard/templates/ios/CLAUDE.md`](../../../theme-wizard/templates/ios/CLAUDE.md)
-first — this skill assumes it.
+file".
 
 ## Key shape: dot-paths, not flat names
 
@@ -87,11 +78,9 @@ the full account:
    values match `DefaultDayPresentationTheme.swift`/
    `DefaultDarkPresentationTheme.swift` literally), which is good independent
    confirmation that the templates' role assignments track a real render.
-3. **This project's own templates and CLAUDE.md docs**
-   (`theme-wizard/templates/ios/{CLAUDE.md,default/CLAUDE.md,soza/CLAUDE.md}`),
-   which already state many exact Android-key equivalents — used to cross-check
-   descriptions against [`android-theme-key`](../android-theme-key/SKILL.md)
-   where a real analog exists.
+3. **This project's own templates** (`app/src/main/assets/ios_*.json`),
+   cross-checked against [`android-theme-key`](../android-theme-key/SKILL.md)
+   where a real Android-key analog exists.
 
 ## Reference index
 
@@ -144,7 +133,6 @@ instead (or as well).
 
 ## Scope
 
-iOS only. Android's templates (`theme-wizard/templates/android/`, 819 flat
-keys) have their own reference at
+iOS only. Android's templates (819 flat keys) have their own reference at
 [`android-theme-key`](../android-theme-key/SKILL.md) — for an Android key,
 use that skill instead of guessing from the iOS map.

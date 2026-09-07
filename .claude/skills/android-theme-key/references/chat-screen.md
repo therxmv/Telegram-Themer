@@ -67,8 +67,7 @@ touch an `in` key, look for its `out` twin; if you touch a base key, look for it
 ### 5.2 Bubbles, message text, and status markers
 
 The single most consequential group. In the Default style the outgoing bubble is
-accent-filled and everything drawn on it is inverted to `tt_background` — see
-[`../templates/android/default/CLAUDE.md`](../templates/android/default/CLAUDE.md).
+accent-filled and everything drawn on it is inverted to `tt_background`.
 
 | Key | Draws | Telegram default | Relations |
 |---|---|---|---|

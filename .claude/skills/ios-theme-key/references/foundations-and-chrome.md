@@ -30,7 +30,7 @@ The full-screen numeric passcode/Face ID unlock screen.
 |---|---|---|---|
 | `passcode.bg.top` | Top stop of the passcode screen's background gradient | `#46739E → #000000` | `pair` with `passcode.bg.bottom` |
 | `passcode.bg.bottom` | Bottom stop of that gradient | `#2A5982 → #000000` | `pair` with `passcode.bg.top` |
-| `passcode.button` | Fill of the passcode keypad's digit buttons. `clear` in both sample themes — Telegram draws an outlined/translucent button rather than a solid fill when this is transparent | `clear → #1C1C1D` | Default style keeps this `transparent_0` in both modes; Soza commits it to `accent_5` — see `templates/ios/soza/CLAUDE.md` |
+| `passcode.button` | Fill of the passcode keypad's digit buttons. `clear` in both sample themes — Telegram draws an outlined/translucent button rather than a solid fill when this is transparent | `clear → #1C1C1D` | Default style keeps this `transparent_0` in both modes; Soza commits it to `accent_5` |
 
 ## 3. Root chrome
 
@@ -52,7 +52,7 @@ The bottom Chats / Contacts / Calls / Settings bar, always visible.
 
 | Key | Draws | Example (light → dark) | Relations |
 |---|---|---|---|
-| `root.tabBar.background` | The translucent bar material itself | `#E5F2F2F2 → #E51D1D1D` | resolves through `tr_background_9` in both templates — see `templates/ios/CLAUDE.md` |
+| `root.tabBar.background` | The translucent bar material itself | `#E5F2F2F2 → #E51D1D1D` | resolves through `tr_background_9` in both templates |
 | `root.tabBar.separator` | Hairline above the tab bar | `#B2B2B2 → #8C545458` | pairs with `root.tabBar.background` |
 | `root.tabBar.icon` | Icon of an unselected tab | `#959595 → #FFFFFF` | `pair:on/off` with `root.tabBar.selectedIcon` |
 | `root.tabBar.selectedIcon` | Icon of the active tab | `#007AFF → #007AFF` | `pair:on/off` with `root.tabBar.icon`; pairs with `root.tabBar.selectedText` |
@@ -74,7 +74,7 @@ plus its multi-select "segmented control" state.
 | `root.navBar.disabledButton` | The same button while disabled | `#D0D0D0 → #525252` | `pair:on/off` with `root.navBar.button` |
 | `root.navBar.primaryText` | The screen/chat title in the bar | `#000000 → #FFFFFF` | `fill→on-fill` with `root.navBar.background`/`opaqueBackground` |
 | `root.navBar.secondaryText` | The subtitle line under the title ("last seen recently", "3 members") | `#787878 → #7FFFFFFF` | pairs with `root.navBar.primaryText` |
-| `root.navBar.control` | Chevrons and other neutral control glyphs in the bar that aren't a text bar-button item | `#7E8791 → #767676` | Default keeps this a gray tier; Soza pushes it to `accent_5` — see `templates/ios/soza/CLAUDE.md` |
+| `root.navBar.control` | Chevrons and other neutral control glyphs in the bar that aren't a text bar-button item | `#7E8791 → #767676` | Default keeps this a gray tier; Soza pushes it to `accent_5` |
 | `root.navBar.accentText` | An accent-tinted label in the bar distinct from the default button tint (used when a screen wants its own accent rather than the global one) | `#007AFF → #007AFF` | `mirror`: `root.navBar.button` |
 | `root.navBar.background` | The bar's translucent material while scrolled — the normal state | `#E5F2F2F2 → #E51D1D1D` | `mirror`: `root.tabBar.background`; both resolve through `tr_background_9` |
 | `root.navBar.opaqueBackground` | The bar once fully opaque — at the top of a scroll view, or wherever Telegram forces a solid bar instead of a blurred one | `#F8F8F8 → #1A1A1A` | `mirror`: `root.navBar.background`, one step more solid |

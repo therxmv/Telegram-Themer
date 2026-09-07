@@ -7,17 +7,11 @@ description: Use when working with TelegramThemer's Android .attheme template ke
 
 Answers "what does this `.attheme` key draw, and what else is it tied to?"
 for all 819 keys in the Android templates
-(`theme-wizard/templates/android/{default,soza}/*.json` and their mirrors in
+(`android_default_{light,dark}.json` and `android_soza_{light,dark}.json` in
 `app/src/main/assets/`).
 
-Two documents, two different jobs:
-
-- **`references/` in this skill** (below) — what a key *draws*, and its
-  relations to other keys. Start here for "what is `chat_outBubble`".
-- **[`theme-wizard/color-roles.md`](../../../theme-wizard/color-roles.md)** —
-  what a *role* (`accent_5`, `gray_8`, `tr_gray_3`, …) resolves to. A
-  template maps each key to one of these role names; this skill's reference
-  says what the key means, `color-roles.md` says what the role means.
+`references/` in this skill (below) documents what a key *draws*, and its
+relations to other keys. Start here for "what is `chat_outBubble`".
 
 This is a lookup/explanation skill — it answers "what is this key" and "what
 is it related to", not "how do I safely change it across every template
@@ -43,8 +37,8 @@ treating any key as isolated:
 ## Markers and the "Telegram default" column
 
 - **`†`** — the key is in the templates but not in the sample theme
-  (`theme-wizard/memory-map/test-theme/Default-light-monet-757.attheme`) the
-  reference was originally built from. Not a warning, just provenance.
+  (`Default-light-monet-757.attheme`) the reference was originally built
+  from. Not a warning, just provenance.
 - **Telegram default** — Telegram's own stock **light**-theme value for the
   key, from `createDefaultColors()` in `ThemeColors.java` (Telegram ships no
   dark defaults). `#RRGGBB` is opaque; `#AARRGGBB` carries an alpha byte,
@@ -101,7 +95,6 @@ instead (or as well).
 
 ## Scope
 
-Android only. iOS's templates (`theme-wizard/templates/ios/`, 417 dot-path
-keys) have their own reference at
+Android only. iOS's templates (417 dot-path keys) have their own reference at
 [`ios-theme-key`](../ios-theme-key/SKILL.md) — for an iOS key, use that
 skill instead of guessing from this map.

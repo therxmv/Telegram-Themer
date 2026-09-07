@@ -36,7 +36,7 @@ separately from the regular list.
 | `chatList.unreadBadgeActiveBg` | Fill of the unread-count pill on an unmuted chat | `#007AFF → #007AFF` | `pair:on/off` with `chatList.unreadBadgeInactiveBg`; `fill→on-fill`: `chatList.unreadBadgeActiveText` |
 | `chatList.unreadBadgeActiveText` | The number inside that pill | `#FFFFFF → #FFFFFF` | `fill→on-fill` with `chatList.unreadBadgeActiveBg`; resolves through `tt_background`, not a fixed `gray_9`, since the badge fill itself is mode-adaptive `accent_4`/`accent_3` in Default |
 | `chatList.unreadBadgeInactiveBg` | Fill of the unread-count pill on a muted chat (gray, not accent) | `#B6B6BB → #666666` | `pair:on/off` with `chatList.unreadBadgeActiveBg` |
-| `chatList.unreadBadgeInactiveText` | Number inside that muted pill | `#FFFFFF → #000000` | `fill→on-fill` with `chatList.unreadBadgeInactiveBg`; resolves through `tt_background` rather than `gray_9` — see the must-stay-light pitfall in `templates/ios/CLAUDE.md` (this pill's fill is a plain gray tier, not a saturated one) |
+| `chatList.unreadBadgeInactiveText` | Number inside that muted pill | `#FFFFFF → #000000` | `fill→on-fill` with `chatList.unreadBadgeInactiveBg`; resolves through `tt_background` rather than `gray_9` (this pill's fill is a plain gray tier, not a saturated one) |
 | `chatList.reactionBadgeActiveBg` | Fill of the small badge shown when someone reacts to your message in this chat | `#FF2D55 → #FF2D55` | fixed `red_5` in every template — Telegram's own pink-red, not the user's accent |
 | `chatList.pinnedBadge` | The pin glyph on a pinned row | `#B6B6BB → #767677` | `mirror`: `chatList.muteIcon` |
 | `chatList.pinnedSearchBar` | Fill behind the search field while the list is scrolled to a pinned section (or a similar pinned-context search state) | `#E5E5E5 → #272728` | `mirror`: `chatList.regularSearchBar` |
@@ -51,7 +51,7 @@ separately from the regular list.
 | `chatList.pinnedArchiveAvatar.foreground` | The archive-box glyph drawn on that avatar | `#FFFFFF → #FFFFFF` | `fill→on-fill` with the gradient; fixed `gray_9` |
 | `chatList.unpinnedArchiveAvatar.background.top` | Top gradient stop of the same avatar while collapsed/unpinned (neutral gray instead of blue) | `#DEDEE5 → #666666` | `pair` with `.background.bottom`; `mirror`: `chatList.pinnedArchiveAvatar.background.top` |
 | `chatList.unpinnedArchiveAvatar.background.bottom` | Bottom stop of that gray gradient | `#C5C6CC → #666666` | `pair` with `.background.top` |
-| `chatList.unpinnedArchiveAvatar.foreground` | The archive-box glyph on the unpinned state | `#FFFFFF → #000000` | resolves through `tt_background`, not `gray_9` — the fill it sits on is a plain gray tier here, not a saturated one; see the `gray_9` pitfall note in `templates/ios/CLAUDE.md` |
+| `chatList.unpinnedArchiveAvatar.foreground` | The archive-box glyph on the unpinned state | `#FFFFFF → #000000` | resolves through `tt_background`, not `gray_9` — the fill it sits on is a plain gray tier here, not a saturated one |
 | `chatList.onlineDot` | The green "online" dot on a user's avatar | `#4CC91F → #4CC91F` | fixed `green_5` in every template |
 | `chatList.storyUnseen.top` | Top stop of the colored ring drawn around an avatar with an unseen Story | `#34C76F → #34C76F` | `pair` with `chatList.storyUnseen.bottom`; `family` with `storyUnseenPrivate`/`storySeen` |
 | `chatList.storyUnseen.bottom` | Bottom stop of that ring's gradient | `#3DA1FD → #3DA1FD` | `pair` with `.storyUnseen.top` |
