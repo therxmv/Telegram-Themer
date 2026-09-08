@@ -18,6 +18,7 @@ class SharedPrefsDataSource @Inject constructor(
 ) : SharedPrefsSource {
 
     private val themeStateKey = stringPreferencesKey("ThemeStateKey")
+    private val recentAccentColorsKey = stringPreferencesKey("RecentAccentColorsKey")
 
     override fun saveThemeState(themeState: ThemeState) {
         runBlocking {
@@ -28,6 +29,17 @@ class SharedPrefsDataSource @Inject constructor(
     override fun getThemeState(): ThemeState =
         runBlocking {
             themeStateKey.getValue()?.toObject<ThemeState>() ?: ThemeState()
+        }
+
+    override fun saveRecentAccentColors(colors: List<Int>) {
+        runBlocking {
+            recentAccentColorsKey.saveValue(colors.toJson())
+        }
+    }
+
+    override fun getRecentAccentColors(): List<Int> =
+        runBlocking {
+            recentAccentColorsKey.getValue()?.toObject<List<Int>>().orEmpty()
         }
 
     private suspend fun <T> Preferences.Key<T>.saveValue(value: T) {

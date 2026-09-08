@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
  * could ship only a dark template, or one whose light variant defines no
  * gradient key. [hasLight] and [hasDark] are independent: a style may lack
  * either one (not necessarily light). Drives which of the "Dark"/"Amoled"/
- * "Gradient" toggles [com.therxmv.telegramthemer.ui.editor.options.MoreOptionsBottomSheetFragment]
+ * "Gradient" toggles [com.therxmv.telegramthemer.ui.editor.simple.SimpleThemeEditFragment]
  * shows, and clamps [ThemeState] back to a valid combination whenever style
  * or platform changes - see `GetTemplateCapabilitiesUseCase`.
  */

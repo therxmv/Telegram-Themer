@@ -2,10 +2,12 @@ package com.therxmv.telegramthemer.data.di
 
 import com.therxmv.telegramthemer.data.adapter.PlatformThemeFileAdapter
 import com.therxmv.telegramthemer.data.adapter.ThemeToPreviewAdapter
+import com.therxmv.telegramthemer.data.provider.AndroidMonetColorProvider
 import com.therxmv.telegramthemer.data.values.PlatformThemeValuesProvider
 import com.therxmv.telegramthemer.data.values.ThemeColorsProvider
 import com.therxmv.telegramthemer.domain.adapter.PreviewColorsAdapter
 import com.therxmv.telegramthemer.domain.adapter.ThemeFileAdapter
+import com.therxmv.telegramthemer.domain.provider.MonetColorProvider
 import com.therxmv.telegramthemer.domain.values.ThemeColors
 import com.therxmv.telegramthemer.domain.values.ThemeValues
 import dagger.Binds
@@ -30,4 +32,8 @@ abstract class ThemeValuesModule {
     @Singleton
     @Binds
     abstract fun bindsThemeToFileAdapter(adapter: PlatformThemeFileAdapter): ThemeFileAdapter
+
+    @Singleton
+    @Binds
+    abstract fun bindsMonetColorProvider(provider: AndroidMonetColorProvider): MonetColorProvider
 }

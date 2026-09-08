@@ -2,12 +2,14 @@
 <resources>
     <string name="something_went_wrong">Уупс… Что-то пошло не так</string>
     <string name="picker_label">Выбрать цвет</string>
-    <string name="more_label">Больше опций</string>
     <string name="export_label">Експортировать тему</string>
+    <string name="export_for_label">Экспорт для</string>
 
-    <!-- More options -->
-    <string name="more_dark_label">Темная тема</string>
-    <string name="more_amoled_label">Amoled тема</string>
+    <!-- Options card -->
+    <string name="accent_label">Акцент</string>
+    <string name="base_label">Основа</string>
+    <string name="style_label">Стиль</string>
+    <string name="more_dark_label">Темная</string>
     <string name="more_monet_label">Monet</string>
     <string name="more_gradient_lable">Градиент</string>
 
