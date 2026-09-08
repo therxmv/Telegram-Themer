@@ -174,6 +174,12 @@ class ThemeEditorPresenter @Inject constructor(
         }
 
         return state.copy(
+            // A ThemeState cached before this app version had `style` as an
+            // uppercase enum name (e.g. "SOZA") - lowercasing here, the one
+            // place ThemeState gets sanitized before anything downstream sees
+            // it, keeps it matching TemplateStyle.id (always lowercase) for
+            // the rest of the app, e.g. the style picker's label lookup.
+            style = state.style.lowercase(),
             isDark = isDark,
             isAmoled = state.isAmoled && isDark,
             isGradient = state.isGradient && capabilities.hasGradient,
