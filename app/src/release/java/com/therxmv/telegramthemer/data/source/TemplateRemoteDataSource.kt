@@ -19,10 +19,16 @@ import javax.inject.Inject
 import javax.inject.Named
 
 /**
- * Downloads `templates_index.json` and, per the styles it lists, every
- * `{platform}_{styleId}_{light|dark}.json` template from GitHub, validating
- * and caching each independently via [TemplateLocalSource]. See
- * `TemplateRemoteSource` for the never-throws contract this fulfils.
+ * Release-build [TemplateRemoteSource]: downloads `templates_index.json`
+ * and, per the styles it lists, every `{platform}_{styleId}_{light|dark}.json`
+ * template from GitHub, validating and caching each independently via
+ * [TemplateLocalSource]. See `TemplateRemoteSource` for the never-throws
+ * contract this fulfils.
+ *
+ * Lives under `src/release/` on purpose - the debug build uses a no-op
+ * counterpart at the same package+class path under `src/debug/`, so debug
+ * builds never hit the network; see [TemplateLocalDataSource]'s doc for how
+ * the source-set split works.
  */
 class TemplateRemoteDataSource @Inject constructor(
     private val okHttpClient: OkHttpClient,

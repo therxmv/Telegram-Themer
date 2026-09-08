@@ -14,13 +14,20 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Shared read/write access to theme template files: cached-download-or-bundled-asset
- * reads for [AndroidThemeValuesProvider][com.therxmv.telegramthemer.data.values.AndroidThemeValuesProvider]/
+ * Release-build [TemplateLocalSource]: shared read/write access to theme
+ * template files - cached-download-or-bundled-asset reads for
+ * [AndroidThemeValuesProvider][com.therxmv.telegramthemer.data.values.AndroidThemeValuesProvider]/
  * [IosThemeValuesProvider][com.therxmv.telegramthemer.data.values.IosThemeValuesProvider]
  * and [GetAvailableStylesUseCase][com.therxmv.telegramthemer.domain.usecase.GetAvailableStylesUseCase],
  * plus the writes [TemplateRemoteDataSource] persists after a successful
  * download. Must stay a singleton (both the class annotation and its `@Binds`
  * in `TemplateModule`) since its in-memory caches are shared by all of them.
+ *
+ * Lives under `src/release/` on purpose - the debug build uses a
+ * bundled-assets-only counterpart at the same package+class path under
+ * `src/debug/`, so no runtime branching or extra `TemplateModule` wiring is
+ * needed; Gradle's source set merging picks whichever one matches the build
+ * type, and `TemplateModule`'s `@Binds` resolves to it either way.
  */
 @Singleton
 class TemplateLocalDataSource @Inject constructor(
