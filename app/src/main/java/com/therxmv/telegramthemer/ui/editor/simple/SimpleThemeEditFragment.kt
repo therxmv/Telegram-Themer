@@ -36,7 +36,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     SimpleThemeEditContract.View {
 
     companion object {
-        private const val GRADIENT_DURATION = 800L
+        private const val GRADIENT_DURATION = 700L
     }
 
     @Inject
@@ -71,6 +71,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
             binding.swatch3 to binding.swatch3Dot,
             binding.swatch4 to binding.swatch4Dot,
             binding.swatch5 to binding.swatch5Dot,
+            binding.swatch6 to binding.swatch6Dot,
         )
 
         binding.chatPreview.doOnPreDraw { // Fragment should wait until preview is drawn

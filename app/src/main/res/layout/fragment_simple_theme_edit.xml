@@ -161,10 +161,25 @@
                             <FrameLayout
                                 android:id="@+id/swatch_5"
                                 android:layout_width="36dp"
-                                android:layout_height="36dp">
+                                android:layout_height="36dp"
+                                android:layout_marginEnd="6dp">
 
                                 <View
                                     android:id="@+id/swatch_5_dot"
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/circle_shape" />
+
+                            </FrameLayout>
+
+                            <FrameLayout
+                                android:id="@+id/swatch_6"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp">
+
+                                <View
+                                    android:id="@+id/swatch_6_dot"
                                     android:layout_width="28dp"
                                     android:layout_height="28dp"
                                     android:layout_gravity="center"

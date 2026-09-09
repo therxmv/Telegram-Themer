@@ -33,7 +33,7 @@ class SimpleThemeEditPresenter @Inject constructor(
 ) : SimpleThemeEditContract.Presenter(), ThemeStateListener {
 
     companion object {
-        private const val MAX_RECENT_ACCENT_COLORS = 5
+        private const val MAX_RECENT_ACCENT_COLORS = 6
     }
 
     private var currentState: ThemeState? = null

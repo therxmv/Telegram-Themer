@@ -13,6 +13,7 @@ class GetRecentAccentColorsUseCase @Inject constructor(
             0xFFE0568F.toInt(),
             0xFFE8973A.toInt(),
             0xFF2FB27A.toInt(),
+            0xFFE05656.toInt(),
         )
     }
 
