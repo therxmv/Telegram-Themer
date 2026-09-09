@@ -2,7 +2,7 @@
 <resources>
     <string name="something_went_wrong">Уупс… Что-то пошло не так</string>
     <string name="picker_label">Выбрать цвет</string>
-    <string name="export_label">Експортировать тему</string>
+    <string name="export_label">Експортировать</string>
     <string name="export_for_label">Экспорт для</string>
 
     <!-- Options card -->

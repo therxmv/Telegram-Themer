@@ -4,7 +4,7 @@
 
     <string name="something_went_wrong">Oops… Something went wrong</string>
     <string name="picker_label">Pick accent color</string>
-    <string name="export_label">Export the theme</string>
+    <string name="export_label">Export</string>
 
     <!-- Platform selector -->
     <string name="platform_android_label" translatable="false">Android</string>
