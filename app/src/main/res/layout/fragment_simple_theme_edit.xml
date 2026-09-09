@@ -179,7 +179,7 @@
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginStart="10dp"
-                            android:background="@drawable/circle_shape"
+                            android:background="@drawable/button_background"
                             android:backgroundTint="?attr/colorPrimary"
                             android:contentDescription="@string/picker_label"
                             android:foreground="@drawable/color_picker_icon"
