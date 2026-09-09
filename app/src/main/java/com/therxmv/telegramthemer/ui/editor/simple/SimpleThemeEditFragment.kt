@@ -36,7 +36,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     SimpleThemeEditContract.View {
 
     companion object {
-        private const val GRADIENT_DURATION = 1000L
+        private const val GRADIENT_DURATION = 800L
     }
 
     @Inject
@@ -240,21 +240,20 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
         }
     }
 
+    // Swings the gradient's poles to their opposite ends and back
     override fun startPreviewAnimation(newGradient: IntArray, oldGradient: IntArray) {
         val evaluator = ArgbEvaluator()
 
         previewAnimation = ValueAnimator.ofFloat(0f, 1f).apply {
             duration = GRADIENT_DURATION
+            repeatCount = 1
+            repeatMode = ValueAnimator.REVERSE
             addUpdateListener { animation ->
                 val fraction = animation.animatedFraction
 
                 val currentColors = newGradient
-                    .zip(oldGradient).map { (start, end) ->
-                        evaluator.evaluate(fraction, start, end) as Int
-                    }.toIntArray()
-                    .zip(newGradient).map { (start, end) ->
-                        evaluator.evaluate(fraction, start, end) as Int
-                    }.toIntArray()
+                    .zip(oldGradient) { start, end -> evaluator.evaluate(fraction, start, end) as Int }
+                    .toIntArray()
 
                 setPreviewGradient(currentColors)
             }
