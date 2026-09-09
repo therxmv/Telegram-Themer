@@ -57,7 +57,9 @@ class SimpleThemeEditPresenter @Inject constructor(
             setUpAccentSwatches { index ->
                 val state = currentState ?: return@setUpAccentSwatches
                 val color = recentAccentColors.getOrNull(index) ?: return@setUpAccentSwatches
-                updateThemeState(state.copy(accent = color, isMonet = false))
+                val newState = state.copy(accent = color, isMonet = false)
+                addRecentAccentColor(newState)
+                updateThemeState(newState)
             }
             setUpStyleSelector { index ->
                 val state = currentState ?: return@setUpStyleSelector
@@ -132,14 +134,14 @@ class SimpleThemeEditPresenter @Inject constructor(
         // app restart - since then nothing went through onMonetToggled/
         // applyToggle below.
         if (themeState.isMonet && recentAccentColors.firstOrNull() != themeState.accent) {
-            addRecentAccentColor(themeState.accent)
+            addRecentAccentColor(themeState)
         } else {
             renderOptionsCard()
         }
     }
 
     override fun onColorPickerClosed() {
-        currentState?.accent?.let(::addRecentAccentColor)
+        currentState?.let(::addRecentAccentColor)
     }
 
     /**
@@ -151,7 +153,7 @@ class SimpleThemeEditPresenter @Inject constructor(
     private fun applyToggle(edited: ThemeState) {
         val newState = if (edited.isMonet) edited.copy(accent = getMonetAccentColor(edited.isDark)) else edited
         updateThemeState(newState)
-        if (edited.isMonet) addRecentAccentColor(newState.accent)
+        if (edited.isMonet) addRecentAccentColor(newState)
     }
 
     private fun updateThemeState(newState: ThemeState) {
@@ -159,14 +161,22 @@ class SimpleThemeEditPresenter @Inject constructor(
     }
 
     /**
-     * Moves [color] to the front of the recent-colors row (deduping it if
-     * already there), dropping the oldest entry past [MAX_RECENT_ACCENT_COLORS],
-     * and persists the result.
+     * Moves [state]'s accent to the front of the recent-colors row (deduping
+     * it if already there), dropping the oldest entry past
+     * [MAX_RECENT_ACCENT_COLORS], persists the result, and plays the preview
+     * background's gradient animation - every call site here is the user
+     * explicitly landing on an accent color (swatch tap, custom picker close,
+     * enabling Monet), as opposed to a continuous in-progress drag on the
+     * picker. [state] is taken explicitly rather than read off [currentState]
+     * since a caller may still be ahead of the ThemeState round-trip that
+     * updates it (e.g. a swatch tap, right before its own event is processed).
      */
-    private fun addRecentAccentColor(color: Int) {
+    private fun addRecentAccentColor(state: ThemeState) {
+        val color = state.accent
         recentAccentColors = (listOf(color) + recentAccentColors.filterNot { it == color })
             .take(MAX_RECENT_ACCENT_COLORS)
         saveRecentAccentColors(recentAccentColors)
+        animatePreviewBackground(getPreviewColorsModel(state).previewGradient)
         renderOptionsCard()
     }
 
