@@ -1,6 +1,7 @@
 package com.therxmv.telegramthemer.ui.editor.simple
 
 import com.therxmv.preview.model.PreviewColorsModel
+import com.therxmv.telegramthemer.domain.model.Platform
 import com.therxmv.telegramthemer.ui.base.BasePresenter
 
 interface SimpleThemeEditContract {
@@ -9,8 +10,10 @@ interface SimpleThemeEditContract {
         fun setUpColorPickerButton(onClick: () -> Unit)
         fun setUpMoreOptionsButton(onClick: () -> Unit)
         fun setUpExportButton(onClick: () -> Unit)
+        fun setUpPlatformButtons(onAndroidClick: () -> Unit, onIosClick: () -> Unit)
         fun setColorPickerColors(accent: Int, background: Int)
         fun setPreviewColors(colors: PreviewColorsModel)
+        fun setPlatformSelection(platform: Platform)
         fun startPreviewAnimation(newGradient: IntArray, oldGradient: IntArray = newGradient.reversedArray())
     }
 
