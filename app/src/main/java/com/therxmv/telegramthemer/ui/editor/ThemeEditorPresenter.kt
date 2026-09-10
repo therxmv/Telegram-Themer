@@ -6,7 +6,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.therxmv.preview.utils.AtthemePreviewKeys
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetAtthemeFileUseCase
-import com.therxmv.telegramthemer.domain.usecase.GetAvailableStylesUseCase
 import com.therxmv.telegramthemer.domain.usecase.GetCachedThemeUseCase
 import com.therxmv.telegramthemer.domain.usecase.GetTemplateCapabilitiesUseCase
 import com.therxmv.telegramthemer.domain.usecase.SaveThemeUseCase
@@ -28,7 +27,6 @@ class ThemeEditorPresenter @Inject constructor(
     private val saveTheme: SaveThemeUseCase,
     private val getAtthemeFile: GetAtthemeFileUseCase,
     private val syncTemplates: SyncTemplatesUseCase,
-    private val getAvailableStyles: GetAvailableStylesUseCase,
     private val getTemplateCapabilities: GetTemplateCapabilitiesUseCase,
 ) : ThemeEditorContract.Presenter() {
 
@@ -88,12 +86,8 @@ class ThemeEditorPresenter @Inject constructor(
                 view.openColorPicker(color)
             }
 
-            is ThemeEditorEvent.OpenMoreOptions -> {
-                val styles = getAvailableStyles(themeState.platform)
-                val capabilitiesByStyle = styles.associate {
-                    it.id to getTemplateCapabilities(themeState.copy(style = it.id))
-                }
-                view.openMoreOptions(themeState, styles, capabilitiesByStyle)
+            is ThemeEditorEvent.UpdateThemeProperties -> {
+                updateThemeSate(event.themeState)
             }
 
             is ThemeEditorEvent.ResetOverwrittenColors -> {
@@ -139,8 +133,8 @@ class ThemeEditorPresenter @Inject constructor(
         updateThemeSate(newState)
     }
 
-    override fun onPropertyChange(themeState: ThemeState) {
-        updateThemeSate(themeState)
+    override fun onColorPickerClosed() {
+        listeners.forEach { it.onColorPickerClosed() }
     }
 
     override fun getShareDescription(): String =

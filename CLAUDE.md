@@ -59,6 +59,12 @@ present). `Injector` builds the root `ThemerAppComponent` from `ThemerApplicatio
     without direct references; `ThemeEditorPresenter` is the central collector and owns the canonical
     `themeState`, broadcasting changes to registered `ThemeStateListener`s.
 
+## Code style
+
+Don't add explanatory comments by default. Write one only where the code itself can't carry the reasoning —
+a workaround, a non-obvious constraint forcing a particular approach, or genuinely complex logic. A comment
+restating what the following line already says plainly is noise; delete it rather than write it.
+
 ## Theme templates
 
 Base color templates for the four (platform × style) combinations ship as JSON assets in

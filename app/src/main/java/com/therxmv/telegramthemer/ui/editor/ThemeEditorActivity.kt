@@ -18,14 +18,9 @@ import androidx.navigation.ui.setupWithNavController
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
-import com.therxmv.telegramthemer.domain.model.TemplateCapabilities
-import com.therxmv.telegramthemer.domain.model.TemplateStyle
-import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
 import com.therxmv.telegramthemer.ui.editor.advanced.AdvancedThemeEditFragment
 import com.therxmv.telegramthemer.ui.editor.help.HelpDialogFragment
-import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsBottomSheetFragment
-import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsSubscriber
 import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerBottomSheetFragment
 import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerSubscriber
 import java.io.File
@@ -33,8 +28,7 @@ import javax.inject.Inject
 
 class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     ThemeEditorContract.View,
-    ColorPickerSubscriber,
-    MoreOptionsSubscriber {
+    ColorPickerSubscriber {
 
     companion object {
         private const val TELEGRAM_PACKAGE = "org.telegram.messenger"
@@ -114,22 +108,12 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
             .show(supportFragmentManager, "ColorPickerBottomSheetFragment")
     }
 
-    override fun openMoreOptions(
-        themeState: ThemeState,
-        styles: List<TemplateStyle>,
-        capabilitiesByStyle: Map<String, TemplateCapabilities>,
-    ) {
-        MoreOptionsBottomSheetFragment
-            .createInstance(themeState, styles, capabilitiesByStyle)
-            .show(supportFragmentManager, "MoreOptionsBottomSheetFragment")
-    }
-
     override fun onColorChanged(color: Int) {
         presenter.onColorChanged(color)
     }
 
-    override fun onPropertyChange(themeState: ThemeState) {
-        presenter.onPropertyChange(themeState)
+    override fun onColorPickerClosed() {
+        presenter.onColorPickerClosed()
     }
 
     override fun shareThemeFile(file: File) {

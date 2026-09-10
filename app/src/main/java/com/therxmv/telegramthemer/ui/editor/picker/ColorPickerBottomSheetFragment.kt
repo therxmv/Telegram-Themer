@@ -1,6 +1,7 @@
 package com.therxmv.telegramthemer.ui.editor.picker
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -53,6 +54,11 @@ class ColorPickerBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentCo
         binding.colorPicker.subscribe { color, _, _ ->
             (requireActivity() as? ColorPickerSubscriber)?.onColorChanged(color)
         }
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        (activity as? ColorPickerSubscriber)?.onColorPickerClosed()
     }
 
     private fun setUpInitialColor() {
