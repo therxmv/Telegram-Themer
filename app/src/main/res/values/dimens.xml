@@ -2,4 +2,5 @@
 <resources>
     <dimen name="button_10_radius">10dp</dimen>
     <dimen name="accent_swatch_ring_stroke">2dp</dimen>
+    <dimen name="accent_swatch_gap">6dp</dimen>
 </resources>

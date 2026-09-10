@@ -13,7 +13,6 @@ import com.therxmv.telegramthemer.domain.usecase.SaveRecentAccentColorsUseCase
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEvent
 import com.therxmv.telegramthemer.ui.editor.ThemeEditorEventProvider
 import com.therxmv.telegramthemer.ui.editor.ThemeStateListener
-import com.therxmv.telegramthemer.ui.editor.simple.SimpleThemeEditPresenter.Companion.MAX_RECENT_ACCENT_COLORS
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.update
@@ -31,10 +30,6 @@ class SimpleThemeEditPresenter @Inject constructor(
     private val getMonetAccentColor: GetMonetAccentColorUseCase,
     @Named("Main") private val mainDispatcher: CoroutineDispatcher,
 ) : SimpleThemeEditContract.Presenter(), ThemeStateListener {
-
-    companion object {
-        private const val MAX_RECENT_ACCENT_COLORS = 6
-    }
 
     private var currentState: ThemeState? = null
     private var availableStyles: List<TemplateStyle> = emptyList()
@@ -163,18 +158,19 @@ class SimpleThemeEditPresenter @Inject constructor(
     /**
      * Moves [state]'s accent to the front of the recent-colors row (deduping
      * it if already there), dropping the oldest entry past
-     * [MAX_RECENT_ACCENT_COLORS], persists the result, and plays the preview
-     * background's gradient animation - every call site here is the user
-     * explicitly landing on an accent color (swatch tap, custom picker close,
-     * enabling Monet), as opposed to a continuous in-progress drag on the
-     * picker. [state] is taken explicitly rather than read off [currentState]
-     * since a caller may still be ahead of the ThemeState round-trip that
-     * updates it (e.g. a swatch tap, right before its own event is processed).
+     * [GetRecentAccentColorsUseCase.MAX_RECENT_ACCENT_COLORS], persists the
+     * result, and plays the preview background's gradient animation - every
+     * call site here is the user explicitly landing on an accent color
+     * (swatch tap, custom picker close, enabling Monet), as opposed to a
+     * continuous in-progress drag on the picker. [state] is taken explicitly
+     * rather than read off [currentState] since a caller may still be ahead
+     * of the ThemeState round-trip that updates it (e.g. a swatch tap, right
+     * before its own event is processed).
      */
     private fun addRecentAccentColor(state: ThemeState) {
         val color = state.accent
         recentAccentColors = (listOf(color) + recentAccentColors.filterNot { it == color })
-            .take(MAX_RECENT_ACCENT_COLORS)
+            .take(GetRecentAccentColorsUseCase.MAX_RECENT_ACCENT_COLORS)
         saveRecentAccentColors(recentAccentColors)
         animatePreviewBackground(getPreviewColorsModel(state).previewGradient)
         renderOptionsCard()

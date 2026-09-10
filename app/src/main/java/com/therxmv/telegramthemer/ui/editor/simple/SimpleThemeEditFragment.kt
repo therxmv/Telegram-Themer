@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,7 @@ import com.google.android.material.color.MaterialColors
 import com.therxmv.preview.model.PreviewColorsModel
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentSimpleThemeEditBinding
+import com.therxmv.telegramthemer.databinding.ItemAccentSwatchBinding
 import com.therxmv.telegramthemer.domain.model.Platform
 import com.therxmv.telegramthemer.domain.model.TemplateCapabilities
 import com.therxmv.telegramthemer.domain.model.TemplateStyle
@@ -45,12 +47,11 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     private var previewAnimation: ValueAnimator? = null
     private var platformSelectionInitialized = false
 
-    // Each accent swatch slot, as (the ring container that gets clicked/
-    // selected, its inner dot) - rebuilt on every view creation (see
-    // onViewCreated) since Navigation destroys and recreates this view when
-    // returning from the advanced screen while keeping the same fragment
-    // instance.
-    private var accentSwatches: List<Pair<View, View>> = emptyList()
+    // Reset in onViewCreated (not just declared here) since Navigation
+    // destroys and recreates this view while keeping the same fragment
+    // instance, and the container these point into no longer exists then.
+    private var accentSwatchBindings: MutableList<ItemAccentSwatchBinding> = mutableListOf()
+    private var onAccentSwatchClicked: ((index: Int) -> Unit)? = null
 
     // Rendering-only cache so the style dropdown's adapter isn't rebuilt on
     // every render pass (this screen re-renders on every ThemeState change,
@@ -65,14 +66,7 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        accentSwatches = listOf(
-            binding.swatch1 to binding.swatch1Dot,
-            binding.swatch2 to binding.swatch2Dot,
-            binding.swatch3 to binding.swatch3Dot,
-            binding.swatch4 to binding.swatch4Dot,
-            binding.swatch5 to binding.swatch5Dot,
-            binding.swatch6 to binding.swatch6Dot,
-        )
+        accentSwatchBindings = mutableListOf()
 
         binding.chatPreview.doOnPreDraw { // Fragment should wait until preview is drawn
             presenter.attachView(this@SimpleThemeEditFragment)
@@ -97,8 +91,9 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     }
 
     override fun setUpAccentSwatches(onSwatchClicked: (index: Int) -> Unit) {
-        accentSwatches.forEachIndexed { index, (swatch, _) ->
-            swatch.setOnClickListener { onSwatchClicked(index) }
+        onAccentSwatchClicked = onSwatchClicked
+        accentSwatchBindings.forEachIndexed { index, swatchBinding ->
+            swatchBinding.root.setOnClickListener { onAccentSwatchClicked?.invoke(index) }
         }
     }
 
@@ -182,18 +177,50 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
     }
 
     private fun applyAccentSwatches(recentAccentColors: List<Int>, accent: Int) {
+        syncAccentSwatchViews(recentAccentColors.size)
+
         val strokeWidth = resources.getDimension(R.dimen.accent_swatch_ring_stroke).toInt()
-        accentSwatches.forEachIndexed { index, (swatch, dot) ->
-            val color = recentAccentColors.getOrNull(index) ?: return@forEachIndexed
+        accentSwatchBindings.forEachIndexed { index, swatchBinding ->
+            val color = recentAccentColors[index]
             val isSelected = color == accent
             // Drawn directly rather than via a tinted selector drawable shared
-            // across the 5 swatches - a stroke-only oval inside a
+            // across the swatches - a stroke-only oval inside a
             // StateListDrawable doesn't reliably re-tint per instance here.
-            swatch.background = GradientDrawable().apply {
+            swatchBinding.root.background = GradientDrawable().apply {
                 shape = GradientDrawable.OVAL
                 setStroke(strokeWidth, if (isSelected) color else Color.TRANSPARENT)
             }
-            dot.backgroundTintList = ColorStateList.valueOf(color)
+            swatchBinding.swatchDot.backgroundTintList = ColorStateList.valueOf(color)
+        }
+    }
+
+    // No-op when the count already matches - this runs on every render pass,
+    // including continuous ones like dragging the color picker, so it must
+    // not reinflate views just to repaint them.
+    private fun syncAccentSwatchViews(targetCount: Int) {
+        if (accentSwatchBindings.size == targetCount) return
+
+        val container = binding.accentSwatches
+        val inflater = LayoutInflater.from(requireContext())
+        while (accentSwatchBindings.size < targetCount) {
+            val index = accentSwatchBindings.size
+            val swatchBinding = ItemAccentSwatchBinding.inflate(inflater, container, false)
+            swatchBinding.root.setOnClickListener { onAccentSwatchClicked?.invoke(index) }
+            container.addView(swatchBinding.root)
+            accentSwatchBindings.add(swatchBinding)
+        }
+        while (accentSwatchBindings.size > targetCount) {
+            container.removeView(accentSwatchBindings.removeAt(accentSwatchBindings.lastIndex).root)
+        }
+
+        // Redone for every child, not just the new/removed ones - otherwise
+        // shrinking then growing again can leave a formerly-last child's
+        // margin at 0.
+        val gap = resources.getDimensionPixelSize(R.dimen.accent_swatch_gap)
+        accentSwatchBindings.forEachIndexed { index, swatchBinding ->
+            val params = swatchBinding.root.layoutParams as LinearLayout.LayoutParams
+            params.marginEnd = if (index == accentSwatchBindings.lastIndex) 0 else gap
+            swatchBinding.root.layoutParams = params
         }
     }
 
