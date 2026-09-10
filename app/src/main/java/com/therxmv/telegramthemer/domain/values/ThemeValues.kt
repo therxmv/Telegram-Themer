@@ -12,4 +12,11 @@ import com.therxmv.telegramthemer.domain.model.ThemeState
  */
 interface ThemeValues {
     fun getTemplateMap(state: ThemeState): Map<String, String>
+
+    /**
+     * Whether [state]'s resolved template actually defines a gradient key -
+     * a style/platform pushed remotely isn't guaranteed to support gradient,
+     * so callers (the "Gradient" toggle) shouldn't assume it does.
+     */
+    fun hasGradientSupport(state: ThemeState): Boolean
 }

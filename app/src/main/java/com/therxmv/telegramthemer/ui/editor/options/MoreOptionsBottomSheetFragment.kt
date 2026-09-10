@@ -9,7 +9,8 @@ import android.widget.CheckBox
 import androidx.core.content.ContextCompat
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.FragmentMoreOptionsBinding
-import com.therxmv.telegramthemer.domain.model.Styles
+import com.therxmv.telegramthemer.domain.model.TemplateCapabilities
+import com.therxmv.telegramthemer.domain.model.TemplateStyle
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingBottomSheetFragment
 import com.therxmv.telegramthemer.ui.extensions.isMonetAvailable
@@ -21,15 +22,25 @@ class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMo
 
     companion object {
         private const val CURRENT_STATE = "CurrentState"
+        private const val AVAILABLE_STYLES = "AvailableStyles"
+        private const val CAPABILITIES_BY_STYLE = "CapabilitiesByStyle"
 
-        fun createInstance(currentState: ThemeState) = MoreOptionsBottomSheetFragment().apply {
+        fun createInstance(
+            currentState: ThemeState,
+            styles: List<TemplateStyle>,
+            capabilitiesByStyle: Map<String, TemplateCapabilities>,
+        ) = MoreOptionsBottomSheetFragment().apply {
             arguments = Bundle().apply {
                 putString(CURRENT_STATE, Json.encodeToString(currentState))
+                putString(AVAILABLE_STYLES, Json.encodeToString(styles))
+                putString(CAPABILITIES_BY_STYLE, Json.encodeToString(capabilitiesByStyle))
             }
         }
     }
 
     private var themeState: ThemeState? = null
+    private var availableStyles: List<TemplateStyle> = emptyList()
+    private var capabilitiesByStyle: Map<String, TemplateCapabilities> = emptyMap()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,17 +53,28 @@ class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMo
         themeState = arguments?.getString(CURRENT_STATE)?.let {
             Json.decodeFromString<ThemeState>(it)
         }
+        availableStyles = arguments?.getString(AVAILABLE_STYLES)?.let {
+            Json.decodeFromString<List<TemplateStyle>>(it)
+        }.orEmpty()
+        capabilitiesByStyle = arguments?.getString(CAPABILITIES_BY_STYLE)?.let {
+            Json.decodeFromString<Map<String, TemplateCapabilities>>(it)
+        }.orEmpty()
+
         themeState?.let {
             setUpDropDown(it)
-            updateCheckBoxes(it)
+            updateCheckBoxes(it, capabilitiesFor(it.style))
             initCheckBoxListeners()
         }
     }
 
+    private fun capabilitiesFor(styleId: String) = capabilitiesByStyle[styleId] ?: TemplateCapabilities()
+
     private fun setUpDropDown(themeState: ThemeState) {
-        binding.selectorItems.setText(themeState.style.label)
-        val styles = Styles.entries.map { it.label }
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, styles)
+        val currentLabel = availableStyles.firstOrNull { it.id == themeState.style }?.label
+            ?: themeState.style
+        binding.selectorItems.setText(currentLabel)
+        val labels = availableStyles.map { it.label }
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, labels)
         binding.selectorItems.setAdapter(arrayAdapter)
 
         binding.selectorItems.setOnDismissListener {
@@ -60,21 +82,60 @@ class MoreOptionsBottomSheetFragment : BaseBindingBottomSheetFragment<FragmentMo
         }
         binding.selectorItems.setOnItemClickListener { _, _, _, _ ->
             val label = binding.styleSelector.editText?.text.toString()
-            val style = Styles.entries.firstOrNull { it.label == label }
-            style?.let {
-                this.themeState = this.themeState?.copy(
-                    style = it,
-                )
-                notifyAboutChanges()
-            }
+            val style = availableStyles.firstOrNull { it.label == label }
+            style?.let { onStyleSelected(it) }
         }
     }
 
-    private fun updateCheckBoxes(themeState: ThemeState) {
+    /**
+     * A style switch can change which toggles are even valid (see
+     * [TemplateCapabilities]) - clamp the local state and refresh the
+     * checkboxes immediately, rather than waiting for the round trip through
+     * [notifyAboutChanges] to fix it up (the presenter clamps too, but this
+     * sheet keeps its own local copy and isn't notified back of that fix).
+     */
+    private fun onStyleSelected(style: TemplateStyle) {
+        val capabilities = capabilitiesFor(style.id)
+        val newState = themeState?.copy(style = style.id)?.let {
+            val isDark = capabilities.resolveIsDark(it.isDark)
+            it.copy(
+                isDark = isDark,
+                isAmoled = it.isAmoled && isDark,
+                isGradient = it.isGradient && capabilities.hasGradient,
+            )
+        } ?: return
+
+        themeState = newState
+        updateCheckBoxes(newState, capabilities)
+        notifyAboutChanges()
+    }
+
+    /**
+     * Either variant could be the one missing - a dark-only style must
+     * resolve to dark, not just fall back to light like a light-only one.
+     * Mirrors [com.therxmv.telegramthemer.ui.editor.ThemeEditorPresenter.clampToCapabilities],
+     * which is still the source of truth for what actually gets persisted.
+     */
+    private fun TemplateCapabilities.resolveIsDark(currentIsDark: Boolean): Boolean = when {
+        currentIsDark && hasDark -> true
+        !currentIsDark && hasLight -> false
+        else -> hasDark
+    }
+
+    private fun updateCheckBoxes(themeState: ThemeState, capabilities: TemplateCapabilities) {
         with(themeState) {
             binding.darkCheckBox.isChecked = isDark
+            // Only shown when it's an actual choice - a style with just one
+            // variant has nothing to toggle, isDark is simply fixed to it.
+            binding.darkCheckBox.visibility = (capabilities.hasLight && capabilities.hasDark).toVisibility()
+
+            // Amoled is only a variant of dark mode (no separate template file),
+            // so it's selectable whenever dark is reachable at all, toggle or not.
             binding.amoledCheckBox.isChecked = isAmoled
+            binding.amoledCheckBox.visibility = capabilities.hasDark.toVisibility()
+
             binding.gradientCheckBox.isChecked = isGradient
+            binding.gradientCheckBox.visibility = capabilities.hasGradient.toVisibility()
 
             binding.monetCheckBox.isChecked = isMonet
             binding.monetCheckBox.visibility = isMonetAvailable().toVisibility()

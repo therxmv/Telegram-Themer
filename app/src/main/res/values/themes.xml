@@ -16,6 +16,12 @@
         <item name="fontFamily">@font/overpass_regular</item>
     </style>
 
+    <style name="Theme.TelegramThemer.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primary_500</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.TelegramThemer</item>
+    </style>
+
     <!-- Body bold title -->
     <style name="Body.title" parent="TextAppearance.Material3.BodyLarge">
         <item name="fontFamily">@font/overpass_bold</item>

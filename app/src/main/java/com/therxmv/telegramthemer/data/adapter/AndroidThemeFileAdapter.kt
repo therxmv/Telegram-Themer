@@ -21,7 +21,7 @@ class AndroidThemeFileAdapter @Inject constructor(
     private val context: Context,
     private val themeColors: ThemeColors,
     private val androidThemeValues: AndroidThemeValuesProvider,
-) : ThemeFileAdapter { // TODO download json templates from github
+) : ThemeFileAdapter {
 
     companion object {
         private const val DARK_LABEL = "dark"
@@ -54,7 +54,7 @@ class AndroidThemeFileAdapter @Inject constructor(
     }
 
     private fun getFileName(state: ThemeState): String {
-        val style = state.style.label
+        val style = state.style
         val dark = DARK_LABEL.takeIf { state.isDark } ?: LIGHT_LABEL
         val color = MONET_LABEL.takeIf { state.isMonet }
             ?: state.accent.colorToHex().drop(1)

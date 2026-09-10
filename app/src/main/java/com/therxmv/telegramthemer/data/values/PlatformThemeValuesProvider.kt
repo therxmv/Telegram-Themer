@@ -22,4 +22,10 @@ class PlatformThemeValuesProvider @Inject constructor(
             Platform.ANDROID -> androidThemeValuesProvider.getTemplateMap(state)
             Platform.IOS -> iosThemeValuesProvider.getTemplateMap(state)
         }
+
+    override fun hasGradientSupport(state: ThemeState): Boolean =
+        when (state.platform) {
+            Platform.ANDROID -> androidThemeValuesProvider.hasGradientSupport(state)
+            Platform.IOS -> iosThemeValuesProvider.hasGradientSupport(state)
+        }
 }
