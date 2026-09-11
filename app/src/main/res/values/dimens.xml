@@ -3,4 +3,5 @@
     <dimen name="button_10_radius">10dp</dimen>
     <dimen name="accent_swatch_ring_stroke">2dp</dimen>
     <dimen name="accent_swatch_gap">6dp</dimen>
+    <dimen name="advanced_preview_max_height">2000dp</dimen>
 </resources>

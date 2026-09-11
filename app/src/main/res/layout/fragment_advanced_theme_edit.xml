@@ -18,7 +18,8 @@
         app:layout_constraintDimensionRatio="1:2"
         app:layout_constraintStart_toEndOf="@id/chat_list_preview"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.9" />
+        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintHeight_max="@dimen/advanced_preview_max_height" />
 
     <com.therxmv.preview.ChatsListPreview
         android:id="@+id/chat_list_preview"
@@ -31,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHeight_percent="0.9" />
+        app:layout_constraintHeight_percent="0.9"
+        app:layout_constraintHeight_max="@dimen/advanced_preview_max_height" />
 
     <View
         android:id="@+id/reset_button"

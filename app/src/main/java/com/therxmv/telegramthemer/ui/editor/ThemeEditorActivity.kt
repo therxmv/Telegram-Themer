@@ -92,7 +92,7 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
 
         binding.layout.setOnApplyWindowInsetsListener { view, windowInsets ->
             val insets = windowInsets.getInsets(
-                WindowInsets.Type.systemBars()
+                WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout()
             )
 
             view.updatePadding(

@@ -20,6 +20,7 @@
             app:layout_constraintDimensionRatio="1:2"
             app:layout_constraintEnd_toStartOf="@id/chat_preview"
             app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintHeight_max="@dimen/advanced_preview_max_height"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
@@ -32,6 +33,7 @@
             app:layout_constraintDimensionRatio="1:2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.9"
+            app:layout_constraintHeight_max="@dimen/advanced_preview_max_height"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </ConstraintSet>
