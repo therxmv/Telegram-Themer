@@ -5,7 +5,7 @@
     "glow": "radial-gradient(930px 930px at 12% 96%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
     "headline": {
       "parts": [
-        { "text": "Build a full Telegram theme in " },
+        { "text": "Build a full theme in " },
         { "text": "three taps", "highlight": true }
       ]
     },
@@ -79,8 +79,8 @@
     "glow": "radial-gradient(990px 990px at 90% 90%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
     "headline": {
       "parts": [
-        { "text": "Send the theme to Telegram and " },
-        { "text": "tap apply", "highlight": true }
+        { "text": "Send the theme and apply in " },
+        { "text": "one tap", "highlight": true }
       ]
     },
     "frames": [
