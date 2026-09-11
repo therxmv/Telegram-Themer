@@ -7,4 +7,6 @@ interface SharedPrefsSource {
     fun getThemeState(): ThemeState
     fun saveRecentAccentColors(colors: List<Int>)
     fun getRecentAccentColors(): List<Int>
+    fun saveLastReviewRequestTimestamp(timestamp: Long)
+    fun getLastReviewRequestTimestamp(): Long
 }

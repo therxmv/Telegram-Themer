@@ -15,6 +15,7 @@ import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.play.core.review.ReviewManager
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
@@ -37,6 +38,9 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
 
     @Inject
     lateinit var presenter: ThemeEditorContract.Presenter
+
+    @Inject
+    lateinit var reviewManager: ReviewManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -145,6 +149,15 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun requestInAppReview() {
+        val request = reviewManager.requestReviewFlow()
+        request.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                reviewManager.launchReviewFlow(this, task.result)
+            }
         }
     }
 

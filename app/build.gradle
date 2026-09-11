@@ -50,6 +50,7 @@ dependencies {
     implementation appDependencies.dataStore
     implementation appDependencies.okhttp
     implementation appDependencies.splashScreen
+    implementation appDependencies.review
 
     implementation appDependencies.hilt
     implementation appDependencies.dagger

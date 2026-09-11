@@ -1,5 +1,6 @@
 package com.therxmv.telegramthemer.di.singleton
 
+import com.therxmv.telegramthemer.data.di.ReviewModule
 import com.therxmv.telegramthemer.data.di.SharedPrefsModule
 import com.therxmv.telegramthemer.data.di.TemplateModule
 import com.therxmv.telegramthemer.data.di.ThemeValuesModule
@@ -13,6 +14,7 @@ import dagger.Module
         ThemeValuesModule::class,
         SharedPrefsModule::class,
         TemplateModule::class,
+        ReviewModule::class,
     ]
 )
 class SingletonModule

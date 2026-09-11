@@ -9,6 +9,7 @@ import com.therxmv.telegramthemer.domain.usecase.GetAtthemeFileUseCase
 import com.therxmv.telegramthemer.domain.usecase.GetCachedThemeUseCase
 import com.therxmv.telegramthemer.domain.usecase.GetTemplateCapabilitiesUseCase
 import com.therxmv.telegramthemer.domain.usecase.SaveThemeUseCase
+import com.therxmv.telegramthemer.domain.usecase.ShouldRequestReviewUseCase
 import com.therxmv.telegramthemer.domain.usecase.SyncTemplatesUseCase
 import com.therxmv.telegramthemer.ui.extensions.isMonetAvailable
 import kotlinx.coroutines.CoroutineDispatcher
@@ -28,6 +29,7 @@ class ThemeEditorPresenter @Inject constructor(
     private val getAtthemeFile: GetAtthemeFileUseCase,
     private val syncTemplates: SyncTemplatesUseCase,
     private val getTemplateCapabilities: GetTemplateCapabilitiesUseCase,
+    private val shouldRequestReview: ShouldRequestReviewUseCase,
 ) : ThemeEditorContract.Presenter() {
 
     companion object {
@@ -65,6 +67,10 @@ class ThemeEditorPresenter @Inject constructor(
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 themeEditorEventProvider.eventFlow.collect(::collectThemeEvent)
             }
+        }
+
+        if (shouldRequestReview()) {
+            view.requestInAppReview()
         }
     }
 

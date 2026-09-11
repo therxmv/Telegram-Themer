@@ -8,6 +8,7 @@ interface ThemeEditorContract {
     interface View {
         fun openColorPicker(currentColor: Int)
         fun shareThemeFile(file: File)
+        fun requestInAppReview()
     }
 
     abstract class Presenter: BasePresenter<View>() {
