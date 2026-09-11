@@ -173,6 +173,9 @@ class SimpleThemeEditFragment : BaseBindingFragment<FragmentSimpleThemeEditBindi
 
             binding.chipMonet.isChecked = themeState.isMonet
             binding.chipMonet.visibility = isMonetAvailable().toVisibility()
+
+            // Advanced (per-key) overrides only exist for the Android export format.
+            binding.advancedEditButton.visibility = (themeState.platform == Platform.ANDROID).toVisibility()
         }
     }
 

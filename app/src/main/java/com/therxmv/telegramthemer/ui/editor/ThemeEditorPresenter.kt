@@ -4,6 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.therxmv.preview.utils.AtthemePreviewKeys
+import com.therxmv.telegramthemer.domain.model.Platform
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.usecase.GetAtthemeFileUseCase
 import com.therxmv.telegramthemer.domain.usecase.GetCachedThemeUseCase
@@ -102,7 +103,9 @@ class ThemeEditorPresenter @Inject constructor(
             }
 
             is ThemeEditorEvent.ChangePlatform -> {
-                updateThemeSate(themeState.copy(platform = event.platform))
+                // Advanced (per-key) overrides only exist for the Android export format.
+                val overwrittenColors = themeState.overwrittenColors.takeIf { event.platform == Platform.ANDROID } ?: emptyMap()
+                updateThemeSate(themeState.copy(platform = event.platform, overwrittenColors = overwrittenColors))
             }
 
             is ThemeEditorEvent.ExportTheme -> {
