@@ -1,7 +1,7 @@
 ext {
     appConfig = [
-            versionCode      : 315,
-            versionName      : "3.1.5",
+            versionCode      : 400,
+            versionName      : "4.0.0",
             applicationId    : "com.therxmv.telegramthemer",
             minSdkVersion    : 23,
             compileSdkVersion: 36,
