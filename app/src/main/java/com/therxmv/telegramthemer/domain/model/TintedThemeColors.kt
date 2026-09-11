@@ -11,6 +11,14 @@ data class TintedThemeColors(
     operator fun get(name: String): Int =
         getHex(name)?.let { Color.parseColor(it) } ?: Color.BLACK
 
+    /**
+     * Raw hex string for [name] (e.g. "#77299fe9"), unlike [get] this keeps
+     * the exact digit count (6 or 8) of the underlying [TintedColor.value] —
+     * needed by platforms (iOS) that must tell a plain `RRGGBB` role apart
+     * from an `AARRGGBB` one.
+     */
+    fun rawHex(name: String): String? = getHex(name)
+
     private fun getHex(name: String): String? =
         colors.firstOrNull { it.name == name }?.value
 }
@@ -38,3 +46,4 @@ fun purple(luminosity: Int) = "purple_$luminosity"
 fun transparent(luminosity: Int) = "transparent_$luminosity"
 fun trAccent(luminosity: Int) = "tr_accent_$luminosity"
 fun trGray(luminosity: Int) = "tr_gray_$luminosity"
+fun trBackground(luminosity: Int) = "tr_background_$luminosity"

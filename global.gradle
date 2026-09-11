@@ -1,7 +1,7 @@
 ext {
     appConfig = [
-            versionCode      : 315,
-            versionName      : "3.1.5",
+            versionCode      : 400,
+            versionName      : "4.0.0",
             applicationId    : "com.therxmv.telegramthemer",
             minSdkVersion    : 23,
             compileSdkVersion: 36,
@@ -19,6 +19,9 @@ ext {
     color_picker_version = "2.0.1"
     serialization_version = "1.6.3"
     data_store_version = "1.1.7"
+    okhttp_version = "4.12.0"
+    splash_screen_version = "1.0.1"
+    review_version = "2.0.2"
 
     appDependencies = [
             coreKtx               : "androidx.core:core-ktx:$core_ktx_version",
@@ -37,6 +40,9 @@ ext {
             daggerCompiler        : "com.google.dagger:dagger-compiler:$dagger_version",
             colorPicker           : "com.github.jarryleo:colorpicker:$color_picker_version",
             serialization         : "org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version",
-            dataStore             : "androidx.datastore:datastore-preferences:$data_store_version"
+            dataStore             : "androidx.datastore:datastore-preferences:$data_store_version",
+            okhttp                : "com.squareup.okhttp3:okhttp:$okhttp_version",
+            splashScreen          : "androidx.core:core-splashscreen:$splash_screen_version",
+            review                : "com.google.android.play:review:$review_version"
     ]
 }

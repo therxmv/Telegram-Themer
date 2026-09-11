@@ -19,9 +19,15 @@ fun String.hexToRgb() = listOf(
 )
 
 /**
- * Converts Integer color to hexadecimal color without transparency
+ * Converts an Integer ARGB color to a hexadecimal color string, keeping the
+ * alpha byte whenever the color isn't fully opaque.
  *
- * Input: 0xFF50AAFF; Output: "#50AAFF"
+ * Input: 0xFF50AAFF; Output: "#50aaff"
+ * Input: 0x77299FE9; Output: "#77299fe9"
+ * Input: 0x00000000; Output: "#00000000"
  */
-fun Int.colorToHex(): String =
-    "#" + Integer.toHexString(this).drop(2) // TODO think about transparency
+fun Int.colorToHex(): String {
+    val alpha = (this ushr 24) and 0xFF
+    val rgb = "%06x".format(this and 0xFFFFFF)
+    return if (alpha == 0xFF) "#$rgb" else "#%02x%s".format(alpha, rgb)
+}

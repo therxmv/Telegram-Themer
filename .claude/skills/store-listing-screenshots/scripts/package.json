@@ -1,0 +1,11 @@
+{
+  "name": "store-listing-screenshots-compose",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "compose": "node compose.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}

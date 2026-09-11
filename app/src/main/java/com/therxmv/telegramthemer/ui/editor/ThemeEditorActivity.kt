@@ -10,19 +10,18 @@ import android.view.MenuItem
 import android.view.WindowInsets
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.updatePadding
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.play.core.review.ReviewManager
 import com.therxmv.telegramthemer.BuildConfig
 import com.therxmv.telegramthemer.R
 import com.therxmv.telegramthemer.databinding.ActivityThemeEditorBinding
-import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.ui.base.BaseBindingActivity
 import com.therxmv.telegramthemer.ui.editor.advanced.AdvancedThemeEditFragment
 import com.therxmv.telegramthemer.ui.editor.help.HelpDialogFragment
-import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsBottomSheetFragment
-import com.therxmv.telegramthemer.ui.editor.options.MoreOptionsSubscriber
 import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerBottomSheetFragment
 import com.therxmv.telegramthemer.ui.editor.picker.ColorPickerSubscriber
 import java.io.File
@@ -30,8 +29,7 @@ import javax.inject.Inject
 
 class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     ThemeEditorContract.View,
-    ColorPickerSubscriber,
-    MoreOptionsSubscriber {
+    ColorPickerSubscriber {
 
     companion object {
         private const val TELEGRAM_PACKAGE = "org.telegram.messenger"
@@ -41,9 +39,14 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
     @Inject
     lateinit var presenter: ThemeEditorContract.Presenter
 
+    @Inject
+    lateinit var reviewManager: ReviewManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         setContentView(ActivityThemeEditorBinding::inflate)
+        splashScreen.setKeepOnScreenCondition { !presenter.areTemplatesReady }
         handleEdgeToEdge()
         presenter.attachView(this@ThemeEditorActivity)
         setUpActionBar()
@@ -89,7 +92,7 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
 
         binding.layout.setOnApplyWindowInsetsListener { view, windowInsets ->
             val insets = windowInsets.getInsets(
-                WindowInsets.Type.systemBars()
+                WindowInsets.Type.systemBars() or WindowInsets.Type.displayCutout()
             )
 
             view.updatePadding(
@@ -109,18 +112,12 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
             .show(supportFragmentManager, "ColorPickerBottomSheetFragment")
     }
 
-    override fun openMoreOptions(themeState: ThemeState) {
-        MoreOptionsBottomSheetFragment
-            .createInstance(themeState)
-            .show(supportFragmentManager, "MoreOptionsBottomSheetFragment")
-    }
-
     override fun onColorChanged(color: Int) {
         presenter.onColorChanged(color)
     }
 
-    override fun onPropertyChange(themeState: ThemeState) {
-        presenter.onPropertyChange(themeState)
+    override fun onColorPickerClosed() {
+        presenter.onColorPickerClosed()
     }
 
     override fun shareThemeFile(file: File) {
@@ -152,6 +149,15 @@ class ThemeEditorActivity : BaseBindingActivity<ActivityThemeEditorBinding>(),
         } catch (e: Exception) {
             e.printStackTrace()
             Toast.makeText(this, getString(R.string.something_went_wrong), Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun requestInAppReview() {
+        val request = reviewManager.requestReviewFlow()
+        request.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                reviewManager.launchReviewFlow(this, task.result)
+            }
         }
     }
 

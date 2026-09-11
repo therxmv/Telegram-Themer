@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+# Pre-push hook: keeps AI tooling in sync with what's about to be shared.
+# No API calls — everything here is local/deterministic.
+#
+#   1. Always refreshes the codebase-memory-mcp knowledge graph (background, non-blocking —
+#      it writes to its own local store, not to the push, so there's nothing to wait for;
+#      it's a local binary, not an LLM call).
+#   2. For every non-root CLAUDE.md whose directory is touched by any commit being pushed,
+#      prints a reminder to run the `update-claude-md` skill (`/update-claude-md`) before/after
+#      pushing. It does NOT analyze content or call Claude itself — just a heads-up, since that
+#      directory's docs may now be stale.
+#
+#      A CLAUDE.md is only flagged if OTHER files in its directory changed but the CLAUDE.md
+#      itself did not — if it was also touched in the same push (e.g. a prior `/update-claude-md`
+#      run got committed alongside the code), that's already "good to go" and isn't flagged. This
+#      also means the reminder can't loop: run `/update-claude-md`, commit whatever it changes
+#      (even a no-op commit isn't needed — if it edits the file, that edit is now in the diff), and
+#      push again — the next check for the same range no longer has an unflagged CLAUDE.md to report.
+#
+# Enable once per clone:
+#   git config core.hooksPath .githooks
+#
+# Best-effort throughout: missing tooling or anything below never blocks the push.
+#
+# Git invokes this as: pre-push <remote-name> <remote-url>, and feeds stdin lines of:
+#   <local-ref> <local-sha1> <remote-ref> <remote-sha1>
+# one per ref being pushed (local-sha1 all-zero means a delete — nothing to check there).
+
+set -uo pipefail
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT" || exit 0
+
+ZERO_SHA="0000000000000000000000000000000000000000"
+
+# ── 1. Refresh the codebase-memory-mcp index ─────────────────────────────────
+if command -v codebase-memory-mcp >/dev/null 2>&1; then
+  echo "[pre-push] Refreshing codebase-memory-mcp index in the background..."
+  nohup codebase-memory-mcp cli index_repository \
+    --repo-path "$REPO_ROOT" --name TelegramThemer --mode fast \
+    >/tmp/codebase-memory-mcp-prepush.log 2>&1 &
+  disown 2>/dev/null || true
+else
+  echo "[pre-push] codebase-memory-mcp not on PATH — skipping index refresh." >&2
+fi
+
+# ── 2. Flag (don't fix) CLAUDE.md dirs touched by commits being pushed ──────
+
+# Built with a read loop (not `mapfile`) — macOS ships bash 3.2, which lacks it.
+CLAUDE_FILES=()
+while IFS= read -r f; do
+  CLAUDE_FILES+=("$f")
+done < <(find . -name CLAUDE.md -not -path "./CLAUDE.md" -not -path "*/build/*" -not -path "*/.git/*" | sed 's#^\./##')
+
+[ "${#CLAUDE_FILES[@]}" -eq 0 ] && exit 0
+
+FLAGGED=()
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -z "${local_ref:-}" ] && continue
+  [ "$local_sha" = "$ZERO_SHA" ] && continue  # deleting a ref — nothing to check
+
+  if [ "$remote_sha" = "$ZERO_SHA" ]; then
+    # New branch/ref on the remote — diff against where it forked from main, falling back to
+    # the whole history (empty tree) if that fails, e.g. main itself being pushed for the first time.
+    base="$(git merge-base "$local_sha" main 2>/dev/null || true)"
+    if [ -z "$base" ]; then
+      base="$(git hash-object -t tree /dev/null)"
+    fi
+  else
+    base="$remote_sha"
+  fi
+
+  CHANGED_FILES="$(git diff --name-only --diff-filter=ACMRD "$base" "$local_sha" 2>/dev/null)"
+  [ -z "$CHANGED_FILES" ] && continue
+
+  for claude_md in "${CLAUDE_FILES[@]}"; do
+    dir="$(dirname "$claude_md")"
+
+    # Any OTHER file under $dir changed in this push?
+    if ! echo "$CHANGED_FILES" | grep -v "^${claude_md}$" | grep -q "^${dir}/"; then
+      continue
+    fi
+
+    # If the CLAUDE.md itself was also touched in this push, treat it as already addressed —
+    # this is both the "good to go" case and what keeps the reminder from looping forever.
+    if echo "$CHANGED_FILES" | grep -qx "$claude_md"; then
+      continue
+    fi
+
+    FLAGGED+=("$claude_md")
+  done
+done
+
+if [ "${#FLAGGED[@]}" -gt 0 ]; then
+  echo "[pre-push] Commits being pushed touch a directory documented in:"
+  printf '%s\n' "${FLAGGED[@]}" | sort -u | while read -r f; do
+    echo "[pre-push]   - $f"
+  done
+  echo "[pre-push] Run '/update-claude-md' in Claude Code to check/update it if needed."
+fi
+
+exit 0

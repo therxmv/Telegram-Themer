@@ -3,6 +3,7 @@ package com.therxmv.telegramthemer.data.source
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.therxmv.telegramthemer.domain.model.ThemeState
 import com.therxmv.telegramthemer.domain.source.SharedPrefsSource
@@ -18,6 +19,8 @@ class SharedPrefsDataSource @Inject constructor(
 ) : SharedPrefsSource {
 
     private val themeStateKey = stringPreferencesKey("ThemeStateKey")
+    private val recentAccentColorsKey = stringPreferencesKey("RecentAccentColorsKey")
+    private val lastReviewRequestTimestampKey = longPreferencesKey("LastReviewRequestTimestampKey")
 
     override fun saveThemeState(themeState: ThemeState) {
         runBlocking {
@@ -28,6 +31,28 @@ class SharedPrefsDataSource @Inject constructor(
     override fun getThemeState(): ThemeState =
         runBlocking {
             themeStateKey.getValue()?.toObject<ThemeState>() ?: ThemeState()
+        }
+
+    override fun saveRecentAccentColors(colors: List<Int>) {
+        runBlocking {
+            recentAccentColorsKey.saveValue(colors.toJson())
+        }
+    }
+
+    override fun getRecentAccentColors(): List<Int> =
+        runBlocking {
+            recentAccentColorsKey.getValue()?.toObject<List<Int>>().orEmpty()
+        }
+
+    override fun saveLastReviewRequestTimestamp(timestamp: Long) {
+        runBlocking {
+            lastReviewRequestTimestampKey.saveValue(timestamp)
+        }
+    }
+
+    override fun getLastReviewRequestTimestamp(): Long =
+        runBlocking {
+            lastReviewRequestTimestampKey.getValue() ?: 0L
         }
 
     private suspend fun <T> Preferences.Key<T>.saveValue(value: T) {

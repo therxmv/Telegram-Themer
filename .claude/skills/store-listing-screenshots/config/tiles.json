@@ -1,0 +1,104 @@
+[
+  {
+    "id": "01_simple_editor_light",
+    "background": "radial-gradient(1305px 1102px at 82% -6%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#ffffff 0%,#e4edf7 100%)",
+    "glow": "radial-gradient(930px 930px at 12% 96%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
+    "headline": {
+      "parts": [
+        { "text": "Build a full Telegram theme in " },
+        { "text": "three taps", "highlight": true }
+      ]
+    },
+    "frames": [
+      { "image": "01_simple_editor_light.png", "left": 222, "top": 612, "rotate": -6, "width": 646, "height": 1401, "radius": 56, "padding": 14, "innerRadius": 42, "dot": 30, "dotTop": 30 }
+    ]
+  },
+  {
+    "id": "02_advanced_themer",
+    "background": "radial-gradient(1276px 1044px at 14% 2%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#f5f8fc 0%,#dde8f5 100%)",
+    "glow": "radial-gradient(1050px 1050px at 92% 78%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
+    "headline": {
+      "parts": [
+        { "text": "Fine-tune every colour in the " },
+        { "text": "chat list", "highlight": true },
+        { "text": " and the bubbles" }
+      ]
+    },
+    "frames": [
+      { "image": "02_advanced_chatlist.png", "left": 36, "top": 700, "rotate": -7, "width": 520, "height": 1128, "radius": 46, "padding": 12, "innerRadius": 34, "dot": 24, "dotTop": 26 },
+      { "image": "03_advanced_bubbles.png", "left": 512, "top": 620, "rotate": 7, "width": 520, "height": 1128, "radius": 46, "padding": 12, "innerRadius": 34, "dot": 24, "dotTop": 26 }
+    ]
+  },
+  {
+    "id": "04_color_picker",
+    "background": "radial-gradient(1305px 1073px at 84% 4%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#f5f8fc 0%,#dde8f5 100%)",
+    "glow": "radial-gradient(960px 960px at 8% 88%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
+    "headline": {
+      "parts": [
+        { "text": "Pick any shade you want on the " },
+        { "text": "colour wheel", "highlight": true }
+      ]
+    },
+    "frames": [
+      { "image": "04_color_picker.png", "left": 222, "top": 612, "rotate": -6, "width": 646, "height": 1401, "radius": 56, "padding": 14, "innerRadius": 42, "dot": 30, "dotTop": 30 }
+    ]
+  },
+  {
+    "id": "05_dark_mode",
+    "background": "radial-gradient(1247px 1015px at 16% 4%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#ffffff 0%,#e4edf7 100%)",
+    "glow": "radial-gradient(1080px 1080px at 94% 82%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
+    "headline": {
+      "parts": [
+        { "text": "Flip any theme to " },
+        { "text": "dark mode", "highlight": true },
+        { "text": " instantly" }
+      ]
+    },
+    "frames": [
+      { "image": "05_dark_mode.png", "left": 222, "top": 628, "rotate": 6, "width": 646, "height": 1401, "radius": 56, "padding": 14, "innerRadius": 42, "dot": 30, "dotTop": 30 }
+    ]
+  },
+  {
+    "id": "06_dark_purple_accent",
+    "background": "radial-gradient(1363px 1131px at 78% 100%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#f5f8fc 0%,#dde8f5 100%)",
+    "glow": "radial-gradient(900px 900px at 10% 10%, rgba(124,92,222,.5) 0%, rgba(124,92,222,0) 78%)",
+    "glowNote": "The source .dc.html literally wraps this in linear-gradient(180deg, <this radial-gradient>, #28211a) — invalid CSS (a radial-gradient() isn't a legal linear-gradient() color-stop), confirmed via Playwright to render as nothing in real Chromium. But the actual rendered reference (Claude Design's own canvas) clearly shows this purple glow in the top-left corner, matching the same single-radial-gradient-fading-to-transparent pattern every other tile's glow uses. Corrected to just the radial-gradient, matching the visual reference over the literal (buggy) source text.",
+    "headline": {
+      "parts": [
+        { "text": "Give every theme its own " },
+        { "text": "accent colour", "highlight": true, "bg": "#866ED3" }
+      ]
+    },
+    "frames": [
+      { "image": "06_dark_purple_accent.png", "left": 222, "top": 612, "rotate": -5, "width": 646, "height": 1401, "radius": 56, "padding": 14, "innerRadius": 42, "dot": 30, "dotTop": 30 }
+    ]
+  },
+  {
+    "id": "07_how_to_use",
+    "background": "radial-gradient(1276px 1044px at 20% 0%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#ffffff 0%,#e4edf7 100%)",
+    "glow": "radial-gradient(990px 990px at 90% 90%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
+    "headline": {
+      "parts": [
+        { "text": "Send the theme to Telegram and " },
+        { "text": "tap apply", "highlight": true }
+      ]
+    },
+    "frames": [
+      { "image": "07_how_to_use.png", "left": 222, "top": 628, "rotate": 5, "width": 646, "height": 1401, "radius": 56, "padding": 14, "innerRadius": 42, "dot": 30, "dotTop": 30 }
+    ]
+  },
+  {
+    "id": "08_amoled_dark",
+    "background": "radial-gradient(1102px 928px at 50% 104%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#f5f8fc 0%,#dde8f5 100%)",
+    "glow": "radial-gradient(780px 780px at 86% 6%, rgba(34,158,217,.55) 0%, rgba(34,158,217,0) 78%)",
+    "headline": {
+      "parts": [
+        { "text": "True black", "highlight": true },
+        { "text": " themes that spare your battery" }
+      ]
+    },
+    "frames": [
+      { "image": "08_amoled_dark.png", "left": 222, "top": 648, "rotate": 0, "width": 646, "height": 1401, "radius": 56, "padding": 14, "innerRadius": 42, "dot": 30, "dotTop": 30 }
+    ]
+  }
+]
