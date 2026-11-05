@@ -1,13 +1,13 @@
 # Terms of Service
 
 These Terms of Service ("Terms") govern your use of the Themer app (the "App"), developed and provided by
-Roma Kyzmuch, an individual developer ("I", "me", "my"). By downloading, installing, or using the App, you
+Roman Kuzmych, an individual developer ("I", "me", "my"). By downloading, installing, or using the App, you
 agree to these Terms. If you do not agree, please do not use the App.
 
 
 ## Developer / Trader Information
 
-- Developer: Roma Kyzmuch
+- Developer: Roman Kuzmych
 - Contact email: roma.kyzmuch@gmail.com
 - App package: com.therxmv.telegramthemer
 
