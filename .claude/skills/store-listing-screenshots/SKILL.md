@@ -1,26 +1,33 @@
 ---
 name: store-listing-screenshots
-description: Generate TelegramThemer's Play Store listing images — capture the 8 required app screenshots on a running emulator/device by driving the real UI with adb, then composite them into the final 1080x1920 marketing tiles (gradient background, headline, phone-frame mockup) exactly matching the Claude Design handoff bundle. Triggers on "store screenshots", "Play Store images", "store listing images", "marketing screenshots", "generate store images".
+description: Generate TelegramThemer's Play Store listing images — capture the 8 required app screenshots on a running emulator/device by driving the real UI with adb, then composite them into the final 1080x1920 marketing tiles (gradient background, headline, phone-frame mockup) plus a 1920x1080 (16:9) feature poster, exactly matching the Claude Design handoff bundle. Triggers on "store screenshots", "Play Store images", "store listing images", "marketing screenshots", "generate store images", "feature poster", "feature graphic".
 ---
 
 # Store listing screenshots
 
-Produces the 7 final Play Store marketing tiles (1080x1920 PNG each) from 8
-raw device screenshots of the running app. Two phases:
+Produces the 7 final Play Store marketing tiles (1080x1920 PNG each) plus one
+1920x1080 (16:9) feature poster, from 8 raw device screenshots of the running
+app. Two phases:
 
 1. **Capture** — drive the app on a connected device/emulator with `adb`,
    screenshot each of the 8 required scenes.
 2. **Compose** — render each scene into the exact marketing-tile design
    (gradient background, headline with a highlighted phrase, tilted
    phone-frame mockup with notch dot) using the same CSS as the original
-   Claude Design handoff, via headless Chromium.
+   Claude Design handoff, via headless Chromium. The same pass also renders
+   the feature poster (eyebrow label, headline, tagline, feature pills,
+   three tilted phone frames) from a subset of the same screenshots.
 
-The design source of truth is
-`config/tiles.json` in this skill — it's a literal transcription of the CSS
-from `telegramthemer-store-listing-images/project/Play Store Screenshots.dc.html`
-(the handoff bundle in the user's Downloads, referenced when this skill was
-created). Don't hand-tune values in there against vibes; if the design
-changes, re-transcribe from the `.dc.html` source.
+The design source of truth is `config/tiles.json` (marketing tiles) and
+`config/poster.json` (feature poster) in this skill — both are literal
+transcriptions of the CSS from the handoff bundle in the user's Downloads
+(`telegramthemer-store-listing-images/project/Play Store Screenshots.dc.html`
+and `.../Feature Poster.dc.html` respectively, referenced when this skill was
+created/updated). Don't hand-tune values in there against vibes; if the
+design changes, re-transcribe from the `.dc.html` source. Marketing-tile
+headlines deliberately omit the word "Telegram" — don't reintroduce it when
+re-transcribing; re-word the surrounding text to read naturally instead of
+just deleting the word in place.
 
 ## Phase 1 — capture
 
@@ -103,12 +110,29 @@ This renders each of the 7 tiles in `config/tiles.json` to real HTML with
 the original design's exact inline CSS (same gradients, same phone-frame
 geometry, same Overpass font loaded from Google Fonts), screenshots it at a
 1080x1920 headless-Chromium viewport with `deviceScaleFactor: 1`, and writes
-`output/<tile-id>.png`. That's the same rendering technology the reference
-design was authored in, so output should be pixel-identical to the handoff
-bundle's `Play Store Screenshots.dc.html` for the same input screenshots.
+`output/<tile-id>_<timestamp>.png` — the timestamp (`YYYYMMDD-HHMMSS`, local
+time) is computed once per run and stamped into every filename from that
+run, so freshness is visible directly in a file listing without opening
+anything or checking mtimes. That's the same rendering technology the
+reference design was authored in, so output should be pixel-identical to
+the handoff bundle's `Play Store Screenshots.dc.html` for the same input
+screenshots.
 
-Verify each output is exactly 1080x1920 and open one or two to eyeball
-before treating them as final — especially tile `06_dark_purple_accent`.
+The same run then renders `config/poster.json` the same way at a 1920x1080
+viewport and writes `output/feature_poster_<timestamp>.png` — the 16:9
+feature poster (eyebrow label, headline, tagline, three feature pills, and
+three tilted phone frames using `01_simple_editor_light.png`,
+`03_advanced_bubbles.png`, `08_amoled_dark.png` from the same `screenshots/`
+folder), matching `Feature Poster.dc.html` from the handoff bundle. It's
+skipped automatically if `config/poster.json` is missing.
+
+Re-running `compose.mjs` doesn't overwrite or clean up older timestamped
+files in `output/` — remove stale ones yourself if you don't want them
+lying around.
+
+Verify each tile output is exactly 1080x1920 and the poster output is
+exactly 1920x1080, and open one or two to eyeball before treating them as
+final — especially tile `06_dark_purple_accent`.
 Its `glow` in `config/tiles.json` does **not** match the literal text in
 the source `.dc.html`: the source wraps it as
 `linear-gradient(180deg, radial-gradient(...), #28211a)`, which is invalid
@@ -126,6 +150,9 @@ against a real render first.
 - The 7 output tiles map to 8 input screenshots because tile
   `02_advanced_themer` uses two (`02_advanced_chatlist.png` +
   `03_advanced_bubbles.png`) side by side.
+- The feature poster reuses 3 of the same 8 screenshots (`01`, `03`, `08`
+  — no separate capture step needed) at smaller phone-frame dimensions than
+  the tiles (360x781 vs. the tiles' 646x1401).
 - Default resolved design values baked into `compose.mjs`: no eyebrow label
   above the headline, full-strength background glow — those match the
   `.dc.html`'s actual defaults (`showEyebrow` default is `false`, despite

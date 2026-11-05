@@ -1,0 +1,22 @@
+{
+  "id": "feature_poster",
+  "width": 1920,
+  "height": 1080,
+  "background": "radial-gradient(1500px 1300px at 8% -10%, rgba(34,158,217,.85) 0%, rgba(34,158,217,.22) 55%, rgba(34,158,217,0) 82%), linear-gradient(180deg,#ffffff 0%,#dde8f5 100%)",
+  "glow": "radial-gradient(1100px 1100px at 96% 96%, rgba(34,158,217,.5) 0%, rgba(34,158,217,0) 78%)",
+  "eyebrow": "Themer",
+  "headline": {
+    "parts": [
+      { "text": "Your chats, in " },
+      { "text": "your colours", "highlight": true }
+    ]
+  },
+  "tagline": "Pick a palette, fine-tune every surface — chat list, bubbles, accents, true-black AMOLED — then send the finished theme straight to the app.",
+  "pills": ["Simple & advanced editors", "Full colour picker", "Light · Dark · AMOLED"],
+  "frameShadow": "0 44px 90px rgba(12,26,38,.3), 0 0 0 1px rgba(12,26,38,.12)",
+  "frames": [
+    { "image": "01_simple_editor_light.png", "left": 872, "top": 190, "rotate": -7, "zIndex": 3, "width": 360, "height": 781, "radius": 42, "padding": 11, "innerRadius": 32, "dot": 20, "dotTop": 24 },
+    { "image": "03_advanced_bubbles.png", "left": 1152, "top": 148, "rotate": 0, "zIndex": 2, "width": 360, "height": 781, "radius": 42, "padding": 11, "innerRadius": 32, "dot": 20, "dotTop": 24 },
+    { "image": "08_amoled_dark.png", "left": 1432, "top": 198, "rotate": 7, "zIndex": 1, "width": 360, "height": 781, "radius": 42, "padding": 11, "innerRadius": 32, "dot": 20, "dotTop": 24 }
+  ]
+}
